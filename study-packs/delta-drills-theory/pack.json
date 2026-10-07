@@ -1,0 +1,55 @@
+{
+ "id": "delta-drills-theory",
+ "title": "How Delta Drills works",
+ "version": "0.1.0",
+ "vetted": false,
+ "course": "delta-drills",
+ "sources": [
+  {
+   "id": "rk2006",
+   "title": "Test-Enhanced Learning: Taking Memory Tests Improves Long-Term Retention",
+   "authors": "Roediger, H. L., & Karpicke, J. D.",
+   "year": 2006,
+   "venue": "Psychological Science 17(3), 249-255",
+   "url": "https://doi.org/10.1111/j.1467-9280.2006.01693.x",
+   "path": "docs/architecture/primary-sources/2006_roediger-karpicke_test-enhanced-learning.pdf",
+   "kind": "paper"
+  },
+  {
+   "id": "pel2017",
+   "title": "Bayesian knowledge tracing, logistic models, and beyond: an overview of learner modeling techniques",
+   "authors": "Pelánek, R.",
+   "year": 2017,
+   "venue": "User Modeling and User-Adapted Interaction 27, 313-350",
+   "url": "https://doi.org/10.1007/s11257-017-9193-2",
+   "path": "docs/architecture/primary-sources/2017_pelanek_bkt-logistic-and-beyond.pdf",
+   "kind": "paper"
+  },
+  {
+   "id": "sky2023",
+   "title": "Optimized, Individualized Spaced Repetition in Hierarchical Knowledge Structures",
+   "authors": "Skycak, J.",
+   "year": 2023,
+   "venue": "The Math Academy Way (working draft)",
+   "url": "https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/",
+   "path": "docs/architecture/primary-sources/2023_skycak_fire-spaced-repetition.html",
+   "kind": "post"
+  },
+  {
+   "id": "dd-bkt",
+   "title": "bkt_mastery.py (the app's mastery model)",
+   "authors": "Delta Drills",
+   "year": 2026,
+   "path": "This-Directory-Only/backend/app/bkt_mastery.py",
+   "kind": "app-source"
+  },
+  {
+   "id": "dd-memory",
+   "title": "memory_model.py (the app's memory model)",
+   "authors": "Delta Drills",
+   "year": 2026,
+   "path": "This-Directory-Only/backend/app/memory_model.py",
+   "kind": "app-source"
+  }
+ ]
+}

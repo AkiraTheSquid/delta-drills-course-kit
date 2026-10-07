@@ -1,0 +1,280 @@
+[
+ {
+  "id": "mastery.c1",
+  "kind": "content",
+  "demand": "explain",
+  "targets": [
+   "deltadrills.mastery"
+  ],
+  "prompt": "In your own words: what is the mastery number Delta Drills keeps for a concept, and what happens to it when you answer a question on that concept?",
+  "rephrasings": [
+   "Explain what the app's mastery estimate for a concept means, and how a single graded answer changes it."
+  ],
+  "reference": "It is a probability that you are in the known state for the skill (Bayesian knowledge tracing). After each graded answer it is updated by Bayes' rule: a correct answer raises it, by less when lucky guesses are common (guess rate); a wrong answer lowers it, by less when slips by people who know it are common (slip rate). In this app a correct answer is then followed by a learning-transit step toward known; a wrong one is not. It says nothing about forgetting, which the memory model handles."
+ },
+ {
+  "id": "mastery.e1",
+  "kind": "evaluative",
+  "demand": "evaluate",
+  "targets": [
+   "deltadrills.mastery"
+  ],
+  "prompt": "A friend says: \"I've got 9 of my 10 answers on this concept right, so my mastery must be 90%.\" What is wrong with that reasoning, given how the app actually models mastery?",
+  "reference": "Mastery is not a percent correct: it is the posterior probability of the known state. Each update depends only on where the estimate sits now and whether this answer was right, with guess and slip rates setting the size of the move, plus a transit after correct answers. With the app's numbers (start 0.10, guess 0.2, slip 0.1, transit 0.3), 9 correct and 1 wrong puts the estimate near 0.999, not 0.9, because a slip by someone who almost surely knows it is expected now and then. The ratio of right answers is simply not what is stored."
+ },
+ {
+  "id": "mastery.m1",
+  "kind": "content",
+  "format": "mc",
+  "demand": "apply",
+  "targets": [
+   "deltadrills.mastery"
+  ],
+  "prompt": "The app uses guess 0.2 and slip 0.1. A concept's estimate is 0.55 and you answer correctly. What is the Bayes posterior, before the learning transit?",
+  "reference": "0.55·0.9 / (0.55·0.9 + 0.45·0.2) = 0.495 / 0.585 ≈ 0.85.",
+  "options": [
+   {
+    "id": "a",
+    "text": "about 0.50",
+    "why": "That is P(known and correct) = 0.55 × 0.9. Bayes' rule then divides by P(correct) = 0.495 + 0.45 × 0.2 = 0.585.",
+    "correct": false
+   },
+   {
+    "id": "b",
+    "text": "about 0.65",
+    "why": "Mastery does not move by a fixed step: the size of the move comes from how much more likely a correct answer is when you know the concept.",
+    "correct": false,
+    "misconception": "percent"
+   },
+   {
+    "id": "c",
+    "text": "about 0.85",
+    "why": "P(known | correct) = 0.55·0.9 / (0.55·0.9 + 0.45·0.2) = 0.495 / 0.585 ≈ 0.85. The app then applies the transit: 0.85 + 0.15 × 0.30 ≈ 0.89.",
+    "correct": true
+   },
+   {
+    "id": "d",
+    "text": "about 0.89",
+    "why": "That is the value after the learning transit (0.85 + 0.15 × 0.30). The question asks for the posterior before it.",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "sr.c1",
+  "kind": "content",
+  "demand": "explain",
+  "targets": [
+   "deltadrills.spaced-repetition"
+  ],
+  "prompt": "Why does Delta Drills spread the reviews of a concept over time instead of drilling it many times in one sitting, and how does it decide when the next review is due?",
+  "rephrasings": [
+   "What problem does spaced repetition solve, and what decides the gap before a concept comes back?"
+  ],
+  "reference": "Because of the spacing effect: the same amount of practice spread over time is retained far better on a delayed test than practice massed in one sitting, which helps only in the short term. The app keeps a memory model per concept (FSRS-6) that predicts recall R, and schedules the review for when predicted recall falls to the target retention. Each successful review raises stability, so the following gap is longer."
+ },
+ {
+  "id": "sr.e1",
+  "kind": "evaluative",
+  "demand": "evaluate",
+  "targets": [
+   "deltadrills.spaced-repetition"
+  ],
+  "prompt": "Until September 2026 every concept in the app forgot on one shared 14-day half-life. Why was that a problem for spacing?",
+  "reference": "One number with one global half-life cannot represent the spacing effect: three answers crammed into an hour and three spread over three weeks would leave the same state and so predict the same future, and nothing scheduled reviews at all. A per-concept stability that grows more after spaced successful reviews can tell those learners apart."
+ },
+ {
+  "id": "sr.e2",
+  "kind": "evaluative",
+  "demand": "contrast",
+  "targets": [
+   "deltadrills.spaced-repetition"
+  ],
+  "prompt": "One learner answers a concept correctly ten times in one evening. Another answers it correctly three times, spread over two weeks. Whom should the scheduler expect to remember it a month later, and why?",
+  "reference": "The spaced learner. A successful review made when recall had dropped strengthens memory (stability) much more than one made while recall was still near certain, so three spread reviews build more stability than ten massed ones. Massed practice gives a short-term benefit that fades, so the crammer's predicted recall a month later is lower."
+ },
+ {
+  "id": "ret.m1",
+  "kind": "content",
+  "format": "mc",
+  "demand": "apply",
+  "targets": [
+   "deltadrills.retrievability"
+  ],
+  "prompt": "A concept's stability is S = 10 days. Ten days after its last review, what recall probability does the model predict?",
+  "reference": "0.9: stability is defined as the time for R to fall to 0.9.",
+  "options": [
+   {
+    "id": "a",
+    "text": "0.50",
+    "why": "That would make S a half-life. In FSRS, S is the time for R to fall to 0.9, not 0.5.",
+    "correct": false,
+    "misconception": "half"
+   },
+   {
+    "id": "b",
+    "text": "0.80",
+    "why": "0.80 is the tutor's target retention, the point at which a review becomes due. It is reached later than S.",
+    "correct": false
+   },
+   {
+    "id": "c",
+    "text": "0.90",
+    "why": "Stability is defined as the time for R to fall to 0.9: F = 0.9^(-1/w20) - 1 is chosen so that R(S) = (1 + F)^(-w20) = 0.9, whatever w20 is.",
+    "correct": true
+   },
+   {
+    "id": "d",
+    "text": "about 0.37",
+    "why": "That is 1/e, the value of an exponential curve after one time constant. The app's curve is a power law.",
+    "correct": false,
+    "misconception": "exp"
+   }
+  ]
+ },
+ {
+  "id": "ret.m2",
+  "kind": "content",
+  "format": "mc",
+  "demand": "apply",
+  "targets": [
+   "deltadrills.retrievability"
+  ],
+  "prompt": "Same concept, S = 10 days. A review is due when predicted recall falls to 0.80. Roughly how many days after the last review is it due?",
+  "reference": "About 33 days: solve (1 + 0.980·t/10)^(-0.1542) = 0.80.",
+  "options": [
+   {
+    "id": "a",
+    "text": "about 20 days",
+    "why": "That assumes recall falls by a fixed 0.1 every 10 days. The curve flattens as it falls.",
+    "correct": false
+   },
+   {
+    "id": "b",
+    "text": "about 21 days",
+    "why": "That is the exponential curve through R(10) = 0.9: 0.9^(t/10) = 0.8 gives t ≈ 21. The power curve has a heavier tail, so it reaches 0.80 much later.",
+    "correct": false,
+    "misconception": "exp"
+   },
+   {
+    "id": "c",
+    "text": "about 33 days",
+    "why": "Solve (1 + 0.980·t/10)^(-0.1542) = 0.80: 0.8^(-1/0.1542) ≈ 4.25, so 0.980·t/10 ≈ 3.25 and t ≈ 33 days.",
+    "correct": true
+   },
+   {
+    "id": "d",
+    "text": "10 days",
+    "why": "At t = S the model predicts 0.90, not 0.80; a 0.80 target waits longer than S.",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "ret.m3",
+  "kind": "content",
+  "format": "mc",
+  "demand": "explain",
+  "targets": [
+   "deltadrills.retrievability"
+  ],
+  "prompt": "Two learners answer the same concept correctly. When the first answered, predicted recall was 0.98; when the second answered, it was 0.70. Under FSRS, whose stability grows more?",
+  "reference": "The second learner's: the stability increase scales with e^((1-R)·w10) - 1, which is near zero at R = 0.98.",
+  "options": [
+   {
+    "id": "a",
+    "text": "the learner who was at 0.98",
+    "why": "A success at near-certain recall is almost no news: the growth factor e^((1-R)·w10) - 1 is close to zero at R = 0.98.",
+    "correct": false,
+    "misconception": "easy"
+   },
+   {
+    "id": "b",
+    "text": "the learner who was at 0.70",
+    "why": "FSRS multiplies the stability increase by e^((1-R)·w10) - 1, so a success when recall had dropped (the effortful, desirable-difficulty review) strengthens memory most.",
+    "correct": true
+   },
+   {
+    "id": "c",
+    "text": "both by the same amount",
+    "why": "The increase depends on R at the moment of review, so the same correct answer is worth more when recall was lower.",
+    "correct": false
+   },
+   {
+    "id": "d",
+    "text": "neither; stability changes only on a miss",
+    "why": "A correct answer (grade Good) raises stability; a miss (Again) lowers it.",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "id": "wd.c1",
+  "kind": "content",
+  "demand": "recall",
+  "targets": [
+   "deltadrills.why-drills"
+  ],
+  "prompt": "What did Roediger and Karpicke (2006) find when they compared repeatedly studying a prose passage with being tested on it?",
+  "rephrasings": [
+   "Summarise the main result of Roediger and Karpicke's 2006 study of studying versus testing."
+  ],
+  "reference": "Being tested (free recall, with no feedback) produced much better retention on a test a week later than repeatedly studying, even though the study group read the passage far more often (in Experiment 2, 61% versus 40% recalled after a week; 14.2 readings versus 3.4). On a test five minutes after learning the pattern reversed and repeated studying did better. The benefit of testing is long-term."
+ },
+ {
+  "id": "wd.e1",
+  "kind": "evaluative",
+  "demand": "evaluate",
+  "targets": [
+   "deltadrills.why-drills"
+  ],
+  "prompt": "Someone argues: \"Tests only help because you see the material again while you answer.\" Using Roediger and Karpicke's results, evaluate that claim.",
+  "reference": "It does not fit the data. Restudying re-exposed students to all of the material yet produced poor long-term retention, while testing, with no feedback, exposed them only to what they could recall and still retained better a week later. The authors' account is transfer-appropriate processing: testing practises the retrieval that the later test requires."
+ },
+ {
+  "id": "wd.e2",
+  "kind": "evaluative",
+  "demand": "evaluate",
+  "targets": [
+   "deltadrills.why-drills"
+  ],
+  "prompt": "After re-reading a worked example several times, a learner feels sure they will remember it next week. Why should the app not rely on that feeling?",
+  "reference": "In Roediger and Karpicke, repeated studying inflated students' confidence about remembering later even though those students showed the worst retention on the delayed test; the feeling tracks short-term fluency, not long-term memory. So the app measures memory by making the learner retrieve the answer (drills) rather than by how familiar the material feels."
+ },
+ {
+  "id": "fire.c1",
+  "kind": "content",
+  "demand": "explain",
+  "targets": [
+   "deltadrills.fire"
+  ],
+  "prompt": "What is fractional implicit repetition, and what does it do to the review schedule of simpler concepts?",
+  "rephrasings": [
+   "Explain how practising an advanced concept affects the reviews of the simpler concepts underneath it."
+  ],
+  "reference": "When you practise an advanced concept, the simpler concepts it encompasses are practised implicitly, so their review schedules get credit. The credit is fractional, discounted because implicit repetitions often come too early to count fully (in the app, weight w times 0.5). This lets one explicit review knock out other due reviews, so fewer explicit reviews are needed."
+ },
+ {
+  "id": "fire.e1",
+  "kind": "evaluative",
+  "demand": "contrast",
+  "targets": [
+   "deltadrills.fire"
+  ],
+  "prompt": "Concept B is a prerequisite of concept A. Does answering A correctly necessarily give B review credit? Explain using the difference between a prerequisite and an encompassing relation.",
+  "reference": "Not necessarily. Credit flows only along encompassing relations, where solving A actually exercises B. Encompassed topics are usually prerequisites, but a prerequisite is often not fully encompassed, so B gets credit only in proportion to the encompassing weight, which can be small or zero."
+ },
+ {
+  "id": "fire.r1",
+  "kind": "relation",
+  "demand": "relate",
+  "targets": [
+   "deltadrills.fire"
+  ],
+  "expected": [
+   "deltadrills.spaced-repetition"
+  ],
+  "prompt": "How does FIRe change ordinary spaced repetition, and why does a hierarchical subject need that change?",
+  "reference": "Ordinary spaced repetition treats each item independently, like flashcards. In a hierarchical subject, practising an advanced topic also exercises the simpler topics it encompasses, so scheduling them as if untouched wastes reviews. FIRe generalises spaced repetition by letting repetitions on advanced topics trickle down as discounted, fractional repetitions to the encompassed topics."
+ }
+]

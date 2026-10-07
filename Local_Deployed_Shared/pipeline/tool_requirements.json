@@ -1,0 +1,57 @@
+{
+ "_doc": "Drills graded on HOW they are solved, not only on the output. See tool_requirements.py. One group per concept; a qid may appear in one group only.",
+ "groups": [
+  {
+   "kc": "einops.pooling",
+   "why": "Seth 2026-10-05: pooling drills must be solved with einops.reduce, or the learner practises reshape+mean instead of the factored-axis pattern.",
+   "require": [
+    "einops.reduce"
+   ],
+   "ids": [
+    930,
+    929,
+    324,
+    363,
+    931,
+    1641,
+    1639,
+    918,
+    917,
+    919,
+    1638,
+    1640,
+    368,
+    354,
+    920,
+    336,
+    377
+   ]
+  },
+  {
+   "kc": "torch.window-pooling",
+   "why": "Plain-PyTorch twin of einops.pooling (Seth 2026-10-05: the learner has to learn both). An einops one-liner here skips the reshape this concept drills. It must also split with .reshape or .view, so a Python loop does not stand in for the skill.",
+   "forbid": [
+    "einops"
+   ],
+   "ids": [
+    1731,
+    1732,
+    1733,
+    1734,
+    1735,
+    1736,
+    1737,
+    1738,
+    1739,
+    1740,
+    1741,
+    1742,
+    1743
+   ],
+   "require_method": [
+    "reshape",
+    "view"
+   ]
+  }
+ ]
+}

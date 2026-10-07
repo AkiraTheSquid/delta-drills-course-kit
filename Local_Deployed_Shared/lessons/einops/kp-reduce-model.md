@@ -1,0 +1,214 @@
+---
+kc: einops.reduce-model
+title: einops.reduce — dropping axes with an aggregation
+supporting: [einops.pattern-language, torch.axis-reductions]
+new_syntax: [einops.reduce, torch.std]
+faded: [325]
+guided: [328]
+independent: [326, 367, 399, 402, 332, 340, 370, 1634, 1653]
+integrated: [932, 1635, 1636, 1637]
+---
+
+## Concept
+
+Where rearrange must keep every axis, **`einops.reduce` is allowed to drop
+them — and you say HOW the dropped values collapse**:
+
+> `einops.reduce(x, 'b c h w -> b', 'mean')`
+> — c, h, w vanish from the pattern, so each output element is the mean
+> over everything that vanished. The third argument names the aggregation:
+> `'mean'`, `'max'`, `'min'`, `'sum'`, `'prod'`.
+
+This is PyTorch's `dim=` reductions with a deletion rule — an axis you leave
+off the right-hand side is the axis that collapses — in einops clothing.
+Two notations, one concept:
+
+- `x.mean(dim=(1, 2, 3))` — axes by number.
+- `reduce(x, 'b c h w -> b', 'mean')` — deletion by name, aggregation
+  declared: means and maxes come out finished, nothing to divide afterwards.
+
+Details that matter in the drills:
+
+- **Partial drops**: `'b h w c -> b h w'` maxes only over channels;
+  `'b c h w -> b c'` averages each channel map. Any subset of axes can go.
+- **Keep a singleton**: writing `1` (or `()` — same thing) in the output
+  where the dropped axis was — `'h w c -> 1 w c'` — keeps the result
+  broadcast-ready against the input, einops' keepdim. This is exactly the
+  `keepdim=True` story: reduce-then-broadcast pipelines (subtract each
+  column's max…) want the singleton kept.
+- **The aggregation can be a function**: besides the five strings, the
+  third argument accepts any callable that takes a tensor and a `dim`
+  (tuple) — `einops.reduce(x, '(w d) -> w', t.std, d=7)` gives one standard
+  deviation per week, `t.std` dividing by n−1 as usual.
+- **Reduce + rearrange compose**: the pattern can still permute the
+  survivors while reducing (`'b c h w -> c b'` is legal), and — the next
+  KP — parenthesized factors turn reduce into pooling.
+
+## Worked example
+
+Task: per-image scalar means; per-column max keeping a singleton row; and a
+grayscale via mean-over-channels with the channel kept.
+
+```python
+import torch as t
+import einops
+
+# (b, c, h, w)
+x = t.arange(24.0).reshape(2, 3, 2, 2)
+
+# All of c, h, w collapse under 'mean' -> one number
+# per image.
+per_image = einops.reduce(x, 'b c h w -> b', 'mean')
+
+print("'b c h w -> b'  ", per_image,
+      " (one number per image)")
+# Hidden checks
+assert per_image.tolist() == [5.5, 17.5]
+assert t.allclose(per_image, x.mean(dim=(1, 2, 3)))   # the numpy twin
+```
+
+Drop only SOME names and the survivors index the statistics you keep.
+
+```python
+import torch as t
+import einops
+
+# Partial drop: mean over spatial only -> per-channel
+# statistics.
+per_channel = einops.reduce(x, 'b c h w -> b c',
+                            'mean')
+
+print("'b c h w -> b c'", tuple(per_channel.shape),
+      per_channel[0])
+# Hidden checks
+assert per_channel.shape == (2, 3)
+assert per_channel[0, 0] == x[0, 0].mean()
+```
+
+Keeping a `1` where the dropped axis was is einops' `keepdim`: the result still broadcasts against the input.
+
+```python
+import torch as t
+import einops
+
+# Keep-a-singleton: per-column max of an image, row
+# axis kept as 1.
+img = t.tensor([[1.0, 5.0],
+                [7.0, 2.0]])
+colmax = einops.reduce(img, 'h w -> 1 w', 'max')
+# Why keep it: the (1, 2) result broadcasts straight
+# back against (2, 2).
+
+print("'h w -> 1 w'    ", colmax, "shape",
+      tuple(colmax.shape), "-> broadcasts back to",
+      tuple((img - colmax).shape))
+# Hidden checks
+assert colmax.shape == (1, 2)
+assert colmax.tolist() == [[7.0, 5.0]]
+assert (img - colmax).shape == (2, 2)
+```
+
+The same singleton trick at rank 4: average the channels away but keep the channel slot.
+
+```python
+import torch as t
+import einops
+
+# Grayscale keeping a trailing singleton channel:
+# (b,h,w,c) -> (b,h,w,1).
+imgs = t.ones((2, 2, 2, 3))
+gray = einops.reduce(imgs, 'b h w c -> b h w 1',
+                     'mean')
+print("grayscale keeps the channel axis:",
+      tuple(imgs.shape), "->", tuple(gray.shape))
+# Hidden checks
+assert gray.shape == (2, 2, 2, 1)
+```
+
+Why each step:
+
+1. The `dim=` twin assert carries your existing axis intuition into the new
+   notation: names deleted ↔ axis numbers listed. After a few reps the
+   named form usually reads faster — especially at rank 4+.
+2. In the singleton example, the follow-up subtraction is the POINT: the
+   kept `1` is what makes reduce-then-operate pipelines shape-safe, same as
+   keepdims in np-3.
+3. The grayscale line matches a drill's exact contract ('-> b h w 1');
+   note reduce handles mean natively — there is nothing to divide
+   afterwards.
+
+## Faded practice
+
+### q325
+Each image of a channels-first batch → one scalar mean.
+
+```python starter
+import torch as t
+import einops
+
+def solve(arr):
+    """(b, c, h, w) -> (b,): mean over channels and pixels."""
+    return einops._____(arr, '_____', 'mean')
+```
+
+```python solution
+import torch as t
+import einops
+
+def solve(arr):
+    """(b, c, h, w) -> (b,): mean over channels and pixels."""
+    return einops.reduce(arr, 'b c h w -> b', 'mean')
+```
+
+## Guided practice
+
+### q328
+1. (h, w, c) image, average over the HEIGHT axis only → (w, c).
+2. One name disappears from the pattern; the aggregation string says how.
+3. `einops.reduce(img, 'h w c -> w c', 'mean')`.
+
+## Independent practice
+
+From the drill bank: q326 (max over channels of a channels-last batch),
+q367 (per-channel spatial means → (b, c)), q399 (grayscale with trailing
+singleton — the '-> b h w 1' form), q402 (per-column max keeping the height
+axis as a singleton — '() w c' or '1 w c'), q332 (row maxima with BOTH other
+axes as singletons — read the required output shape carefully).
+
+Also from the bank: q340 (centre each (batch, channel) map by its OWN mean
+— reduce to 'b c 1 1' so it broadcasts back), q370 (centre each channel
+across the WHOLE batch — '1 c 1 1', BatchNorm-style; contrast with q340).
+
+### q1634
+Drop the batch axis from the pattern; name the aggregation.
+
+### q1653
+A callable aggregation: drop the sample axis, hand reduce the function.
+
+## Integrated practice
+
+### q932
+day-of-week means
+
+### q1635
+Keep the singleton so the reduced result broadcasts back over the input.
+
+### q1636
+Two reductions; the first also permutes the survivors.
+
+### q1637
+The aggregation argument accepts a callable; the week is a factored axis.
+
+## Misconceptions
+
+- **"reduce is rearrange with a mode argument."** — rearrange forbids
+  dropping names; reduce ALLOWS it and says how the dropped values combine.
+  (A reduce that drops nothing is legal and combines nothing.) They share
+  the pattern grammar, not the contract.
+- **"A mean is a sum you divide afterwards."** — reduce's third
+  argument does real means/maxes/mins natively; dividing a `'mean'` result
+  by the window size double-counts the normalisation.
+- **"'h w -> w' and 'h w -> 1 w' are the same reduction."** — Same numbers,
+  different SHAPE: (w,) vs (1, w). The singleton version survives
+  broadcasting against the original; the bare version may misalign
+  (np-3's keepdims lesson, verbatim). Drills specify which they grade.

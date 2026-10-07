@@ -1,0 +1,205 @@
+---
+kc: einops.patches-space-depth
+title: Patches, space-to-depth, depth-to-space
+supporting: [einops.split-axes, einops.grids-montage]
+new_syntax: []
+faded: [323]
+guided: [313]
+independent: [401, 404, 343, 350, 321, 395, 398, 403]
+integrated: [1630, 1631, 1632, 1633]
+---
+
+## Concept
+
+Vision architectures constantly trade SPACE for DEPTH (or batch): cut each
+image into little patches and treat them as tokens (ViT), fold pixel blocks
+into channels (space-to-depth), or unfold them back (depth-to-space /
+pixel-shuffle). All are the grid pattern of the last KP with the roles
+recast:
+
+**Patch extraction** — split each spatial axis into (blocks × within-block),
+then pull the block coordinates out as a patch index:
+
+> `'(h p1) (w p2) c -> (h w) p1 p2 c', p1=P, p2=P`
+
+Height splits into h blocks of p1 rows; width likewise; merging (h w)
+row-major gives the patch list. **Reassembly is the same pattern reversed**
+— this page's faded exercise (q323) practises exactly that direction,
+depth-to-space's cousin.
+
+**Space-to-depth** — the within-block offsets fold into the CHANNEL axis
+(the block's grid position stays spatial) instead of becoming a patch index:
+
+> `'b c (h p) (w q) -> b (c p q) h w', p=P, q=P`
+
+Each p×q pixel block's values become extra channels; spatial dims shrink by
+P, channels grow by P². (The output channel packing order — c slow, then p,
+then q — is dictated by the paren order; tasks specify theirs.)
+
+**Depth-to-space** mirrors it: `'b (c p q) h w -> b c (h p) (w q)'` — the
+channel axis DECLARES its factorization, and blocks unfold back into space.
+This is pixel-shuffle upsampling.
+
+The discipline for all of them: write the INPUT side to describe how the
+data is actually packed (which factor is slow), the OUTPUT side to describe
+what the task wants — then hand einops the block sizes. When the packing
+order is ambiguous in your head, build a tiny arange example and round-trip.
+
+## Worked example
+
+Task: extract 2×2 patches from an image, reassemble them, and run a
+space-to-depth.
+
+```python
+import torch as t
+import einops
+
+# (H, W, c=1), values = positions
+img = t.arange(16.0).reshape(4, 4, 1)
+
+# PATCHES: split H into 2 blocks of 2, W likewise;
+# block coords -> patch axis.
+patches = einops.rearrange(
+    img, '(h p1) (w p2) c -> (h w) p1 p2 c', p1=2,
+    p2=2)
+# Patch 0 = top-left 2x2 block, row-major patch order:
+
+print("image", tuple(img.shape), "-> patches",
+      tuple(patches.shape))
+print("patch 0 =", patches[0, :, :, 0].tolist(),
+      "| patch 1 starts at",
+      patches[1, 0, 0, 0].item())
+# Hidden checks
+assert patches.shape == (4, 2, 2, 1)
+assert patches[0, :, :, 0].tolist() == [[0.0, 1.0], [4.0, 5.0]]
+assert patches[1, 0, 0, 0] == 2.0          # patch 1 starts at column 2
+```
+
+Reassembly is the extraction pattern with its sides swapped; the keyword moves to whichever side now has the unknowns.
+
+```python
+import torch as t
+import einops
+
+# REASSEMBLE: the same pattern, sides swapped (this is
+# q323's shape).
+back = einops.rearrange(
+    patches, '(h w) p1 p2 c -> (h p1) (w p2) c', h=2)
+
+print("reassembled to the original:",
+      bool(t.equal(back, img)))
+# Hidden checks
+assert t.equal(back, img)
+```
+
+Space-to-depth keeps the block's grid position on the spatial axes and folds the position WITHIN the block into the channel axis.
+
+```python
+import torch as t
+import einops
+
+# SPACE-TO-DEPTH on a batch: blocks fold into
+# channels; H, W halve.
+# (b, c=2, H, W)
+x = t.arange(32.0).reshape(1, 2, 4, 4)
+s2d = einops.rearrange(
+    x, 'b c (h p) (w q) -> b (c p q) h w', p=2, q=2)
+# The new channel block for output pixel (0,0) holds
+# input block [0:2, 0:2]:
+print("space-to-depth", tuple(x.shape), "->",
+      tuple(s2d.shape), "(channels x4, spatial /2)")
+print("pixel (0,0)'s new channels:", s2d[0, :4, 0, 0])
+# Hidden checks
+assert s2d.shape == (1, 8, 2, 2)           # channels x4, spatial /2
+assert s2d[0, :4, 0, 0].tolist() == [0.0, 1.0, 4.0, 5.0]
+```
+
+Why each step:
+
+1. Position-valued pixels make each check readable: patch 1 starting at
+   value 2.0 confirms row-major patch order and a correct width split.
+   This fixture technique is how to debug ANY packing dispute with einops.
+2. The reassembly line being the extraction line reversed (with the
+   keyword moving to the other side's unknowns) cements the symmetry —
+   patches/grids/s2d are one bijection family, direction chosen by which
+   side carries the parens you're UNPACKING.
+3. In space-to-depth, verify the channel packing: c slow, p, then q — the
+   four values 0,1,4,5 are block (0,0) in row-major order, sitting after
+   channel 0's... here c=... the first 4 output channels come from input
+   channel 0. Reading packed channel layouts element-by-element once
+   inoculates against the classic s2d ordering bug.
+
+## Faded practice
+
+### q323
+Reassemble a row-major tile stack into the image.
+
+```python starter
+import torch as t
+import einops
+
+def solve(patches, h, w):
+    """(h*w, p1, p2, c) tiles, row-major -> ((h p1), (w p2), c) image."""
+    return einops.rearrange(patches, '_____', h=h, w=w)
+```
+
+```python solution
+import torch as t
+import einops
+
+def solve(patches, h, w):
+    """(h*w, p1, p2, c) tiles, row-major -> ((h p1), (w p2), c) image."""
+    return einops.rearrange(patches, '(h w) p1 p2 c -> (h p1) (w p2) c', h=h, w=w)
+```
+
+## Guided practice
+
+### q313
+1. Space-to-depth on (b, c, h, w) with block size p: spatial dims shrink by
+   p, channels multiply by p².
+2. Split each spatial axis into (blocks × p); fold the two p-factors into
+   the channel group — the task states the required channel packing order.
+3. `'b c (h p1) (w p2) -> b (c p1 p2) h w', p1=p, p2=p` — or the order the
+   prompt demands; verify one block.
+
+## Independent practice
+
+From the drill bank: q401 (all non-overlapping 3×3 patches of an (H, W, C)
+image), q404 (extract patches from a channels-FIRST image), q343
+(depth-to-space: channel groups ordered c-slowest unfold into space),
+q350 (transpose WITHIN each 2×2 patch — split both axes, swap the two
+within-patch names, merge back).
+
+Also from the bank: q321 (depth-to-space: h1*w1 channel groups become
+sub-positions of an enlarged pixel grid), q395 (space-to-depth, the other
+direction — block position folded INTO the channel axis), q398 (reassemble
+a channels-FIRST patch stack into one image), q403 (fold width chunks into
+height AHEAD of h — 'b h (w w4) c -> b (w4 h) w c').
+
+## Integrated practice
+
+### q1630
+Patch extraction: split both spatial axes, pull the block coordinates out as one patch index.
+
+### q1631
+Within-block offsets become channels; block positions stay spatial.
+
+### q1632
+Pixel shuffle: the channel axis declares its factors; blocks unfold into space.
+
+### q1633
+Vision-transformer tokens: extract patches and flatten each in one pattern.
+
+## Misconceptions
+
+- **"Patch extraction needs sliding-window machinery."** — NON-overlapping
+  patches are a pure reshape (split + merge); no windows, no copies of
+  copies. Sliding (overlapping) windows are `x.unfold(...)`'s job — different
+  task, check the word "non-overlapping".
+- **"Space-to-depth loses spatial information."** — It's a bijection: every
+  pixel gets a unique (channel, position) address, and depth-to-space
+  inverts it exactly. What changes is which axis "sees" the detail.
+- **"The channel packing order after s2d doesn't matter."** — Downstream
+  code (or the grader) reads channels by index; (c p q) vs (p q c) are
+  different tensors with equal shapes. The paren order IS the file format —
+  get it from the task, verify with a position-valued example.

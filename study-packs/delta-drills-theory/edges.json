@@ -1,0 +1,26 @@
+[
+ {
+  "a": "deltadrills.mastery",
+  "b": "deltadrills.retrievability",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Mastery is what was learned; retrievability is whether it can be recalled now, and the app keeps them separate."
+  ]
+ },
+ {
+  "a": "deltadrills.retrievability",
+  "b": "deltadrills.spaced-repetition",
+  "type": "explains",
+  "relation_constraints": [
+   "The forgetting curve predicts recall, and a review is scheduled when that prediction falls to the target."
+  ]
+ },
+ {
+  "a": "deltadrills.fire",
+  "b": "deltadrills.spaced-repetition",
+  "type": "is-a",
+  "relation_constraints": [
+   "FIRe is spaced repetition generalised to a hierarchy: advanced practice gives discounted review credit to encompassed concepts."
+  ]
+ }
+]

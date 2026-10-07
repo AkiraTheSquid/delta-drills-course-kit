@@ -1,0 +1,5 @@
+# What the content pipeline needs to run every lesson's code fences and drills.
+# CPU torch is enough:  pip install --index-url https://download.pytorch.org/whl/cpu torch
+numpy>=1.24.0
+einops>=0.7.0
+torch>=2.0

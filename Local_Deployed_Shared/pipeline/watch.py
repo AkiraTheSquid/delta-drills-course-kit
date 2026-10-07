@@ -1,0 +1,285 @@
+"""watch.py — health checks for pipeline
+
+This folder builds the served question bank and gates the deploy on it. The
+defect these checks exist for is SILENT DIVERGENCE: the override layer list
+and the override field whitelist are deliberately duplicated between the
+exporter here and backend/app/questions.py (so the backend needs no pipeline
+import), and nothing else notices when only one side is edited. The symptom
+is a conversion or fix that "doesn't take" in one environment — see the
+README's layer-list drift entry.
+
+Sources are parsed, never imported: importing the exporter would rewrite the
+bank artifacts as a side effect of a health check.
+
+Runs via `mod watch` — exit 0 = PASS, exit non-zero = FAIL.
+"""
+import ast
+import re
+import sys
+import os
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../..'))
+
+_DIR = os.path.dirname(os.path.abspath(__file__))
+_REPO_ROOT = os.path.normpath(os.path.join(_DIR, '..', '..'))
+_EXPORTER = os.path.join(_DIR, 'export_questions_json.py')
+_BACKEND_QUESTIONS = os.path.join(
+    _REPO_ROOT, 'This-Directory-Only', 'backend', 'app', 'questions.py'
+)
+
+# Scripts that must stay syntactically loadable — the deploy runs these and a
+# SyntaxError here fails the build after the bank has already been rewritten.
+_GATE_SCRIPTS = (
+    'export_questions_json.py',
+    'audit_question_bank.py',
+    'test_torch_grading.py',
+    'validate_function_bank.py',
+    'mech_gate_candidate.py',
+)
+
+
+def _source(path):
+    with open(path, encoding='utf-8') as fh:
+        return fh.read()
+
+
+def _module_jsonl_constants(tree):
+    """Module-level names bound to a .jsonl filename.
+
+    The exporter names its base layer through a constant
+    (FUNCTION_OVERRIDES_PATH = CHATGPT_RUNTIME_DIR / "function_mode_overrides.jsonl")
+    while the backend passes the same filename as a literal. Both load it
+    first; only the spelling differs, so the constant has to be resolved or
+    the two lists compare unequal for no real reason.
+    """
+    consts = {}
+    for node in tree.body:
+        if not isinstance(node, ast.Assign):
+            continue
+        names = [t.id for t in node.targets if isinstance(t, ast.Name)]
+        literals = [
+            c.value for c in ast.walk(node.value)
+            if isinstance(c, ast.Constant)
+            and isinstance(c.value, str)
+            and c.value.endswith('.jsonl')
+        ]
+        if names and literals:
+            consts[names[0]] = literals[0]
+    return consts
+
+
+def _override_layers(path, func_name):
+    """The .jsonl layer filenames, in merge order, from a loader function.
+
+    Ordered by source position — merge order is last-wins, so a set
+    comparison would miss a genuine reordering.
+    """
+    src = _source(path)
+    tree = ast.parse(src)
+    consts = _module_jsonl_constants(tree)
+
+    func = next(
+        (n for n in ast.walk(tree) if isinstance(n, ast.FunctionDef) and n.name == func_name),
+        None,
+    )
+    assert func is not None, f'{os.path.basename(path)} has no {func_name}()'
+
+    found = []
+    for node in ast.walk(func):
+        if isinstance(node, ast.Constant) and isinstance(node.value, str) \
+                and node.value.endswith('.jsonl'):
+            found.append((node.lineno, node.col_offset, node.value))
+        elif isinstance(node, ast.Name) and node.id in consts:
+            found.append((node.lineno, node.col_offset, consts[node.id]))
+    return [value for _, _, value in sorted(found)]
+
+
+def _override_fields(path):
+    """Field names an override may replace: override.get("x") / "x" in override."""
+    src = _source(path)
+    return set(re.findall(r'override\.get\(\s*"([^"]+)"', src)) | set(
+        re.findall(r'"([^"]+)"\s+in\s+override', src)
+    )
+
+
+# ── Import checks ──────────────────────────────
+def check_imports():
+    """Every deploy-gating script must at least parse."""
+    for name in _GATE_SCRIPTS:
+        path = os.path.join(_DIR, name)
+        assert os.path.exists(path), f'missing gate script: {name}'
+        ast.parse(_source(path), filename=name)
+
+
+def check_every_code_running_gate_relocates_to_torch():
+    """Each gate that EXECUTES drill code must call delta_paths.ensure_torch_python.
+
+    Bare python3 has no torch and the bank is all torch. Before 2026-09-17 a
+    gate run from bare python did not fail, it went quiet: the audit filed
+    1111 of 1243 questions as `torch_unavailable` ("unscanned") and the
+    exporter kept stale expected_output. The re-exec is what makes "the
+    check ran" mean the code ran. validate_function_bank.py is a gate too
+    but is listed here, not in _GATE_SCRIPTS, because the deploy does not
+    run it.
+    """
+    for name in ('audit_question_bank.py', 'export_questions_json.py',
+                 'test_torch_grading.py', 'mech_gate_candidate.py',
+                 'validate_function_bank.py'):
+        src = _source(os.path.join(_DIR, name))
+        assert 'ensure_torch_python()' in src, (
+            f'{name} no longer re-execs into the backend venv — run from bare '
+            'python3 it will skip every torch question without failing')
+
+
+# ── Public API checks ─────────────────────────
+def check_public_api():
+    """The two duplicated loaders both exist and both merge at least one layer."""
+    exporter_layers = _override_layers(_EXPORTER, 'load_function_overrides')
+    assert exporter_layers, 'exporter load_function_overrides() merges no layers'
+
+    assert os.path.exists(_BACKEND_QUESTIONS), (
+        f'backend questions.py not found at {_BACKEND_QUESTIONS}'
+    )
+    backend_layers = _override_layers(_BACKEND_QUESTIONS, '_load_function_overrides')
+    assert backend_layers, 'backend _load_function_overrides() merges no layers'
+
+
+# ── Invariant checks ──────────────────────────
+def check_invariants():
+    exporter_layers = _override_layers(_EXPORTER, 'load_function_overrides')
+    backend_layers = _override_layers(_BACKEND_QUESTIONS, '_load_function_overrides')
+
+    # Order matters: layers merge last-wins, so the same set in a different
+    # sequence still resolves conflicting ids differently.
+    assert exporter_layers == backend_layers, (
+        'override layer lists diverged — exporter and backend would build '
+        'different banks.\n'
+        f'  exporter only: {[x for x in exporter_layers if x not in backend_layers]}\n'
+        f'  backend only:  {[x for x in backend_layers if x not in exporter_layers]}\n'
+        f'  exporter order: {exporter_layers}\n'
+        f'  backend order:  {backend_layers}'
+    )
+
+    # Every registered layer must be a real file, or its edits vanish with no
+    # error: _read_jsonl_overrides returns {} for a missing path. chatgpt/ is
+    # gitignored, so a layer can also exist locally and never reach deploy.
+    chatgpt_dir = os.path.join(_REPO_ROOT, 'This-Directory-Only', 'chatgpt')
+    missing = [n for n in exporter_layers if not os.path.exists(os.path.join(chatgpt_dir, n))]
+    assert not missing, f'registered override layers do not exist: {missing}'
+
+    # A field absent from one whitelist is silently ignored there rather than
+    # erroring — the override appears to apply everywhere except one artifact.
+    exporter_fields = _override_fields(_EXPORTER)
+    backend_fields = _override_fields(_BACKEND_QUESTIONS)
+    assert exporter_fields == backend_fields, (
+        'override field whitelists diverged — an override field would apply in '
+        'one place and be silently dropped in the other.\n'
+        f'  exporter only: {sorted(exporter_fields - backend_fields)}\n'
+        f'  backend only:  {sorted(backend_fields - exporter_fields)}'
+    )
+
+
+def check_reviewed_corrections_ship_to_both_banks():
+    """The final content layer must agree in live API and static exports."""
+    import json
+    filename = 'question_content_corrections.json'
+    corrections = json.loads(_source(os.path.join(_DIR, filename)))
+    assert corrections and all(str(int(qid)) == qid for qid in corrections)
+    for source_path, loader in [(_EXPORTER, 'load_function_overrides'),
+                                (_BACKEND_QUESTIONS, '_load_function_overrides')]:
+        tree = ast.parse(_source(source_path))
+        fn = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == loader)
+        text = ast.get_source_segment(_source(source_path), fn)
+        assert filename in text, f'{loader} lost the shared final corrections'
+        assert text.index(filename) > text.index('feedback_ai'), f'{loader} applies corrections too early'
+    dockerfile = _source(os.path.join(_REPO_ROOT, 'This-Directory-Only', 'Dockerfile'))
+    assert f'COPY Local_Deployed_Shared/pipeline/{filename}' in dockerfile
+    assert f'!Local_Deployed_Shared/pipeline/{filename}' in _source(os.path.join(_REPO_ROOT, '.dockerignore'))
+
+
+def check_the_card_never_names_the_answer():
+    """audit_question_bank.py must catch a solution call named under the prompt.
+
+    Seth, 2026-09-07, mid-placement on q551: the "Not this" note read
+    "`t.equal` returns the single verdict" — the call the drill exists to make
+    the learner find, printed under the question. His ask: a regex watch over
+    the questions for any of the solution's code appearing in the question, so
+    "answer leak would never happen". That check lives in the deploy gate
+    (`check_answer_leak`, BLOCKING as `answer_leak_in_wrong_example`); this
+    watch pins that it is wired, that it blocks, and — by mutation — that it
+    still fires on exactly the q551 shape and stays quiet on a clean card.
+    """
+    import importlib.util
+    src = _source(os.path.join(_DIR, 'audit_question_bank.py'))
+    tree = ast.parse(src)
+    audit_fn = next(n for n in ast.walk(tree)
+                    if isinstance(n, ast.FunctionDef) and n.name == 'audit')
+    called = {n.func.id for n in ast.walk(audit_fn)
+              if isinstance(n, ast.Call) and isinstance(n.func, ast.Name)}
+    assert 'check_answer_leak' in called, (
+        'audit() no longer calls check_answer_leak — a wrong_examples `why` that '
+        'names the answer (q551, `t.equal`) ships again')
+    blocking = next(n for n in tree.body if isinstance(n, ast.Assign)
+                    and any(isinstance(t, ast.Name) and t.id == 'BLOCKING_CHECKS' for t in n.targets))
+    names = {c.value for c in ast.walk(blocking.value) if isinstance(c, ast.Constant)}
+    assert {'answer_leak_in_wrong_example', 'answer_leak_in_hint'} <= names, (
+        'answer_leak_* left BLOCKING_CHECKS — the gate would report the leak and deploy it anyway')
+
+    spec = importlib.util.spec_from_file_location(
+        'audit_question_bank', os.path.join(_DIR, 'audit_question_bank.py'))
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    q551 = {
+        'id': 551, 'function_name': 'solve',
+        'question_text': 'Write a function solve(rows_a, rows_b) that returns a tuple '
+                         '(equal, same_shape): the whole-tensor comparison of the two tensors.',
+        'starter_code': 'import torch as t\n\ndef solve(rows_a, rows_b):\n    return None\n',
+        'answer_code': 'import torch as t\n\ndef solve(rows_a, rows_b):\n    a = t.tensor(rows_a)\n'
+                       '    b = t.tensor(rows_b)\n    return (t.equal(a, b), tuple(a.shape) == tuple(b.shape))\n',
+        'wrong_examples': [{'call': 'solve([[1]], [[1]])', 'output': '(tensor([[True]]), True)',
+                            'why': '`==` is elementwise and returns a tensor of bools. '
+                                   '`t.equal` returns the single verdict.'}],
+    }
+    hits = [f for f in mod.check_answer_leak(q551) if f['check'] == 'answer_leak_in_wrong_example']
+    assert hits and 'equal' in hits[0]['detail'], (
+        'check_answer_leak no longer fires on the q551 shape (`t.equal` in the why)')
+    # The prose word is not a leak; the same idea said without the call is clean.
+    clean = dict(q551, wrong_examples=[dict(q551['wrong_examples'][0],
+        why='`==` is elementwise and returns a tensor of bools. The first slot asks for '
+            'a single verdict about the whole tensor — is every entry equal?')])
+    assert not [f for f in mod.check_answer_leak(clean) if f['check'].startswith('answer_leak')], (
+        'check_answer_leak flags the prose word "equal" — it must only match code form '
+        '(backticked, dotted, or called), or every honest explanation blocks the deploy')
+    # Named in the prompt = spec, not a leak further down the card.
+    told = dict(q551, question_text=q551['question_text'] + ' Use `t.equal`.')
+    assert not [f for f in mod.check_answer_leak(told) if f['check'] == 'answer_leak_in_wrong_example'], (
+        'a call the prompt itself names must not count as leaked by the why')
+    # Calls are PARSED out of the answer: a name in a comment or a string is
+    # not a call the answer makes, so it can be named in the why without leaking.
+    commented = dict(q551, answer_code=q551['answer_code'] + '# t.allclose() would be wrong here\nNOTE = "see numel()"\n',
+                     wrong_examples=[dict(q551['wrong_examples'][0],
+                         why='Not `allclose` — that is tolerance, not equality; and `.numel()` is a count, not a verdict.')])
+    assert not [f for f in mod.check_answer_leak(commented) if f['check'] == 'answer_leak_in_wrong_example'], (
+        'check_answer_leak counts a name inside a comment or string of answer_code as a '
+        'call the answer makes — parse the answer, do not scan it')
+
+
+# ── Run all checks ────────────────────────────
+if __name__ == '__main__':
+    checks = [check_imports, check_every_code_running_gate_relocates_to_torch,
+              check_public_api, check_invariants,
+              check_reviewed_corrections_ship_to_both_banks,
+              check_the_card_never_names_the_answer]
+    # The public course kit (ops/course-kit/publish.py) has the exporter but
+    # not backend/app/questions.py or the Dockerfile, so the exporter-vs-backend
+    # drift checks have nothing to compare. Its root marker scopes the skip to
+    # the kit; in this repo they always run.
+    if os.path.exists(os.path.join(_REPO_ROOT, '.course-kit')):
+        app_side = (check_public_api, check_invariants, check_reviewed_corrections_ship_to_both_banks)
+        checks = [fn for fn in checks if fn not in app_side]
+    for fn in checks:
+        try:
+            fn()
+        except Exception as e:
+            print(f"FAIL {fn.__name__}: {e}", file=sys.stderr)
+            sys.exit(1)

@@ -1,0 +1,320 @@
+[
+ {
+  "id": "deltadrills.mastery",
+  "title": "Mastery as a probability (BKT)",
+  "kind": "conceptual",
+  "order": 1,
+  "aliases": [
+   "mastery",
+   "mastery estimate",
+   "knowledge tracing",
+   "BKT",
+   "P(known)"
+  ],
+  "definition": "The app's belief, as a probability, that you know a concept: updated by Bayes' rule from each graded answer using a guess rate and a slip rate, then nudged by a learning transit after a correct answer.",
+  "intro": "Delta Drills keeps one number per concept: the probability that you know it. Here is where that number comes from: Pelánek's summary of the model, then two notes from the app's own source.",
+  "constraints": [
+   {
+    "id": "prob",
+    "text": "Mastery is the probability that the skill is in the known state, not a percentage of answers that were correct.",
+    "demand": "explain",
+    "required": true
+   },
+   {
+    "id": "bayes",
+    "text": "Each graded answer updates it by Bayes' rule, using a guess rate (correct while not knowing) and a slip rate (wrong while knowing).",
+    "demand": "explain",
+    "required": true
+   },
+   {
+    "id": "transit",
+    "text": "In this app the learning transit is applied only after a correct answer.",
+    "demand": "explain",
+    "required": false
+   },
+   {
+    "id": "separate",
+    "text": "Mastery records what was learned; forgetting is modelled separately, by the memory model's recall R.",
+    "demand": "explain",
+    "required": false
+   }
+  ],
+  "misconceptions": [
+   {
+    "id": "percent",
+    "label": "mastery = percent correct",
+    "description": "Mastery is the fraction of questions answered correctly."
+   },
+   {
+    "id": "history",
+    "label": "history changes the step",
+    "description": "Two concepts at the same estimate move by different amounts on the same answer, depending on how many answers got them there."
+   },
+   {
+    "id": "decays",
+    "label": "mastery decays by itself",
+    "description": "The mastery number itself decays with time since practice."
+   }
+  ],
+  "passages": [
+   "pel-bkt",
+   "pel-params",
+   "pel-update",
+   "dd-bkt-transit",
+   "dd-bkt-forget"
+  ],
+  "prereqs": {},
+  "procedural_kcs": [
+   "deltadrills.mastery"
+  ]
+ },
+ {
+  "id": "deltadrills.spaced-repetition",
+  "title": "Spaced repetition and the spacing effect",
+  "kind": "conceptual",
+  "order": 2,
+  "aliases": [
+   "spaced repetition",
+   "spacing effect",
+   "spaced review",
+   "review schedule",
+   "FSRS"
+  ],
+  "definition": "Scheduling each review for when predicted recall has fallen to a target, so that practice is spread over time; the app's per-concept memory model (FSRS-6) predicts recall and sets the gap.",
+  "intro": "Why the app brings concepts back, and why it had to stop forgetting everything on one clock. The last passage is the spacing effect's cousin from the testing literature: what wins today is not what wins next week.",
+  "constraints": [
+   {
+    "id": "spread",
+    "text": "Spread-out practice is retained better on a delayed test than the same practice massed together; when you practise matters, not only how often.",
+    "demand": "explain",
+    "required": true
+   },
+   {
+    "id": "target",
+    "text": "A review is due when predicted recall falls to a target retention, not on a fixed calendar.",
+    "demand": "explain",
+    "required": true
+   },
+   {
+    "id": "grow",
+    "text": "Each successful review raises stability, so the next gap is longer.",
+    "demand": "explain",
+    "required": false
+   },
+   {
+    "id": "oneclock",
+    "text": "One half-life shared by every concept cannot represent spacing: crammed and spread answers would leave the same state.",
+    "demand": "explain",
+    "required": false
+   }
+  ],
+  "misconceptions": [
+   {
+    "id": "fixed",
+    "label": "fixed review calendar",
+    "description": "Reviews happen on a fixed schedule (for example every week) regardless of how the learner does."
+   },
+   {
+    "id": "massed",
+    "label": "cramming is as good",
+    "description": "Practising many times in one sitting is as good as spreading the same practice out."
+   },
+   {
+    "id": "forgot",
+    "label": "review only once forgotten",
+    "description": "The best time to review is after the concept has been completely forgotten."
+   }
+  ],
+  "passages": [
+   "dd-mm-why",
+   "sky-spacing",
+   "rk-short"
+  ],
+  "prereqs": {
+   "deltadrills.mastery": 0.6
+  },
+  "procedural_kcs": [
+   "deltadrills.spaced-repetition"
+  ]
+ },
+ {
+  "id": "deltadrills.retrievability",
+  "title": "Retrievability R(t) and stability S",
+  "kind": "math",
+  "order": 3,
+  "aliases": [
+   "retrievability",
+   "recall probability",
+   "forgetting curve",
+   "stability"
+  ],
+  "definition": "R(t) = (1 + F·t/S)^(-w20) is the predicted probability of recall t days after the last review; stability S is the number of days until R falls to 0.9.",
+  "intro": "The memory model's one equation. In the app w20 = 0.1542, so F = 0.9^(-1/w20) - 1 ≈ 0.980. Every number in the questions comes from that curve.",
+  "constraints": [],
+  "misconceptions": [
+   {
+    "id": "exp",
+    "label": "forgetting is exponential",
+    "description": "Recall decays exponentially with a fixed half-life."
+   },
+   {
+    "id": "half",
+    "label": "S is a half-life",
+    "description": "Stability is the time until recall falls to 50%."
+   },
+   {
+    "id": "easy",
+    "label": "easy reviews strengthen most",
+    "description": "A successful review strengthens memory most when recall was already near certain."
+   }
+  ],
+  "passages": [
+   "dd-mm-model",
+   "dd-mm-stability",
+   "dd-mm-grades"
+  ],
+  "prereqs": {
+   "deltadrills.spaced-repetition": 0.6
+  },
+  "procedural_kcs": []
+ },
+ {
+  "id": "deltadrills.why-drills",
+  "title": "The testing effect (why drills, not re-reading)",
+  "kind": "conceptual",
+  "order": 4,
+  "aliases": [
+   "testing effect",
+   "retrieval practice",
+   "test-enhanced learning",
+   "repeated studying",
+   "restudying"
+  ],
+  "definition": "Retrieving an answer from memory strengthens long-term retention more than restudying the same material, even without feedback; restudying can still win on an immediate test.",
+  "intro": "The study the drill ladder rests on: Roediger and Karpicke (2006) had students either re-read a prose passage or try to recall it, then tested them five minutes or a week later.",
+  "constraints": [
+   {
+    "id": "delay",
+    "text": "Testing beats restudying on a delayed test; on an immediate test restudying did as well or better.",
+    "demand": "explain",
+    "required": true
+   },
+   {
+    "id": "notexposure",
+    "text": "The benefit is not re-exposure: restudying re-exposed all of the material and still retained worse.",
+    "demand": "explain",
+    "required": true
+   },
+   {
+    "id": "nofeedback",
+    "text": "The effect held even though the tests gave no feedback.",
+    "demand": "explain",
+    "required": false
+   },
+   {
+    "id": "confidence",
+    "text": "Repeated study inflated learners' confidence while their delayed retention was worse.",
+    "demand": "explain",
+    "required": false
+   }
+  ],
+  "misconceptions": [
+   {
+    "id": "exposure",
+    "label": "testing = seeing it again",
+    "description": "Testing helps because it shows the learner the material again."
+   },
+   {
+    "id": "fluent",
+    "label": "fluent feels better",
+    "description": "Whatever feels easier and more familiar while studying is the better strategy."
+   },
+   {
+    "id": "feedback",
+    "label": "tests need feedback",
+    "description": "Testing only helps if the learner is told the right answer afterwards."
+   }
+  ],
+  "passages": [
+   "rk-gd1",
+   "rk-tap",
+   "rk-conf"
+  ],
+  "prereqs": {
+   "deltadrills.spaced-repetition": 0.6
+  },
+  "procedural_kcs": [
+   "deltadrills.why-drills"
+  ]
+ },
+ {
+  "id": "deltadrills.fire",
+  "title": "Fractional implicit repetition (FIRe)",
+  "kind": "conceptual",
+  "order": 5,
+  "aliases": [
+   "fractional implicit repetition",
+   "FIRe",
+   "implicit repetition",
+   "encompassing graph",
+   "encompassed",
+   "trickle down"
+  ],
+  "definition": "Practising an advanced concept counts as a partial review of the simpler concepts it encompasses, discounted because those implicit repetitions often come too early to earn full credit.",
+  "intro": "Spaced repetition was built for independent flashcards; this course (and every course in the app) is a hierarchy. Skycak's fix, and the line in the app's memory model that implements it.",
+  "constraints": [
+   {
+    "id": "down",
+    "text": "Credit flows down encompassing edges, from the advanced concept to the simpler ones it contains, not up.",
+    "demand": "explain",
+    "required": true
+   },
+   {
+    "id": "fraction",
+    "text": "An implicit repetition is discounted (fractional), not a full review.",
+    "demand": "explain",
+    "required": true
+   },
+   {
+    "id": "notprereq",
+    "text": "Encompassing is stronger than prerequisite: a prerequisite need not be fully encompassed.",
+    "demand": "explain",
+    "required": false
+   },
+   {
+    "id": "fewer",
+    "text": "The payoff is fewer explicit reviews: one review can knock out others that are due.",
+    "demand": "explain",
+    "required": false
+   }
+  ],
+  "misconceptions": [
+   {
+    "id": "up",
+    "label": "credit flows up",
+    "description": "Practising a simple concept gives review credit to the advanced concepts that use it."
+   },
+   {
+    "id": "full",
+    "label": "implicit = full review",
+    "description": "An implicit repetition counts the same as doing the review explicitly."
+   },
+   {
+    "id": "allprereq",
+    "label": "every prerequisite gets credit",
+    "description": "Every prerequisite is encompassed, so every prerequisite gets credit."
+   }
+  ],
+  "passages": [
+   "sky-fire",
+   "sky-enc",
+   "sky-compress",
+   "dd-mm-fire"
+  ],
+  "prereqs": {
+   "deltadrills.spaced-repetition": 0.6,
+   "deltadrills.retrievability": 0.3
+  },
+  "procedural_kcs": []
+ }
+]

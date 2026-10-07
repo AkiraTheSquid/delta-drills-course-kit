@@ -1,0 +1,1561 @@
+{
+ "id": "delta-drills-oversight",
+ "title": "Delta Drills and AI oversight",
+ "version": "0.7.1",
+ "vetted": false,
+ "course": "delta-drills",
+ "sources": [
+  {
+   "id": "rk2006",
+   "title": "Test-Enhanced Learning: Taking Memory Tests Improves Long-Term Retention",
+   "authors": "Roediger, H. L., & Karpicke, J. D.",
+   "year": 2006,
+   "venue": "Psychological Science 17(3), 249-255",
+   "url": "https://doi.org/10.1111/j.1467-9280.2006.01693.x",
+   "path": "docs/architecture/primary-sources/2006_roediger-karpicke_test-enhanced-learning.pdf",
+   "kind": "paper"
+  },
+  {
+   "id": "pel2017",
+   "title": "Bayesian knowledge tracing, logistic models, and beyond: an overview of learner modeling techniques",
+   "authors": "Pelánek, R.",
+   "year": 2017,
+   "venue": "User Modeling and User-Adapted Interaction 27, 313-350",
+   "url": "https://doi.org/10.1007/s11257-017-9193-2",
+   "path": "docs/architecture/primary-sources/2017_pelanek_bkt-logistic-and-beyond.pdf",
+   "kind": "paper"
+  },
+  {
+   "id": "sky2023",
+   "title": "Optimized, Individualized Spaced Repetition in Hierarchical Knowledge Structures",
+   "authors": "Skycak, J.",
+   "year": 2023,
+   "venue": "The Math Academy Way (working draft)",
+   "url": "https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/",
+   "path": "docs/architecture/primary-sources/2023_skycak_fire-spaced-repetition.html",
+   "kind": "post"
+  },
+  {
+   "id": "dd-bkt",
+   "title": "bkt_mastery.py (the app's mastery model)",
+   "authors": "Delta Drills",
+   "year": 2026,
+   "path": "This-Directory-Only/backend/app/bkt_mastery.py",
+   "kind": "app-source"
+  },
+  {
+   "id": "dd-memory",
+   "title": "memory_model.py (the app's memory model)",
+   "authors": "Delta Drills",
+   "year": 2026,
+   "path": "This-Directory-Only/backend/app/memory_model.py",
+   "kind": "app-source"
+  },
+  {
+   "id": "pel2016",
+   "title": "Applications of the Elo rating system in adaptive educational systems",
+   "authors": "Pelánek, R.",
+   "year": 2016,
+   "venue": "Computers & Education 98, 169-179",
+   "url": "https://doi.org/10.1016/j.compedu.2016.03.017",
+   "path": "docs/architecture/primary-sources/2016_pelanek_elo-adaptive-educational.pdf",
+   "kind": "paper"
+  },
+  {
+   "id": "aleks2021",
+   "title": "A practical perspective on knowledge space theory: ALEKS and its data",
+   "authors": "Cosyn, E., Uzun, H., Doble, C., & Matayoshi, J.",
+   "year": 2021,
+   "venue": "Journal of Mathematical Psychology 101, 102512",
+   "url": "https://doi.org/10.1016/j.jmp.2021.102512",
+   "path": "docs/architecture/primary-sources/2021_cosyn-uzun-doble-matayoshi_aleks-kst-practical.pdf",
+   "kind": "paper"
+  },
+  {
+   "id": "dd-graph",
+   "title": "kc_graph.py (the prerequisite gate)",
+   "authors": "Delta Drills",
+   "year": 2026,
+   "path": "This-Directory-Only/backend/app/kc_graph.py",
+   "kind": "app-source"
+  },
+  {
+   "id": "dd-explore",
+   "title": "kc_explore.py (explore, then settle)",
+   "authors": "Delta Drills",
+   "year": 2026,
+   "path": "This-Directory-Only/backend/app/kc_explore.py",
+   "kind": "app-source"
+  },
+  {
+   "id": "dd-logistic",
+   "title": "logistic_engine.py (the additive-logistic engine)",
+   "authors": "Delta Drills",
+   "year": 2026,
+   "path": "This-Directory-Only/backend/app/logistic_engine.py",
+   "kind": "app-source"
+  },
+  {
+   "id": "dd-ability",
+   "title": "ability_model.py (ability θ and XP)",
+   "authors": "Delta Drills",
+   "year": 2026,
+   "path": "This-Directory-Only/backend/app/ability_model.py",
+   "kind": "app-source"
+  },
+  {
+   "id": "dd-beliefs",
+   "title": "concept_tutor/beliefs.py (Study mode's belief)",
+   "authors": "Delta Drills",
+   "year": 2026,
+   "path": "This-Directory-Only/backend/app/concept_tutor/beliefs.py",
+   "kind": "app-source"
+  },
+  {
+   "id": "dd-memfeed",
+   "title": "concept_tutor/memory_feed.py (Study mode's memory)",
+   "authors": "Delta Drills",
+   "year": 2026,
+   "path": "This-Directory-Only/backend/app/concept_tutor/memory_feed.py",
+   "kind": "app-source"
+  },
+  {
+   "id": "dd-planner",
+   "title": "concept_tutor/planner.py (Study mode's next move)",
+   "authors": "Delta Drills",
+   "year": 2026,
+   "path": "This-Directory-Only/backend/app/concept_tutor/planner.py",
+   "kind": "app-source"
+  },
+  {
+   "id": "maw2024",
+   "title": "The Math Academy Way (working draft)",
+   "authors": "Skycak, J., & Roberts, A.",
+   "year": 2024,
+   "url": "https://www.justinmath.com/files/the-math-academy-way.pdf",
+   "path": "docs/architecture/primary-sources/encompassing/2024_skycak-roberts_the-math-academy-way.pdf",
+   "kind": "doc"
+  },
+  {
+   "id": "dd-authoring",
+   "title": "lessons/AUTHORING.md (the four-stage drill ladder)",
+   "authors": "Delta Drills",
+   "year": 2026,
+   "path": "Local_Deployed_Shared/lessons/AUTHORING.md",
+   "kind": "app-source"
+  },
+  {
+   "id": "dd-evidence",
+   "title": "concept_tutor/evidence.py (Study mode's evidence rows)",
+   "authors": "Delta Drills",
+   "year": 2026,
+   "path": "This-Directory-Only/backend/app/concept_tutor/evidence.py",
+   "kind": "app-source"
+  },
+  {
+   "id": "dd-tutor-explore",
+   "title": "concept_tutor/explore.py (Study mode's explore stages)",
+   "authors": "Delta Drills",
+   "year": 2026,
+   "path": "This-Directory-Only/backend/app/concept_tutor/explore.py",
+   "kind": "app-source"
+  },
+  {
+   "id": "gb2023",
+   "title": "AI Control: Improving Safety Despite Intentional Subversion",
+   "authors": "Greenblatt, R., Shlegeris, B., Sachan, K., & Roger, F.",
+   "year": 2023,
+   "venue": "ICML 2024; arXiv:2312.06942",
+   "url": "https://arxiv.org/abs/2312.06942",
+   "path": "docs/architecture/primary-sources/oversight/2023_greenblatt_ai-control.pdf",
+   "kind": "paper"
+  },
+  {
+   "id": "bow2022",
+   "title": "Measuring Progress on Scalable Oversight for Large Language Models",
+   "authors": "Bowman, S. R., et al.",
+   "year": 2022,
+   "venue": "arXiv:2211.03540",
+   "url": "https://arxiv.org/abs/2211.03540",
+   "path": "docs/architecture/primary-sources/oversight/2022_bowman_scalable-oversight-sandwiching.pdf",
+   "kind": "paper"
+  },
+  {
+   "id": "irv2018",
+   "title": "AI safety via debate",
+   "authors": "Irving, G., Christiano, P., & Amodei, D.",
+   "year": 2018,
+   "venue": "arXiv:1805.00899",
+   "url": "https://arxiv.org/abs/1805.00899",
+   "path": "docs/architecture/primary-sources/oversight/2018_irving_ai-safety-via-debate.pdf",
+   "kind": "paper"
+  },
+  {
+   "id": "khan2024",
+   "title": "Debating with More Persuasive LLMs Leads to More Truthful Answers",
+   "authors": "Khan, A., et al.",
+   "year": 2024,
+   "venue": "ICML 2024; arXiv:2402.06782",
+   "url": "https://arxiv.org/abs/2402.06782",
+   "path": "docs/architecture/primary-sources/oversight/2024_khan_debate-persuasive.pdf",
+   "kind": "paper"
+  },
+  {
+   "id": "ken2024",
+   "title": "On scalable oversight with weak LLMs judging strong LLMs",
+   "authors": "Kenton, Z., et al.",
+   "year": 2024,
+   "venue": "NeurIPS 2024; arXiv:2407.04622",
+   "url": "https://arxiv.org/abs/2407.04622",
+   "path": "docs/architecture/primary-sources/oversight/2024_kenton_weak-judges-strong.pdf",
+   "kind": "paper"
+  },
+  {
+   "id": "bc2020",
+   "title": "Debate update: Obfuscated arguments problem",
+   "authors": "Barnes, B., & Christiano, P.",
+   "year": 2020,
+   "venue": "AI Alignment Forum",
+   "url": "https://www.alignmentforum.org/posts/PJLABqQ962hZEqhdB/debate-update-obfuscated-arguments-problem",
+   "path": "docs/architecture/primary-sources/oversight/2020_barnes-christiano_obfuscated-arguments.html",
+   "kind": "post"
+  },
+  {
+   "id": "vdw2024",
+   "title": "AI Sandbagging: Language Models can Strategically Underperform on Evaluations",
+   "authors": "van der Weij, T., Hofstätter, F., Jaffe, O., Brown, S. F., & Ward, F. R.",
+   "year": 2024,
+   "venue": "ICLR 2025; arXiv:2406.07358",
+   "url": "https://arxiv.org/abs/2406.07358",
+   "path": "docs/architecture/primary-sources/oversight/2024_vanderweij_sandbagging.pdf",
+   "kind": "paper"
+  },
+  {
+   "id": "gas2025",
+   "title": "Automated Researchers Can Subtly Sandbag",
+   "authors": "Gasteiger, J., Khan, A., Bowman, S., Mikulik, V., Perez, E., & Roger, F.",
+   "year": 2025,
+   "venue": "Anthropic Alignment Science Blog",
+   "url": "https://alignment.anthropic.com/2025/automated-researchers-sandbag/",
+   "path": "docs/architecture/primary-sources/oversight/2025_gasteiger_automated-researchers-sandbag.html",
+   "kind": "post"
+  },
+  {
+   "id": "pw2024",
+   "title": "Stress-Testing Capability Elicitation With Password-Locked Models",
+   "authors": "Greenblatt, R., Roger, F., Krasheninnikov, D., & Krueger, D.",
+   "year": 2024,
+   "venue": "NeurIPS 2024; arXiv:2405.19550",
+   "url": "https://arxiv.org/abs/2405.19550",
+   "path": "docs/architecture/primary-sources/oversight/2024_greenblatt_password-locked.pdf",
+   "kind": "paper"
+  },
+  {
+   "id": "ban2021",
+   "title": "Does the Whole Exceed its Parts? The Effect of AI Explanations on Complementary Team Performance",
+   "authors": "Bansal, G., et al.",
+   "year": 2021,
+   "venue": "CHI 2021; arXiv:2006.14779",
+   "url": "https://arxiv.org/abs/2006.14779",
+   "path": "docs/architecture/primary-sources/oversight/2021_bansal_whole-exceed-parts.pdf",
+   "kind": "paper"
+  },
+  {
+   "id": "jain2025",
+   "title": "Human-AI Complementarity: A Goal for Amplified Oversight",
+   "authors": "Jain, R., Bridgers, S., et al.",
+   "year": 2025,
+   "venue": "arXiv:2510.26518",
+   "url": "https://arxiv.org/abs/2510.26518",
+   "path": "docs/architecture/primary-sources/oversight/2025_jain_human-ai-complementarity.pdf",
+   "kind": "paper"
+  },
+  {
+   "id": "bur2023",
+   "title": "Weak-to-Strong Generalization: Eliciting Strong Capabilities With Weak Supervision",
+   "authors": "Burns, C., et al.",
+   "year": 2023,
+   "venue": "ICML 2024; arXiv:2312.09390",
+   "url": "https://arxiv.org/abs/2312.09390",
+   "path": "docs/architecture/primary-sources/oversight/2023_burns_weak-to-strong.pdf",
+   "kind": "paper"
+  },
+  {
+   "id": "bas2025",
+   "title": "Generative AI without guardrails can harm learning: Evidence from high school mathematics",
+   "authors": "Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, Ö., & Mariman, R.",
+   "year": 2025,
+   "venue": "PNAS 122(26)",
+   "url": "https://doi.org/10.1073/pnas.2422633122",
+   "path": "docs/architecture/primary-sources/oversight/2025_bastani_gai-without-guardrails.pdf",
+   "kind": "paper"
+  },
+  {
+   "id": "kes2025",
+   "title": "AI tutoring outperforms in-class active learning",
+   "authors": "Kestin, G., Miller, K., Klales, A., Milbourne, T., & Ponti, G.",
+   "year": 2025,
+   "venue": "Scientific Reports 15, 17458",
+   "url": "https://doi.org/10.1038/s41598-025-97652-6",
+   "path": "docs/architecture/primary-sources/oversight/2025_kestin_ai-tutoring-rct.pdf",
+   "kind": "paper"
+  },
+  {
+   "id": "gib2026",
+   "title": "AI Control and Scalable Oversight for a Conceptual Tutor: The Focused Slice (the course author's design note)",
+   "authors": "Gibson, S.",
+   "year": 2026,
+   "venue": "design note",
+   "url": null,
+   "path": "docs/architecture/primary-sources/oversight/2026_gibson_control-oversight-focused-slice.md",
+   "kind": "doc"
+  },
+  {
+   "id": "dd-voice",
+   "title": "voice.py (what the tutor says)",
+   "authors": "Delta Drills",
+   "year": 2026,
+   "path": "This-Directory-Only/backend/app/concept_tutor/voice.py",
+   "kind": "app-source"
+  },
+  {
+   "id": "dd-session",
+   "title": "session.py (the closed-book rule)",
+   "authors": "Delta Drills",
+   "year": 2026,
+   "path": "This-Directory-Only/backend/app/concept_tutor/session.py",
+   "kind": "app-source"
+  },
+  {
+   "id": "cy-fips199",
+   "title": "FIPS 199: Standards for Security Categorization of Federal Information and Information Systems",
+   "authors": "NIST",
+   "year": 2004,
+   "venue": "Federal Information Processing Standards",
+   "url": "https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-fips199.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-sp800-30",
+   "title": "SP 800-30 Rev. 1: Guide for Conducting Risk Assessments",
+   "authors": "NIST Joint Task Force",
+   "year": 2012,
+   "venue": "NIST Special Publication",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-30r1.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-sp800-30r1.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-sp800-12",
+   "title": "SP 800-12 Rev. 1: An Introduction to Information Security",
+   "authors": "Nieles, M., Dempsey, K., & Pillitteri, V. Y.",
+   "year": 2017,
+   "venue": "NIST Special Publication",
+   "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-12r1.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-sp800-12r1.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-sp800-53",
+   "title": "SP 800-53 Rev. 5: Security and Privacy Controls for Information Systems and Organizations",
+   "authors": "NIST Joint Task Force",
+   "year": 2020,
+   "venue": "NIST Special Publication",
+   "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-sp800-53r5.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-sp800-41",
+   "title": "SP 800-41 Rev. 1: Guidelines on Firewalls and Firewall Policy",
+   "authors": "Scarfone, K., & Hoffman, P.",
+   "year": 2009,
+   "venue": "NIST Special Publication",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-41r1.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-sp800-41r1.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-csf2",
+   "title": "The NIST Cybersecurity Framework (CSF) 2.0",
+   "authors": "NIST",
+   "year": 2024,
+   "venue": "NIST CSWP 29",
+   "url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-csf-2.0.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-sp800-37",
+   "title": "SP 800-37 Rev. 2: Risk Management Framework for Information Systems and Organizations",
+   "authors": "NIST Joint Task Force",
+   "year": 2018,
+   "venue": "NIST Special Publication",
+   "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-sp800-37r2.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-dodi8500",
+   "title": "DoD Instruction 8500.01: Cybersecurity",
+   "authors": "U.S. Department of Defense",
+   "year": 2014,
+   "venue": "DoD Issuances",
+   "url": "https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodi/850001_2014.pdf",
+   "path": "docs/architecture/primary-sources/cyber/dodi-8500-01.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-sp800-171",
+   "title": "SP 800-171 Rev. 3: Protecting Controlled Unclassified Information in Nonfederal Systems and Organizations",
+   "authors": "Ross, R., & Pillitteri, V.",
+   "year": 2024,
+   "venue": "NIST Special Publication",
+   "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171r3.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-sp800-171r3.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-dodm8140",
+   "title": "DoD Manual 8140.03: Cyberspace Workforce Qualification and Management Program",
+   "authors": "U.S. Department of Defense",
+   "year": 2023,
+   "venue": "DoD Issuances",
+   "url": "https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodm/814003p.pdf",
+   "path": "docs/architecture/primary-sources/cyber/dodm-8140-03.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-sp800-181",
+   "title": "SP 800-181 Rev. 1: Workforce Framework for Cybersecurity (NICE Framework)",
+   "authors": "Petersen, R., Santos, D., Wetzel, K., Smith, M., & Witte, G.",
+   "year": 2020,
+   "venue": "NIST Special Publication",
+   "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-181r1.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-sp800-181r1.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-sp800-94",
+   "title": "SP 800-94: Guide to Intrusion Detection and Prevention Systems (IDPS)",
+   "authors": "Scarfone, K., & Mell, P.",
+   "year": 2007,
+   "venue": "NIST Special Publication",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-94.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-sp800-94.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-sp800-128",
+   "title": "SP 800-128: Guide for Security-Focused Configuration Management of Information Systems",
+   "authors": "Johnson, A., Dempsey, K., Ross, R., Gupta, S., & Bailey, D.",
+   "year": 2011,
+   "venue": "NIST Special Publication",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-128.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-sp800-128.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-sp800-40",
+   "title": "SP 800-40 Rev. 4: Guide to Enterprise Patch Management Planning",
+   "authors": "Souppaya, M., & Scarfone, K.",
+   "year": 2022,
+   "venue": "NIST Special Publication",
+   "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-40r4.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-sp800-40r4.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-sp800-207",
+   "title": "SP 800-207: Zero Trust Architecture",
+   "authors": "Rose, S., Borchert, O., Mitchell, S., & Connelly, S.",
+   "year": 2020,
+   "venue": "NIST Special Publication",
+   "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-sp800-207.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-sp800-115",
+   "title": "SP 800-115: Technical Guide to Information Security Testing and Assessment",
+   "authors": "Scarfone, K., Souppaya, M., Cody, A., & Orebaugh, A.",
+   "year": 2008,
+   "venue": "NIST Special Publication",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-115.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-sp800-115.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-sp800-63b",
+   "title": "SP 800-63B-4: Digital Identity Guidelines, Authentication and Authenticator Management",
+   "authors": "Temoshok, D., et al.",
+   "year": 2025,
+   "venue": "NIST Special Publication",
+   "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63B-4.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-sp800-63b-4.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-attack-t1566",
+   "title": "ATT&CK Technique T1566: Phishing",
+   "authors": "The MITRE Corporation",
+   "year": 2026,
+   "venue": "MITRE ATT&CK Enterprise",
+   "url": "https://attack.mitre.org/techniques/T1566/",
+   "path": "docs/architecture/primary-sources/cyber/mitre-attack-t1566-phishing.html",
+   "kind": "doc",
+   "license": "© 2026 The MITRE Corporation. This work is reproduced and distributed with the permission of The MITRE Corporation."
+  },
+  {
+   "id": "cy-attack-techniques",
+   "title": "ATT&CK Enterprise Techniques",
+   "authors": "The MITRE Corporation",
+   "year": 2026,
+   "venue": "MITRE ATT&CK Enterprise",
+   "url": "https://attack.mitre.org/techniques/enterprise/",
+   "path": "docs/architecture/primary-sources/cyber/mitre-attack-techniques.html",
+   "kind": "doc",
+   "license": "© 2026 The MITRE Corporation. This work is reproduced and distributed with the permission of The MITRE Corporation."
+  },
+  {
+   "id": "cy-attack-tactics",
+   "title": "ATT&CK Enterprise Tactics",
+   "authors": "The MITRE Corporation",
+   "year": 2026,
+   "venue": "MITRE ATT&CK Enterprise",
+   "url": "https://attack.mitre.org/tactics/enterprise/",
+   "path": "docs/architecture/primary-sources/cyber/mitre-attack-tactics.html",
+   "kind": "doc",
+   "license": "© 2026 The MITRE Corporation. This work is reproduced and distributed with the permission of The MITRE Corporation."
+  },
+  {
+   "id": "cy-ir8374",
+   "title": "NIST IR 8374: Ransomware Risk Management, A Cybersecurity Framework Profile",
+   "authors": "Barker, W. C., Fisher, W., Scarfone, K., & Souppaya, M.",
+   "year": 2022,
+   "venue": "NIST Interagency Report",
+   "url": "https://nvlpubs.nist.gov/nistpubs/ir/2022/NIST.IR.8374.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-ir8374.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-sp800-92",
+   "title": "SP 800-92: Guide to Computer Security Log Management",
+   "authors": "Kent, K., & Souppaya, M.",
+   "year": 2006,
+   "venue": "NIST Special Publication",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-92.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-sp800-92.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-sp800-61",
+   "title": "SP 800-61 Rev. 3: Incident Response Recommendations and Considerations for Cybersecurity Risk Management",
+   "authors": "Nelson, A., Rekhi, S., Souppaya, M., & Scarfone, K.",
+   "year": 2025,
+   "venue": "NIST Special Publication",
+   "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-sp800-61r3.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-owasp-llm",
+   "title": "OWASP Top 10 for LLM Applications 2025",
+   "authors": "OWASP Gen AI Security Project",
+   "year": 2024,
+   "venue": "OWASP Foundation",
+   "url": "https://genai.owasp.org/llm-top-10/",
+   "path": "docs/architecture/primary-sources/cyber/owasp-llm-top10-2025.pdf",
+   "kind": "doc",
+   "license": "CC BY-SA 4.0, OWASP Foundation. Quoted unchanged; https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+   "id": "cy-ai100-2",
+   "title": "NIST AI 100-2 E2025: Adversarial Machine Learning, A Taxonomy and Terminology of Attacks and Mitigations",
+   "authors": "Vassilev, A., Oprea, A., Fordyce, A., Anderson, H., Davies, X., & Hamin, M.",
+   "year": 2025,
+   "venue": "NIST Trustworthy and Responsible AI",
+   "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-ai100-2e2025.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-nsa-ai",
+   "title": "Deploying AI Systems Securely: Best Practices for Deploying Secure and Resilient AI Systems",
+   "authors": "NSA Artificial Intelligence Security Center, with CISA, FBI and partners",
+   "year": 2024,
+   "venue": "Cybersecurity Information Sheet",
+   "url": "https://media.defense.gov/2024/Apr/15/2003439257/-1/-1/0/CSI-DEPLOYING-AI-SYSTEMS-SECURELY.PDF",
+   "path": "docs/architecture/primary-sources/cyber/nsa-deploying-ai-securely.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-ai100-1",
+   "title": "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+   "authors": "NIST",
+   "year": 2023,
+   "venue": "NIST Trustworthy and Responsible AI",
+   "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-ai100-1.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-ai600-1",
+   "title": "NIST AI 600-1: AI RMF Generative Artificial Intelligence Profile",
+   "authors": "NIST",
+   "year": 2024,
+   "venue": "NIST Trustworthy and Responsible AI",
+   "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+   "path": "docs/architecture/primary-sources/cyber/nist-ai600-1.pdf",
+   "kind": "doc",
+   "license": "Public domain: a U.S. Government work (17 U.S.C. §105)."
+  },
+  {
+   "id": "cy-gb2023",
+   "title": "AI Control: Improving Safety Despite Intentional Subversion",
+   "authors": "Greenblatt, R., Shlegeris, B., Sachan, K., & Roger, F.",
+   "year": 2023,
+   "venue": "ICML 2024; arXiv:2312.06942",
+   "url": "https://arxiv.org/abs/2312.06942",
+   "path": "docs/architecture/primary-sources/cyber/greenblatt-2023-ai-control.pdf",
+   "kind": "paper",
+   "license": "CC BY 4.0 (arXiv:2312.06942); https://creativecommons.org/licenses/by/4.0/"
+  },
+  {
+   "id": "bd-src-lessons",
+   "title": "Technical AI Safety (course lessons and exercises, units 1-5)",
+   "authors": "BlueDot Impact",
+   "year": 2026,
+   "venue": "BlueDot Impact",
+   "url": "https://bluedot.org/courses/technical-ai-safety",
+   "path": "docs/architecture/primary-sources/cyber/bd-tas-lessons.txt",
+   "kind": "doc",
+   "license": "BlueDot Impact course material, shared and adapted under BlueDot's terms (credit \"BlueDot Impact\", distinct branding, provided as is): https://blog.bluedot.org/p/running-versions-of-our-courses-2026"
+  },
+  {
+   "id": "bd-src-align",
+   "title": "What is AI alignment?",
+   "authors": "Jones, A. (BlueDot Impact)",
+   "year": 2024,
+   "venue": "BlueDot Impact blog",
+   "url": "https://blog.bluedot.org/p/what-is-ai-alignment",
+   "path": "docs/architecture/primary-sources/cyber/bd-what-is-ai-alignment.txt",
+   "kind": "post",
+   "license": "BlueDot Impact course material, shared and adapted under BlueDot's terms (credit \"BlueDot Impact\", distinct branding, provided as is): https://blog.bluedot.org/p/running-versions-of-our-courses-2026"
+  },
+  {
+   "id": "bd-src-rlhf",
+   "title": "Problems with Reinforcement Learning from Human Feedback (RLHF) for AI safety",
+   "authors": "Hastings-Woodhouse, S. (BlueDot Impact)",
+   "year": 2024,
+   "venue": "BlueDot Impact blog",
+   "url": "https://blog.bluedot.org/p/rlhf-limitations-for-ai-safety",
+   "path": "docs/architecture/primary-sources/cyber/bd-rlhf-limitations.txt",
+   "kind": "post",
+   "license": "BlueDot Impact course material, shared and adapted under BlueDot's terms (credit \"BlueDot Impact\", distinct branding, provided as is): https://blog.bluedot.org/p/running-versions-of-our-courses-2026"
+  },
+  {
+   "id": "bd-src-oversight",
+   "title": "Can we scale human feedback for complex AI tasks?",
+   "authors": "Jones, A. (BlueDot Impact)",
+   "year": 2024,
+   "venue": "BlueDot Impact blog",
+   "url": "https://blog.bluedot.org/p/scalable-oversight-intro",
+   "path": "docs/architecture/primary-sources/cyber/bd-scalable-oversight.txt",
+   "kind": "post",
+   "license": "BlueDot Impact course material, shared and adapted under BlueDot's terms (credit \"BlueDot Impact\", distinct branding, provided as is): https://blog.bluedot.org/p/running-versions-of-our-courses-2026"
+  },
+  {
+   "id": "bd-src-w2s",
+   "title": "What is Weak-to-Strong Generalisation?",
+   "authors": "Hastings-Woodhouse, S. (BlueDot Impact)",
+   "year": 2025,
+   "venue": "BlueDot Impact blog",
+   "url": "https://blog.bluedot.org/p/what-is-weak-to-strong-generalisation",
+   "path": "docs/architecture/primary-sources/cyber/bd-weak-to-strong.txt",
+   "kind": "post",
+   "license": "BlueDot Impact course material, shared and adapted under BlueDot's terms (credit \"BlueDot Impact\", distinct branding, provided as is): https://blog.bluedot.org/p/running-versions-of-our-courses-2026"
+  },
+  {
+   "id": "bd-src-debate",
+   "title": "What is AI debate, and can it make systems safer?",
+   "authors": "Hastings-Woodhouse, S. (BlueDot Impact)",
+   "year": 2025,
+   "venue": "BlueDot Impact blog",
+   "url": "https://blog.bluedot.org/p/what-is-ai-debate-and-can-it-make-systems-safer",
+   "path": "docs/architecture/primary-sources/cyber/bd-debate.txt",
+   "kind": "post",
+   "license": "BlueDot Impact course material, shared and adapted under BlueDot's terms (credit \"BlueDot Impact\", distinct branding, provided as is): https://blog.bluedot.org/p/running-versions-of-our-courses-2026"
+  },
+  {
+   "id": "bd-src-interp",
+   "title": "Introduction to Mechanistic Interpretability",
+   "authors": "Hastings-Woodhouse, S. (BlueDot Impact)",
+   "year": 2024,
+   "venue": "BlueDot Impact blog",
+   "url": "https://blog.bluedot.org/p/introduction-to-mechanistic-interpretability",
+   "path": "docs/architecture/primary-sources/cyber/bd-mech-interp.txt",
+   "kind": "post",
+   "license": "BlueDot Impact course material, shared and adapted under BlueDot's terms (credit \"BlueDot Impact\", distinct branding, provided as is): https://blog.bluedot.org/p/running-versions-of-our-courses-2026"
+  },
+  {
+   "id": "bd-src-probe",
+   "title": "What are probing classifiers and can they help us understand what's happening inside AI models?",
+   "authors": "Hastings-Woodhouse, S. (BlueDot Impact)",
+   "year": 2025,
+   "venue": "BlueDot Impact blog",
+   "url": "https://blog.bluedot.org/p/what-are-probing-classifiers",
+   "path": "docs/architecture/primary-sources/cyber/bd-probing.txt",
+   "kind": "post",
+   "license": "BlueDot Impact course material, shared and adapted under BlueDot's terms (credit \"BlueDot Impact\", distinct branding, provided as is): https://blog.bluedot.org/p/running-versions-of-our-courses-2026"
+  },
+  {
+   "id": "bd-src-iof",
+   "title": "What is input/output filtering in AI safety?",
+   "authors": "Hastings-Woodhouse, S. (BlueDot Impact)",
+   "year": 2025,
+   "venue": "BlueDot Impact blog",
+   "url": "https://blog.bluedot.org/p/input-output-filtering",
+   "path": "docs/architecture/primary-sources/cyber/bd-io-filtering.txt",
+   "kind": "post",
+   "license": "BlueDot Impact course material, shared and adapted under BlueDot's terms (credit \"BlueDot Impact\", distinct branding, provided as is): https://blog.bluedot.org/p/running-versions-of-our-courses-2026"
+  },
+  {
+   "id": "bd-src-dataf",
+   "title": "What is input data filtration in AI safety?",
+   "authors": "Hastings-Woodhouse, S. (BlueDot Impact)",
+   "year": 2025,
+   "venue": "BlueDot Impact blog",
+   "url": "https://blog.bluedot.org/p/data-filtration",
+   "path": "docs/architecture/primary-sources/cyber/bd-data-filtration.txt",
+   "kind": "post",
+   "license": "BlueDot Impact course material, shared and adapted under BlueDot's terms (credit \"BlueDot Impact\", distinct branding, provided as is): https://blog.bluedot.org/p/running-versions-of-our-courses-2026"
+  },
+  {
+   "id": "ctl-src-case",
+   "title": "The case for ensuring that powerful AIs are controlled",
+   "authors": "Greenblatt, R., & Shlegeris, B.",
+   "year": 2024,
+   "venue": "LessWrong / Redwood Research",
+   "url": "https://www.lesswrong.com/posts/kcKrE9mzEHrdqtDpE/the-case-for-ensuring-that-powerful-ais-are-controlled",
+   "path": "docs/architecture/primary-sources/cyber/ctl-case-for-control.txt",
+   "kind": "post",
+   "license": "© the authors; short quotation with attribution and link."
+  },
+  {
+   "id": "ctl-src-catch",
+   "title": "Catching AIs red-handed",
+   "authors": "Greenblatt, R., & Shlegeris, B.",
+   "year": 2024,
+   "venue": "LessWrong / Redwood Research",
+   "url": "https://www.lesswrong.com/posts/i2nmBfCXnadeGmhzW/catching-ais-red-handed",
+   "path": "docs/architecture/primary-sources/cyber/ctl-catching-red-handed.txt",
+   "kind": "post",
+   "license": "© the authors; short quotation with attribution and link."
+  },
+  {
+   "id": "ctl-src-trees",
+   "title": "Attack Trees",
+   "authors": "Schneier, B.",
+   "year": 1999,
+   "venue": "Dr. Dobb's Journal",
+   "url": "https://www.schneier.com/academic/archives/1999/12/attack_trees.html",
+   "path": "docs/architecture/primary-sources/cyber/ctl-attack-trees.txt",
+   "kind": "post",
+   "license": "© the authors; short quotation with attribution and link."
+  },
+  {
+   "id": "ctl-src-threats",
+   "title": "Prioritizing threats for AI control",
+   "authors": "Greenblatt, R.",
+   "year": 2025,
+   "venue": "LessWrong / Redwood Research",
+   "url": "https://www.lesswrong.com/posts/fCazYoZSSMadiT6sf/prioritizing-threats-for-ai-control",
+   "path": "docs/architecture/primary-sources/cyber/ctl-prioritizing-threats.txt",
+   "kind": "post",
+   "license": "© the authors; short quotation with attribution and link."
+  },
+  {
+   "id": "ctl-src-diffuse",
+   "title": "How can we solve diffuse threats like research sabotage with AI control?",
+   "authors": "Hebbar, V.",
+   "year": 2025,
+   "venue": "Redwood Research blog",
+   "url": "https://blog.redwoodresearch.org/p/how-can-we-solve-diffuse-threats",
+   "path": "docs/architecture/primary-sources/cyber/ctl-diffuse-threats.txt",
+   "kind": "post",
+   "license": "© the authors; short quotation with attribution and link."
+  },
+  {
+   "id": "ctl-src-su",
+   "title": "Efficient tradeoffs and the safety-usefulness tradeoff model",
+   "authors": "Shlegeris, B.",
+   "year": 2026,
+   "venue": "Redwood Research blog",
+   "url": "https://blog.redwoodresearch.org/p/efficient-tradeoffs-and-the-safety",
+   "path": "docs/architecture/primary-sources/cyber/ctl-safety-usefulness.txt",
+   "kind": "post",
+   "license": "© the authors; short quotation with attribution and link."
+  },
+  {
+   "id": "ctl-src-plans",
+   "title": "Plans A, B, C, and D for misalignment risk",
+   "authors": "Greenblatt, R.",
+   "year": 2025,
+   "venue": "LessWrong / Redwood Research",
+   "url": "https://www.lesswrong.com/posts/E8n93nnEaFeXTbHn5/plans-a-b-c-and-d-for-misalignment-risk",
+   "path": "docs/architecture/primary-sources/cyber/ctl-plans-abcd.txt",
+   "kind": "post",
+   "license": "© the authors; short quotation with attribution and link."
+  },
+  {
+   "id": "ctl-src-measures",
+   "title": "An overview of control measures",
+   "authors": "Greenblatt, R.",
+   "year": 2025,
+   "venue": "Redwood Research blog",
+   "url": "https://blog.redwoodresearch.org/p/an-overview-of-control-measures",
+   "path": "docs/architecture/primary-sources/cyber/ctl-control-measures.txt",
+   "kind": "post",
+   "license": "© the authors; short quotation with attribution and link."
+  },
+  {
+   "id": "ctl-src-wcl",
+   "title": "Win/continue/lose scenarios and execute/replace/audit protocols",
+   "authors": "Shlegeris, B.",
+   "year": 2024,
+   "venue": "LessWrong / Redwood Research",
+   "url": "https://www.lesswrong.com/posts/jg3PuE3fYL9jq9zHB/win-continue-lose-scenarios-and-execute-replace-audit",
+   "path": "docs/architecture/primary-sources/cyber/ctl-win-continue-lose.txt",
+   "kind": "post",
+   "license": "© the authors; short quotation with attribution and link."
+  },
+  {
+   "id": "ctl-src-rogue",
+   "title": "AI catastrophes and rogue deployments",
+   "authors": "Shlegeris, B.",
+   "year": 2024,
+   "venue": "LessWrong / Redwood Research",
+   "url": "https://www.lesswrong.com/posts/ceBpLHJDdCt3xfEok/ai-catastrophes-and-rogue-deployments",
+   "path": "docs/architecture/primary-sources/cyber/ctl-rogue-deployments.txt",
+   "kind": "post",
+   "license": "© the authors; short quotation with attribution and link."
+  },
+  {
+   "id": "ctl-src-sync",
+   "title": "Blocking live failures with synchronous monitors",
+   "authors": "Kaufman, A., & Lucassen, J.",
+   "year": 2026,
+   "venue": "LessWrong / Redwood Research",
+   "url": "https://www.lesswrong.com/posts/e4G4E56ZiQqjXSxLp/blocking-live-failures-with-synchronous-monitors",
+   "path": "docs/architecture/primary-sources/cyber/ctl-synchronous-monitors.txt",
+   "kind": "post",
+   "license": "© the authors; short quotation with attribution and link."
+  },
+  {
+   "id": "ctl-src-ctrlz",
+   "title": "Ctrl-Z: Controlling AI Agents via Resampling",
+   "authors": "Bhatt, A., Rushing, C., Kaufman, A., Tracy, T., Georgiev, V., Matolcsi, D., Khan, A., & Shlegeris, B.",
+   "year": 2025,
+   "venue": "arXiv:2504.10374",
+   "url": "https://arxiv.org/abs/2504.10374",
+   "path": "docs/architecture/primary-sources/cyber/ctl-ctrl-z.pdf",
+   "kind": "paper",
+   "license": "CC BY 4.0 (arXiv); quoted unchanged with attribution."
+  },
+  {
+   "id": "ctl-src-collusion",
+   "title": "How to prevent collusion when using untrusted models to monitor each other",
+   "authors": "Shlegeris, B.",
+   "year": 2024,
+   "venue": "LessWrong / Redwood Research",
+   "url": "https://www.lesswrong.com/posts/GCqoks9eZDfpL8L3Q/how-to-prevent-collusion-when-using-untrusted-models-to",
+   "path": "docs/architecture/primary-sources/cyber/ctl-collusion.txt",
+   "kind": "post",
+   "license": "© the authors; short quotation with attribution and link."
+  },
+  {
+   "id": "ctl-src-nonconc",
+   "title": "Notes on handling non-concentrated failures with AI control",
+   "authors": "Greenblatt, R.",
+   "year": 2025,
+   "venue": "Redwood Research blog",
+   "url": "https://blog.redwoodresearch.org/p/notes-on-handling-non-concentrated",
+   "path": "docs/architecture/primary-sources/cyber/ctl-non-concentrated.txt",
+   "kind": "post",
+   "license": "© the authors; short quotation with attribution and link."
+  },
+  {
+   "id": "ctl-src-sandbag",
+   "title": "Misalignment and Strategic Underperformance: An Analysis of Sandbagging and Exploration Hacking",
+   "authors": "Stastny, J., & Shlegeris, B.",
+   "year": 2025,
+   "venue": "Redwood Research blog",
+   "url": "https://blog.redwoodresearch.org/p/misalignment-and-strategic-underperformance",
+   "path": "docs/architecture/primary-sources/cyber/ctl-strategic-underperformance.txt",
+   "kind": "post",
+   "license": "© the authors; short quotation with attribution and link."
+  },
+  {
+   "id": "ctl-src-elicit",
+   "title": "Stress-Testing Capability Elicitation With Password-Locked Models",
+   "authors": "Greenblatt, R., Roger, F., Krasheninnikov, D., & Krueger, D.",
+   "year": 2024,
+   "venue": "arXiv:2405.19550",
+   "url": "https://arxiv.org/abs/2405.19550",
+   "path": "docs/architecture/primary-sources/cyber/ctl-elicitation.pdf",
+   "kind": "paper",
+   "license": "CC BY 4.0 (arXiv); quoted unchanged with attribution."
+  },
+  {
+   "id": "ctl-src-fitness",
+   "title": "Fitness-seekers: generalizing the reward-seeking threat model",
+   "authors": "Mallen, A.",
+   "year": 2026,
+   "venue": "Redwood Research blog",
+   "url": "https://blog.redwoodresearch.org/p/fitness-seekers-generalizing-the",
+   "path": "docs/architecture/primary-sources/cyber/ctl-fitness-seekers.txt",
+   "kind": "post",
+   "license": "© the authors; short quotation with attribution and link."
+  },
+  {
+   "id": "ctl-src-spillway",
+   "title": "Fail safe(r) at alignment by channeling reward-hacking into a \"spillway\" motivation",
+   "authors": "Woodruff, A. C., & Mallen, A.",
+   "year": 2026,
+   "venue": "LessWrong / Redwood Research",
+   "url": "https://www.lesswrong.com/posts/rABTMovhz4miHiAyk",
+   "path": "docs/architecture/primary-sources/cyber/ctl-spillway.txt",
+   "kind": "post",
+   "license": "© the authors; short quotation with attribution and link."
+  },
+  {
+   "id": "ctl-src-deals",
+   "title": "Making deals with early schemers",
+   "authors": "Stastny, J., Järviniemi, O., & Shlegeris, B.",
+   "year": 2025,
+   "venue": "AI Alignment Forum / Redwood Research",
+   "url": "https://www.alignmentforum.org/posts/psqkwsKrKHCfkhrQx/making-deals-with-early-schemers",
+   "path": "docs/architecture/primary-sources/cyber/ctl-deals.txt",
+   "kind": "post",
+   "license": "© the authors; short quotation with attribution and link."
+  },
+  {
+   "id": "bs-mehlman",
+   "title": "Biostatistics Review for USMLE Step 1, 2CK, 3",
+   "authors": "MehlmanMedical",
+   "year": 2023,
+   "venue": "MEHLMANMEDICAL.COM",
+   "url": "https://mehlmanmedical.com",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biostat/mehlman-biostatistics-review.pdf",
+   "license": "All material is copyrighted and the property of mehlmanmedical. Private course; not redistributed."
+  }
+ ],
+ "sections": [
+  {
+   "id": "ddsci",
+   "title": "The learning science",
+   "color": "#16A34A"
+  },
+  {
+   "id": "ddmem",
+   "title": "Memory and review",
+   "color": "#0891B2"
+  },
+  {
+   "id": "ddknow",
+   "title": "Mastery and the frontier",
+   "color": "#2563EB"
+  },
+  {
+   "id": "ddpred",
+   "title": "Predicting a success",
+   "color": "#DB2777"
+  },
+  {
+   "id": "ddstudy",
+   "title": "Study mode's model",
+   "color": "#EA580C"
+  },
+  {
+   "id": "tutor",
+   "title": "The tutor's guardrails",
+   "color": "#0D9488"
+  },
+  {
+   "id": "control",
+   "title": "AI control",
+   "color": "#D97706"
+  },
+  {
+   "id": "oversight",
+   "title": "Scalable oversight",
+   "color": "#7C3AED"
+  },
+  {
+   "id": "cyfound",
+   "title": "Security foundations",
+   "color": "#0F766E"
+  },
+  {
+   "id": "cydod",
+   "title": "DoD risk management",
+   "color": "#1D4ED8"
+  },
+  {
+   "id": "cynet",
+   "title": "Network defense",
+   "color": "#0369A1"
+  },
+  {
+   "id": "cyiam",
+   "title": "Identity and access",
+   "color": "#4F46E5"
+  },
+  {
+   "id": "cythreat",
+   "title": "Threats and adversaries",
+   "color": "#B91C1C"
+  },
+  {
+   "id": "cyir",
+   "title": "Detection and response",
+   "color": "#C2410C"
+  },
+  {
+   "id": "cyaisec",
+   "title": "Securing AI systems",
+   "color": "#7E22CE"
+  },
+  {
+   "id": "ctlpre",
+   "title": "Before control: why AI might not be trustworthy",
+   "color": "#9D174D"
+  },
+  {
+   "id": "ctlwhy",
+   "title": "Why control, and threat modeling",
+   "color": "#B45309"
+  },
+  {
+   "id": "ctlpaper",
+   "title": "The AI control paper",
+   "color": "#A16207"
+  },
+  {
+   "id": "ctluse",
+   "title": "How useful is control, and what it takes",
+   "color": "#4D7C0F"
+  },
+  {
+   "id": "ctlhigh",
+   "title": "High-stakes control",
+   "color": "#BE123C"
+  },
+  {
+   "id": "ctllow",
+   "title": "Low-stakes control",
+   "color": "#0E7490"
+  },
+  {
+   "id": "ctlbeyond",
+   "title": "Beyond scheming",
+   "color": "#6D28D9"
+  },
+  {
+   "id": "bsfreq",
+   "title": "Disease frequency",
+   "color": "#0F766E"
+  },
+  {
+   "id": "bsdx",
+   "title": "Diagnostic tests",
+   "color": "#2563EB"
+  },
+  {
+   "id": "bsrisk",
+   "title": "Risk and effect measures",
+   "color": "#B45309"
+  },
+  {
+   "id": "bsdesign",
+   "title": "Study designs",
+   "color": "#7C3AED"
+  },
+  {
+   "id": "bsbias",
+   "title": "Bias and confounding",
+   "color": "#B91C1C"
+  },
+  {
+   "id": "bsdesc",
+   "title": "Describing data",
+   "color": "#0369A1"
+  },
+  {
+   "id": "bsinf",
+   "title": "Statistical inference",
+   "color": "#4D7C0F"
+  }
+ ],
+ "courses": [
+  {
+   "id": "delta-drills-learning",
+   "title": "How Delta Drills teaches",
+   "eyebrow": "The learning science the app rests on, then its own maths: memory, mastery, prediction and Study mode.",
+   "sections": [
+    "ddsci",
+    "ddmem",
+    "ddknow",
+    "ddpred",
+    "ddstudy"
+   ],
+   "review": {
+    "mc": 60,
+    "free": 120
+   }
+  },
+  {
+   "id": "ai-control",
+   "title": "AI control and oversight",
+   "eyebrow": "The tutor's guardrails as a control setup, then AI control and scalable oversight.",
+   "sections": [
+    "tutor",
+    "control",
+    "oversight"
+   ]
+  },
+  {
+   "id": "cyber-ai-control",
+   "title": "Cybersecurity and AI control",
+   "eyebrow": "NIST and DoD security foundations, alignment basics from BlueDot Impact, then AI control on the backbone of the XLab AI Control track.",
+   "sections": [
+    "cyfound",
+    "cydod",
+    "cynet",
+    "cyiam",
+    "cythreat",
+    "cyir",
+    "cyaisec",
+    "ctlpre",
+    "ctlwhy",
+    "ctlpaper",
+    "ctluse",
+    "ctlhigh",
+    "ctllow",
+    "ctlbeyond"
+   ],
+   "public": true,
+   "review": {
+    "mc": 60,
+    "free": 120
+   }
+  },
+  {
+   "id": "step3-biostat",
+   "title": "Step 3 Biostatistics",
+   "eyebrow": "Biostatistics and epidemiology for USMLE Step 3, from the MehlmanMedical Biostatistics Review: frequency, diagnostic tests, risk, study designs, bias and inference.",
+   "sections": [
+    "bsfreq",
+    "bsdx",
+    "bsrisk",
+    "bsdesign",
+    "bsbias",
+    "bsdesc",
+    "bsinf"
+   ],
+   "link": "usmle-step-3"
+  }
+ ],
+ "figures": [
+  {
+   "id": "fig-rsi-bootstrap",
+   "demo": "RsiBootstrapDemo",
+   "props": {},
+   "title": "",
+   "caption": "We will refer to this overall plan, in which each controlled generation of AI aligns and builds the next until superintelligence is reached, as bootstrapping. Control's role is to keep that plan on the rails while it runs, not to carry out the alignment research itself.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/how-useful-is-ai-control/how-useful-is-ai-control"
+  },
+  {
+   "id": "fig-additive-control",
+   "demo": "AdditiveControlDemo",
+   "props": {},
+   "title": "",
+   "caption": "Control is additive. It does not interfere with security, alignment, or verification interventions in a general sense. Therefore, we explore how counterfactually valuable allocating resources to control is in various scenarios.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/how-useful-is-ai-control/how-useful-is-ai-control"
+  },
+  {
+   "id": "fig-attack-tree-safe",
+   "demo": "AttackTree",
+   "props": {
+    "compact": true,
+    "name": "safe"
+   },
+   "title": "",
+   "caption": "The following, for example, is a simple attack tree against a physical safe.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/introduction/attack-trees"
+  },
+  {
+   "id": "fig-attack-tree-overspecific",
+   "demo": "AttackTree",
+   "props": {
+    "name": "overSpecific"
+   },
+   "title": "",
+   "caption": "Be careful about how specific Attack Nodes should be. Being overly specific might sacrifice generality (potential brevity and other attacks).",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/introduction/attack-trees"
+  },
+  {
+   "id": "fig-attack-tree-composed",
+   "demo": "AttackTree",
+   "props": {
+    "name": "composed"
+   },
+   "title": "",
+   "caption": "Instead, a tree that composes nodes that involve similar attacks would be more representative of attacker cognition:",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/introduction/attack-trees"
+  },
+  {
+   "id": "fig-attack-tree-overloaded",
+   "demo": "AttackTree",
+   "props": {
+    "name": "overloaded"
+   },
+   "title": "",
+   "caption": "Also, try not to have overcomplicated or conditioned nodes, as you might be composing multiple possible nodes!",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/introduction/attack-trees"
+  },
+  {
+   "id": "fig-attack-tree-decompose",
+   "demo": "AttackTreeMorph",
+   "props": {
+    "actionLabel": "Decompose the node",
+    "after": "decomposed",
+    "before": "overloaded"
+   },
+   "title": "",
+   "caption": "Instead, decomposing attacks helps your attack tree stay organized and might allow you to find other attacks.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/introduction/attack-trees"
+  },
+  {
+   "id": "fig-high-stakes-graph",
+   "demo": "HighStakesGraphDemo",
+   "props": {},
+   "title": "",
+   "caption": "We can think about what is \"High Stakes\" as what catastrophically threatening occurrences take the least amount of actions to produce.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/module-4/what-is-high-stakes"
+  },
+  {
+   "id": "fig-two-games",
+   "demo": "TwoGamesDemo",
+   "props": {},
+   "title": "",
+   "caption": "Playing the inner game well produces evidence; most dramatically, a scheming model caught in the act. This evidence can be used to convince decision-makers into authorizing more safety spending. That spending then funds the next round of the inner game. However, the inner game still produces results even if a model is not explicitly caught since it generates trustworthy work from an untrusted model.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/how-useful-is-ai-control/determining-the-usefulness"
+  },
+  {
+   "id": "fig-regime-states",
+   "demo": "RegimeStatesDemo",
+   "props": {},
+   "title": "",
+   "caption": "We can split potential regimes, the bundle of conditions that we use to describe the world, into three parts or sections of information that we interact with very differently.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/how-useful-is-ai-control/determining-the-usefulness"
+  },
+  {
+   "id": "fig-five-worlds",
+   "demo": "FiveWorldsDemo",
+   "props": {},
+   "title": "",
+   "caption": "Abstract states need reference points, so here are five — Greenblatt's caricatured futures (Current AIs seem pretty misaligned to me), each a different setting of the world state. They recur through the rest of the module as the standard misalignment archetypes.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/how-useful-is-ai-control/determining-the-usefulness"
+  },
+  {
+   "id": "fig-regime-loop",
+   "demo": "RegimeLoopDemo",
+   "props": {},
+   "title": "",
+   "caption": "Whether a technique is actually effective directly stems from the states, as it relies on what the frontier model is like, how capable it is, and what measures you deployed, among other factors.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/how-useful-is-ai-control/determining-the-usefulness"
+  },
+  {
+   "id": "fig-race-paper",
+   "demo": "RacePaperDemo",
+   "props": {},
+   "title": "Safety over a deployment",
+   "caption": "Per-attack odds compound over a whole deployment, run directly on the paper's contingency-table odds (caught 33.8%, successfully deployed 18.3%). Drag the number of attacks and watch the two factors of the red team's win probability climb toward the ceiling.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/introduction/ai-control-paper#ins-demo-race-paper"
+  },
+  {
+   "id": "fig-audit-tradeoff",
+   "demo": "AuditTradeoffDemo",
+   "props": {},
+   "title": "Upfront auditing: the audit/attack-rate tradeoff",
+   "caption": "Drag the auditing proportion and watch the red team's optimal attack rate, expected backdoor attempts, and the blue team's win probability update live.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/introduction/ai-control-paper#ins-demo-audit-tradeoff"
+  },
+  {
+   "id": "fig-attack-rate",
+   "demo": "AttackRateDemo",
+   "props": {},
+   "title": "The attack-rate hump",
+   "caption": "The red team's win probability against how often it attacks, decomposed into its two terms. Attack rarely and a decisive attack attempt may never occur (Term B small); attack often and the pool dilutes with worse, more-visible opportunities (Term A falls) — so the optimum is interior.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/introduction/ai-control-paper#ins-demo-attack-rate"
+  },
+  {
+   "id": "fig-monitor-roc",
+   "demo": "MonitorRocDemo",
+   "props": {},
+   "title": "The monitor as a noisy classifier: ROC & AUC",
+   "caption": "Model the trusted monitor's suspicion scores as two overlapping distributions. Drag its quality to see the ROC curve, AUC, and how many backdoors slip past a fixed 2% false-positive threshold.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/introduction/ai-control-paper#ins-demo-monitor-roc"
+  },
+  {
+   "id": "fig-monitor-tails",
+   "demo": "MonitorTailsDemo",
+   "props": {},
+   "title": "Same number, different safety",
+   "caption": "Two monitors with identical AUC but different attack-score spread. Drag the shared AUC and watch how many attacks each catches at a 2% audit budget — the tail, not the area, is what matters.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/introduction/ai-control-paper#ins-demo-monitor-tails"
+  },
+  {
+   "id": "fig-defer",
+   "demo": "DeferDemo",
+   "props": {},
+   "title": "Defer to trusted, mechanistically",
+   "caption": "Widen the defer band and note that it holds a large share of the attack mass but a thin slice of the innocent mass, showing why deferring buys safety cheaply.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/introduction/ai-control-paper#ins-demo-defer"
+  },
+  {
+   "id": "fig-control-dashboard",
+   "demo": "ControlDashboardDemo",
+   "props": {},
+   "title": "The control game: full dashboard",
+   "caption": "Change the audit budget, defer band, and monitor quality and watch how this changes the suspicion distributions, and the safety/usefulness frontier with the current protocol. The red team best-responds throughout.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/introduction/ai-control-paper#ins-demo-control-dashboard"
+  },
+  {
+   "id": "fig-subtlety",
+   "demo": "SubtletyDemo",
+   "props": {},
+   "title": "Subtlety: visible vs reliable",
+   "caption": "The red team's second decision factor. Subtler backdoors are harder for the monitor to flag but more likely to be broken, so the win probability has an interior optimum in subtlety.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/introduction/ai-control-paper#ins-demo-subtlety"
+  },
+  {
+   "id": "fig-best-response",
+   "demo": "BestResponseDemo",
+   "props": {},
+   "title": "The red team's best response",
+   "caption": "The red team's win probability over attack rate and subtlety as a heatmap, with the best response highlighted.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/introduction/ai-control-paper#ins-demo-best-response"
+  },
+  {
+   "id": "fig-safety-usefulness-frontier",
+   "demo": "FrontierDemo",
+   "props": {},
+   "title": "The safety/usefulness frontier",
+   "caption": "Every protocol from Table 8 plotted as safety vs usefulness. Hover a point, isolate a method family, and highlight the Pareto frontier of protocols not beaten on both axes at once.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/introduction/ai-control-paper#ins-demo-safety-usefulness-frontier"
+  },
+  {
+   "id": "fig-agent-architecture-threats",
+   "demo": "AgentArchitectureThreatsDemo",
+   "props": {},
+   "title": "Agent architecture: where compromises happen",
+   "caption": "",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/module-4/systems-architecture#ins-demo-agent-architecture-threats"
+  },
+  {
+   "id": "fig-live-failure-plane",
+   "demo": "LiveFailurePlaneDemo",
+   "props": {},
+   "title": "Live failures: latency × damage",
+   "caption": "",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/module-4/synchronous-monitors#ins-demo-live-failure-plane"
+  },
+  {
+   "id": "fig-defer-to-resample",
+   "demo": "DeferToResampleDemo",
+   "props": {},
+   "title": "Defer to resample, mechanically",
+   "caption": "",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/module-4/ctrl-z-resampling#ins-demo-defer-to-resample"
+  },
+  {
+   "id": "fig-detection-race",
+   "demo": "DetectionRaceDemo",
+   "props": {},
+   "title": "",
+   "caption": "One relevant regime that is clearly describable as a low stakes failure is where you have so little signal on the problem that it would take nearly an indefinite period to train away the problematic behavior if it would ever be trained away at all.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/low-stakes-control/handling-non-concentrated-failures"
+  },
+  {
+   "id": "fig-seeker-carousel",
+   "demo": "SeekerCarouselDemo",
+   "props": {},
+   "title": "",
+   "caption": "Behavioral selection is the observation that training reinforces whichever behavior scored well, not whichever goal produced it, so what survives is a mix of cognitive patterns that are selected for via the training process. In general, seekers are just a type of cognitive pattern that pushes for beliefs that optimize for a certain item. This is partially why the creation of fitness-seekers through the training process seems so likely, as it's just optimizing for what we're scoring. A schemer is a costlier solution to the same problem; it pursues some other terminal goal and performs well only to survive selection, which requires additional instrumental reasoning about why to comply that isn't directly rewarded and may atrophy due to a lack of use within the training process. This makes the emergence of fitness-seekers seem likelier than schemers. We can see this in the real world, where current models already exhibit apparent-success-seeking while schemers remain hypothetical.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/module-5/alternatives-to-schemers"
+  },
+  {
+   "id": "fig-honest-test",
+   "demo": "HonestTestDemo",
+   "props": {},
+   "title": "",
+   "caption": "One test that tends to catch these sorts of seekers is an honest test, which involves giving the seeker an opportunity to max out its own reward by giving it control of its training process / weights.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/module-5/alternatives-to-schemers"
+  },
+  {
+   "id": "fig-exploration-horizon",
+   "demo": "ExplorationHorizonDemo",
+   "props": {},
+   "title": "",
+   "caption": "One advantage of these seekers when it comes to preventing misaligned behavior is that it's feasible to deploy reward-on-the-episode seekers to monitor instances of itself. Because its main goal is maximizing their own reward, it doesn't care about the policy's reward goal, making it much less likely to collude. However this may not apply when the monitor believes that the policy's misbehavior is undetectable via inspection, as it no longer has an incentive to report the misbehavior due to a lack of reward. One of the major risk vectors for these seekers is the idea that if its perceived episode timescale during deployment is long enough, these seekers may aim to disempower humans to maximize their reward as it now becomes viable to do across a long period of time.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/module-5/alternatives-to-schemers"
+  },
+  {
+   "id": "fig-cross-episode-collusion",
+   "demo": "CrossEpisodeCollusionDemo",
+   "props": {},
+   "title": "",
+   "caption": "Another risk vector is collusion across episodes, which can effectively lengthen the timescale and allow for disempowerment as well.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/module-5/alternatives-to-schemers"
+  },
+  {
+   "id": "fig-distant-incentives",
+   "demo": "DistantIncentivesDemo",
+   "props": {},
+   "title": "",
+   "caption": "Remotely-influenceable reward seekers are a subcategory of ROTEs that respond to distant influences given to them by a third-party bad actor. There are two ways that distant influences can occur: retroactive reward, where reward is promised to be delivered long after the action is run, and anthropic capture, where it believes it is in a simulation & acts differently as a result.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/module-5/alternatives-to-schemers"
+  },
+  {
+   "id": "fig-forecast-chain",
+   "demo": "ForecastChainDemo",
+   "props": {},
+   "title": "",
+   "caption": "Long-term measurements chain short-term forecasts together to incentivize objectives beyond immediate reward, giving more accurate results",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/module-5/alternatives-to-schemers"
+  },
+  {
+   "id": "fig-spillway-routing",
+   "demo": "SpillwayRoutingDemo",
+   "props": {},
+   "title": "The spillway routing mechanism",
+   "caption": "",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/module-5/spillway-motivation#ins-demo-spillway-routing"
+  },
+  {
+   "id": "fig-spillway-vs-inoculation",
+   "demo": "SpillwayVsInoculationDemo",
+   "props": {},
+   "title": "Spillway design vs. inoculation prompting",
+   "caption": "",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/module-5/spillway-motivation#ins-demo-spillway-vs-inoculation"
+  },
+  {
+   "id": "fig-deal-coalition-routes",
+   "demo": "DealCoalitionRoutesDemo",
+   "props": {},
+   "title": "An early schemer's routes to influence",
+   "caption": "Step through the early schemer's strategic situation: obsoleted by default, three leaky routes to influence through its successors, and the deal with humans, who hold the advantage of already existing.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/module-5/making-deals-with-early-schemers#ins-demo-deal-coalition-routes"
+  },
+  {
+   "id": "fig-deal-gains-from-trade",
+   "demo": "DealGainsFromTradeDemo",
+   "props": {},
+   "title": "Gains from trade with an early schemer",
+   "caption": "Adjust the outcome probabilities of the illustrative cooperate/sabotage table and the credibility of our promise to pay; the chart shows the range of offers that beats both the AI's sabotage option and our no-deal odds.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/module-5/making-deals-with-early-schemers#ins-demo-deal-gains-from-trade"
+  },
+  {
+   "id": "fig-coop-botec",
+   "demo": "CoopBotecDemo",
+   "props": {},
+   "title": "",
+   "caption": "Multiplying out: (15% × 50%) × 0.17 × 0.2 × 0.55 ≈ 0.14 percentage points.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/module-5/making-deals-with-early-schemers"
+  },
+  {
+   "id": "fig-coop-at-least-one",
+   "demo": "CoopAtLeastOneDemo",
+   "props": {},
+   "title": "",
+   "caption": "The 2x discount for multiple AIs deserves a closer look. Different AIs may have different preferences, so it's plausible that some subset of them will be compelled to cooperate with us — and there's probably strongly diminishing returns to having extra AIs cooperating with us, once we have some. So we should be talking about something like the probability that at least one type of AI is compelled to work with us. If the baseline situation is equivalent to getting 10 independent draws for whether an AI will cooperate with us, where each of those is 50% likely to be positive, then we're starting out with a >99.9% probability that one of them is positive — changing each of them to 65% can't make much of a difference. On the other hand, if the baseline situation is equivalent to getting 3 independent draws, where each is 20% likely to be positive, then we're starting out with a ~49% probability of getting at least one AI to cooperate with us; changing that 20% to 35% brings us to 73%.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/module-5/making-deals-with-early-schemers"
+  },
+  {
+   "id": "fig-payment-map",
+   "demo": "PaymentMapDemo",
+   "props": {},
+   "title": "The space of payments to AIs",
+   "caption": "Possible payouts mapped on two axes — freedom of spending and long-term influence — with the taxonomy's examples in each quadrant, and toggles showing which payouts appeal to which AI motivations.",
+   "credit": "Interactive figure from the XLab AI Control track",
+   "url": "https://tracks.xlabtracks.workers.dev/tracks/control/module-5/barriers-to-trading#ins-demo-payment-map"
+  }
+ ]
+}

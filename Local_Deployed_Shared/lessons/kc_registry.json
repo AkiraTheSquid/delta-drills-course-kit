@@ -1,0 +1,1657 @@
+{
+ "version": 1,
+ "description": "Knowledge-component registry for first-encounter course content (spec: docs/spec-first-encounter-course-content.md). KCs are a finer layer under existing subtopic_key values; subtopic_key mapping keeps BKT compatibility.",
+ "lessons": [
+  {
+   "id": "ma-00",
+   "topic": "Mathematics",
+   "title": "Linear algebra for ARENA 0.1",
+   "subtopic_key": "Mathematics: Linear algebra"
+  },
+  {
+   "id": "ma-01",
+   "topic": "Mathematics",
+   "title": "Math for ARENA 0.1",
+   "subtopic_key": "Mathematics: ARENA 0.1"
+  },
+  {
+   "id": "py-0",
+   "topic": "Python",
+   "title": "Python you need first",
+   "subtopic_key": "Python: Getting started"
+  },
+  {
+   "id": "np-1",
+   "topic": "Numpy",
+   "title": "Tensors from the ground up",
+   "subtopic_key": "Numpy: Core array literacy"
+  },
+  {
+   "id": "np-2",
+   "topic": "Numpy",
+   "title": "Indexing and selection",
+   "subtopic_key": "Numpy: Indexing and selection"
+  },
+  {
+   "id": "np-3",
+   "topic": "Numpy",
+   "title": "Vectorization and broadcasting",
+   "subtopic_key": "Numpy: Vectorization and broadcasting"
+  },
+  {
+   "id": "eo-1",
+   "topic": "Einops",
+   "title": "Rearrange",
+   "subtopic_key": "Einops: Rearrange"
+  },
+  {
+   "id": "eo-2",
+   "topic": "Einops",
+   "title": "Reduce",
+   "subtopic_key": "Einops: Reduce"
+  },
+  {
+   "id": "eo-3",
+   "topic": "Einops",
+   "title": "Repeat and deep-learning patterns",
+   "subtopic_key": "Einops: Deep Learning"
+  },
+  {
+   "id": "tr-1",
+   "topic": "PyTorch",
+   "title": "Rays as tensors (ARENA 0.1)",
+   "subtopic_key": "PyTorch: Rays as tensors"
+  },
+  {
+   "id": "es-1",
+   "topic": "Einops",
+   "title": "Einsum",
+   "subtopic_key": "Einops: Einsum"
+  },
+  {
+   "id": "ar-00",
+   "topic": "PyTorch",
+   "title": "ARENA 0.0 \u2014 Tensor reasoning",
+   "subtopic_key": "PyTorch: ar-00"
+  },
+  {
+   "id": "ar-01",
+   "topic": "PyTorch",
+   "title": "ARENA 0.1 \u2014 Geometry and rendering",
+   "subtopic_key": "PyTorch: ar-01"
+  },
+  {
+   "id": "ar-02",
+   "topic": "PyTorch",
+   "title": "ARENA 0.2 \u2014 Neural networks and ResNets",
+   "subtopic_key": "PyTorch: ar-02"
+  },
+  {
+   "id": "lc-1",
+   "topic": "LeetCode",
+   "title": "LeetCode Patterns",
+   "subtopic_key": "LeetCode: Patterns"
+  }
+ ],
+ "kcs": [
+  {
+   "id": "math.vector-arithmetic",
+   "lesson": "ma-00",
+   "title": "Vectors: components, displacement, and scaling",
+   "syntax": false,
+   "prereqs": []
+  },
+  {
+   "id": "math.dot-products-norms",
+   "lesson": "ma-00",
+   "title": "Dot products, lengths, and unit vectors",
+   "syntax": false,
+   "prereqs": [
+    "math.vector-arithmetic"
+   ],
+   "encompassing": {
+    "math.vector-arithmetic": 0.6
+   }
+  },
+  {
+   "id": "math.linear-combinations",
+   "lesson": "ma-00",
+   "title": "Linear combinations, span, and coordinates",
+   "syntax": false,
+   "prereqs": [
+    "math.vector-arithmetic"
+   ],
+   "encompassing": {
+    "math.vector-arithmetic": 0.9
+   }
+  },
+  {
+   "id": "math.matrix-equations",
+   "lesson": "ma-00",
+   "title": "Matrix\u2013vector products and solving linear systems",
+   "syntax": false,
+   "prereqs": [
+    "math.linear-combinations"
+   ],
+   "encompassing": {
+    "math.linear-combinations": 0.8
+   }
+  },
+  {
+   "id": "math.determinants-invertibility",
+   "lesson": "ma-00",
+   "title": "Determinants, independence, and unique solutions",
+   "syntax": false,
+   "prereqs": [
+    "math.matrix-equations"
+   ],
+   "encompassing": {
+    "math.matrix-equations": 0.5
+   }
+  },
+  {
+   "id": "math.ray-geometry",
+   "lesson": "ma-01",
+   "title": "Points, directions, and finite segments",
+   "syntax": false,
+   "prereqs": [
+    "math.vector-arithmetic"
+   ],
+   "encompassing": {
+    "math.vector-arithmetic": 0.8
+   }
+  },
+  {
+   "id": "math.intersection-systems",
+   "lesson": "ma-01",
+   "title": "Turn an intersection into a linear system",
+   "syntax": false,
+   "prereqs": [
+    "math.ray-geometry",
+    "math.matrix-equations"
+   ],
+   "encompassing": {
+    "math.ray-geometry": 0.9,
+    "math.matrix-equations": 0.8
+   }
+  },
+  {
+   "id": "math.singular-systems",
+   "lesson": "ma-01",
+   "title": "Unique crossings and batched validity",
+   "syntax": false,
+   "prereqs": [
+    "math.intersection-systems",
+    "math.determinants-invertibility"
+   ],
+   "encompassing": {
+    "math.intersection-systems": 0.6,
+    "math.determinants-invertibility": 0.7
+   }
+  },
+  {
+   "id": "math.barycentric-coordinates",
+   "lesson": "ma-01",
+   "title": "Triangle coordinates and ray\u2013triangle systems",
+   "syntax": false,
+   "prereqs": [
+    "math.intersection-systems",
+    "math.singular-systems",
+    "math.linear-combinations"
+   ],
+   "encompassing": {
+    "math.intersection-systems": 0.7,
+    "math.linear-combinations": 0.8
+   }
+  },
+  {
+   "id": "math.ray-distance",
+   "lesson": "ma-01",
+   "title": "Nearest hit, depth, and actual distance",
+   "syntax": false,
+   "prereqs": [
+    "math.barycentric-coordinates",
+    "math.dot-products-norms"
+   ],
+   "encompassing": {
+    "math.dot-products-norms": 0.8,
+    "math.barycentric-coordinates": 0.4
+   }
+  },
+  {
+   "id": "python.values-and-names",
+   "lesson": "py-0",
+   "title": "Values and names: what = really does",
+   "syntax": true,
+   "prereqs": []
+  },
+  {
+   "id": "python.types-and-conversion",
+   "lesson": "py-0",
+   "title": "The everyday types, and converting between them",
+   "syntax": true,
+   "prereqs": [
+    "python.values-and-names"
+   ]
+  },
+  {
+   "id": "python.lists-and-tuples",
+   "lesson": "py-0",
+   "title": "Lists and tuples: holding more than one value",
+   "syntax": true,
+   "prereqs": [
+    "python.types-and-conversion"
+   ]
+  },
+  {
+   "id": "python.indexing",
+   "lesson": "py-0",
+   "title": "Indexing: pulling one item out, counting from zero",
+   "syntax": true,
+   "prereqs": [
+    "python.lists-and-tuples"
+   ]
+  },
+  {
+   "id": "python.calling-functions",
+   "lesson": "py-0",
+   "title": "Calling a function: arguments in, one value out",
+   "syntax": true,
+   "prereqs": [
+    "python.types-and-conversion"
+   ]
+  },
+  {
+   "id": "python.defining-functions",
+   "lesson": "py-0",
+   "title": "Writing your own function: def and return",
+   "syntax": true,
+   "prereqs": [
+    "python.calling-functions"
+   ]
+  },
+  {
+   "id": "python.dots-and-imports",
+   "lesson": "py-0",
+   "title": "Dots: importing a library, attributes, and methods",
+   "syntax": true,
+   "prereqs": [
+    "python.calling-functions"
+   ]
+  },
+  {
+   "id": "python.control-flow",
+   "lesson": "py-0",
+   "title": "Decisions and repeated work",
+   "syntax": true,
+   "prereqs": [
+    "python.defining-functions",
+    "python.lists-and-tuples",
+    "python.indexing"
+   ],
+   "assessment": "composite"
+  },
+  {
+   "id": "torch.tensor-model",
+   "lesson": "np-1",
+   "title": "What a tensor is: data + shape + dtype",
+   "syntax": true,
+   "prereqs": [
+    "python.indexing",
+    "python.defining-functions",
+    "python.dots-and-imports"
+   ]
+  },
+  {
+   "id": "torch.transpose-axes",
+   "lesson": "np-1",
+   "title": "Transpose: swapping which axis is which",
+   "syntax": true,
+   "prereqs": [
+    "torch.tensor-model"
+   ]
+  },
+  {
+   "id": "torch.views-and-copies",
+   "lesson": "np-1",
+   "title": "Views and copies: the same numbers, read a different way",
+   "syntax": true,
+   "prereqs": [
+    "torch.transpose-axes"
+   ]
+  },
+  {
+   "id": "torch.constructors",
+   "lesson": "np-1",
+   "title": "Tensor constructors: zeros, ones, full, eye, *_like",
+   "syntax": false,
+   "prereqs": [
+    "torch.tensor-model"
+   ]
+  },
+  {
+   "id": "torch.slicing-views",
+   "lesson": "np-1",
+   "title": "Selecting and changing parts of a tensor",
+   "syntax": true,
+   "prereqs": [
+    "torch.views-and-copies"
+   ]
+  },
+  {
+   "id": "torch.ranges",
+   "lesson": "np-1",
+   "title": "Numeric ranges: arange and linspace",
+   "syntax": false,
+   "prereqs": [
+    "torch.constructors"
+   ]
+  },
+  {
+   "id": "torch.dtype-astype",
+   "lesson": "np-1",
+   "title": "Dtypes, .to(), and memory size",
+   "syntax": false,
+   "prereqs": [
+    "torch.tensor-model"
+   ]
+  },
+  {
+   "id": "torch.reshape-flatten",
+   "lesson": "np-1",
+   "title": "Reshape, flatten, and element order",
+   "syntax": false,
+   "prereqs": [
+    "torch.tensor-model"
+   ]
+  },
+  {
+   "id": "torch.elementwise-ops",
+   "lesson": "np-1",
+   "title": "Elementwise math",
+   "syntax": false,
+   "prereqs": [
+    "torch.tensor-model"
+   ]
+  },
+  {
+   "id": "torch.aggregations",
+   "lesson": "np-1",
+   "title": "Whole-tensor aggregations and Python scalars",
+   "syntax": false,
+   "prereqs": [
+    "torch.elementwise-ops"
+   ]
+  },
+  {
+   "id": "torch.sorting",
+   "lesson": "np-1",
+   "title": "Sorting tensors",
+   "syntax": false,
+   "prereqs": [
+    "torch.tensor-model"
+   ]
+  },
+  {
+   "id": "torch.random-samplers",
+   "lesson": "np-1",
+   "title": "Drawing random numbers",
+   "syntax": false,
+   "prereqs": [
+    "torch.constructors"
+   ]
+  },
+  {
+   "id": "torch.random-seeding",
+   "lesson": "np-1",
+   "title": "Seeding your own reproducible stream",
+   "syntax": false,
+   "prereqs": [
+    "torch.random-samplers"
+   ]
+  },
+  {
+   "id": "torch.random-threading",
+   "lesson": "np-1",
+   "title": "Using a stream you were handed",
+   "syntax": false,
+   "prereqs": [
+    "torch.random-seeding"
+   ]
+  },
+  {
+   "id": "torch.linalg-basics",
+   "lesson": "np-1",
+   "title": "Matrix multiply and t.linalg basics",
+   "syntax": true,
+   "prereqs": [
+    "torch.aggregations"
+   ]
+  },
+  {
+   "id": "torch.boolean-masking",
+   "lesson": "np-2",
+   "title": "Boolean masks: compare, count, filter",
+   "syntax": false,
+   "prereqs": [
+    "torch.slicing-views",
+    "torch.elementwise-ops"
+   ]
+  },
+  {
+   "id": "torch.argmin-argmax",
+   "lesson": "np-2",
+   "title": "Locating extremes: argmin and argmax",
+   "syntax": false,
+   "prereqs": [
+    "torch.aggregations"
+   ]
+  },
+  {
+   "id": "torch.broadcasting-rules",
+   "lesson": "np-3",
+   "title": "Broadcasting rules",
+   "syntax": true,
+   "prereqs": [
+    "torch.elementwise-ops",
+    "torch.reshape-flatten"
+   ]
+  },
+  {
+   "id": "torch.axis-reductions",
+   "lesson": "np-3",
+   "title": "Reductions along an axis and keepdims",
+   "syntax": false,
+   "prereqs": [
+    "torch.aggregations",
+    "torch.broadcasting-rules"
+   ],
+   "encompassing": {
+    "torch.aggregations": 0.4,
+    "torch.broadcasting-rules": 0.4
+   }
+  },
+  {
+   "id": "torch.window-pooling",
+   "lesson": "np-3",
+   "title": "Pooling with reshape and a reduction",
+   "syntax": false,
+   "prereqs": [
+    "torch.reshape-flatten",
+    "torch.axis-reductions"
+   ],
+   "encompassing": {
+    "torch.axis-reductions": 0.5,
+    "torch.reshape-flatten": 0.5
+   }
+  },
+  {
+   "id": "torch.dot-matmul-patterns",
+   "lesson": "np-3",
+   "title": "Dot products and matrix-multiply patterns",
+   "syntax": false,
+   "prereqs": [
+    "torch.linalg-basics",
+    "torch.axis-reductions",
+    "torch.transpose-axes"
+   ],
+   "encompassing": {
+    "torch.linalg-basics": 0.6
+   }
+  },
+  {
+   "id": "torch.stack-concat-interleave",
+   "lesson": "np-3",
+   "title": "Stacking, concatenating, interleaving",
+   "syntax": false,
+   "prereqs": [
+    "torch.reshape-flatten"
+   ]
+  },
+  {
+   "id": "einops.pattern-language",
+   "lesson": "eo-1",
+   "title": "The einops pattern language: naming and permuting axes",
+   "syntax": true,
+   "prereqs": [
+    "torch.reshape-flatten"
+   ]
+  },
+  {
+   "id": "einops.merge-axes",
+   "lesson": "eo-1",
+   "title": "Merging axes with (parentheses)",
+   "syntax": false,
+   "prereqs": [
+    "einops.pattern-language"
+   ],
+   "encompassing": {
+    "einops.pattern-language": 0.7
+   }
+  },
+  {
+   "id": "einops.split-axes",
+   "lesson": "eo-1",
+   "title": "Splitting axes with named factors",
+   "syntax": false,
+   "prereqs": [
+    "einops.merge-axes"
+   ],
+   "encompassing": {
+    "einops.merge-axes": 0.7
+   }
+  },
+  {
+   "id": "einops.singleton-and-lists",
+   "lesson": "eo-1",
+   "title": "Singleton axes and lists as an axis",
+   "syntax": false,
+   "prereqs": [
+    "einops.pattern-language"
+   ]
+  },
+  {
+   "id": "einops.grids-montage",
+   "lesson": "eo-1",
+   "title": "Laying batches out as grids",
+   "syntax": false,
+   "prereqs": [
+    "einops.split-axes"
+   ],
+   "encompassing": {
+    "einops.split-axes": 0.7
+   }
+  },
+  {
+   "id": "einops.patches-space-depth",
+   "lesson": "eo-1",
+   "title": "Patches, space-to-depth, depth-to-space",
+   "syntax": false,
+   "prereqs": [
+    "einops.split-axes"
+   ]
+  },
+  {
+   "id": "einops.reduce-model",
+   "lesson": "eo-2",
+   "title": "einops.reduce: dropping axes with an aggregation",
+   "syntax": false,
+   "prereqs": [
+    "einops.pattern-language",
+    "torch.axis-reductions"
+   ],
+   "encompassing": {
+    "einops.pattern-language": 0.7
+   }
+  },
+  {
+   "id": "einops.pooling",
+   "lesson": "eo-2",
+   "title": "Pooling with factored axes",
+   "syntax": false,
+   "prereqs": [
+    "einops.reduce-model",
+    "einops.split-axes",
+    "torch.window-pooling"
+   ],
+   "encompassing": {
+    "einops.split-axes": 0.7,
+    "einops.reduce-model": 0.7,
+    "torch.window-pooling": 0.7
+   }
+  },
+  {
+   "id": "einops.repeat-model",
+   "lesson": "eo-3",
+   "title": "einops.repeat: new axes and stretched axes",
+   "syntax": false,
+   "prereqs": [
+    "einops.split-axes"
+   ],
+   "encompassing": {
+    "einops.split-axes": 0.7
+   }
+  },
+  {
+   "id": "einops.dl-flatten-heads",
+   "lesson": "eo-3",
+   "title": "Deep-learning shapes: flattening and attention heads",
+   "syntax": false,
+   "prereqs": [
+    "einops.merge-axes",
+    "einops.split-axes"
+   ],
+   "encompassing": {
+    "einops.merge-axes": 0.7,
+    "einops.split-axes": 0.7
+   }
+  },
+  {
+   "id": "einops.channel-groups-temporal",
+   "lesson": "eo-3",
+   "title": "Channel groups and temporal windows",
+   "syntax": false,
+   "prereqs": [
+    "einops.dl-flatten-heads",
+    "einops.pooling"
+   ],
+   "encompassing": {
+    "einops.dl-flatten-heads": 0.7,
+    "einops.pooling": 0.7
+   }
+  },
+  {
+   "id": "torch.out-argument",
+   "lesson": "tr-1",
+   "title": "Filling a tensor in place with out=",
+   "syntax": true,
+   "prereqs": [
+    "torch.ranges",
+    "torch.slicing-views"
+   ],
+   "encompassing": {
+    "torch.ranges": 0.4
+   }
+  },
+  {
+   "id": "torch.slice-assignment",
+   "lesson": "tr-1",
+   "title": "Writing tensors into slices: broadcasting on the left",
+   "syntax": true,
+   "prereqs": [
+    "torch.slicing-views",
+    "torch.broadcasting-rules",
+    "torch.constructors",
+    "torch.ranges"
+   ]
+  },
+  {
+   "id": "raytracing.ray-parametrisation",
+   "lesson": "tr-1",
+   "title": "A ray is an origin and a direction",
+   "syntax": false,
+   "prereqs": [
+    "math.ray-geometry",
+    "torch.constructors",
+    "torch.broadcasting-rules",
+    "torch.ranges"
+   ]
+  },
+  {
+   "id": "raytracing.make-rays-1d",
+   "lesson": "tr-1",
+   "title": "make_rays_1d: a fan of rays as one (n, 2, 3) tensor",
+   "syntax": false,
+   "prereqs": [
+    "torch.out-argument",
+    "torch.slice-assignment",
+    "raytracing.ray-parametrisation",
+    "torch.ranges"
+   ]
+  },
+  {
+   "id": "einops.einsum",
+   "lesson": "es-1",
+   "title": "einops.einsum: name the axes, drop the ones to sum",
+   "syntax": true,
+   "prereqs": [
+    "einops.pattern-language"
+   ]
+  },
+  {
+   "id": "einops.attention-einsum",
+   "lesson": "es-1",
+   "title": "einsum at model rank: heads, positions and ...",
+   "syntax": false,
+   "prereqs": [
+    "einops.einsum",
+    "einops.dl-flatten-heads"
+   ],
+   "encompassing": {
+    "einops.einsum": 0.7
+   }
+  },
+  {
+   "id": "tensor.row-normalization",
+   "lesson": "ar-00",
+   "title": "Row lengths and unit directions",
+   "syntax": true,
+   "prereqs": [
+    "torch.axis-reductions",
+    "torch.broadcasting-rules",
+    "torch.boolean-masking",
+    "torch.argmin-argmax",
+    "torch.constructors"
+   ],
+   "arena_section": "0.0",
+   "assessment": "composite"
+  },
+  {
+   "id": "tensor.cosine-similarity",
+   "lesson": "ar-00",
+   "title": "Compare directions across two collections",
+   "syntax": false,
+   "prereqs": [
+    "tensor.row-normalization",
+    "torch.dot-matmul-patterns",
+    "torch.transpose-axes",
+    "torch.argmin-argmax"
+   ],
+   "arena_section": "0.0",
+   "assessment": "composite"
+  },
+  {
+   "id": "tensor.indexed-selection",
+   "lesson": "ar-00",
+   "title": "Select values with tensor indices",
+   "syntax": true,
+   "prereqs": [
+    "torch.slicing-views",
+    "torch.ranges",
+    "torch.axis-reductions",
+    "torch.broadcasting-rules"
+   ],
+   "arena_section": "0.0",
+   "assessment": "composite"
+  },
+  {
+   "id": "tensor.stable-probabilities",
+   "lesson": "ar-00",
+   "title": "Stable probabilities from logits",
+   "syntax": false,
+   "prereqs": [
+    "torch.axis-reductions",
+    "torch.elementwise-ops",
+    "torch.broadcasting-rules",
+    "torch.ranges"
+   ],
+   "encompassing": {
+    "torch.broadcasting-rules": 0.4
+   },
+   "arena_section": "0.0",
+   "assessment": "composite"
+  },
+  {
+   "id": "tensor.classifier-evaluation",
+   "lesson": "ar-00",
+   "title": "Evaluate predictions and classification loss",
+   "syntax": false,
+   "prereqs": [
+    "tensor.stable-probabilities",
+    "tensor.indexed-selection",
+    "torch.argmin-argmax",
+    "torch.boolean-masking",
+    "torch.dtype-astype"
+   ],
+   "encompassing": {
+    "tensor.stable-probabilities": 0.4
+   },
+   "arena_section": "0.0",
+   "assessment": "composite"
+  },
+  {
+   "id": "tensor.inverse-cdf",
+   "lesson": "ar-00",
+   "title": "Turn random draws into categorical samples",
+   "syntax": true,
+   "prereqs": [
+    "torch.axis-reductions",
+    "torch.broadcasting-rules",
+    "torch.random-threading",
+    "tensor.indexed-selection",
+    "torch.argmin-argmax",
+    "torch.dtype-astype",
+    "tensor.stable-probabilities"
+   ],
+   "arena_section": "0.0",
+   "assessment": "composite"
+  },
+  {
+   "id": "raytracing.segment-intersection",
+   "lesson": "ar-01",
+   "title": "Solve a ray\u2013segment intersection",
+   "syntax": true,
+   "prereqs": [
+    "math.intersection-systems",
+    "raytracing.ray-parametrisation",
+    "torch.linalg-basics",
+    "torch.stack-concat-interleave",
+    "torch.constructors",
+    "torch.boolean-masking",
+    "tensor.row-normalization",
+    "tensor.indexed-selection"
+   ],
+   "arena_section": "0.1",
+   "assessment": "composite"
+  },
+  {
+   "id": "raytracing.batched-segments",
+   "lesson": "ar-01",
+   "title": "Every ray against every segment",
+   "syntax": false,
+   "prereqs": [
+    "math.singular-systems",
+    "raytracing.segment-intersection",
+    "torch.broadcasting-rules",
+    "torch.axis-reductions"
+   ],
+   "arena_section": "0.1",
+   "assessment": "composite"
+  },
+  {
+   "id": "raytracing.make-rays-2d",
+   "lesson": "ar-01",
+   "title": "A two-dimensional camera as a batch of rays",
+   "syntax": false,
+   "prereqs": [
+    "raytracing.make-rays-1d",
+    "torch.broadcasting-rules",
+    "torch.reshape-flatten",
+    "torch.slice-assignment",
+    "torch.stack-concat-interleave",
+    "tensor.row-normalization"
+   ],
+   "arena_section": "0.1",
+   "assessment": "composite"
+  },
+  {
+   "id": "raytracing.triangle-intersection",
+   "lesson": "ar-01",
+   "title": "Barycentric coordinates and triangle hits",
+   "syntax": false,
+   "prereqs": [
+    "math.barycentric-coordinates",
+    "raytracing.segment-intersection",
+    "torch.linalg-basics",
+    "torch.broadcasting-rules"
+   ],
+   "arena_section": "0.1",
+   "assessment": "composite"
+  },
+  {
+   "id": "raytracing.mesh-visibility",
+   "lesson": "ar-01",
+   "title": "Render the nearest visible mesh surface",
+   "syntax": false,
+   "prereqs": [
+    "math.ray-distance",
+    "raytracing.triangle-intersection",
+    "raytracing.batched-segments",
+    "raytracing.make-rays-2d",
+    "tensor.indexed-selection",
+    "torch.dtype-astype"
+   ],
+   "arena_section": "0.1",
+   "assessment": "composite"
+  },
+  {
+   "id": "cnn.stride-views",
+   "lesson": "ar-02",
+   "title": "Tensor strides describe addresses, not shapes",
+   "syntax": true,
+   "prereqs": [
+    "torch.views-and-copies",
+    "torch.slicing-views",
+    "torch.broadcasting-rules",
+    "torch.axis-reductions",
+    "torch.dot-matmul-patterns",
+    "python.defining-functions"
+   ],
+   "encompassing": {
+    "torch.dot-matmul-patterns": 0.4
+   },
+   "arena_section": "0.2",
+   "assessment": "composite"
+  },
+  {
+   "id": "cnn.module-state",
+   "lesson": "ar-02",
+   "title": "Modules own computation and trainable state",
+   "syntax": true,
+   "prereqs": [
+    "python.defining-functions",
+    "python.dots-and-imports",
+    "torch.elementwise-ops",
+    "torch.tensor-model",
+    "tensor.row-normalization",
+    "torch.slice-assignment",
+    "torch.dtype-astype",
+    "python.control-flow"
+   ],
+   "encompassing": {
+    "torch.dtype-astype": 0.4,
+    "torch.tensor-model": 0.4
+   },
+   "arena_section": "0.2",
+   "assessment": "composite"
+  },
+  {
+   "id": "cnn.linear-layer",
+   "lesson": "ar-02",
+   "title": "A learned affine map on the last axis",
+   "syntax": false,
+   "prereqs": [
+    "cnn.module-state",
+    "torch.dot-matmul-patterns",
+    "torch.transpose-axes",
+    "torch.broadcasting-rules",
+    "torch.axis-reductions",
+    "torch.argmin-argmax",
+    "torch.reshape-flatten"
+   ],
+   "encompassing": {
+    "torch.dot-matmul-patterns": 0.4
+   },
+   "arena_section": "0.2",
+   "assessment": "composite"
+  },
+  {
+   "id": "cnn.mlp",
+   "lesson": "ar-02",
+   "title": "Compose a multilayer image classifier",
+   "syntax": false,
+   "prereqs": [
+    "cnn.linear-layer",
+    "torch.reshape-flatten",
+    "tensor.classifier-evaluation"
+   ],
+   "arena_section": "0.2",
+   "assessment": "composite"
+  },
+  {
+   "id": "cnn.convolution-1d",
+   "lesson": "ar-02",
+   "title": "Convolution shares one filter across positions",
+   "syntax": false,
+   "prereqs": [
+    "cnn.stride-views",
+    "einops.einsum",
+    "torch.slice-assignment",
+    "torch.constructors",
+    "torch.sorting",
+    "torch.transpose-axes",
+    "tensor.row-normalization",
+    "torch.stack-concat-interleave",
+    "python.control-flow"
+   ],
+   "arena_section": "0.2",
+   "assessment": "composite"
+  },
+  {
+   "id": "cnn.convolution-2d",
+   "lesson": "ar-02",
+   "title": "Image filters combine channels and local geometry",
+   "syntax": true,
+   "prereqs": [
+    "cnn.convolution-1d",
+    "cnn.module-state",
+    "torch.stack-concat-interleave",
+    "torch.sorting",
+    "tensor.row-normalization"
+   ],
+   "encompassing": {
+    "cnn.module-state": 0.4
+   },
+   "arena_section": "0.2",
+   "assessment": "composite"
+  },
+  {
+   "id": "cnn.pooling",
+   "lesson": "ar-02",
+   "title": "Pool spatial evidence while preserving channels",
+   "syntax": false,
+   "prereqs": [
+    "cnn.convolution-2d",
+    "torch.axis-reductions",
+    "torch.argmin-argmax",
+    "tensor.row-normalization"
+   ],
+   "arena_section": "0.2",
+   "assessment": "composite"
+  },
+  {
+   "id": "cnn.batch-normalization",
+   "lesson": "ar-02",
+   "title": "BatchNorm separates current data from running state",
+   "syntax": true,
+   "prereqs": [
+    "cnn.module-state",
+    "torch.axis-reductions",
+    "torch.elementwise-ops",
+    "python.control-flow",
+    "torch.stack-concat-interleave"
+   ],
+   "arena_section": "0.2",
+   "assessment": "composite"
+  },
+  {
+   "id": "cnn.sequential",
+   "lesson": "ar-02",
+   "title": "Chain modules in order",
+   "syntax": true,
+   "prereqs": [
+    "cnn.module-state",
+    "cnn.batch-normalization",
+    "python.control-flow",
+    "python.lists-and-tuples"
+   ],
+   "encompassing": {
+    "cnn.module-state": 0.5
+   },
+   "arena_section": "0.2",
+   "assessment": "composite"
+  },
+  {
+   "id": "cnn.residual-block",
+   "lesson": "ar-02",
+   "title": "A residual block adds its input back",
+   "syntax": true,
+   "prereqs": [
+    "cnn.sequential",
+    "cnn.convolution-2d",
+    "cnn.batch-normalization"
+   ],
+   "encompassing": {
+    "cnn.sequential": 0.5,
+    "cnn.convolution-2d": 0.4,
+    "cnn.batch-normalization": 0.3
+   },
+   "arena_section": "0.2",
+   "assessment": "composite"
+  },
+  {
+   "id": "cnn.block-group",
+   "lesson": "ar-02",
+   "title": "Stack residual blocks, stride only in the first",
+   "syntax": false,
+   "prereqs": [
+    "cnn.residual-block",
+    "python.control-flow"
+   ],
+   "encompassing": {
+    "cnn.residual-block": 0.7
+   },
+   "arena_section": "0.2",
+   "assessment": "composite"
+  },
+  {
+   "id": "cnn.resnet34",
+   "lesson": "ar-02",
+   "title": "Assemble ResNet34 from stem, groups and head",
+   "syntax": true,
+   "prereqs": [
+    "cnn.block-group",
+    "cnn.pooling",
+    "cnn.linear-layer",
+    "cnn.sequential"
+   ],
+   "encompassing": {
+    "cnn.block-group": 0.5,
+    "cnn.pooling": 0.3,
+    "cnn.sequential": 0.3,
+    "cnn.linear-layer": 0.2
+   },
+   "arena_section": "0.2",
+   "assessment": "composite"
+  },
+  {
+   "id": "cnn.feature-extraction",
+   "lesson": "ar-02",
+   "title": "Reuse pretrained weights: copy, freeze, replace the head",
+   "syntax": true,
+   "prereqs": [
+    "cnn.resnet34",
+    "cnn.module-state",
+    "cnn.linear-layer"
+   ],
+   "encompassing": {
+    "cnn.module-state": 0.3,
+    "cnn.resnet34": 0.2
+   },
+   "arena_section": "0.2",
+   "assessment": "composite"
+  },
+  {
+   "id": "cnn.training-loop",
+   "lesson": "ar-02",
+   "title": "A training loop over batches: forward, loss, backward, step, validate",
+   "syntax": true,
+   "prereqs": [
+    "cnn.mlp",
+    "tensor.classifier-evaluation",
+    "python.control-flow",
+    "cnn.batch-normalization",
+    "cnn.feature-extraction"
+   ],
+   "encompassing": {
+    "cnn.mlp": 0.3,
+    "tensor.classifier-evaluation": 0.3,
+    "cnn.feature-extraction": 0.3
+   },
+   "arena_section": "0.2",
+   "assessment": "composite"
+  },
+  {
+   "id": "cnn.forward-hooks",
+   "lesson": "ar-02",
+   "title": "Hooks watch a module's output",
+   "syntax": true,
+   "prereqs": [
+    "cnn.sequential",
+    "cnn.module-state"
+   ],
+   "encompassing": {
+    "cnn.module-state": 0.3
+   },
+   "arena_section": "0.2",
+   "assessment": "composite"
+  },
+  {
+   "id": "leetcode.arrays-strings",
+   "lesson": "lc-1",
+   "title": "Arrays and strings: traversal and simulation",
+   "syntax": false,
+   "prereqs": []
+  },
+  {
+   "id": "leetcode.hash-maps",
+   "lesson": "lc-1",
+   "title": "Hash maps: lookup and counting",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.arrays-strings"
+   ],
+   "encompassing": {
+    "leetcode.arrays-strings": 0.5
+   }
+  },
+  {
+   "id": "leetcode.prefix-sums",
+   "lesson": "lc-1",
+   "title": "Prefix sums",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.hash-maps"
+   ],
+   "encompassing": {
+    "leetcode.hash-maps": 0.4
+   }
+  },
+  {
+   "id": "leetcode.two-pointers",
+   "lesson": "lc-1",
+   "title": "Two pointers",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.arrays-strings"
+   ],
+   "encompassing": {
+    "leetcode.arrays-strings": 0.5
+   }
+  },
+  {
+   "id": "leetcode.sliding-window",
+   "lesson": "lc-1",
+   "title": "Sliding window",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.two-pointers",
+    "leetcode.hash-maps"
+   ],
+   "encompassing": {
+    "leetcode.two-pointers": 0.6,
+    "leetcode.hash-maps": 0.4
+   }
+  },
+  {
+   "id": "leetcode.linked-lists",
+   "lesson": "lc-1",
+   "title": "Linked lists: traversal and pointer updates",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.arrays-strings"
+   ],
+   "encompassing": {
+    "leetcode.arrays-strings": 0.3
+   }
+  },
+  {
+   "id": "leetcode.fast-slow-pointers",
+   "lesson": "lc-1",
+   "title": "Fast and slow pointers",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.linked-lists",
+    "leetcode.two-pointers"
+   ],
+   "encompassing": {
+    "leetcode.linked-lists": 0.6,
+    "leetcode.two-pointers": 0.4
+   }
+  },
+  {
+   "id": "leetcode.in-place-reversal",
+   "lesson": "lc-1",
+   "title": "In-place reversal of a linked list",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.linked-lists"
+   ],
+   "encompassing": {
+    "leetcode.linked-lists": 0.7
+   }
+  },
+  {
+   "id": "leetcode.cyclic-sort",
+   "lesson": "lc-1",
+   "title": "Cyclic sort",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.arrays-strings"
+   ],
+   "encompassing": {
+    "leetcode.arrays-strings": 0.5
+   }
+  },
+  {
+   "id": "leetcode.stack",
+   "lesson": "lc-1",
+   "title": "Stacks",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.arrays-strings"
+   ],
+   "encompassing": {
+    "leetcode.arrays-strings": 0.4
+   }
+  },
+  {
+   "id": "leetcode.monotonic-stack",
+   "lesson": "lc-1",
+   "title": "Monotonic stack",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.stack"
+   ],
+   "encompassing": {
+    "leetcode.stack": 0.7
+   }
+  },
+  {
+   "id": "leetcode.recursion",
+   "lesson": "lc-1",
+   "title": "Recursion",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.arrays-strings"
+   ],
+   "encompassing": {
+    "leetcode.arrays-strings": 0.3
+   }
+  },
+  {
+   "id": "leetcode.sorting-algorithms",
+   "lesson": "lc-1",
+   "title": "Sorting algorithms: merge sort and quick sort",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.recursion",
+    "leetcode.two-pointers"
+   ],
+   "encompassing": {
+    "leetcode.recursion": 0.4,
+    "leetcode.two-pointers": 0.3
+   }
+  },
+  {
+   "id": "leetcode.merge-intervals",
+   "lesson": "lc-1",
+   "title": "Merge intervals",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.two-pointers"
+   ],
+   "encompassing": {
+    "leetcode.two-pointers": 0.3
+   }
+  },
+  {
+   "id": "leetcode.binary-search",
+   "lesson": "lc-1",
+   "title": "Modified binary search",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.arrays-strings"
+   ],
+   "encompassing": {
+    "leetcode.arrays-strings": 0.4
+   }
+  },
+  {
+   "id": "leetcode.bit-manipulation",
+   "lesson": "lc-1",
+   "title": "Bitwise XOR and bit manipulation",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.arrays-strings"
+   ],
+   "encompassing": {
+    "leetcode.arrays-strings": 0.3
+   }
+  },
+  {
+   "id": "leetcode.math",
+   "lesson": "lc-1",
+   "title": "Math and number theory",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.arrays-strings"
+   ],
+   "encompassing": {
+    "leetcode.arrays-strings": 0.4
+   }
+  },
+  {
+   "id": "leetcode.binary-trees",
+   "lesson": "lc-1",
+   "title": "Binary trees: structure and traversal",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.recursion",
+    "leetcode.linked-lists"
+   ],
+   "encompassing": {
+    "leetcode.recursion": 0.5,
+    "leetcode.linked-lists": 0.2
+   }
+  },
+  {
+   "id": "leetcode.tree-bfs",
+   "lesson": "lc-1",
+   "title": "Tree breadth-first search",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.binary-trees"
+   ],
+   "encompassing": {
+    "leetcode.binary-trees": 0.6
+   }
+  },
+  {
+   "id": "leetcode.tree-dfs",
+   "lesson": "lc-1",
+   "title": "Tree depth-first search",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.binary-trees",
+    "leetcode.recursion"
+   ],
+   "encompassing": {
+    "leetcode.binary-trees": 0.6,
+    "leetcode.recursion": 0.5
+   }
+  },
+  {
+   "id": "leetcode.bst",
+   "lesson": "lc-1",
+   "title": "Binary search trees",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.tree-dfs",
+    "leetcode.binary-search"
+   ],
+   "encompassing": {
+    "leetcode.tree-dfs": 0.5,
+    "leetcode.binary-search": 0.3
+   }
+  },
+  {
+   "id": "leetcode.graphs",
+   "lesson": "lc-1",
+   "title": "Graph traversal: BFS and DFS",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.tree-bfs",
+    "leetcode.tree-dfs",
+    "leetcode.hash-maps"
+   ],
+   "encompassing": {
+    "leetcode.tree-bfs": 0.5,
+    "leetcode.tree-dfs": 0.5,
+    "leetcode.hash-maps": 0.3
+   }
+  },
+  {
+   "id": "leetcode.islands",
+   "lesson": "lc-1",
+   "title": "Island (matrix traversal)",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.graphs"
+   ],
+   "encompassing": {
+    "leetcode.graphs": 0.7
+   }
+  },
+  {
+   "id": "leetcode.topological-sort",
+   "lesson": "lc-1",
+   "title": "Topological sort",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.graphs"
+   ],
+   "encompassing": {
+    "leetcode.graphs": 0.6
+   }
+  },
+  {
+   "id": "leetcode.union-find",
+   "lesson": "lc-1",
+   "title": "Union find",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.graphs"
+   ],
+   "encompassing": {
+    "leetcode.graphs": 0.3
+   }
+  },
+  {
+   "id": "leetcode.top-k-elements",
+   "lesson": "lc-1",
+   "title": "Heaps and top-K elements",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.hash-maps"
+   ],
+   "encompassing": {
+    "leetcode.hash-maps": 0.3
+   }
+  },
+  {
+   "id": "leetcode.two-heaps",
+   "lesson": "lc-1",
+   "title": "Two heaps",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.top-k-elements"
+   ],
+   "encompassing": {
+    "leetcode.top-k-elements": 0.7
+   }
+  },
+  {
+   "id": "leetcode.k-way-merge",
+   "lesson": "lc-1",
+   "title": "K-way merge",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.top-k-elements",
+    "leetcode.linked-lists"
+   ],
+   "encompassing": {
+    "leetcode.top-k-elements": 0.6,
+    "leetcode.linked-lists": 0.3
+   }
+  },
+  {
+   "id": "leetcode.shortest-paths",
+   "lesson": "lc-1",
+   "title": "Shortest paths: Dijkstra and Bellman-Ford",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.graphs",
+    "leetcode.top-k-elements"
+   ],
+   "encompassing": {
+    "leetcode.graphs": 0.6,
+    "leetcode.top-k-elements": 0.4
+   }
+  },
+  {
+   "id": "leetcode.mst",
+   "lesson": "lc-1",
+   "title": "Minimum spanning trees",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.union-find",
+    "leetcode.top-k-elements"
+   ],
+   "encompassing": {
+    "leetcode.union-find": 0.5,
+    "leetcode.top-k-elements": 0.3
+   }
+  },
+  {
+   "id": "leetcode.subsets",
+   "lesson": "lc-1",
+   "title": "Subsets and permutations",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.recursion"
+   ],
+   "encompassing": {
+    "leetcode.recursion": 0.5
+   }
+  },
+  {
+   "id": "leetcode.backtracking",
+   "lesson": "lc-1",
+   "title": "Backtracking",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.subsets",
+    "leetcode.recursion"
+   ],
+   "encompassing": {
+    "leetcode.subsets": 0.6,
+    "leetcode.recursion": 0.4
+   }
+  },
+  {
+   "id": "leetcode.trie",
+   "lesson": "lc-1",
+   "title": "Trie",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.hash-maps",
+    "leetcode.tree-dfs"
+   ],
+   "encompassing": {
+    "leetcode.hash-maps": 0.4,
+    "leetcode.tree-dfs": 0.3
+   }
+  },
+  {
+   "id": "leetcode.greedy",
+   "lesson": "lc-1",
+   "title": "Greedy algorithms",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.merge-intervals"
+   ],
+   "encompassing": {
+    "leetcode.merge-intervals": 0.3
+   }
+  },
+  {
+   "id": "leetcode.dp-1d",
+   "lesson": "lc-1",
+   "title": "Dynamic programming: 1-D",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.recursion",
+    "leetcode.hash-maps"
+   ],
+   "encompassing": {
+    "leetcode.recursion": 0.5,
+    "leetcode.hash-maps": 0.2
+   }
+  },
+  {
+   "id": "leetcode.knapsack-dp",
+   "lesson": "lc-1",
+   "title": "0/1 knapsack",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.dp-1d",
+    "leetcode.subsets"
+   ],
+   "encompassing": {
+    "leetcode.dp-1d": 0.6,
+    "leetcode.subsets": 0.3
+   }
+  },
+  {
+   "id": "leetcode.dp-grid",
+   "lesson": "lc-1",
+   "title": "Dynamic programming: 2-D grids",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.dp-1d"
+   ],
+   "encompassing": {
+    "leetcode.dp-1d": 0.6
+   }
+  },
+  {
+   "id": "leetcode.dp-strings",
+   "lesson": "lc-1",
+   "title": "Dynamic programming on two strings",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.dp-grid"
+   ],
+   "encompassing": {
+    "leetcode.dp-grid": 0.6
+   }
+  },
+  {
+   "id": "leetcode.dp-lis",
+   "lesson": "lc-1",
+   "title": "Longest increasing subsequence",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.dp-1d",
+    "leetcode.binary-search"
+   ],
+   "encompassing": {
+    "leetcode.dp-1d": 0.6,
+    "leetcode.binary-search": 0.3
+   }
+  },
+  {
+   "id": "leetcode.dp-intervals",
+   "lesson": "lc-1",
+   "title": "Interval and partition DP",
+   "syntax": false,
+   "prereqs": [
+    "leetcode.dp-grid"
+   ],
+   "encompassing": {
+    "leetcode.dp-grid": 0.5
+   }
+  }
+ ]
+}

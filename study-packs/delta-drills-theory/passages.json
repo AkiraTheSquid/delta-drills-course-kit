@@ -1,0 +1,110 @@
+[
+ {
+  "id": "pel-bkt",
+  "source": "pel2017",
+  "locator": "§4.3.1 Bayesian Knowledge Tracing",
+  "text": "Bayesian knowledge tracing (BKT) (Corbett and Anderson, 1994) is a special case of a hidden Markov model. In BKT, skill is modeled as a binary variable (known/unknown) and learning is modeled by a discrete transition from an unknown to a known state."
+ },
+ {
+  "id": "pel-params",
+  "source": "pel2017",
+  "locator": "§4.3.1 Bayesian Knowledge Tracing",
+  "text": "Global learner data: Pi is the probability that the skill is initially learned, Pl is the probability of learning a skill in one step, Ps is the probability of an incorrect answer when the skill is learned (a slip), and Pg is the probability of a correct answer when the skill is unlearned (a guess)."
+ },
+ {
+  "id": "pel-update",
+  "source": "pel2017",
+  "locator": "§4.3.1 Bayesian Knowledge Tracing",
+  "text": "the probability of being in the known state is updated using a Bayes rule based on an observed answer."
+ },
+ {
+  "id": "dd-bkt-transit",
+  "source": "dd-bkt",
+  "locator": "bkt_mastery.observe docstring",
+  "text": "Transit fires ONLY on a correct attempt (same rule FIRe already uses in apply_attempt). Vanilla BKT adds T unconditionally — \"attempting teaches even when you fail\" — which is perverse for difficulty targeting: from a low prior, a WRONG answer RAISED mastery (0.10 → posterior 0.014 → +0.30 transit → 0.31) and the next question got HARDER (target 28 → 43.9, caught live 2026-07-05)."
+ },
+ {
+  "id": "dd-bkt-forget",
+  "source": "dd-bkt",
+  "locator": "bkt_mastery module docstring, Model",
+  "text": "L is what the evidence says was LEARNED; whether it is still retrievable is `memory_model`'s FSRS recall R for the concept, applied at read time by callers that have the learner (`current_mastery(..., recall=R)`, `kc_graph.kc_mastery`)."
+ },
+ {
+  "id": "dd-mm-why",
+  "source": "dd-memory",
+  "locator": "memory_model module docstring, WHY THIS EXISTS",
+  "text": "One scalar with one global half-life cannot represent the spacing effect: three answers crammed into an hour and three answers spread over three weeks leave the same belief, so the same future. And nothing scheduled review at all — a learned concept only came back as filler once the frontier ran dry."
+ },
+ {
+  "id": "dd-mm-model",
+  "source": "dd-memory",
+  "locator": "memory_model module docstring, THE MODEL",
+  "text": "Per concept, FSRS-6's state (S = stability in days, D = difficulty 1..10) and its power forgetting curve R(t) = (1 + F·t/S)^-w20."
+ },
+ {
+  "id": "dd-mm-stability",
+  "source": "dd-memory",
+  "locator": "memory_model.Memory",
+  "text": "S: float          # stability, days (R = 0.9 after S days)"
+ },
+ {
+  "id": "dd-mm-grades",
+  "source": "dd-memory",
+  "locator": "memory_model module docstring, THE MODEL",
+  "text": "Grades: a correct unaided answer is Good, a miss or a timeout is Again."
+ },
+ {
+  "id": "dd-mm-fire",
+  "source": "dd-memory",
+  "locator": "memory_model module docstring, implicit repetition",
+  "text": "a CORRECT answer on X is a fractional Good review of every concept X encompasses, of weight w × `fire_scale` (0.5 — implicit repetitions are \"often too early to count for full credit\")"
+ },
+ {
+  "id": "sky-spacing",
+  "source": "sky2023",
+  "locator": "introduction",
+  "text": "To my best knowledge, the current literature on mathematical models for determining optimal review spacing is limited to the setting of independent flashcard-like tasks. Many subjects, in contrast, are highly connected bodies of “problem-solving” knowledge."
+ },
+ {
+  "id": "sky-fire",
+  "source": "sky2023",
+  "locator": "§Fractional Implicit Repetition (FIRe)",
+  "text": "FIRe generalizes spaced repetition to hierarchical bodies of knowledge where repetitions on advanced topics \"trickle down\" implicitly to simpler topics through encompassing relationships, and simpler topics receiving lots of implicit repetitions discount the repetitions appropriately (since they are often too early to count for full credit towards the next repetition)."
+ },
+ {
+  "id": "sky-enc",
+  "source": "sky2023",
+  "locator": "§Repetition Compression",
+  "text": "The encompassing graph is similar to a prerequisite graph, except the arrows indicate that a simpler topic is encompassed by a more advanced topic. (Encompassed topics are usually prerequisites, but prerequisites are often not fully encompassed.)"
+ },
+ {
+  "id": "sky-compress",
+  "source": "sky2023",
+  "locator": "§Repetition Compression",
+  "text": "When they complete this review, it will implicitly provide repetitions on the topics that it encompasses because the student has effectively practiced those skills as well. In general, the more encompassings there are, the fewer explicit reviews are actually required."
+ },
+ {
+  "id": "rk-gd1",
+  "source": "rk2006",
+  "locator": "General Discussion, ¶1 (p. 253)",
+  "text": "Both experiments showed the same pattern: Immediate testing after reading a prose passage promoted better long-term retention than repeatedly studying the passage. This outcome occurred even though the tests included no feedback. Clearly, the testing effect is not simply a result of students gaining reexposure to the material during testing, because restudying allowed students to reexperience 100% of the material but produced poor long-term retention (see too Wheeler et al., 2003). The positive effects of testing were dramatic: In Experiment 2, students in the repeated-testing condition recalled much more after a week than did students in the repeated-study condition (61% vs. 40%), even though students in the former condition read the passage only 3.4 times and those in the latter condition read it 14.2 times. Testing has a powerful effect on long-term retention."
+ },
+ {
+  "id": "rk-short",
+  "source": "rk2006",
+  "locator": "General Discussion, ¶2 (p. 253)",
+  "text": "The situation was different for tests taken shortly after learning: Repeated studying improved performance relative to repeated testing on final tests given after a 5-min retention interval, but the effect reversed on delayed tests."
+ },
+ {
+  "id": "rk-tap",
+  "source": "rk2006",
+  "locator": "General Discussion, theoretical approaches (p. 253)",
+  "text": "The findings are consistent with theories of transfer-appropriate processing that emphasize the compatibility between the operations engaged in during learning and testing phases (Morris, Bransford, & Franks, 1977; Roediger, 1990). The ability to remember a prose passage on a free-recall test a week after learning it is enhanced by practicing exactly this skill during learning. Practicing the skills during learning that are needed during retrieval generally enhances retention on both explicit and implicit memory tests (Roediger, Gallo, & Geraci, 2002). Although restudying the passages exposed students to the entire set of information, testing permitted practice of the skill required on future tests and hence enhanced performance after a delay."
+ },
+ {
+  "id": "rk-conf",
+  "source": "rk2006",
+  "locator": "General Discussion, metacognition (p. 254)",
+  "text": "Relative to testing, repeated studying inflated students’ confidence in their ability to remember the passages in the future, even though repeated-study subjects actually showed much poorer retention on delayed tests."
+ }
+]

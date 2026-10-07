@@ -1,0 +1,4 @@
+.venv/
+.content-mcp/
+__pycache__/
+*.pyc

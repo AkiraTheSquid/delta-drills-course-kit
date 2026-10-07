@@ -1,0 +1,544 @@
+/* ================================================================
+   JARGON GLOSSARY — every course term that earns a hover definition,
+   and the concept-graph node that teaches it.
+
+   WHAT THIS IS
+     The lessons are written for someone who has never seen a tensor.
+     They still lean on ~75 words that only mean something once you
+     have met them — "view", "broadcasting", "contracted axis",
+     "keepdims". A learner meeting one of those on page 3 of np-3 had
+     no way back to the page that defined it except to remember which
+     lesson it was in. jargon.js turns each of them into a hover link;
+     this file is the copy plus the destination.
+
+   THE SHAPE OF AN ENTRY
+     term     the canonical spelling, lower case. What the popup titles.
+     aliases  every other surface form that should light up: plurals,
+              hyphenations, the spelled-out phrase. Matched case-
+              insensitively on WORD BOUNDARIES, longest form first, so
+              "boolean mask" wins over "mask" where both could match.
+     kc       the knowledge-component id that TEACHES this term — the
+              node "Take me to the lesson" opens, maximized. It must
+              exist in lessons/kc_registry.json; watch_jargon.py
+              asserts every one of them does, because a dead id sends
+              the learner to a graph that quietly focuses nothing.
+     def      one or two short sentences. This is a SIGNPOST, not the
+              lesson: enough to keep reading, and a reason to click
+              through if it isn't. Plain text — jargon.js escapes it.
+
+   HOUSE RULES THAT ARE NOT OBVIOUS
+     - A term is never linked inside the lesson that teaches it.
+       jargon.js suppresses that at render time (see `_selfKc`), so
+       entries here don't have to dodge their own prose.
+     - Prefer PROSE spellings over API spellings. `t.where` and
+       `topk` live inside <code> in almost every sentence that uses
+       them, and jargon.js never decorates code — an entry spelled
+       that way would simply never match anything.
+     - Common English words that are also jargon here ("view",
+       "axis", "shape") ARE included on purpose. The
+       first-occurrence-per-section rule is what keeps them from
+       becoming a sea of underlines; dropping them would leave the
+       three words a beginner most needs unexplained.
+   ================================================================ */
+
+window.DD_GLOSSARY = {
+  version: 1,
+  terms: [
+    /* ---- np-1: arrays from the ground up ------------------------- */
+    {
+      term: "tensor",
+      aliases: ["tensors", "ndarray", "ndarrays", "n-dimensional array"],
+      kc: "torch.tensor-model",
+      def: "One block of memory holding elements that are all the same type, plus the metadata — shape and dtype — that says how to read that block. Everything else in the course manipulates this one object.",
+    },
+    {
+      term: "shape",
+      aliases: ["shapes"],
+      kc: "torch.tensor-model",
+      def: "The tuple of axis lengths describing how the flat block of memory is laid out — (2, 3) is two rows of three. It is metadata, not data, which is why reshaping is usually free.",
+    },
+    {
+      term: "transpose",
+      aliases: ["transposes", "transposed", "transposing", "transposition"],
+      kc: "torch.transpose-axes",
+      def: "Turning a grid on its side: row i of the result is column i of the original, and the shape reverses. Spelled a.T, with no parentheses \u2014 it is an attribute, not a method.",
+    },
+    {
+      term: "block",
+      aliases: ["memory block", "block of memory", "buffer", "the same block"],
+      kc: "torch.views-and-copies",
+      def: "The one long strip of numbers a tensor actually occupies in memory. Two tensors share a block when both describe the same strip; shape and dtype are just the note saying how to read it. data_ptr() compares where each STARTS, so a slice can share the block and still answer a different address.",
+    },
+    {
+      term: "contiguous",
+      aliases: ["contiguity", "non-contiguous", "reading order", "in reading order"],
+      kc: "torch.views-and-copies",
+      def: "A tensor is contiguous when its numbers sit on the strip in the same order you read them off the grid \u2014 no hopping. A freshly built tensor always is; a transpose usually is not.",
+    },
+    {
+      term: "packed copy",
+      aliases: ["packed", "pack", "packing"],
+      kc: "torch.views-and-copies",
+      def: "What .contiguous() gives you: the same numbers written out in reading order. That normally means a new strip of its own \u2014 unless the tensor was already in order, in which case it hands the same one back.",
+    },
+    {
+      term: "constructor",
+      aliases: ["constructors"],
+      kc: "torch.constructors",
+      def: "A function that builds a tensor from scratch rather than converting data you already have — zeros, ones, full, eye. They all share one calling convention: say how big, optionally say what type.",
+    },
+    {
+      term: "slice",
+      aliases: ["slices", "slicing", "stepped slice", "strided slice"],
+      kc: "torch.slicing-views",
+      def: "Naming a rectangular piece of a tensor with start:stop:step, one slice per axis. Stop is exclusive, and the result shares memory with the original rather than copying it.",
+    },
+    {
+      term: "view",
+      aliases: ["views"],
+      kc: "torch.views-and-copies",
+      def: "A tensor that re-describes another tensor's block instead of owning one. Writing into a view writes into the original — the single most common source of surprise in tensor code.",
+    },
+    {
+      term: "slice assignment",
+      aliases: ["assigning into a slice"],
+      kc: "torch.slicing-views",
+      def: "Writing to a slice — x[2:5] = 0 — mutates the original tensor in place, because the slice was never a copy.",
+    },
+    {
+      term: "arange",
+      aliases: [],
+      kc: "torch.ranges",
+      def: "Builds a range when you know the STEP. Like Python's range it stops BEFORE the endpoint, which is where most range bugs come from.",
+    },
+    {
+      term: "linspace",
+      aliases: [],
+      kc: "torch.ranges",
+      def: "Builds a range when you know how many POINTS you want. Unlike arange, both endpoints are included.",
+    },
+    {
+      term: "dtype",
+      aliases: ["dtypes", "data type", "type promotion"],
+      kc: "torch.dtype-astype",
+      def: "The one element type shared by every entry of a tensor — int64, float32, bool. Mixing dtypes in an expression silently promotes to the common type.",
+    },
+    {
+      term: "reshape",
+      aliases: ["reshaping", "reshaped"],
+      kc: "torch.reshape-flatten",
+      def: "Reinterpreting the same flat block under a new shape. The element count must match; the data is not touched, so it is usually free.",
+    },
+    {
+      term: "flatten",
+      aliases: ["flattening", "flattened", "ravel"],
+      kc: "torch.reshape-flatten",
+      def: "Collapsing every axis into one, giving the tensor's elements in memory order.",
+    },
+    {
+      term: "row-major",
+      aliases: ["element order", "reading order of the elements", "c order"],
+      kc: "torch.reshape-flatten",
+      def: "The order tensors are laid out and re-read in: the LAST axis varies fastest. It is why (h w) merges walk a full row before moving down.",
+    },
+    {
+      term: "elementwise",
+      aliases: ["element-wise", "element by element"],
+      kc: "torch.elementwise-ops",
+      def: "An operation applied independently to every entry — write the formula once and it lands on the whole tensor, no loop. Note that a * b is elementwise; matrix multiplication is @.",
+    },
+    {
+      term: "aggregation",
+      aliases: ["aggregations", "reduction", "reductions", "reduce over"],
+      kc: "torch.aggregations",
+      def: "An operation that collapses a tensor to fewer numbers — sum, mean, min, max, std. With no arguments it reduces over everything regardless of shape.",
+    },
+    {
+      term: "generator",
+      aliases: ["seeded generator", "deterministic stream"],
+      kc: "torch.random-seeding",
+      def: "The object that carries reproducible randomness. In PyTorch you make one and pass it as an argument to a sampling function, rather than calling methods on it.",
+    },
+    {
+      term: "matrix multiplication",
+      aliases: ["matrix multiply", "matmul", "matrix product"],
+      kc: "torch.linalg-basics",
+      def: "Row-times-column with a sum inside, spelled @. For (m, k) and (k, n) the result is (m, n), and entry [i, j] is the dot product of row i with column j.",
+    },
+
+    {
+      term: "sort",
+      aliases: ["sorts", "sorted", "sorting"],
+      kc: "torch.sorting",
+      def: "Sorting does not hand back a sorted tensor — it hands back a PAIR, the sorted values and the indices that produced them. Forgetting that is the mistake the lesson exists to prevent.",
+    },
+
+    /* ---- np-2: indexing and selection ---------------------------- */
+    {
+      term: "boolean mask",
+      aliases: ["mask", "masks", "masked", "boolean array", "boolean tensor"],
+      kc: "torch.boolean-masking",
+      def: "The same-shaped tensor of True/False that a comparison produces. The comparison IS the mask — there is no separate 'test each element' step to write.",
+    },
+    {
+      term: "argmax",
+      aliases: ["argmin", "the arg twins"],
+      kc: "torch.argmin-argmax",
+      def: "min and max give the extreme VALUE; argmin and argmax give WHERE it lives. Ties break to the first occurrence, deterministically.",
+    },
+
+    /* ---- np-3: vectorization and broadcasting -------------------- */
+    {
+      term: "broadcasting",
+      aliases: ["broadcast", "broadcasts", "broadcasting rules", "stretched to fit"],
+      kc: "torch.broadcasting-rules",
+      def: "The rule that lets mismatched shapes work together: align them from the RIGHT, and each axis pair is compatible if the sizes are equal or one of them is 1, which then stretches.",
+    },
+    {
+      term: "axis",
+      aliases: ["axes", "dimension", "dimensions"],
+      kc: "torch.axis-reductions",
+      def: "One numbered direction through a tensor — axis 0 runs down the rows, axis 1 across the columns. The axis you name in a reduction is the axis that DISAPPEARS.",
+    },
+    {
+      term: "keepdims",
+      aliases: ["keepdim"],
+      kc: "torch.axis-reductions",
+      def: "Keeps the reduced axis as length 1 instead of dropping it, so the statistic still lines up against the original tensor under broadcasting.",
+    },
+    {
+      term: "dot product",
+      aliases: ["dot products", "inner product"],
+      // The math page defines it first (course rank 1); the torch page
+      // applies it. Pointed here 2026-09-25 — see "ray" below.
+      kc: "math.dot-products-norms",
+      def: "Multiply corresponding entries of two equal-length vectors, then add them up. Every product in linear algebra is built from this one atom: elementwise multiply plus a reduction.",
+    },
+    {
+      term: "concatenate",
+      aliases: ["concatenation", "stacking", "stack", "interleave", "interleaving"],
+      kc: "torch.stack-concat-interleave",
+      def: "Combining tensors splits on one question: does the result get a NEW axis (stack), or grow an EXISTING one (cat)?",
+    },
+
+    /* ---- np-4: applied patterns ---------------------------------- */
+
+    /* ---- es-1: einsum notation ----------------------------------- */
+
+    /* ---- es-2: batch dimensions and applied einsum --------------- */
+
+    /* ---- eo-1: rearrange ----------------------------------------- */
+    {
+      term: "einops",
+      aliases: ["rearrange", "einops pattern", "pattern language"],
+      kc: "einops.pattern-language",
+      def: "Reshape and transpose with the axes spelled out in words: name each input axis on the left, list the same names in the output's order on the right.",
+    },
+    {
+      term: "merging axes",
+      aliases: ["merge axes", "merged axes", "fuse axes"],
+      kc: "einops.merge-axes",
+      def: "Parentheses on the OUTPUT side fuse axes into one. Order inside the parens is nesting order — the leftmost name varies slowest, exactly like a row-major reshape.",
+    },
+    {
+      term: "splitting axes",
+      aliases: ["split axes", "named factor", "named factors", "factored axes"],
+      kc: "einops.split-axes",
+      def: "Parentheses on the INPUT side unpack one axis into factors. einops cannot guess the split, so the sizes it can't infer arrive as keyword arguments.",
+    },
+    {
+      term: "singleton axis",
+      aliases: ["singleton axes", "length-1 axis", "squeeze"],
+      kc: "einops.singleton-and-lists",
+      def: "A literal 1 in a pattern inserts a length-1 axis on the right, or consumes one on the left — einops' spelling of adding or squeezing a dimension, with verification.",
+    },
+    {
+      term: "montage",
+      aliases: ["image grid", "grid layout"],
+      kc: "einops.grids-montage",
+      def: "The flagship split-then-merge pattern: split the batch into grid coordinates, then merge each grid coordinate with its image axis.",
+    },
+    {
+      term: "patch",
+      aliases: ["patches", "patch extraction", "space-to-depth", "depth-to-space", "pixel-shuffle"],
+      kc: "einops.patches-space-depth",
+      def: "Trading SPACE for DEPTH: split each spatial axis into blocks and within-block position, then move the block coordinates wherever you need them — tokens, channels, or back again.",
+    },
+
+    /* ---- es-1: einsum -------------------------------------------- */
+    {
+      term: "einops.einsum",
+      aliases: ["einsum", "einstein summation", "einsum pattern"],
+      kc: "einops.einsum",
+      def: "Tensors first, pattern LAST: name every axis of every operand on the left of ->, list the survivors on the right. A name shared by two operands multiplies them; a name missing from the right is summed away.",
+    },
+
+    {
+      term: "attention scores",
+      aliases: ["scaled scores", "posn_q posn_k", "per-head weights", "ellipsis axes"],
+      kc: "einops.attention-einsum",
+      def: "einsum at model rank: a per-head weight is just a third named axis, two position axes that must not pair get two names (posn_q, posn_k), and ... stands for every leading axis you did not name. The 1/sqrt(d_head) scaling is arithmetic AFTER the pattern.",
+    },
+
+    /* ---- eo-2: reduce -------------------------------------------- */
+    {
+      term: "einops.reduce",
+      aliases: ["reduce pattern"],
+      kc: "einops.reduce-model",
+      def: "Where rearrange must keep every axis, reduce may drop them — and the third argument names HOW the dropped values collapse: mean, max, min, sum, prod.",
+    },
+    {
+      term: "pooling",
+      aliases: ["pool", "pooled", "downsampling"],
+      kc: "einops.pooling",
+      def: "Window-wise downsampling as pure notation: factor each spatial axis into blocks and within-block position, keep the block coordinates, drop the rest with an aggregation.",
+    },
+
+    /* ---- eo-3: repeat and deep-learning patterns ----------------- */
+    {
+      term: "einops.repeat",
+      aliases: ["repeat pattern", "stretched axis"],
+      kc: "einops.repeat-model",
+      def: "The mirror image of reduce: the output may contain names the input does NOT have, and the data is copied to fill them.",
+    },
+    {
+      term: "attention heads",
+      aliases: ["attention head", "head dimension", "classifier flatten"],
+      kc: "einops.dl-flatten-heads",
+      def: "Splitting one feature axis into (heads x per-head features) and moving heads next to batch — the shape manoeuvre in virtually every model's forward pass.",
+    },
+    {
+      term: "channel groups",
+      aliases: ["grouped channels", "temporal window", "temporal windows"],
+      kc: "einops.channel-groups-temporal",
+      def: "A channel axis of size g x c that really means g groups of c channels. The single load-bearing question is which index is SLOW — groups or channels.",
+    },
+    /* ---- tr-1: rays as tensors (ARENA 0.1) ------------------------ */
+    {
+      term: "ray",
+      aliases: ["rays", "half-line"],
+      // math.ray-geometry DEFINES a ray and is a prerequisite of
+      // ray-parametrisation, which only stores one in a tensor. Pointing
+      // the term at the later page sent "Take me to the lesson" past the
+      // definition, and made every math page that says "ray" a forward
+      // reference to the prose ratchet (2026-09-25).
+      kc: "math.ray-geometry",
+      def: "A half-line: every point O + u·D for u ≥ 0, with O the origin and D the direction. Stored as a (2, 3) tensor — row 0 the origin, row 1 the direction.",
+    },
+    {
+      term: "out=",
+      aliases: ["out argument", "out keyword", "out= argument"],
+      kc: "torch.out-argument",
+      def: "A keyword that makes a tensor function write its result into storage you already own instead of allocating. The target's shape must match; the function returns the target.",
+    },
+    {
+      term: "broadcast write",
+      aliases: ["broadcast writes", "writing a tensor into a slice", "copy_"],
+      kc: "torch.slice-assignment",
+      def: "x[sel] = value where value is a whole tensor: it is broadcast to the slice's shape and written through the view into x. The in-place method spelling is copy_.",
+    },
+    /* ---- Linear algebra for ARENA 0.1 (math pages) ---------------
+       Each math page opens with "This lesson builds on <X>"; these make X
+       the underline + "Take me to the lesson" instead of a bare link. */
+    {
+      term: "vector arithmetic",
+      aliases: ["vector addition", "scalar multiplication"],
+      kc: "math.vector-arithmetic",
+      def: "Adding, subtracting and scaling vectors one component at a time, and the difference between a point and a displacement: from A to B you move by B − A.",
+    },
+    {
+      term: "vector norm",
+      aliases: ["vector norms", "unit vector", "unit vectors"],
+      kc: "math.dot-products-norms",
+      def: "A vector's Euclidean length, the square root of the sum of squared components. Dividing a nonzero vector by its norm gives the unit vector: same direction, length one.",
+    },
+    {
+      term: "linear combination",
+      aliases: ["linear combinations"],
+      kc: "math.linear-combinations",
+      def: "Scale some vectors and add them: a·u + b·v. Every vector you can reach that way is their span; when the vectors are independent, the weights are unique and are the result's coordinates in them.",
+    },
+    {
+      term: "matrix equation",
+      aliases: ["matrix equations", "linear system", "linear systems"],
+      kc: "math.matrix-equations",
+      def: "M x = b: one row per equation, one column per unknown. M x is a weighted sum of M's columns, and solving finds the weights that produce b.",
+    },
+    {
+      term: "determinant",
+      aliases: ["determinants", "invertibility", "invertible"],
+      kc: "math.determinants-invertibility",
+      def: "A single number from a square matrix; for 2×2 it is ad − bc. Nonzero means every right-hand side has exactly one solution; zero means none or infinitely many.",
+    },
+    /* Seth on math.barycentric-coordinates, 2026-09-29: "nondegenerate
+       triangle — you need to add a link to the concept for this". No page
+       defines the phrase; what it means is independence of the two edges,
+       which linear-combinations teaches (and is that page's prerequisite). */
+    {
+      term: "nondegenerate triangle",
+      aliases: ["nondegenerate triangles", "degenerate triangle", "degenerate triangles"],
+      kc: "math.linear-combinations",
+      // Seth, 2026-10-01 (lesson feedback, q50019): say it plainly (no area,
+      // corners on one line), show a picture, and tie it to independence.
+      def: "A triangle with some area (more than zero). A degenerate triangle has been squashed flat: its three corners sit on one line (or on one point), so its area is zero. In vector terms, a triangle is nondegenerate exactly when its edges B − A and C − A are linearly independent, meaning neither is a multiple of the other.",
+      pic: "flat-triangle",
+    },
+    {
+      term: "barycentric coordinates",
+      aliases: ["barycentric coordinate", "barycentric weights"],
+      kc: "math.barycentric-coordinates",
+      def: "Three weights (1 − u − v, u, v) on a triangle's corners A, B, C that add to one and rebuild a point as their weighted sum. All three nonnegative means the point is in the filled triangle.",
+    },
+  ],
+};
+
+/* Pictures a popup can carry (a term's `pic` names one). Static SVG authored
+   here, never learner data, so jargon.js may set it as markup. Colours come
+   from classes in styles/jargon.css, so both themes work. */
+window.DD_GLOSSARY.pics = {
+  "flat-triangle":
+    '<svg viewBox="0 0 310 122" role="img" aria-label="Left: a triangle with area. Right: a flat triangle whose three corners lie on one line.">' +
+      '<polygon class="pic-tri" points="28,96 132,88 66,22"/>' +
+      '<circle class="pic-dot" cx="28" cy="96" r="3.5"/><circle class="pic-dot" cx="132" cy="88" r="3.5"/><circle class="pic-dot" cx="66" cy="22" r="3.5"/>' +
+      '<text class="pic-v" x="16" y="104">A</text><text class="pic-v" x="138" y="96">B</text><text class="pic-v" x="58" y="16">C</text>' +
+      '<line class="pic-flat" x1="172" y1="92" x2="286" y2="50"/>' +
+      '<circle class="pic-dot" cx="172" cy="92" r="3.5"/><circle class="pic-dot" cx="286" cy="50" r="3.5"/><circle class="pic-dot" cx="229" cy="71" r="3.5"/>' +
+      '<text class="pic-v" x="160" y="104">A</text><text class="pic-v" x="292" y="48">B</text><text class="pic-v" x="222" y="62">C</text>' +
+      '<text class="pic-cap" x="80" y="118" text-anchor="middle">nondegenerate: has area</text>' +
+      '<text class="pic-cap pic-cap-flat" x="229" y="118" text-anchor="middle">degenerate: flat, area 0</text>' +
+    '</svg>',
+};
+
+/* Where each concept is taught, for the popup's footer line: kc -> [lesson
+   title, concept title]. A COPY of what lessons/kc_registry.json and
+   lessons_structured.json already say — held here so a hover costs no network
+   request. 🔴 The runtime-fetch trap is exactly why: a file this app fetches at
+   runtime can be dropped by .vercelignore and the SPA rewrite answers the 404
+   with 200 text/html, so the loss is silent in production. A <script> tag
+   cannot fail that way. watch_jargon.py re-derives this map from the registry
+   on every run, so the copy cannot drift without failing the guard. */
+window.DD_GLOSSARY.kcLesson = {
+  "leetcode.arrays-strings": ["LeetCode Patterns", "Arrays and strings: traversal and simulation"],
+  "leetcode.hash-maps": ["LeetCode Patterns", "Hash maps: lookup and counting"],
+  "leetcode.prefix-sums": ["LeetCode Patterns", "Prefix sums"],
+  "leetcode.two-pointers": ["LeetCode Patterns", "Two pointers"],
+  "leetcode.sliding-window": ["LeetCode Patterns", "Sliding window"],
+  "leetcode.linked-lists": ["LeetCode Patterns", "Linked lists: traversal and pointer updates"],
+  "leetcode.fast-slow-pointers": ["LeetCode Patterns", "Fast and slow pointers"],
+  "leetcode.in-place-reversal": ["LeetCode Patterns", "In-place reversal of a linked list"],
+  "leetcode.cyclic-sort": ["LeetCode Patterns", "Cyclic sort"],
+  "leetcode.stack": ["LeetCode Patterns", "Stacks"],
+  "leetcode.monotonic-stack": ["LeetCode Patterns", "Monotonic stack"],
+  "leetcode.recursion": ["LeetCode Patterns", "Recursion"],
+  "leetcode.sorting-algorithms": ["LeetCode Patterns", "Sorting algorithms: merge sort and quick sort"],
+  "leetcode.merge-intervals": ["LeetCode Patterns", "Merge intervals"],
+  "leetcode.binary-search": ["LeetCode Patterns", "Modified binary search"],
+  "leetcode.bit-manipulation": ["LeetCode Patterns", "Bitwise XOR and bit manipulation"],
+  "leetcode.math": ["LeetCode Patterns", "Math and number theory"],
+  "leetcode.binary-trees": ["LeetCode Patterns", "Binary trees: structure and traversal"],
+  "leetcode.tree-bfs": ["LeetCode Patterns", "Tree breadth-first search"],
+  "leetcode.tree-dfs": ["LeetCode Patterns", "Tree depth-first search"],
+  "leetcode.bst": ["LeetCode Patterns", "Binary search trees"],
+  "leetcode.graphs": ["LeetCode Patterns", "Graph traversal: BFS and DFS"],
+  "leetcode.islands": ["LeetCode Patterns", "Island (matrix traversal)"],
+  "leetcode.topological-sort": ["LeetCode Patterns", "Topological sort"],
+  "leetcode.union-find": ["LeetCode Patterns", "Union find"],
+  "leetcode.top-k-elements": ["LeetCode Patterns", "Heaps and top-K elements"],
+  "leetcode.two-heaps": ["LeetCode Patterns", "Two heaps"],
+  "leetcode.k-way-merge": ["LeetCode Patterns", "K-way merge"],
+  "leetcode.shortest-paths": ["LeetCode Patterns", "Shortest paths: Dijkstra and Bellman-Ford"],
+  "leetcode.mst": ["LeetCode Patterns", "Minimum spanning trees"],
+  "leetcode.subsets": ["LeetCode Patterns", "Subsets and permutations"],
+  "leetcode.backtracking": ["LeetCode Patterns", "Backtracking"],
+  "leetcode.trie": ["LeetCode Patterns", "Trie"],
+  "leetcode.greedy": ["LeetCode Patterns", "Greedy algorithms"],
+  "leetcode.dp-1d": ["LeetCode Patterns", "Dynamic programming: 1-D"],
+  "leetcode.knapsack-dp": ["LeetCode Patterns", "0/1 knapsack"],
+  "leetcode.dp-grid": ["LeetCode Patterns", "Dynamic programming: 2-D grids"],
+  "leetcode.dp-strings": ["LeetCode Patterns", "Dynamic programming on two strings"],
+  "leetcode.dp-lis": ["LeetCode Patterns", "Longest increasing subsequence"],
+  "leetcode.dp-intervals": ["LeetCode Patterns", "Interval and partition DP"],
+  "math.vector-arithmetic": ["Linear algebra for ARENA 0.1", "Vectors: components, displacement, and scaling"],
+  "math.dot-products-norms": ["Linear algebra for ARENA 0.1", "Dot products, lengths, and unit vectors"],
+  "math.linear-combinations": ["Linear algebra for ARENA 0.1", "Linear combinations, span, and coordinates"],
+  "math.matrix-equations": ["Linear algebra for ARENA 0.1", "Matrix–vector products and solving linear systems"],
+  "math.determinants-invertibility": ["Linear algebra for ARENA 0.1", "Determinants, independence, and unique solutions"],
+  "math.ray-geometry": ["Math for ARENA 0.1", "Points, directions, and finite segments"],
+  "math.intersection-systems": ["Math for ARENA 0.1", "Turn an intersection into a linear system"],
+  "math.singular-systems": ["Math for ARENA 0.1", "Unique crossings and batched validity"],
+  "math.barycentric-coordinates": ["Math for ARENA 0.1", "Triangle coordinates and ray–triangle systems"],
+  "math.ray-distance": ["Math for ARENA 0.1", "Nearest hit, depth, and actual distance"],
+  "python.values-and-names": ["Python you need first", "Values and names: what = really does"],
+  "python.types-and-conversion": ["Python you need first", "The everyday types, and converting between them"],
+  "python.lists-and-tuples": ["Python you need first", "Lists and tuples: holding more than one value"],
+  "python.indexing": ["Python you need first", "Indexing: pulling one item out, counting from zero"],
+  "python.calling-functions": ["Python you need first", "Calling a function: arguments in, one value out"],
+  "python.defining-functions": ["Python you need first", "Writing your own function: def and return"],
+  "python.dots-and-imports": ["Python you need first", "Dots: importing a library, attributes, and methods"],
+  "python.control-flow": ["Python you need first", "Decisions and repeated work"],
+  "torch.tensor-model": ["Tensors from the ground up", "What a tensor is: data + shape + dtype"],
+  "torch.transpose-axes": ["Tensors from the ground up", "Transpose: swapping which axis is which"],
+  "torch.views-and-copies": ["Tensors from the ground up", "Views and copies: the same numbers, read a different way"],
+  "torch.constructors": ["Tensors from the ground up", "Tensor constructors: zeros, ones, full, eye, *_like"],
+  "torch.slicing-views": ["Tensors from the ground up", "Selecting and changing parts of a tensor"],
+  "torch.ranges": ["Tensors from the ground up", "Numeric ranges: arange and linspace"],
+  "torch.dtype-astype": ["Tensors from the ground up", "Dtypes, .to(), and memory size"],
+  "torch.reshape-flatten": ["Tensors from the ground up", "Reshape, flatten, and element order"],
+  "torch.elementwise-ops": ["Tensors from the ground up", "Elementwise math"],
+  "torch.aggregations": ["Tensors from the ground up", "Whole-tensor aggregations and Python scalars"],
+  "torch.sorting": ["Tensors from the ground up", "Sorting tensors"],
+  "torch.random-samplers": ["Tensors from the ground up", "Drawing random numbers"],
+  "torch.random-seeding": ["Tensors from the ground up", "Seeding your own reproducible stream"],
+  "torch.random-threading": ["Tensors from the ground up", "Using a stream you were handed"],
+  "torch.linalg-basics": ["Tensors from the ground up", "Matrix multiply and t.linalg basics"],
+  "torch.boolean-masking": ["Indexing and selection", "Boolean masks: compare, count, filter"],
+  "torch.argmin-argmax": ["Indexing and selection", "Locating extremes: argmin and argmax"],
+  "torch.broadcasting-rules": ["Vectorization and broadcasting", "Broadcasting rules"],
+  "torch.axis-reductions": ["Vectorization and broadcasting", "Reductions along an axis and keepdims"],
+  "torch.window-pooling": ["Vectorization and broadcasting", "Pooling with reshape and a reduction"],
+  "torch.dot-matmul-patterns": ["Vectorization and broadcasting", "Dot products and matrix-multiply patterns"],
+  "torch.stack-concat-interleave": ["Vectorization and broadcasting", "Stacking, concatenating, interleaving"],
+  "einops.pattern-language": ["Rearrange", "The einops pattern language: naming and permuting axes"],
+  "einops.merge-axes": ["Rearrange", "Merging axes with (parentheses)"],
+  "einops.split-axes": ["Rearrange", "Splitting axes with named factors"],
+  "einops.singleton-and-lists": ["Rearrange", "Singleton axes and lists as an axis"],
+  "einops.grids-montage": ["Rearrange", "Laying batches out as grids"],
+  "einops.patches-space-depth": ["Rearrange", "Patches, space-to-depth, depth-to-space"],
+  "einops.reduce-model": ["Reduce", "einops.reduce: dropping axes with an aggregation"],
+  "einops.pooling": ["Reduce", "Pooling with factored axes"],
+  "einops.repeat-model": ["Repeat and deep-learning patterns", "einops.repeat: new axes and stretched axes"],
+  "einops.dl-flatten-heads": ["Repeat and deep-learning patterns", "Deep-learning shapes: flattening and attention heads"],
+  "einops.channel-groups-temporal": ["Repeat and deep-learning patterns", "Channel groups and temporal windows"],
+  "torch.out-argument": ["Rays as tensors (ARENA 0.1)", "Filling a tensor in place with out="],
+  "torch.slice-assignment": ["Rays as tensors (ARENA 0.1)", "Writing tensors into slices: broadcasting on the left"],
+  "raytracing.ray-parametrisation": ["Rays as tensors (ARENA 0.1)", "A ray is an origin and a direction"],
+  "raytracing.make-rays-1d": ["Rays as tensors (ARENA 0.1)", "make_rays_1d: a fan of rays as one (n, 2, 3) tensor"],
+  "einops.einsum": ["Einsum", "einops.einsum: name the axes, drop the ones to sum"],
+  "einops.attention-einsum": ["Einsum", "einsum at model rank: heads, positions and ..."],
+  "tensor.row-normalization": ["ARENA 0.0 — Tensor reasoning", "Row lengths and unit directions"],
+  "tensor.cosine-similarity": ["ARENA 0.0 — Tensor reasoning", "Compare directions across two collections"],
+  "tensor.indexed-selection": ["ARENA 0.0 — Tensor reasoning", "Select values with tensor indices"],
+  "tensor.stable-probabilities": ["ARENA 0.0 — Tensor reasoning", "Stable probabilities from logits"],
+  "tensor.classifier-evaluation": ["ARENA 0.0 — Tensor reasoning", "Evaluate predictions and classification loss"],
+  "tensor.inverse-cdf": ["ARENA 0.0 — Tensor reasoning", "Turn random draws into categorical samples"],
+  "raytracing.segment-intersection": ["ARENA 0.1 — Geometry and rendering", "Solve a ray–segment intersection"],
+  "raytracing.batched-segments": ["ARENA 0.1 — Geometry and rendering", "Every ray against every segment"],
+  "raytracing.make-rays-2d": ["ARENA 0.1 — Geometry and rendering", "A two-dimensional camera as a batch of rays"],
+  "raytracing.triangle-intersection": ["ARENA 0.1 — Geometry and rendering", "Barycentric coordinates and triangle hits"],
+  "raytracing.mesh-visibility": ["ARENA 0.1 — Geometry and rendering", "Render the nearest visible mesh surface"],
+  "cnn.module-state": ["ARENA 0.2 — Neural networks and ResNets", "Modules own computation and trainable state"],
+  "cnn.linear-layer": ["ARENA 0.2 — Neural networks and ResNets", "A learned affine map on the last axis"],
+  "cnn.mlp": ["ARENA 0.2 — Neural networks and ResNets", "Compose a multilayer image classifier"],
+  "cnn.stride-views": ["ARENA 0.2 — Neural networks and ResNets", "Tensor strides describe addresses, not shapes"],
+  "cnn.convolution-1d": ["ARENA 0.2 — Neural networks and ResNets", "Convolution shares one filter across positions"],
+  "cnn.convolution-2d": ["ARENA 0.2 — Neural networks and ResNets", "Image filters combine channels and local geometry"],
+  "cnn.pooling": ["ARENA 0.2 — Neural networks and ResNets", "Pool spatial evidence while preserving channels"],
+  "cnn.batch-normalization": ["ARENA 0.2 — Neural networks and ResNets", "BatchNorm separates current data from running state"],
+  "cnn.sequential": ["ARENA 0.2 — Neural networks and ResNets", "Chain modules in order"],
+  "cnn.residual-block": ["ARENA 0.2 — Neural networks and ResNets", "A residual block adds its input back"],
+  "cnn.block-group": ["ARENA 0.2 — Neural networks and ResNets", "Stack residual blocks, stride only in the first"],
+  "cnn.resnet34": ["ARENA 0.2 — Neural networks and ResNets", "Assemble ResNet34 from stem, groups and head"],
+  "cnn.feature-extraction": ["ARENA 0.2 — Neural networks and ResNets", "Reuse pretrained weights: copy, freeze, replace the head"],
+  "cnn.training-loop": ["ARENA 0.2 — Neural networks and ResNets", "A training loop over batches: forward, loss, backward, step, validate"],
+  "cnn.forward-hooks": ["ARENA 0.2 — Neural networks and ResNets", "Hooks watch a module's output"]
+};

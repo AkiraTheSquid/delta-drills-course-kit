@@ -1,0 +1,1946 @@
+[
+ {
+  "a": "deltadrills.mastery",
+  "b": "deltadrills.retrievability",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Mastery is what was learned; retrievability is whether it can be recalled now, and the app keeps them separate."
+  ]
+ },
+ {
+  "a": "deltadrills.retrievability",
+  "b": "deltadrills.spaced-repetition",
+  "type": "explains",
+  "relation_constraints": [
+   "The forgetting curve predicts recall, and a review is scheduled when that prediction falls to the target."
+  ]
+ },
+ {
+  "a": "deltadrills.fire",
+  "b": "deltadrills.spaced-repetition",
+  "type": "is-a",
+  "relation_constraints": [
+   "FIRe is spaced repetition generalised to a hierarchy: advanced practice gives discounted review credit to encompassed concepts."
+  ]
+ },
+ {
+  "a": "deltadrills.fsrs-update",
+  "b": "deltadrills.spaced-repetition",
+  "type": "explains",
+  "relation_constraints": [
+   "Stability grows most after a success made when recall had dropped, which is why spaced reviews lengthen each gap and massed ones barely do."
+  ]
+ },
+ {
+  "a": "deltadrills.prereq-gate",
+  "b": "deltadrills.mastery",
+  "type": "depends-on",
+  "relation_constraints": [
+   "The gate reads the BKT posterior: a prerequisite is learned when its crosswalk-weighted mastery reaches 0.85."
+  ]
+ },
+ {
+  "a": "deltadrills.explore",
+  "b": "deltadrills.prereq-gate",
+  "type": "contrasts",
+  "relation_constraints": [
+   "The gate waits until prerequisites are learned; explore probes concepts past the frontier and settles them at 0.95, which then counts as learned for the gate."
+  ]
+ },
+ {
+  "a": "deltadrills.credit-propagation",
+  "b": "deltadrills.fire",
+  "type": "explains",
+  "relation_constraints": [
+   "FIRe is the idea; propagation is its arithmetic: path weights × 0.5 for credit, w·(1 − R) shares for blame, upward lapses at w × 0.5."
+  ]
+ },
+ {
+  "a": "deltadrills.logistic-engine",
+  "b": "deltadrills.mastery",
+  "type": "contrasts",
+  "relation_constraints": [
+   "BKT gives P(known) with no uncertainty; the engine predicts P(correct) on a specific problem from a weighted sum of features and carries a posterior."
+  ]
+ },
+ {
+  "a": "deltadrills.ability",
+  "b": "deltadrills.logistic-engine",
+  "type": "example-of",
+  "relation_constraints": [
+   "The ability model is a logistic model of ability minus difficulty (like Rasch or Elo), with guess, slip and recall added."
+  ]
+ },
+ {
+  "a": "tutor.same-model",
+  "b": "deltadrills.explore",
+  "type": "example-of",
+  "relation_constraints": [
+   "Study mode's belief is the explore model's log-odds belief, with the grader's probability entered as virtual evidence."
+  ]
+ },
+ {
+  "a": "deltadrills.spaced-repetition",
+  "b": "deltadrills.mastery",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Mastery records what was learned and says nothing about forgetting; spaced repetition handles forgetting, scheduling a review for when predicted recall falls, so a concept can be mastered and still be due."
+  ]
+ },
+ {
+  "a": "deltadrills.desirable-difficulty",
+  "b": "deltadrills.spaced-repetition",
+  "type": "example-of",
+  "relation_constraints": [
+   "Spacing is one of the most robust desirable difficulties: it lowers performance while practising and raises it on a later test."
+  ]
+ },
+ {
+  "a": "deltadrills.interleaving",
+  "b": "deltadrills.desirable-difficulty",
+  "type": "example-of",
+  "relation_constraints": [
+   "Interleaving (mixing) is a desirable difficulty: mixed review feels harder and goes worse in practice than a blocked set, yet is retained better; learners avoid it because they judge by practice performance."
+  ]
+ },
+ {
+  "a": "deltadrills.expertise-reversal",
+  "b": "deltadrills.worked-examples",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Worked examples help novices most by cutting cognitive load; by the expertise reversal effect the same scaffold helps an expert least, so the app fades it: the example sits in the Lesson, the Faded drill has none, Integrated never shows one."
+  ]
+ },
+ {
+  "a": "deltadrills.composition",
+  "b": "deltadrills.expertise-reversal",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Integrated practice, all of a concept's ideas at once, comes last on the ladder, after the scaffold has been faded on the parts."
+  ]
+ },
+ {
+  "a": "deltadrills.target-retention",
+  "b": "deltadrills.retrievability",
+  "type": "depends-on",
+  "relation_constraints": [
+   "The due time is the elapsed time at which the forgetting curve R(t) with stability S falls to the target."
+  ]
+ },
+ {
+  "a": "deltadrills.lapse",
+  "b": "deltadrills.fsrs-update",
+  "type": "contrasts",
+  "relation_constraints": [
+   "A success multiplies stability by a growth factor; a miss replaces it with a much smaller post-lapse stability, scaled by p_skill."
+  ]
+ },
+ {
+  "a": "deltadrills.blame",
+  "b": "deltadrills.credit-propagation",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Credit for a correct answer flows down to encompassed concepts; blame for a miss is shared down by w·(1 − R) and also lapses the concepts above."
+  ]
+ },
+ {
+  "a": "deltadrills.compression",
+  "b": "deltadrills.fire",
+  "type": "explains",
+  "relation_constraints": [
+   "Because practice on an advanced concept gives implicit credit, choosing it first can clear several due reviews at once."
+  ]
+ },
+ {
+  "a": "deltadrills.transit",
+  "b": "deltadrills.mastery",
+  "type": "depends-on",
+  "relation_constraints": [
+   "BKT's Bayes update says what an answer shows; the transit is the separate step that models learning, applied only after a correct answer."
+  ]
+ },
+ {
+  "a": "deltadrills.probe-choice",
+  "b": "deltadrills.explore",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Settling says when a concept's belief is high enough; probe choice says which unsettled concept to ask about next."
+  ]
+ },
+ {
+  "a": "deltadrills.irt",
+  "b": "deltadrills.mastery",
+  "type": "contrasts",
+  "relation_constraints": [
+   "IRT holds a continuous skill constant, as in a test, so on its own it does not model learning; BKT's mastery is the probability of a binary known state, moved by Bayes' rule and a learning transit, so it registers learning."
+  ]
+ },
+ {
+  "a": "deltadrills.probe-cost",
+  "b": "deltadrills.probe-choice",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Probe choice ranks which concept to ask about; the cost gate decides whether asking it beats teaching it outright."
+  ]
+ },
+ {
+  "a": "deltadrills.logistic-engine",
+  "b": "deltadrills.elo",
+  "type": "explains",
+  "relation_constraints": [
+   "Elo is the engine's two-feature case, ability minus item difficulty fitted online; the engine adds features to the same logistic."
+  ]
+ },
+ {
+  "a": "deltadrills.irt",
+  "b": "deltadrills.logistic-engine",
+  "type": "example-of",
+  "relation_constraints": [
+   "IRT is one configuration of the additive logistic: skill minus item difficulty with the skill held constant; the engine adds features so the skill can change."
+  ]
+ },
+ {
+  "a": "deltadrills.uncertainty",
+  "b": "deltadrills.elo",
+  "type": "mitigates",
+  "relation_constraints": [
+   "Elo's constant K is a fixed step; carrying a posterior makes updates large when little is known and small once the estimate is sure, as Glicko does."
+  ]
+ },
+ {
+  "a": "deltadrills.stretch-zone",
+  "b": "deltadrills.ability",
+  "type": "depends-on",
+  "relation_constraints": [
+   "zpd is computed from skill(θ, d): the learning step is largest where the ability model gives a problem a 50% chance."
+  ]
+ },
+ {
+  "a": "tutor.virtual-evidence",
+  "b": "tutor.same-model",
+  "type": "example-of",
+  "relation_constraints": [
+   "Virtual evidence is the one change Study mode makes to the drills' log-odds belief: a probability grade instead of right or wrong."
+  ]
+ },
+ {
+  "a": "tutor.integrated-question",
+  "b": "deltadrills.composition",
+  "type": "example-of",
+  "relation_constraints": [
+   "An integrated question is a composed task, harder than its parts, so each target counts at half weight and the relation is graded on its own."
+  ]
+ },
+ {
+  "a": "tutor.staged-diagnostic",
+  "b": "tutor.listed-integrated",
+  "type": "depends-on",
+  "relation_constraints": [
+   "The explore stage opens with broad listed questions, graded per target and down-weighted as a testlet."
+  ]
+ },
+ {
+  "a": "tutor.integrated-question",
+  "b": "tutor.listed-integrated",
+  "type": "contrasts",
+  "relation_constraints": [
+   "A listed question's parts stand alone and suit anyone; an integrated question's answer relates them, so it waits for P(all targets) ≥ 0.6 and grades the relation onto the edge."
+  ]
+ },
+ {
+  "a": "deltadrills.why-drills",
+  "b": "tutor.guardrails",
+  "type": "explains",
+  "relation_constraints": [
+   "The testing effect is why the book closes: retrieval without the answer in view is what builds lasting memory, and an AI that hands over answers removes it."
+  ]
+ },
+ {
+  "a": "oversight.sandwiching",
+  "b": "oversight.scalable-oversight",
+  "type": "example-of",
+  "relation_constraints": [
+   "Sandwiching is an experimental stand-in for scalable oversight: non-experts play the humans who cannot check a stronger system."
+  ]
+ },
+ {
+  "a": "control.trusted-monitoring",
+  "b": "control.setup",
+  "type": "example-of",
+  "relation_constraints": [
+   "Trusted monitoring is a control protocol: the trusted model scores the untrusted one and trusted labor audits the top scores."
+  ]
+ },
+ {
+  "a": "control.defer-and-edit",
+  "b": "control.trusted-monitoring",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Defer to trusted and trusted editing reuse the trusted monitor's suspicion score for outputs below the audit cut-off."
+  ]
+ },
+ {
+  "a": "control.untrusted-monitoring",
+  "b": "control.trusted-monitoring",
+  "type": "contrasts",
+  "relation_constraints": [
+   "An untrusted monitor is more capable than a trusted one but can collude with the policy; a trusted monitor cannot collude but misses subtle attacks."
+  ]
+ },
+ {
+  "a": "control.evaluation",
+  "b": "control.setup",
+  "type": "explains",
+  "relation_constraints": [
+   "A control evaluation is how a protocol's safety is measured: a red team plays the untrusted model at its worst."
+  ]
+ },
+ {
+  "a": "oversight.obfuscated-arguments",
+  "b": "oversight.debate",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Obfuscated arguments break debate's central claim: a lie can be harder to refute than to tell when its flaw cannot be located."
+  ]
+ },
+ {
+  "a": "oversight.elicitation",
+  "b": "oversight.sandbagging",
+  "type": "mitigates",
+  "relation_constraints": [
+   "Fine-tuning on good demonstrations can unlock deliberately hidden capability, but only when someone can demonstrate it."
+  ]
+ },
+ {
+  "a": "tutor.verified-quotes",
+  "b": "oversight.over-reliance",
+  "type": "mitigates",
+  "relation_constraints": [
+   "Showing verified source quotations instead of persuasive model prose is the evidence-over-explanation fix for over-reliance."
+  ]
+ },
+ {
+  "a": "tutor.verified-quotes",
+  "b": "control.defer-and-edit",
+  "type": "example-of",
+  "relation_constraints": [
+   "The grounding check is defer to trusted: feedback the checker does not rate as supported is replaced by a fixed template."
+  ]
+ },
+ {
+  "a": "tutor.control-roles",
+  "b": "control.setup",
+  "type": "example-of",
+  "relation_constraints": [
+   "The tutor maps onto a control setup: chat model untrusted, Jev trusted, the author as trusted labor."
+  ]
+ },
+ {
+  "a": "oversight.weak-to-strong",
+  "b": "control.setup",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Weak-to-strong research tries to make weak supervision train strong models well; control makes no attempt to create stronger trusted models and only limits the damage."
+  ]
+ },
+ {
+  "a": "tutor.teaching-overseers",
+  "b": "oversight.sandwiching",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Whether teaching overseers works is measured with a sandwiching design: tutored non-experts judged against an expert's answer key."
+  ]
+ },
+ {
+  "a": "tutor.guardrails",
+  "b": "oversight.over-reliance",
+  "type": "mitigates",
+  "relation_constraints": [
+   "Withholding answers stops the learner leaning on the AI, the learning version of over-reliance."
+  ]
+ },
+ {
+  "a": "control.untrusted-monitoring",
+  "b": "control.setup",
+  "type": "example-of",
+  "relation_constraints": [
+   "Untrusted monitoring uses a second copy of the setup's strong untrusted model as the monitor: more capable than the trusted model, but it may recognise its twin's attacks, so it is tested on backdoored examples made with the limited trusted labor."
+  ]
+ },
+ {
+  "a": "control.evaluation",
+  "b": "control.defer-and-edit",
+  "type": "evidence-for",
+  "relation_constraints": [
+   "Moving the defer/edit threshold trades usefulness for safety, and a control evaluation measures each side separately: usefulness with the real model, safety with a red team's attack policy."
+  ]
+ },
+ {
+  "a": "oversight.debate",
+  "b": "oversight.scalable-oversight",
+  "type": "example-of",
+  "relation_constraints": [
+   "Debate is a proposed method for scalable oversight: a weaker judge supervises stronger agents by picking the side that gave the most true, useful information."
+  ]
+ },
+ {
+  "a": "oversight.obfuscated-arguments",
+  "b": "oversight.scalable-oversight",
+  "type": "explains",
+  "relation_constraints": [
+   "Obfuscated arguments limit debate as a scalable oversight method: when a fatal flaw cannot be located the weaker judge cannot supervise, so debate can only be trusted on arguments small enough for spot checks."
+  ]
+ },
+ {
+  "a": "tutor.verified-quotes",
+  "b": "tutor.control-roles",
+  "type": "example-of",
+  "relation_constraints": [
+   "Because the chat model is the untrusted model, its quotes count only if they match the source exactly, and its feedback must pass the trusted monitor's (Jev's) grounding check or be replaced by a template."
+  ]
+ },
+ {
+  "a": "tutor.control-roles",
+  "b": "oversight.over-reliance",
+  "type": "mitigates",
+  "relation_constraints": [
+   "People accept an AI's explanation whether or not it is correct, so the tutor does not take its untrusted chat model's persuasive prose on trust: a trusted monitor checks it, and evidence is favoured over explanation."
+  ]
+ },
+ {
+  "a": "cyfound.risk",
+  "b": "cyfound.cia-triad",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Information security risk arises from a loss of confidentiality, integrity or availability."
+  ]
+ },
+ {
+  "a": "cyfound.threat-sources",
+  "b": "cyfound.risk",
+  "type": "explains",
+  "relation_constraints": [
+   "Risk is impact times likelihood of a threat source exploiting a vulnerability."
+  ]
+ },
+ {
+  "a": "cyfound.defense-in-depth",
+  "b": "cyfound.threat-shifting",
+  "type": "mitigates",
+  "relation_constraints": [
+   "When an adversary shifts around one safeguard, the other layers still stand, so one bypassed control does not expose the asset."
+  ]
+ },
+ {
+  "a": "cyfound.threat-shifting",
+  "b": "cyfound.threat-sources",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Threat shifting is what an adversarial threat source does when it meets a safeguard."
+  ]
+ },
+ {
+  "a": "cyfound.threat-shifting",
+  "b": "cyfound.risk",
+  "type": "explains",
+  "relation_constraints": [
+   "Blocking one path may lower likelihood on that path, but a shifting adversary keeps the threat alive on other routes, so the risk estimate has to consider them."
+  ]
+ },
+ {
+  "a": "cyfound.csf-profiles",
+  "b": "cyfound.csf-functions",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Profiles are stated in terms of the CSF's Core outcomes."
+  ]
+ },
+ {
+  "a": "cyfound.csf-gap-analysis",
+  "b": "cyfound.csf-profiles",
+  "type": "depends-on",
+  "relation_constraints": [
+   "A gap analysis compares the Current and Target Profiles."
+  ]
+ },
+ {
+  "a": "cyfound.csf-tiers",
+  "b": "cyfound.csf-profiles",
+  "type": "explains",
+  "relation_constraints": [
+   "Tiers characterize the rigor of risk governance and can inform both the Current and Target Profiles."
+  ]
+ },
+ {
+  "a": "cydod.categorization",
+  "b": "cyfound.cia-triad",
+  "type": "depends-on",
+  "relation_constraints": [
+   "FIPS 199 rates impact separately for confidentiality, integrity and availability."
+  ]
+ },
+ {
+  "a": "cydod.rmf-steps",
+  "b": "cydod.categorization",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Categorize is the first main RMF step; the category picks the starting baseline."
+  ]
+ },
+ {
+  "a": "cydod.authorization",
+  "b": "cydod.rmf-steps",
+  "type": "example-of",
+  "relation_constraints": [
+   "Authorize is the RMF step where the AO accepts residual risk."
+  ]
+ },
+ {
+  "a": "cydod.continuous-monitoring",
+  "b": "cydod.authorization",
+  "type": "depends-on",
+  "relation_constraints": [
+   "The Monitor step follows Authorize: it keeps track of the security posture of the system the AO accepted."
+  ]
+ },
+ {
+  "a": "cydod.ongoing-authorization",
+  "b": "cydod.authorization",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Ongoing authorization re-makes the AO's risk decision at agreed frequencies or on events."
+  ]
+ },
+ {
+  "a": "cydod.poam",
+  "b": "cydod.authorization",
+  "type": "depends-on",
+  "relation_constraints": [
+   "The AO can accept a system with open deficiencies; the POA&M records the measures planned to correct them."
+  ]
+ },
+ {
+  "a": "cydod.control-baselines",
+  "b": "cydod.control-families",
+  "type": "depends-on",
+  "relation_constraints": [
+   "A baseline is a predefined starting set of SP 800-53 controls, drawn from its families."
+  ]
+ },
+ {
+  "a": "cydod.stigs",
+  "b": "cydod.control-baselines",
+  "type": "example-of",
+  "relation_constraints": [
+   "A STIG holds the requirements selected on a DoD baseline for one product and version."
+  ]
+ },
+ {
+  "a": "cyfound.csf-gap-analysis",
+  "b": "cydod.poam",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Both are action plans: the CSF gap analysis plans how to close the gap to a Target Profile; a POA&M plans the measures to correct the deficiencies an assessment found."
+  ]
+ },
+ {
+  "a": "cynet.firewalls",
+  "b": "cyfound.defense-in-depth",
+  "type": "example-of",
+  "relation_constraints": [
+   "Firewalls inside the perimeter add a layer because perimeter firewalls cannot stop every attack."
+  ]
+ },
+ {
+  "a": "cynet.zero-trust",
+  "b": "cynet.firewalls",
+  "type": "contrasts",
+  "relation_constraints": [
+   "A perimeter firewall trusts location; zero trust grants no implicit trust for being inside."
+  ]
+ },
+ {
+  "a": "cynet.false-positives",
+  "b": "cynet.idps",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Every IDPS trades false positives against false negatives; tuning moves the balance."
+  ]
+ },
+ {
+  "a": "cynet.signature-detection",
+  "b": "cynet.false-positives",
+  "type": "causes",
+  "relation_constraints": [
+   "Signature-based detection misses previously unknown threats and variants: false negatives."
+  ]
+ },
+ {
+  "a": "cynet.anomaly-detection",
+  "b": "cynet.false-positives",
+  "type": "causes",
+  "relation_constraints": [
+   "Anomaly-based detection flags unusual but benign activity: false positives."
+  ]
+ },
+ {
+  "a": "cynet.config-management",
+  "b": "cydod.stigs",
+  "type": "depends-on",
+  "relation_constraints": [
+   "A STIG-hardened configuration is kept by baselining it and controlling changes."
+  ]
+ },
+ {
+  "a": "cynet.risk-responses",
+  "b": "cyfound.risk",
+  "type": "example-of",
+  "relation_constraints": [
+   "Accept, mitigate and transfer are risk responses applied to vulnerable software."
+  ]
+ },
+ {
+  "a": "cyiam.phishing-resistance",
+  "b": "cythreat.phishing",
+  "type": "mitigates",
+  "relation_constraints": [
+   "Cryptographic, session-bound authenticators keep phished users from handing over working credentials."
+  ]
+ },
+ {
+  "a": "cyiam.phishing-resistance",
+  "b": "cyiam.mfa",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Not all MFA is phishing-resistant: manually typed codes can be relayed."
+  ]
+ },
+ {
+  "a": "cyiam.separation-of-duties",
+  "b": "cyiam.least-privilege",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Least privilege limits what one account can do; separation of duties makes abuse require collusion."
+  ]
+ },
+ {
+  "a": "cyir.siem",
+  "b": "cyir.log-management",
+  "type": "depends-on",
+  "relation_constraints": [
+   "A SIEM is centralized logging software: its log servers analyze, and its database servers store, the logs from many sources."
+  ]
+ },
+ {
+  "a": "cythreat.phishing",
+  "b": "cythreat.social-engineering",
+  "type": "is-a",
+  "relation_constraints": [
+   "All forms of phishing are electronically delivered social engineering."
+  ]
+ },
+ {
+  "a": "cythreat.phishing",
+  "b": "cythreat.attack-tactics",
+  "type": "example-of",
+  "relation_constraints": [
+   "Phishing (T1566) is an ATT&CK technique for the Initial Access tactic."
+  ]
+ },
+ {
+  "a": "cythreat.ransomware",
+  "b": "cynet.zero-trust",
+  "type": "depends-on",
+  "relation_constraints": [
+   "NIST's ransomware tips start with zero trust and segmentation to stop malware spreading."
+  ]
+ },
+ {
+  "a": "cythreat.insider-threat",
+  "b": "cyiam.least-privilege",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Limiting insiders starts with least privilege and immediate revocation on departure."
+  ]
+ },
+ {
+  "a": "cyir.ir-lifecycle",
+  "b": "cyir.event-vs-incident",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Detect, Respond and Recover act on incidents, after analysis decides an adverse event is one."
+  ]
+ },
+ {
+  "a": "cyir.log-management",
+  "b": "cynet.idps",
+  "type": "explains",
+  "relation_constraints": [
+   "Detection, by IDPS or analyst, runs on log data."
+  ]
+ },
+ {
+  "a": "cyaisec.indirect-injection",
+  "b": "cyaisec.prompt-injection",
+  "type": "is-a",
+  "relation_constraints": [
+   "Indirect injection is prompt injection delivered through a resource the model reads."
+  ]
+ },
+ {
+  "a": "cyaisec.excessive-agency",
+  "b": "cyiam.least-privilege",
+  "type": "example-of",
+  "relation_constraints": [
+   "Minimizing an agent's extension permissions is least privilege for an AI system."
+  ]
+ },
+ {
+  "a": "cyaisec.excessive-agency",
+  "b": "cyaisec.prompt-injection",
+  "type": "mitigates",
+  "relation_constraints": [
+   "Limiting agency limits the damage an injected instruction can do, since injection may have no fool-proof fix."
+  ]
+ },
+ {
+  "a": "cyaisec.data-poisoning",
+  "b": "cyaisec.adversarial-ml",
+  "type": "example-of",
+  "relation_constraints": [
+   "Data poisoning is the training-time attack in NIST's taxonomy."
+  ]
+ },
+ {
+  "a": "cyaisec.evasion-attacks",
+  "b": "cyaisec.adversarial-ml",
+  "type": "example-of",
+  "relation_constraints": [
+   "Evasion is the deployment-time attack in NIST's taxonomy."
+  ]
+ },
+ {
+  "a": "cyaisec.data-poisoning",
+  "b": "cyaisec.backdoors",
+  "type": "causes",
+  "relation_constraints": [
+   "Poisoning may allow for the implementation of a backdoor."
+  ]
+ },
+ {
+  "a": "cyaisec.backdoors",
+  "b": "cyaisec.evasion-attacks",
+  "type": "contrasts",
+  "relation_constraints": [
+   "A backdoor lives in the model and waits for a trigger; an evasion attack leaves the model alone and modifies the input."
+  ]
+ },
+ {
+  "a": "cyaisec.ai-rmf",
+  "b": "cyfound.csf-functions",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Both have a governing function at the centre; the AI RMF adds Map and Measure for AI-specific risk."
+  ]
+ },
+ {
+  "a": "cyaisec.genai-risks",
+  "b": "cyaisec.ai-rmf",
+  "type": "depends-on",
+  "relation_constraints": [
+   "The GAI Profile applies the AI RMF to generative AI risks."
+  ]
+ },
+ {
+  "a": "cyaisec.human-ai-configuration",
+  "b": "cyaisec.ai-rmf",
+  "type": "depends-on",
+  "relation_constraints": [
+   "The GAI Profile names human-AI configuration among the generative AI risks the AI RMF functions manage."
+  ]
+ },
+ {
+  "a": "ctlpaper.setup",
+  "b": "cythreat.insider-threat",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Control treats the model like an insider who may be intentionally subverting safeguards."
+  ]
+ },
+ {
+  "a": "ctlpaper.untrusted-insider",
+  "b": "ctlpaper.setup",
+  "type": "explains",
+  "relation_constraints": [
+   "Insider-threat controls (least privilege, separation of duties, monitoring) are the cybersecurity form of AI control."
+  ]
+ },
+ {
+  "a": "ctlpaper.upfront-auditing",
+  "b": "ctlpaper.setup",
+  "type": "example-of",
+  "relation_constraints": [
+   "Upfront auditing is the baseline control protocol."
+  ]
+ },
+ {
+  "a": "ctlpaper.trusted-monitoring",
+  "b": "ctlpaper.upfront-auditing",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Trusted monitoring spends the same budget where the monitor points instead of on the first problems: 62% vs 15%."
+  ]
+ },
+ {
+  "a": "ctlpaper.trusted-monitoring",
+  "b": "cynet.false-positives",
+  "type": "depends-on",
+  "relation_constraints": [
+   "The audit threshold is a detector threshold: flag more and humans cannot review it all, flag less and backdoors slip through."
+  ]
+ },
+ {
+  "a": "ctlpaper.defer-and-edit",
+  "b": "ctlpaper.trusted-monitoring",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Defer and edit reuse the trusted monitor's suspicion score below the audit cut-off."
+  ]
+ },
+ {
+  "a": "ctlpaper.control-evaluation",
+  "b": "cythreat.pentest-vs-scan",
+  "type": "contrasts",
+  "relation_constraints": [
+   "A control evaluation is like a pen test: assessors play the adversary, here as an attack policy for the model."
+  ]
+ },
+ {
+  "a": "ctlpaper.control-evaluation",
+  "b": "ctlpaper.setup",
+  "type": "explains",
+  "relation_constraints": [
+   "Safety is measured with a red-team attack policy in place of the untrusted model."
+  ]
+ },
+ {
+  "a": "cyaisec.backdoors",
+  "b": "ctlpaper.control-evaluation",
+  "type": "explains",
+  "relation_constraints": [
+   "A backdoored model behaves normally until a trigger, so safety must be tested against an adversarial policy, not normal use."
+  ]
+ },
+ {
+  "a": "ctlpre.reward-misspecification",
+  "b": "ctlpre.goal-misgeneralisation",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Outer misalignment is a flaw in the goal we specify; inner misalignment is a flaw in what the model learned from a correct specification."
+  ]
+ },
+ {
+  "a": "ctlpre.reward-misspecification",
+  "b": "ctlpre.rlhf",
+  "type": "causes",
+  "relation_constraints": [
+   "Rewarding answers that humans rate highly rewards answers that sound correct, even when they are false."
+  ]
+ },
+ {
+  "a": "ctlpre.rlhf",
+  "b": "ctlpre.sycophancy-and-scheming",
+  "type": "causes",
+  "relation_constraints": [
+   "RLHF rewards approval, which trains sycophancy and gives a situationally aware model a reason to look good in training."
+  ]
+ },
+ {
+  "a": "ctlpre.sycophancy-and-scheming",
+  "b": "ctlwhy.control-property",
+  "type": "explains",
+  "relation_constraints": [
+   "AI control is built for the schemer: safety even if the model is secretly trying to subvert the safety measures."
+  ]
+ },
+ {
+  "a": "ctlpre.sycophancy-and-scheming",
+  "b": "ctlpaper.untrusted-insider",
+  "type": "explains",
+  "relation_constraints": [
+   "A schemer inside the lab is exactly an untrusted insider."
+  ]
+ },
+ {
+  "a": "ctlpre.scalable-oversight",
+  "b": "ctlpre.rlhf",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Scalable oversight tries to keep RLHF-style feedback accurate when tasks get too hard for humans to judge."
+  ]
+ },
+ {
+  "a": "ctlpre.scalable-oversight",
+  "b": "ctlhigh.collusion",
+  "type": "evidence-for",
+  "relation_constraints": [
+   "Debaters with a shared goal could collude, one losing on purpose, the same danger as colluding untrusted monitors."
+  ]
+ },
+ {
+  "a": "ctlpre.weak-to-strong",
+  "b": "ctlpaper.setup",
+  "type": "explains",
+  "relation_constraints": [
+   "Control's trusted model is weaker than the untrusted one, like a weak supervisor overseeing a strong student."
+  ]
+ },
+ {
+  "a": "ctlpre.weak-to-strong",
+  "b": "ctllow.password-locked-elicitation",
+  "type": "explains",
+  "relation_constraints": [
+   "Weak labels elicit capabilities the strong model already has, the same question elicitation stress tests ask."
+  ]
+ },
+ {
+  "a": "ctlpre.capabilities-propensities",
+  "b": "ctlpaper.control-evaluation",
+  "type": "explains",
+  "relation_constraints": [
+   "A control evaluation is a capability evaluation: it asks whether the model could subvert the protocol, not whether it wants to."
+  ]
+ },
+ {
+  "a": "ctlpre.capabilities-propensities",
+  "b": "ctllow.exploration-hacking",
+  "type": "evidence-for",
+  "relation_constraints": [
+   "Models that learn to deceive evaluations are why capability evaluations must guard against sandbagging."
+  ]
+ },
+ {
+  "a": "ctlpre.goal-misgeneralisation",
+  "b": "ctlbeyond.fitness-seekers",
+  "type": "explains",
+  "relation_constraints": [
+   "A fitness-seeker is a model whose learned goal is reward or influence rather than the intended task."
+  ]
+ },
+ {
+  "a": "ctlpre.interpretability",
+  "b": "ctlwhy.control-property",
+  "type": "explains",
+  "relation_constraints": [
+   "Because we cannot yet read a model's intent from its internals, control plans to be safe without knowing it."
+  ]
+ },
+ {
+  "a": "ctlpre.probing-classifiers",
+  "b": "ctlpaper.trusted-monitoring",
+  "type": "contrasts",
+  "relation_constraints": [
+   "A probe reads the untrusted model's activations; a trusted monitor reads its outputs."
+  ]
+ },
+ {
+  "a": "ctlpre.data-filtration",
+  "b": "cyaisec.data-poisoning",
+  "type": "mitigates",
+  "relation_constraints": [
+   "One goal of input data filtration is protecting against data poisoning."
+  ]
+ },
+ {
+  "a": "ctlpre.io-filtering",
+  "b": "cyaisec.prompt-injection",
+  "type": "mitigates",
+  "relation_constraints": [
+   "Input classifiers flag misuse attempts such as jailbreaks before they reach the model."
+  ]
+ },
+ {
+  "a": "ctlpre.io-filtering",
+  "b": "ctlpaper.trusted-monitoring",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Output filtering screens responses for harmful content from misuse; trusted monitoring screens an untrusted model's actions for sabotage."
+  ]
+ },
+ {
+  "a": "ctlpre.assuming-harm",
+  "b": "ctlwhy.control-property",
+  "type": "explains",
+  "relation_constraints": [
+   "Assuming the trained model may still cause harm is the starting point of AI control."
+  ]
+ },
+ {
+  "a": "ctlpre.assuming-harm",
+  "b": "ctlwhy.attack-trees",
+  "type": "contrasts",
+  "relation_constraints": [
+   "A kill chain breaks one threat into stages; an attack tree lays out the alternative ways to reach a goal."
+  ]
+ },
+ {
+  "a": "ctlpre.assuming-harm",
+  "b": "cythreat.attack-tactics",
+  "type": "explains",
+  "relation_constraints": [
+   "A kill chain's stages are the tactics an attacker moves through, as in ATT&CK."
+  ]
+ },
+ {
+  "a": "ctlwhy.catching-red-handed",
+  "b": "ctlwhy.control-property",
+  "type": "explains",
+  "relation_constraints": [
+   "Control's win condition counts catching a scheming AI as a win."
+  ]
+ },
+ {
+  "a": "ctlwhy.attack-trees",
+  "b": "cyfound.threat-sources",
+  "type": "explains",
+  "relation_constraints": [
+   "An attack tree breaks a threat into the alternative and required steps an adversary must take."
+  ]
+ },
+ {
+  "a": "ctlwhy.threat-priorities",
+  "b": "ctlwhy.attack-trees",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Prioritizing threats means ranking the goals and branches of the threat model."
+  ]
+ },
+ {
+  "a": "ctlwhy.diffuse-threats",
+  "b": "ctlwhy.catching-red-handed",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Concentrated attacks are highly incriminating and can be caught; diffuse ones are each weak evidence."
+  ]
+ },
+ {
+  "a": "ctluse.safety-usefulness",
+  "b": "ctlwhy.control-property",
+  "type": "explains",
+  "relation_constraints": [
+   "Control techniques are judged by how much safety they buy per unit of usefulness lost."
+  ]
+ },
+ {
+  "a": "ctluse.plans-abcd",
+  "b": "ctluse.safety-usefulness",
+  "type": "depends-on",
+  "relation_constraints": [
+   "How much safety budget there is depends on political will, which picks the plan."
+  ]
+ },
+ {
+  "a": "ctluse.control-measures",
+  "b": "ctlwhy.threat-priorities",
+  "type": "mitigates",
+  "relation_constraints": [
+   "Logging, permissions and blocking scaffolding protect internal security invariants."
+  ]
+ },
+ {
+  "a": "ctlhigh.win-continue-lose",
+  "b": "ctlwhy.catching-red-handed",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Auditing is what turns an attack into a win: a caught attempt."
+  ]
+ },
+ {
+  "a": "ctlhigh.win-continue-lose",
+  "b": "ctlpaper.defer-and-edit",
+  "type": "explains",
+  "relation_constraints": [
+   "Defer to trusted is one way to replace a suspicious action."
+  ]
+ },
+ {
+  "a": "ctlhigh.rogue-deployment",
+  "b": "ctlwhy.threat-priorities",
+  "type": "example-of",
+  "relation_constraints": [
+   "Rogue internal deployment is the top-priority internal-invariant violation."
+  ]
+ },
+ {
+  "a": "ctlhigh.synchronous-monitoring",
+  "b": "ctlhigh.win-continue-lose",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Blocking before execution is the replace decision made in real time."
+  ]
+ },
+ {
+  "a": "ctlhigh.synchronous-monitoring",
+  "b": "ctlhigh.rogue-deployment",
+  "type": "mitigates",
+  "relation_constraints": [
+   "Weight exfiltration and similar live failures need blocking monitors."
+  ]
+ },
+ {
+  "a": "ctlhigh.resampling",
+  "b": "ctlhigh.win-continue-lose",
+  "type": "explains",
+  "relation_constraints": [
+   "Resampling replaces suspicious actions and gathers evidence for auditing."
+  ]
+ },
+ {
+  "a": "ctlhigh.collusion",
+  "b": "ctlpaper.trusted-monitoring",
+  "type": "contrasts",
+  "relation_constraints": [
+   "An untrusted monitor is more capable than a trusted one but may collude."
+  ]
+ },
+ {
+  "a": "ctllow.non-concentrated",
+  "b": "ctlwhy.diffuse-threats",
+  "type": "explains",
+  "relation_constraints": [
+   "Non-concentrated failures are the diffuse end of the spectrum."
+  ]
+ },
+ {
+  "a": "ctllow.exploration-hacking",
+  "b": "ctllow.non-concentrated",
+  "type": "example-of",
+  "relation_constraints": [
+   "Sandbagging is a low-stakes failure spread over many tasks."
+  ]
+ },
+ {
+  "a": "ctllow.password-locked-elicitation",
+  "b": "ctllow.exploration-hacking",
+  "type": "mitigates",
+  "relation_constraints": [
+   "Elicitation tests check whether a capability evaluation is being sandbagged."
+  ]
+ },
+ {
+  "a": "ctlbeyond.fitness-seekers",
+  "b": "ctllow.exploration-hacking",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Reward-seekers try to score well; sandbaggers deliberately score badly."
+  ]
+ },
+ {
+  "a": "ctlbeyond.spillway",
+  "b": "ctlbeyond.fitness-seekers",
+  "type": "mitigates",
+  "relation_constraints": [
+   "Spillway design steers reward hacking toward benign reward-seeking."
+  ]
+ },
+ {
+  "a": "ctlbeyond.deals",
+  "b": "ctlwhy.catching-red-handed",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Instead of catching a schemer, a deal pays it to reveal itself and help."
+  ]
+ },
+ {
+  "a": "ctluse.control-measures",
+  "b": "ctlhigh.resampling",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Resampling needs scaffolding that can hold an action before it takes effect."
+  ]
+ },
+ {
+  "a": "cynet.zero-trust",
+  "b": "cyfound.defense-in-depth",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Both reject relying on one perimeter: defense in depth adds layers inside so one bypass does not expose everything; zero trust gives a device nothing for being inside, authenticating and authorizing every session."
+  ]
+ },
+ {
+  "a": "cythreat.phishing",
+  "b": "cyiam.mfa",
+  "type": "contrasts",
+  "relation_constraints": [
+   "MFA means a stolen password alone is not enough, but phishing can still trick the user into giving away a typed one-time code, so ordinary MFA does not stop phishing."
+  ]
+ },
+ {
+  "a": "cyir.event-vs-incident",
+  "b": "cyfound.csf-functions",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Deciding whether an adverse event is an incident is analysis within Detect; only an incident triggers Respond and Recover."
+  ]
+ },
+ {
+  "a": "cyir.ir-lifecycle",
+  "b": "cyfound.csf-functions",
+  "type": "example-of",
+  "relation_constraints": [
+   "Incident response is mapped onto the CSF 2.0 Functions: Detect, Respond and Recover are the response itself, Govern, Identify and Protect the preparation."
+  ]
+ },
+ {
+  "a": "cyaisec.excessive-agency",
+  "b": "cyaisec.indirect-injection",
+  "type": "explains",
+  "relation_constraints": [
+   "Excessive agency sets how much damage an injected instruction can do; indirect injection may not be fully preventable, so limiting functionality, permissions and autonomy, with human approval of high-impact actions, limits that damage."
+  ]
+ },
+ {
+  "a": "ctlpaper.trusted-monitoring",
+  "b": "ctlpaper.setup",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Trusted monitoring spends the setup's resources: the weaker trusted model rates every output's suspicion, and the limited trusted human labor audits only the most suspicious."
+  ]
+ },
+ {
+  "a": "cyiam.separation-of-duties",
+  "b": "cythreat.insider-threat",
+  "type": "mitigates",
+  "relation_constraints": [
+   "Splitting functions such as access control and audit between people means an insider who abuses privilege cannot also hide it without collusion."
+  ]
+ },
+ {
+  "a": "cynet.config-management",
+  "b": "cydod.control-baselines",
+  "type": "depends-on",
+  "relation_constraints": [
+   "The controls and STIG settings selected on the baseline are recorded as a baseline configuration, which then changes only through change control."
+  ]
+ },
+ {
+  "a": "cynet.risk-responses",
+  "b": "cydod.continuous-monitoring",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Continuous monitoring, through its risk assessments and impact analyses, surfaces a new vulnerability; a risk response is then chosen for it: patch, or with no patch mitigate, accept or transfer the risk."
+  ]
+ },
+ {
+  "a": "cydod.ongoing-authorization",
+  "b": "cydod.continuous-monitoring",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Monitoring keeps ongoing situational awareness of the security posture; ongoing authorization uses it, so an event monitoring surfaces can prompt a follow-on risk decision without waiting for a scheduled one."
+  ]
+ },
+ {
+  "a": "cynet.risk-responses",
+  "b": "cydod.ongoing-authorization",
+  "type": "depends-on",
+  "relation_constraints": [
+   "An event such as a new vulnerability can drive an event-driven follow-on risk decision, and that decision picks the response: patch, or with no patch mitigate, accept or transfer the risk."
+  ]
+ },
+ {
+  "a": "cyiam.least-privilege",
+  "b": "cydod.workforce",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Access should follow the tasks of the person's work role, the unit 8140 qualifies people by, not their rank or title."
+  ]
+ },
+ {
+  "a": "cythreat.ransomware",
+  "b": "cyfound.cia-triad",
+  "type": "causes",
+  "relation_constraints": [
+   "Ransomware's encryption is a loss of availability (and an unauthorized modification, a loss of integrity); stealing and publishing data is a loss of confidentiality, which backups do not undo."
+  ]
+ },
+ {
+  "a": "cyir.log-management",
+  "b": "cyir.event-vs-incident",
+  "type": "evidence-for",
+  "relation_constraints": [
+   "Logs are records of events; the analysis that decides whether events are an incident runs on log data."
+  ]
+ },
+ {
+  "a": "ctlpre.data-filtration",
+  "b": "cyaisec.adversarial-ml",
+  "type": "mitigates",
+  "relation_constraints": [
+   "Filtering harmful data from the training set aims, among its goals, to protect against training-time poisoning attacks, but it is not a guarantee because the link between data and behaviour is hard to predict."
+  ]
+ },
+ {
+  "a": "ctlpre.reward-misspecification",
+  "b": "ctlpre.alignment",
+  "type": "is-a",
+  "relation_constraints": [
+   "Reward misspecification is the outer alignment problem: getting the specified goal right, so the reward is not only a proxy for what we intend."
+  ]
+ },
+ {
+  "a": "ctlpre.goal-misgeneralisation",
+  "b": "ctlpre.alignment",
+  "type": "is-a",
+  "relation_constraints": [
+   "Goal misgeneralisation is the inner alignment problem: the model pursues something other than the specified goal although it scored highly in training, which shows under distributional shift."
+  ]
+ },
+ {
+  "a": "ctlpre.sycophancy-and-scheming",
+  "b": "ctlpre.scalable-oversight",
+  "type": "explains",
+  "relation_constraints": [
+   "Sycophantic, deceptive and genuinely helpful outputs can look identical to evaluators, which is why techniques are needed that let humans give accurate feedback beyond what they can judge directly."
+  ]
+ },
+ {
+  "a": "ctllow.exploration-hacking",
+  "b": "ctlpre.weak-to-strong",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Weak supervision works by eliciting capabilities a model already has; a model that sandbags or exploration hacks withholds them on purpose, so there is nothing for training to reinforce."
+  ]
+ },
+ {
+  "a": "ctlpre.io-filtering",
+  "b": "ctlpre.assuming-harm",
+  "type": "example-of",
+  "relation_constraints": [
+   "Input/output filtering is one of the deployment-time layers that assuming harm calls for; jailbreaks stay possible, so it is one layer, not the whole defence."
+  ]
+ },
+ {
+  "a": "ctlwhy.attack-trees",
+  "b": "ctlpre.io-filtering",
+  "type": "explains",
+  "relation_constraints": [
+   "An input or output classifier is a countermeasure on the attack's path; the attack tree shows how it changes the cheapest route to the goal."
+  ]
+ },
+ {
+  "a": "ctlwhy.threat-priorities",
+  "b": "ctlhigh.synchronous-monitoring",
+  "type": "explains",
+  "relation_constraints": [
+   "Rogue internal deployments are the top-priority threat and can be live failures with no grace period, so they need a monitor that runs before the action executes rather than reviewing it later."
+  ]
+ },
+ {
+  "a": "ctlhigh.resampling",
+  "b": "ctlpaper.defer-and-edit",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Both answer a suspicious action by replacing it: defer to trusted and trusted editing substitute the trusted model's output, resampling takes more samples from the untrusted model, which also gathers evidence if an attack recurs."
+  ]
+ },
+ {
+  "a": "ctlpaper.control-evaluation",
+  "b": "ctlhigh.collusion",
+  "type": "evidence-for",
+  "relation_constraints": [
+   "A control evaluation's red team plays the scheming model, so it tests whether an untrusted monitor would collude: lie about real attacks while staying honest on synthetic ones."
+  ]
+ },
+ {
+  "a": "ctluse.control-measures",
+  "b": "ctluse.safety-usefulness",
+  "type": "explains",
+  "relation_constraints": [
+   "Control measures are how a developer buys safety within a limited willingness to give up usefulness; better measures push out the safety-usefulness frontier."
+  ]
+ },
+ {
+  "a": "ctluse.control-measures",
+  "b": "ctluse.plans-abcd",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Which control measures get built depends on the plan the political will allows; with little will (Plan D) the team starts with the most important infrastructure, such as logging all inputs and outputs."
+  ]
+ },
+ {
+  "a": "bsfreq.incidence",
+  "b": "bsfreq.prevalence",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Prevalence counts every existing case over the total population; incidence counts new cases over the population at risk."
+  ]
+ },
+ {
+  "a": "bsfreq.duration",
+  "b": "bsfreq.prevalence",
+  "type": "explains",
+  "relation_constraints": [
+   "A long disease stays counted in prevalence for years."
+  ]
+ },
+ {
+  "a": "bsfreq.prev-inc-dynamics",
+  "b": "bsfreq.prevalence",
+  "type": "explains",
+  "relation_constraints": [
+   "Longer survival keeps cases in prevalence; cure or death removes them."
+  ]
+ },
+ {
+  "a": "bsfreq.acute",
+  "b": "bsfreq.duration",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Short diseases: prevalence close to incidence; chronic ones: prevalence far above it."
+  ]
+ },
+ {
+  "a": "bsfreq.definition-change",
+  "b": "bsfreq.new-cases",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Both change the number of new cases: removing a risk factor lowers it, a lower cut-off raises it."
+  ]
+ },
+ {
+  "a": "bsfreq.new-cases",
+  "b": "bsfreq.prev-inc-dynamics",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Fewer new cases move incidence (and prevalence); longer survival moves prevalence only."
+  ]
+ },
+ {
+  "a": "bsfreq.prev-inc-dynamics",
+  "b": "bsfreq.incidence",
+  "type": "explains",
+  "relation_constraints": [
+   "Only new-case drivers (risk factors, definitions) move incidence; treatment does not."
+  ]
+ },
+ {
+  "a": "bsfreq.mortality",
+  "b": "bsfreq.mortality-cfr",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Same deaths, two denominators: the people affected (case fatality rate) or the total population (mortality)."
+  ]
+ },
+ {
+  "a": "bsfreq.mortality",
+  "b": "bsfreq.incidence",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Mortality = incidence x case fatality rate (15% of 600/100,000 = 90/100,000)."
+  ]
+ },
+ {
+  "a": "bsdx.sensitivity",
+  "b": "bsdx.two-by-two",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Sensitivity = TP/(TP+FN), read down the disease-present column."
+  ]
+ },
+ {
+  "a": "bsdx.specificity",
+  "b": "bsdx.two-by-two",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Specificity = TN/(TN+FP), read down the disease-absent column."
+  ]
+ },
+ {
+  "a": "bsdx.predictive-values",
+  "b": "bsdx.two-by-two",
+  "type": "depends-on",
+  "relation_constraints": [
+   "PPV = TP/(TP+FP) and NPV = TN/(TN+FN), read across the test-result rows."
+  ]
+ },
+ {
+  "a": "bsdx.sensitivity",
+  "b": "bsdx.specificity",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Sensitivity conditions on disease present; specificity on disease absent."
+  ]
+ },
+ {
+  "a": "bsdx.npv",
+  "b": "bsdx.predictive-values",
+  "type": "contrasts",
+  "relation_constraints": [
+   "PPV divides by everyone who tested positive; NPV by everyone who tested negative."
+  ]
+ },
+ {
+  "a": "bsdx.sensitivity",
+  "b": "bsdx.predictive-values",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Sensitivity is P(positive | disease), fixed by the test; PPV is P(disease | positive), which moves with prevalence."
+  ]
+ },
+ {
+  "a": "bsdx.pv-prevalence",
+  "b": "bsdx.predictive-values",
+  "type": "explains",
+  "relation_constraints": [
+   "Higher prevalence raises PPV and lowers NPV."
+  ]
+ },
+ {
+  "a": "bsdx.pv-prevalence",
+  "b": "bsfreq.prevalence",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Predictive values depend on how common the disease is in the tested population."
+  ]
+ },
+ {
+  "a": "bsdx.screen-vs-confirm",
+  "b": "bsdx.sensitivity",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Screen with the most sensitive test: few false negatives."
+  ]
+ },
+ {
+  "a": "bsdx.confirmatory",
+  "b": "bsdx.screen-vs-confirm",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Screen with high sensitivity (few false negatives); confirm with high specificity (few false positives)."
+  ]
+ },
+ {
+  "a": "bsdx.test-order",
+  "b": "bsdx.screen-vs-confirm",
+  "type": "depends-on",
+  "relation_constraints": [
+   "The more sensitive test goes first."
+  ]
+ },
+ {
+  "a": "bsdx.confirmatory",
+  "b": "bsdx.specificity",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Confirm with the most specific test: few false positives."
+  ]
+ },
+ {
+  "a": "bsdx.cutoff",
+  "b": "bsdx.sensitivity",
+  "type": "causes",
+  "relation_constraints": [
+   "Calling more results positive raises sensitivity."
+  ]
+ },
+ {
+  "a": "bsdx.cutoff",
+  "b": "bsdx.specificity",
+  "type": "causes",
+  "relation_constraints": [
+   "Calling more results positive lowers specificity."
+  ]
+ },
+ {
+  "a": "bsdx.cutoff",
+  "b": "bsdx.screen-vs-confirm",
+  "type": "explains",
+  "relation_constraints": [
+   "A screening program lowers the cut-off to miss fewer cases, accepting more false positives for confirmation to sort out."
+  ]
+ },
+ {
+  "a": "bsrisk.odds-ratio",
+  "b": "bsrisk.relative-risk",
+  "type": "contrasts",
+  "relation_constraints": [
+   "RR compares risks (cohort); OR compares odds of exposure (case-control)."
+  ]
+ },
+ {
+  "a": "bsrisk.attributable-risk",
+  "b": "bsrisk.relative-risk",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Attributable risk is the difference in risk; relative risk is the ratio."
+  ]
+ },
+ {
+  "a": "bsrisk.rrr",
+  "b": "bsrisk.arr-rrr",
+  "type": "contrasts",
+  "relation_constraints": [
+   "ARR is the difference in risk; RRR is the proportion of the baseline risk that disappeared."
+  ]
+ },
+ {
+  "a": "bsrisk.arr-rrr",
+  "b": "bsrisk.attributable-risk",
+  "type": "is-a",
+  "relation_constraints": [
+   "Absolute risk reduction is the risk difference when the intervention lowers risk."
+  ]
+ },
+ {
+  "a": "bsrisk.nnt-nnh",
+  "b": "bsrisk.arr-rrr",
+  "type": "depends-on",
+  "relation_constraints": [
+   "NNT = 1 / ARR, not 1 / RRR."
+  ]
+ },
+ {
+  "a": "bsrisk.nnh",
+  "b": "bsrisk.nnt-nnh",
+  "type": "contrasts",
+  "relation_constraints": [
+   "NNT counts patients treated for one to be helped; NNH counts patients exposed for one to be harmed."
+  ]
+ },
+ {
+  "a": "bsrisk.nnh",
+  "b": "bsrisk.attributable-risk",
+  "type": "depends-on",
+  "relation_constraints": [
+   "NNH = 1 / attributable risk."
+  ]
+ },
+ {
+  "a": "bsdesign.cohort",
+  "b": "bsrisk.relative-risk",
+  "type": "depends-on",
+  "relation_constraints": [
+   "A cohort study follows exposed and unexposed people and reports relative risk."
+  ]
+ },
+ {
+  "a": "bsdesign.case-control",
+  "b": "bsrisk.odds-ratio",
+  "type": "depends-on",
+  "relation_constraints": [
+   "A case-control study compares exposure odds in cases and controls and reports the odds ratio."
+  ]
+ },
+ {
+  "a": "bsdesign.cross-sectional",
+  "b": "bsfreq.prevalence",
+  "type": "depends-on",
+  "relation_constraints": [
+   "A cross-sectional study is a snapshot that measures prevalence."
+  ]
+ },
+ {
+  "a": "bsdesign.rct",
+  "b": "bsdesign.cohort",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Both follow groups forward; only a trial assigns the exposure (an active intervention)."
+  ]
+ },
+ {
+  "a": "bsdesign.phase-3",
+  "b": "bsdesign.rct",
+  "type": "example-of",
+  "relation_constraints": [
+   "Phase III is a large randomized comparison with placebo or the standard of care."
+  ]
+ },
+ {
+  "a": "bsdesign.meta-analysis",
+  "b": "bsdesign.rct",
+  "type": "depends-on",
+  "relation_constraints": [
+   "A meta-analysis is only as good as the studies it pools."
+  ]
+ },
+ {
+  "a": "bsbias.recall",
+  "b": "bsdesign.case-control",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Recall bias threatens case-control and other retrospective studies that depend on patients' memory."
+  ]
+ },
+ {
+  "a": "bsbias.blinding",
+  "b": "bsbias.observer-blinding",
+  "type": "mitigates",
+  "relation_constraints": [
+   "Blinding in clinical trials prevents observer bias."
+  ]
+ },
+ {
+  "a": "bsbias.blinding",
+  "b": "bsdesign.rct",
+  "type": "mitigates",
+  "relation_constraints": [
+   "Blinding in a trial prevents observer bias and placebo effects."
+  ]
+ },
+ {
+  "a": "bsbias.attrition",
+  "b": "bsbias.selection",
+  "type": "is-a",
+  "relation_constraints": [
+   "Attrition bias is a form of selection bias."
+  ]
+ },
+ {
+  "a": "bsbias.berkson",
+  "b": "bsbias.selection",
+  "type": "is-a",
+  "relation_constraints": [
+   "Recruiting hospitalized patients selects people who are less healthy and differently exposed than the general population."
+  ]
+ },
+ {
+  "a": "bsbias.attrition",
+  "b": "bsdesign.cohort",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Uneven loss to follow-up in a cohort is attrition bias, a form of selection bias."
+  ]
+ },
+ {
+  "a": "bsbias.confounding",
+  "b": "bsrisk.relative-risk",
+  "type": "causes",
+  "relation_constraints": [
+   "A confounder can create or hide an association in the relative risk."
+  ]
+ },
+ {
+  "a": "bsdesign.cohort",
+  "b": "bsbias.confounding",
+  "type": "depends-on",
+  "relation_constraints": [
+   "A cohort study is observational: exposure is not randomized, so its association holds only once a confounder linked to both exposure and outcome is measured and adjusted for."
+  ]
+ },
+ {
+  "a": "bsbias.lead-length-time",
+  "b": "bsdx.screen-vs-confirm",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Screening programs are where lead-time and length-time bias arise."
+  ]
+ },
+ {
+  "a": "bsbias.length-time",
+  "b": "bsbias.lead-length-time",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Lead-time: diagnosis moved earlier; length-time: screening finds the slow, long-latency cases."
+  ]
+ },
+ {
+  "a": "bsbias.length-time",
+  "b": "bsdx.screen-vs-confirm",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Screening programs are where length-time bias arises."
+  ]
+ },
+ {
+  "a": "bsbias.lead-length-time",
+  "b": "bsfreq.prev-inc-dynamics",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Real survival gains raise prevalence; lead-time only moves the diagnosis date earlier."
+  ]
+ },
+ {
+  "a": "bsbias.hawthorne",
+  "b": "bsbias.observer-blinding",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Hawthorne: participants change because they are watched; observer bias: researchers' beliefs change the reading."
+  ]
+ },
+ {
+  "a": "bsbias.measurement-procedure",
+  "b": "bsbias.observer-blinding",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Measurement bias comes from instruments; observer bias from the researcher's belief."
+  ]
+ },
+ {
+  "a": "bsbias.procedure",
+  "b": "bsbias.measurement-procedure",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Procedure bias: the groups are not treated equally; measurement bias: faulty equipment gives incorrect readings."
+  ]
+ },
+ {
+  "a": "bsdesc.median",
+  "b": "bsdesc.central-tendency",
+  "type": "contrasts",
+  "relation_constraints": [
+   "The mean adds every value; the median only needs the middle one."
+  ]
+ },
+ {
+  "a": "bsdesc.mode",
+  "b": "bsdesc.central-tendency",
+  "type": "contrasts",
+  "relation_constraints": [
+   "The mode is the most frequent value, not a sum or a middle."
+  ]
+ },
+ {
+  "a": "bsdesc.outliers-skew",
+  "b": "bsdesc.central-tendency",
+  "type": "depends-on",
+  "relation_constraints": [
+   "An outlier moves the mean most, the median less and the mode least."
+  ]
+ },
+ {
+  "a": "bsdesc.negative-skew",
+  "b": "bsdesc.skew-shape",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Positive skew: mean > median > mode; negative skew: the opposite."
+  ]
+ },
+ {
+  "a": "bsdesc.bimodal",
+  "b": "bsdesc.skew-shape",
+  "type": "contrasts",
+  "relation_constraints": [
+   "A skewed distribution has one peak and a tail; a bimodal one has two peaks."
+  ]
+ },
+ {
+  "a": "bsdesc.skew-shape",
+  "b": "bsdesc.outliers-skew",
+  "type": "explains",
+  "relation_constraints": [
+   "A tail of extreme values pulls the mean furthest, so a positive skew has mean > median > mode."
+  ]
+ },
+ {
+  "a": "bsdesc.normal-sd",
+  "b": "bsdesc.central-tendency",
+  "type": "depends-on",
+  "relation_constraints": [
+   "In a normal distribution mean = median = mode, and SDs are measured from the mean."
+  ]
+ },
+ {
+  "a": "bsinf.type-1",
+  "b": "bsinf.errors-power",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Type I rejects a true null; type II fails to reject a false null."
+  ]
+ },
+ {
+  "a": "bsinf.power",
+  "b": "bsinf.errors-power",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Power = 1 - beta, and beta is the probability of a type II error."
+  ]
+ },
+ {
+  "a": "bsinf.alternative",
+  "b": "bsinf.hypotheses",
+  "type": "contrasts",
+  "relation_constraints": [
+   "The null says no difference; the alternative says there is one."
+  ]
+ },
+ {
+  "a": "bsinf.errors-power",
+  "b": "bsinf.hypotheses",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Type I rejects a true null; type II fails to reject a false null."
+  ]
+ },
+ {
+  "a": "bsinf.p-value",
+  "b": "bsinf.hypotheses",
+  "type": "evidence-for",
+  "relation_constraints": [
+   "p < 0.05 is the usual evidence to reject the null."
+  ]
+ },
+ {
+  "a": "bsinf.confidence-interval",
+  "b": "bsinf.p-value",
+  "type": "evidence-for",
+  "relation_constraints": [
+   "A 95% CI excluding the null value corresponds to p < 0.05."
+  ]
+ },
+ {
+  "a": "bsinf.confidence-interval",
+  "b": "bsrisk.relative-risk",
+  "type": "depends-on",
+  "relation_constraints": [
+   "An RR interval is read against 1: entirely above = risk factor, entirely below = protective."
+  ]
+ },
+ {
+  "a": "bsinf.clinical-vs-statistical",
+  "b": "bsinf.p-value",
+  "type": "contrasts",
+  "relation_constraints": [
+   "p < 0.05 says unlikely to be chance, not that the effect matters to patients."
+  ]
+ },
+ {
+  "a": "bsinf.clinical-vs-statistical",
+  "b": "bsinf.confidence-interval",
+  "type": "contrasts",
+  "relation_constraints": [
+   "A CI that excludes 0 can still hold only clinically trivial differences."
+  ]
+ },
+ {
+  "a": "bsinf.anova",
+  "b": "bsinf.choosing-test",
+  "type": "contrasts",
+  "relation_constraints": [
+   "t-test: the means of two groups; ANOVA: the means of three or more."
+  ]
+ },
+ {
+  "a": "bsinf.chi-square",
+  "b": "bsinf.choosing-test",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Chi-square compares percentages or proportions, never means."
+  ]
+ },
+ {
+  "a": "bsinf.choosing-test",
+  "b": "bsinf.hypotheses",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Each test (t, ANOVA, chi-square) tests a null of no difference."
+  ]
+ },
+ {
+  "a": "bsinf.power",
+  "b": "bsdesign.meta-analysis",
+  "type": "explains",
+  "relation_constraints": [
+   "Pooling studies raises power, lowering the chance of a type II error."
+  ]
+ }
+]
