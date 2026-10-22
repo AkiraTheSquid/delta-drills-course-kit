@@ -38,7 +38,6 @@ import json
 import re
 import threading
 from collections import Counter
-from functools import lru_cache
 from pathlib import Path
 from typing import Literal, Optional
 
@@ -412,7 +411,9 @@ class Pack(_M):
         return self._ix["diagrams"][did]
 
     def diagram_file(self, did: str, masked: bool) -> Path:
-        return PACKS_DIR / self.id / "diagrams" / f"{did}{'.masked' if masked else ''}.webp"
+        from app.concept_tutor import contrib   # a live-published course's pictures are on the volume
+        return (contrib.diagram_file(self.id, did, masked)
+                or PACKS_DIR / self.id / "diagrams" / f"{did}{'.masked' if masked else ''}.webp")
 
     def questions_for(self, cid: str) -> list[Question]:
         # Indexed by target, once per questions LIST: a voice pack (speech.py)
@@ -744,34 +745,48 @@ def _read(folder: Path, name: str, default):
 
 
 _loading = threading.Lock()
+_cache: dict[str, tuple[int, "Pack"]] = {}
 
 
 def load(pack_id: str) -> Pack:
     """The pack, built and checked once. One thread builds it while the rest
     wait: lru_cache alone let every request of a cold server build its own
     copy at once (2026-10-11: eleven at a time on one shared CPU, each holding
-    a DB connection, until the pool ran out and the backend stopped answering)."""
+    a DB connection, until the pool ran out and the backend stopped answering).
+    Rebuilt when a contributor publishes a course live (contrib.stamp moves);
+    only the newest build is kept, so an old pack is not held in memory."""
+    from app.concept_tutor import contrib
     with _loading:
-        return _load(pack_id)
+        key = contrib.stamp(pack_id)
+        hit = _cache.get(pack_id)
+        if hit is not None and hit[0] == key:
+            return hit[1]
+        pack = _load(pack_id)
+        _cache.pop(pack_id, None)
+        _cache[pack_id] = (key, pack)
+        while len(_cache) > 8:          # the bound lru_cache(maxsize=8) had
+            _cache.pop(next(iter(_cache)))
+        return pack
 
 
-@lru_cache(maxsize=8)
+def _build(files: dict) -> Pack:
+    pack = Pack(**files["pack"], concepts=files["concepts"], edges=files["edges"],
+                passages=files["passages"], questions=files["questions"])
+    bad = problems(pack)
+    if bad:
+        raise ValueError(f"concept pack {pack.id} is invalid: " + "; ".join(bad[:8]))
+    return pack
+
+
 def _load(pack_id: str) -> Pack:
+    from app.concept_tutor import contrib
     folder = PACKS_DIR / pack_id
     meta = _read(folder, "pack.json", None)
     if meta is None:
         raise FileNotFoundError(f"no concept pack {pack_id!r} in {PACKS_DIR}")
-    pack = Pack(
-        **meta,
-        concepts=_read(folder, "concepts.json", []),
-        edges=_read(folder, "edges.json", []),
-        passages=_read(folder, "passages.json", []),
-        questions=_read(folder, "questions.json", []),
-    )
-    bad = problems(pack)
-    if bad:
-        raise ValueError(f"concept pack {pack_id} is invalid: " + "; ".join(bad[:8]))
-    return pack
+    files = {"pack": meta, **{name: _read(folder, f"{name}.json", [])
+                              for name in ("concepts", "edges", "passages", "questions")}}
+    return contrib.build(pack_id, files, _build)
 
 
-load.cache_clear = _load.cache_clear   # check_pack.py and tests reset it
+load.cache_clear = _cache.clear   # check_pack.py and tests reset it

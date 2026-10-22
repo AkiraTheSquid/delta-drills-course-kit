@@ -119,8 +119,14 @@ Needs only `pydantic` and `Pillow` in the content python (`.venv`), no torch.
    with `study_diagram_update`.
 6. `study_check` until it says `ok`. It merges the course into a copy of the
    app's Study pack and runs the app's own rules on it.
-7. In the course kit, open a pull request with `study-courses/<course>/`. In the
-   private repo, `study_apply` writes it into the live pack, and then you deploy.
+7. `study_publish`: it is live on deltadrills.com within seconds (the server
+   re-checks it against every course, private ones included). Republish after
+   any change; `study_unpublish` takes it down; `study_publish_status` says
+   what is live. It needs your publish key from Seth, stored once by YOU in a
+   terminal (`read -rs K && printf '%s' "$K" | ./content-mcp/bin/dd-content
+   set-publish-key --key -`), never pasted to the AI. In the private repo,
+   `study_apply` + a deploy still works for a course that should ship in the
+   image.
 
 Every id is namespaced by the course (`<course>.<id>`), so a Study course can
 only ever replace its own content in the shared pack. An alias that another

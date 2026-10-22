@@ -27,12 +27,9 @@ flag is a person's sign-off.
 from __future__ import annotations
 
 import hashlib
-import html
 import os
-import re
 import subprocess
 import sys
-import unicodedata
 from functools import lru_cache
 from pathlib import Path
 
@@ -41,29 +38,10 @@ sys.path.insert(0, str(REPO / "This-Directory-Only" / "backend"))
 
 from app.concept_tutor.pack import PACKS_DIR, load, problems  # noqa: E402
 
-MAX_WORDS = 220
+from app.concept_tutor.verbatim import MAX_WORDS, contains, norm, text_of  # noqa: E402,F401
+from app.concept_tutor.verbatim import near as _near  # noqa: E402
+
 PDF_CACHE = Path(os.environ.get("XDG_CACHE_HOME") or Path.home() / ".cache") / "delta-drills" / "pdftotext"
-_QUOTES = str.maketrans({"‘": "'", "’": "'", "‚": "'", "“": '"', "”": '"', "„": '"',
-                         "–": "-", "—": "-", "−": "-", "‐": "-", "‑": "-",
-                         "¬": "-",   # ¬ = an old scanned JAMA's line-break hyphen (Donabedian 1988)
-                         "\x96": "-", "\x97": "-"})   # cp1252 en/em dash left as C1 controls (PSNet 2007 print)
-
-
-def norm(s: str) -> str:
-    """Forgive layout, never wording. Word boundaries SURVIVE: "not able" and
-    "notable" stay different (codex critic 2026-10-03; the first version dropped
-    all whitespace and let a merged word through)."""
-    s = unicodedata.normalize("NFKC", s).translate(_QUOTES)
-    s = re.sub(r"-\s+", "", s)   # line-break hyphenation: "reten-\ntion" -> "retention"
-    s = s.replace("-", "")       # so "test-enhanced" matches "test-\nenhanced" either way
-    return re.sub(r"\s+", " ", s).strip()
-
-
-def contains(src: str, passage: str) -> bool:
-    """Normalised substring match that cannot start or end mid-word."""
-    p = norm(passage)
-    pat = ("(?<!\\w)" if p[:1].isalnum() else "") + re.escape(p) + ("(?!\\w)" if p[-1:].isalnum() else "")
-    return re.search(pat, src) is not None
 
 
 def norm_source(path: str) -> str:
@@ -102,24 +80,7 @@ def source_text(path: str) -> str:
         except OSError:
             pass  # an unwritable cache only costs speed
         return out.stdout
-    raw = f.read_text(encoding="utf-8", errors="replace")
-    if f.suffix.lower() in (".html", ".htm"):
-        raw = re.sub(r"(?is)<(script|style)\b.*?</\1>", " ", raw)
-        raw = html.unescape(re.sub(r"<[^>]+>", " ", raw))
-    return raw
-
-
-def _near(passage: str, src: str) -> str:
-    """How far the passage matches before it diverges — for the error message."""
-    p = norm(passage)
-    lo, hi = 0, len(p)
-    while lo < hi:
-        mid = (lo + hi + 1) // 2
-        if p[:mid] in src:
-            lo = mid
-        else:
-            hi = mid - 1
-    return f"first {lo}/{len(p)} normalised chars match; diverges near {p[lo:lo + 40]!r}"
+    return text_of(f.read_text(encoding="utf-8", errors="replace"), f.suffix)
 
 
 def check(pack_id: str) -> list[str]:

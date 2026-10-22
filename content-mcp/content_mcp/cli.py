@@ -88,6 +88,9 @@ def build_parser() -> argparse.ArgumentParser:
     setpw.add_argument("--password", required=True, help="The NEW password.")
     setpw.add_argument("--current", help="The current password. Required once one is set.")
 
+    setkey = subparsers.add_parser("set-publish-key", help="Store the Study publish key Seth gave you (study_publish).")
+    setkey.add_argument("--key", required=True, help="'-' reads it from stdin (keeps it out of the process list).")
+
     for spec in sorted(ops.REGISTRY.values(), key=lambda s: s.name):
         sub = subparsers.add_parser(spec.name, help=spec.summary)
         sub.add_argument("--json-args", dest="json_args",
@@ -131,6 +134,18 @@ def main(argv: list[str] | None = None) -> int:
             print(f"AuthError: {err}", file=sys.stderr)
             return 1
         print(f"Password digest written to {target}")
+        return 0
+
+    if command == "set-publish-key":
+        from . import study_publish
+
+        key = sys.stdin.read() if namespace.key == "-" else namespace.key
+        try:
+            target = study_publish.write_key(key)
+        except ValueError as err:
+            print(f"ValueError: {err}", file=sys.stderr)
+            return 1
+        print(f"Publish key stored in {target}")
         return 0
 
     name = ALIASES.get(command, command)

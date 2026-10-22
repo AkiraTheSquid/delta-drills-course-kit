@@ -64,13 +64,29 @@ tells you what to fix. For image occlusion, `study_diagram_preview` draws the
 picture with a grid and the numbered boxes, so you can see whether a box
 covers its label.
 
-🔴 This repo is public. A source is published with your course, so use your own
-notes or openly licensed text (OpenStax is CC BY), never a teacher's slides or
-a copyrighted textbook.
+### Publishing it live (no pull request, no waiting)
 
-When `study_check` says `ok`, open a pull request with your
-`study-courses/<course>/` folder. It is applied to the app and deployed from
-there.
+When `study_check` says `ok`, ask Claude to **publish** it (`study_publish`).
+The app's server checks the course again against every course it has
+(including private ones this repo cannot see), paints the image-occlusion
+pictures, and serves it within seconds on deltadrills.com: Study tab, switch
+the course on in Courses. Change anything, then publish again; that replaces
+the live copy. `study_unpublish` takes it down. `public=true` shows it to
+every signed-in learner (otherwise Seth and the learners he has invited to
+Study).
+
+Publishing needs a **publish key** from Seth, once. Store it yourself in a
+terminal, never by pasting it to the AI:
+
+```bash
+read -rs K && printf '%s' "$K" | ./content-mcp/bin/dd-content set-publish-key --key -
+```
+
+Only the person who first published a course can replace or remove it.
+
+🔴 Use your own notes or text you may share (OpenStax is CC BY), never a
+teacher's slides or a copyrighted textbook. A published course's sources sit
+on the server; if you also send a pull request, they become public here.
 
 ## Sending your work back
 

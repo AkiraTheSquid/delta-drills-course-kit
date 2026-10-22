@@ -3,7 +3,7 @@ into ops.REGISTRY. A module of their own so ops.py stays one screen per family."
 
 from __future__ import annotations
 
-from . import study, study_images
+from . import study, study_images, study_publish
 from .ops import INT, STR, op
 
 STRS = {"type": "array", "items": STR}
@@ -115,3 +115,29 @@ def _study_check(course):
     {"course": STR}, ["course"], needs_auth=True)
 def _study_apply(course):
     return study_images.apply(course)
+
+
+CHANNEL = {**STR, "enum": ["stable", "beta"], "description": "'stable' (default: deltadrills.com, live for "
+           "everyone at once) or 'beta' (the test site)"}
+
+
+@op("study_publish",
+    "Publish a Study course LIVE: the server checks it against the real pack, paints its pictures and "
+    "serves it on the next request — no pull request, no deploy. Republish after every change. Needs "
+    "the contributor's publish key (stored with `dd-content set-publish-key`, never by the AI). "
+    "public=true shows it to every signed-in learner.",
+    {"course": STR, "channel": CHANNEL, "public": BOOL}, ["course"], needs_auth=True)
+def _study_publish(course, channel: str = "stable", public=None):
+    return study_publish.publish(course, channel, public)
+
+
+@op("study_unpublish", "Take a live-published Study course down (only its publisher may).",
+    {"course": STR, "channel": CHANNEL}, ["course"], needs_auth=True)
+def _study_unpublish(course, channel: str = "stable"):
+    return study_publish.unpublish(course, channel)
+
+
+@op("study_publish_status", "Is a Study course live, who published it, when, and how many questions.",
+    {"course": STR, "channel": CHANNEL}, ["course"])
+def _study_publish_status(course, channel: str = "stable"):
+    return study_publish.status(course, channel)

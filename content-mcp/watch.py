@@ -25,6 +25,7 @@ WRITE_OPS = frozenset({
     "atom_add",
     "study_apply", "study_concept_add", "study_course_create", "study_diagram_add",
     "study_diagram_update", "study_question_add", "study_remove", "study_source_add",
+    "study_publish", "study_unpublish",
     "drill_add", "drill_retire", "drill_tag", "drill_update",
     "graph_add_kc", "graph_update_kc",
     "lesson_create", "lesson_edit", "lesson_write",

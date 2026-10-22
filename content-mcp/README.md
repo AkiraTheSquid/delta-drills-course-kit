@@ -115,6 +115,10 @@
   shared pack and refuses a prefix that a builder already owns
   (`.contrib/applied.json`). A pack rebuild drops applied courses → re-run
   `study_apply`.
+- 🔴 **`study_publish` sends only the files the course references** (each
+  source's file, each diagram's picture), and the publish key lives in
+  `.content-mcp/publish-key` (600), written by `set-publish-key --key -` from
+  the contributor's own terminal — never an op argument, so never the AI's.
 - The pipeline must run under `This-Directory-Only/backend/.venv/bin/python3`.
   Bare `python3` has no torch: every torch drill validates as broken and
   `expected_output` is left stale instead of recomputed.
@@ -151,6 +155,7 @@
   - Status: `ACTIVE`.
 
 ## Recent Changes
+- 2026-10-22: `study_publish` / `study_unpublish` / `study_publish_status` (`content_mcp/study_publish.py`, stdlib urllib) + CLI `set-publish-key`: a Study course goes LIVE on deltadrills.com (default `channel: stable`; `beta` for tests) through the backend's `/api/conceptual/tutor/contrib/*` — no PR, no deploy. 55 tools.
 - 2026-10-21: Whole-course authoring tested end to end in a scratch kit. New: `course_create`/`course_add_unit`, `image_add/list/remove`, `problems_*` (MC), `atom_list`/`atom_add`/`drill_tag` (+ `drill_add atoms=`), `graph_add_kc answer_secs`, and 12 `study_*` tools for Study courses incl. image occlusion (preview PNG with grid + numbered boxes). `pipeline_check` order is now export → compile → colab → notebooks → qmatrix → symbols → validate → audit_bank. Fixed: `drill_update` wiped every other override field; `drill_add`/`drill_update` warn on a starter that does the work.
 - 2026-10-07: Public course kit (`ops/course-kit/`). Interpreter order is now backend venv -> `DELTA_DRILLS_PYTHON` -> `<repo>/.venv` (the kit's venv) -> `python3`, in `paths.python_for_content()` and both `bin/` scripts. `set-password --password -` reads stdin. The kit ships NO `auth.json`, so its users set their own password. `CONTRIBUTING-CONTENT.md` covers both repos.
 - 2026-09-02: Created. 28 tools over lessons/graph/drills/pipeline/backup, an
