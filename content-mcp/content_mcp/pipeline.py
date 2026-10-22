@@ -6,8 +6,20 @@ repo already gates its deploys on, under the backend venv interpreter —
 reports every torch drill broken and export_questions_json.py leaves
 `expected_output` stale instead of recomputing it.
 
-`check_all` is the order a content change has to survive: validate the pages,
-compile them, rebuild the Q-matrix, re-export the bank, then audit the bank.
+`check_all` is the order a content change has to survive — the one
+lessons/AUTHORING.md lists: re-export the bank, compile the pages, rebuild the
+Q-matrix, validate, then audit the bank.
+
+🔴 EXPORT FIRST. It used to run validate first, and validate reads the bank
+from the last export — so a drill just added with `drill_add` was "not in
+bank" and the page that lists it could never pass. Validate also reads
+`qmatrix_tags.json` for its coverage check, so qmatrix precedes it too.
+
+The two notebook steps follow compile (both read lessons_structured.json): the
+lessons watcher fails any unit without a Colab entry and a web notebook, so a
+unit made by `course_create` could never pass until something generated them.
+`symbols` rebuilds question_symbol_kcs.json from the bank + qmatrix (the scripts
+watcher fails a stale one), so it follows qmatrix.
 """
 
 from __future__ import annotations
@@ -55,6 +67,8 @@ STEPS = {
     "qmatrix": lambda: _script(paths.QMATRIX_SCRIPT),
     "export": lambda: _script(paths.EXPORT_SCRIPT),
     "audit_bank": lambda: _script(paths.BANK_AUDIT, "--gate"),
+    "colab": lambda: _script(paths.COLAB_NOTEBOOKS_SCRIPT),
+    "symbols": lambda: _script(paths.SCRIPTS / "build_symbol_prereqs.py"),
     "notebooks": lambda: _script(paths.WEB_NOTEBOOKS_SCRIPT),
 }
 
@@ -88,7 +102,7 @@ def check_all(fast: bool = False) -> dict:
     `fast` skips the two slow steps (fence execution and the bank export) —
     useful while iterating on registry structure, never sufficient to ship.
     """
-    order = ["compile", "qmatrix"] if fast else ["validate", "compile", "qmatrix", "export", "audit_bank"]
+    order = ["compile", "qmatrix"] if fast else ["export", "compile", "colab", "notebooks", "qmatrix", "symbols", "validate", "audit_bank"]
     results = []
     for name in order:
         result = step(name)
@@ -121,11 +135,14 @@ def folder_watchers(folders: list[str] | None = None) -> dict:
 
 
 def python_in_use() -> dict:
+    interpreter = paths.python_for_content()
+    has_torch = _run([interpreter, "-c", "import torch"], timeout=120).get("ok", False)
     return {
-        "interpreter": paths.python_for_content(),
+        "interpreter": interpreter,
         "is_backend_venv": paths.BACKEND_PY.exists(),
-        "warning": None if paths.BACKEND_PY.exists() else (
-            "Backend venv not found — running under bare python3. Torch drills will "
-            "validate as broken and expected_output will not be recomputed."
+        "has_torch": has_torch,
+        "warning": None if has_torch else (
+            f"{interpreter} cannot import torch. Torch drills will validate as broken and "
+            "expected_output will not be recomputed — install torch into it (see README)."
         ),
     }

@@ -124,6 +124,12 @@
     "leetcode.dp-grid": 1200,
     "leetcode.dp-strings": 1200,
     "leetcode.dp-lis": 1200,
-    "leetcode.dp-intervals": 1200
+    "leetcode.dp-intervals": 1200,
+    "math.orthogonal-projection": 300,
+    "refusal.diff-in-means": 600,
+    "refusal.pick-layer": 600,
+    "refusal.direction-ablation": 900,
+    "refusal.activation-addition": 900,
+    "refusal.read-intervention-table": 900
   }
 }

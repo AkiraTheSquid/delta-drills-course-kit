@@ -61,7 +61,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1071",
-   "url": "https://leetcode.com/problems/greatest-common-divisor-of-strings/"
+   "url": "https://leetcode.com/problems/greatest-common-divisor-of-strings/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -133,7 +137,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc13",
-   "url": "https://leetcode.com/problems/roman-to-integer/"
+   "url": "https://leetcode.com/problems/roman-to-integer/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -205,7 +213,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1392",
-   "url": "https://leetcode.com/problems/longest-happy-prefix/"
+   "url": "https://leetcode.com/problems/longest-happy-prefix/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -277,7 +289,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc14",
-   "url": "https://leetcode.com/problems/longest-common-prefix/"
+   "url": "https://leetcode.com/problems/longest-common-prefix/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -324,7 +340,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc151",
-   "url": "https://leetcode.com/problems/reverse-words-in-a-string/"
+   "url": "https://leetcode.com/problems/reverse-words-in-a-string/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -396,7 +416,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1752",
-   "url": "https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/"
+   "url": "https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -468,7 +492,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1768",
-   "url": "https://leetcode.com/problems/merge-strings-alternately/"
+   "url": "https://leetcode.com/problems/merge-strings-alternately/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -540,7 +568,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1903",
-   "url": "https://leetcode.com/problems/largest-odd-number-in-string/"
+   "url": "https://leetcode.com/problems/largest-odd-number-in-string/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -612,7 +644,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1929",
-   "url": "https://leetcode.com/problems/concatenation-of-array/"
+   "url": "https://leetcode.com/problems/concatenation-of-array/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -684,7 +720,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2104",
-   "url": "https://leetcode.com/problems/sum-of-subarray-ranges/"
+   "url": "https://leetcode.com/problems/sum-of-subarray-ranges/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -756,7 +796,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2149",
-   "url": "https://leetcode.com/problems/rearrange-array-elements-by-sign/"
+   "url": "https://leetcode.com/problems/rearrange-array-elements-by-sign/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -828,7 +872,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc229",
-   "url": "https://leetcode.com/problems/majority-element-ii/"
+   "url": "https://leetcode.com/problems/majority-element-ii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -900,7 +948,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc28",
-   "url": "https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/"
+   "url": "https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -972,7 +1024,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc38",
-   "url": "https://leetcode.com/problems/count-and-say/"
+   "url": "https://leetcode.com/problems/count-and-say/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -1044,7 +1100,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc43",
-   "url": "https://leetcode.com/problems/multiply-strings/"
+   "url": "https://leetcode.com/problems/multiply-strings/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -1116,7 +1176,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc463",
-   "url": "https://leetcode.com/problems/island-perimeter/"
+   "url": "https://leetcode.com/problems/island-perimeter/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -1188,7 +1252,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc485",
-   "url": "https://leetcode.com/problems/max-consecutive-ones/"
+   "url": "https://leetcode.com/problems/max-consecutive-ones/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -1260,7 +1328,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "lc622",
-   "url": "https://leetcode.com/problems/design-circular-queue/"
+   "url": "https://leetcode.com/problems/design-circular-queue/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -1332,7 +1404,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc66",
-   "url": "https://leetcode.com/problems/plus-one/"
+   "url": "https://leetcode.com/problems/plus-one/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -1404,7 +1480,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc686",
-   "url": "https://leetcode.com/problems/repeated-string-match/"
+   "url": "https://leetcode.com/problems/repeated-string-match/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -1476,7 +1556,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc796",
-   "url": "https://leetcode.com/problems/rotate-string/"
+   "url": "https://leetcode.com/problems/rotate-string/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -1548,7 +1632,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc867",
-   "url": "https://leetcode.com/problems/transpose-matrix/"
+   "url": "https://leetcode.com/problems/transpose-matrix/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -1620,7 +1708,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc953",
-   "url": "https://leetcode.com/problems/verifying-an-alien-dictionary/"
+   "url": "https://leetcode.com/problems/verifying-an-alien-dictionary/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -1692,7 +1784,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st170-sort-a-linked-list-of-0-s-1-s-and-2-s",
-   "url": "https://www.geeksforgeeks.org/problems/given-a-linked-list-of-0s-1s-and-2s-sort-it/1"
+   "url": "https://www.geeksforgeeks.org/problems/given-a-linked-list-of-0s-1s-and-2s-sort-it/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -1764,7 +1860,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st223-implement-queue-using-arrays",
-   "url": "https://www.geeksforgeeks.org/problems/implement-queue-using-array/1"
+   "url": "https://www.geeksforgeeks.org/problems/implement-queue-using-array/1",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -1836,7 +1936,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st292-check-if-an-array-represents-a-min-heap",
-   "url": "https://takeuforward.org/practice/dsa/check-if-an-array-represents-a-min-heap-?category=theory-and-implementation&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/check-if-an-array-represents-a-min-heap-?category=theory-and-implementation&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -1908,7 +2012,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st61-selection-sort",
-   "url": "https://www.geeksforgeeks.org/problems/selection-sort/1"
+   "url": "https://www.geeksforgeeks.org/problems/selection-sort/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -1980,7 +2088,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st62-bubble-sort",
-   "url": "https://www.geeksforgeeks.org/problems/bubble-sort/1"
+   "url": "https://www.geeksforgeeks.org/problems/bubble-sort/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -2052,7 +2164,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st63-insertion-sorting",
-   "url": "https://www.geeksforgeeks.org/problems/insertion-sort/1"
+   "url": "https://www.geeksforgeeks.org/problems/insertion-sort/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -2124,7 +2240,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st66-linear-search",
-   "url": "https://www.geeksforgeeks.org/problems/who-will-win-1587115621/1"
+   "url": "https://www.geeksforgeeks.org/problems/who-will-win-1587115621/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -2196,7 +2316,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st67-largest-element",
-   "url": "https://takeuforward.org/practice/dsa/largest-element?category=fundamentals&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/largest-element?category=fundamentals&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -2268,7 +2392,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st68-second-largest-element",
-   "url": "https://www.geeksforgeeks.org/problems/second-largest3735/1"
+   "url": "https://www.geeksforgeeks.org/problems/second-largest3735/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -2340,7 +2468,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st78-leaders-in-an-array",
-   "url": "https://www.geeksforgeeks.org/problems/leaders-in-an-array-1587115620/1"
+   "url": "https://www.geeksforgeeks.org/problems/leaders-in-an-array-1587115620/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -2412,7 +2544,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st83-pascal-s-triangle-iii",
-   "url": "https://takeuforward.org/practice/dsa/pascals-triangle-iii?category=faqs-medium&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/pascals-triangle-iii?category=faqs-medium&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -2484,7 +2620,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1358",
-   "url": "https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/"
+   "url": "https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -2556,7 +2696,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "lc2013",
-   "url": "https://leetcode.com/problems/detect-squares/"
+   "url": "https://leetcode.com/problems/detect-squares/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -2628,7 +2772,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc202",
-   "url": "https://leetcode.com/problems/happy-number/"
+   "url": "https://leetcode.com/problems/happy-number/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -2700,7 +2848,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc205",
-   "url": "https://leetcode.com/problems/isomorphic-strings/"
+   "url": "https://leetcode.com/problems/isomorphic-strings/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -2772,7 +2924,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc219",
-   "url": "https://leetcode.com/problems/contains-duplicate-ii/"
+   "url": "https://leetcode.com/problems/contains-duplicate-ii/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -2844,7 +3000,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc242",
-   "url": "https://leetcode.com/problems/valid-anagram/"
+   "url": "https://leetcode.com/problems/valid-anagram/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -2916,7 +3076,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc36",
-   "url": "https://leetcode.com/problems/valid-sudoku/"
+   "url": "https://leetcode.com/problems/valid-sudoku/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -2988,7 +3152,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc451",
-   "url": "https://leetcode.com/problems/sort-characters-by-frequency/"
+   "url": "https://leetcode.com/problems/sort-characters-by-frequency/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -3060,7 +3228,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "lc460",
-   "url": "https://leetcode.com/problems/lfu-cache/"
+   "url": "https://leetcode.com/problems/lfu-cache/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -3132,7 +3304,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc653",
-   "url": "https://leetcode.com/problems/two-sum-iv-input-is-a-bst/"
+   "url": "https://leetcode.com/problems/two-sum-iv-input-is-a-bst/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -3204,7 +3380,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "lc705",
-   "url": "https://leetcode.com/problems/design-hashset/"
+   "url": "https://leetcode.com/problems/design-hashset/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -3276,7 +3456,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "lc706",
-   "url": "https://leetcode.com/problems/design-hashmap/"
+   "url": "https://leetcode.com/problems/design-hashmap/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -3348,7 +3532,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "lc895",
-   "url": "https://leetcode.com/problems/maximum-frequency-stack/"
+   "url": "https://leetcode.com/problems/maximum-frequency-stack/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -3420,7 +3608,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc997",
-   "url": "https://leetcode.com/problems/find-the-town-judge/"
+   "url": "https://leetcode.com/problems/find-the-town-judge/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -3492,7 +3684,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st102-count-subarrays-with-given-xor-k",
-   "url": "https://www.geeksforgeeks.org/problems/count-subarray-with-given-xor/1"
+   "url": "https://www.geeksforgeeks.org/problems/count-subarray-with-given-xor/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -3564,7 +3760,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1094",
-   "url": "https://leetcode.com/problems/car-pooling/"
+   "url": "https://leetcode.com/problems/car-pooling/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -3636,7 +3836,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1248",
-   "url": "https://leetcode.com/problems/count-number-of-nice-subarrays/"
+   "url": "https://leetcode.com/problems/count-number-of-nice-subarrays/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -3708,7 +3912,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc209",
-   "url": "https://leetcode.com/problems/minimum-size-subarray-sum/"
+   "url": "https://leetcode.com/problems/minimum-size-subarray-sum/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -3780,7 +3988,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc253",
-   "url": "https://leetcode.com/problems/meeting-rooms-ii/"
+   "url": "https://leetcode.com/problems/meeting-rooms-ii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -3852,7 +4064,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "lc304",
-   "url": "https://leetcode.com/problems/range-sum-query-2d-immutable/"
+   "url": "https://leetcode.com/problems/range-sum-query-2d-immutable/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -3924,7 +4140,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc918",
-   "url": "https://leetcode.com/problems/maximum-sum-circular-subarray/"
+   "url": "https://leetcode.com/problems/maximum-sum-circular-subarray/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -3996,7 +4216,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc930",
-   "url": "https://leetcode.com/problems/binary-subarrays-with-sum/"
+   "url": "https://leetcode.com/problems/binary-subarrays-with-sum/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -4068,7 +4292,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st100-largest-subarray-with-sum-0",
-   "url": "https://www.geeksforgeeks.org/problems/largest-subarray-with-0-sum/1"
+   "url": "https://www.geeksforgeeks.org/problems/largest-subarray-with-0-sum/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -4140,7 +4368,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st99-longest-subarray-with-sum-k",
-   "url": "https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1"
+   "url": "https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -4212,7 +4444,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc18",
-   "url": "https://leetcode.com/problems/4sum/"
+   "url": "https://leetcode.com/problems/4sum/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -4284,7 +4520,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc217",
-   "url": "https://leetcode.com/problems/contains-duplicate/"
+   "url": "https://leetcode.com/problems/contains-duplicate/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -4356,7 +4596,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc26",
-   "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/"
+   "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -4428,7 +4672,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc27",
-   "url": "https://leetcode.com/problems/remove-element/"
+   "url": "https://leetcode.com/problems/remove-element/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -4500,7 +4748,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc647",
-   "url": "https://leetcode.com/problems/palindromic-substrings/"
+   "url": "https://leetcode.com/problems/palindromic-substrings/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -4572,7 +4824,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc680",
-   "url": "https://leetcode.com/problems/valid-palindrome-ii/"
+   "url": "https://leetcode.com/problems/valid-palindrome-ii/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -4644,7 +4900,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc881",
-   "url": "https://leetcode.com/problems/boats-to-save-people/"
+   "url": "https://leetcode.com/problems/boats-to-save-people/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -4716,7 +4976,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st189-find-pairs-with-given-sum-in-doubly-linked-list",
-   "url": "https://www.geeksforgeeks.org/problems/find-pairs-with-given-sum-in-doubly-linked-list/1"
+   "url": "https://www.geeksforgeeks.org/problems/find-pairs-with-given-sum-in-doubly-linked-list/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -4788,7 +5052,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st75-union-of-two-sorted-arrays",
-   "url": "https://www.geeksforgeeks.org/problems/union-of-two-sorted-arrays-1587115621/1"
+   "url": "https://www.geeksforgeeks.org/problems/union-of-two-sorted-arrays-1587115621/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -4860,7 +5128,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st76-intersection-of-two-sorted-arrays",
-   "url": "https://www.geeksforgeeks.org/problems/intersection-of-two-sorted-array-1587115620/1"
+   "url": "https://www.geeksforgeeks.org/problems/intersection-of-two-sorted-array-1587115620/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -4932,7 +5204,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1004",
-   "url": "https://leetcode.com/problems/max-consecutive-ones-iii/"
+   "url": "https://leetcode.com/problems/max-consecutive-ones-iii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -5004,7 +5280,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1423",
-   "url": "https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/"
+   "url": "https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -5076,7 +5356,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc30",
-   "url": "https://leetcode.com/problems/substring-with-concatenation-of-all-words/"
+   "url": "https://leetcode.com/problems/substring-with-concatenation-of-all-words/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -5148,7 +5432,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc340",
-   "url": "https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/"
+   "url": "https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -5220,7 +5508,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc424",
-   "url": "https://leetcode.com/problems/longest-repeating-character-replacement/"
+   "url": "https://leetcode.com/problems/longest-repeating-character-replacement/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -5292,7 +5584,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc567",
-   "url": "https://leetcode.com/problems/permutation-in-string/"
+   "url": "https://leetcode.com/problems/permutation-in-string/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -5364,7 +5660,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc904",
-   "url": "https://leetcode.com/problems/fruit-into-baskets/"
+   "url": "https://leetcode.com/problems/fruit-into-baskets/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -5436,7 +5736,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc992",
-   "url": "https://leetcode.com/problems/subarrays-with-k-different-integers/"
+   "url": "https://leetcode.com/problems/subarrays-with-k-different-integers/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -5508,7 +5812,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2807",
-   "url": "https://leetcode.com/problems/insert-greatest-common-divisors-in-linked-list/"
+   "url": "https://leetcode.com/problems/insert-greatest-common-divisors-in-linked-list/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -5580,7 +5888,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc328",
-   "url": "https://leetcode.com/problems/odd-even-linked-list/"
+   "url": "https://leetcode.com/problems/odd-even-linked-list/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -5652,7 +5964,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc61",
-   "url": "https://leetcode.com/problems/rotate-list/"
+   "url": "https://leetcode.com/problems/rotate-list/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -5724,7 +6040,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st151-traversal-in-linked-list",
-   "url": "https://www.geeksforgeeks.org/problems/linkedlist-traversal/1"
+   "url": "https://www.geeksforgeeks.org/problems/linkedlist-traversal/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -5796,7 +6116,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st153-deletion-of-the-tail-of-linked-list",
-   "url": "https://www.geeksforgeeks.org/problems/deletion-at-the-end-of-a-linked-list/1"
+   "url": "https://www.geeksforgeeks.org/problems/deletion-at-the-end-of-a-linked-list/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -5868,7 +6192,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st154-deletion-of-the-kth-element-of-linked-list",
-   "url": "https://takeuforward.org/practice/dsa/deletion-of-the-kth-element-of-ll?category=fundamentals-single-ll&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/deletion-of-the-kth-element-of-ll?category=fundamentals-single-ll&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -5940,7 +6268,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st155-delete-the-element-with-value-x",
-   "url": "https://takeuforward.org/practice/dsa/delete-the-element-with-value-x?category=fundamentals-single-ll&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/delete-the-element-with-value-x?category=fundamentals-single-ll&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -6012,7 +6344,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st156-insertion-at-the-head-of-linked-list",
-   "url": "https://takeuforward.org/practice/dsa/insertion-at-the-head-of-ll?category=fundamentals-single-ll&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/insertion-at-the-head-of-ll?category=fundamentals-single-ll&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -6084,7 +6420,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st157-insertion-at-the-tail-of-linked-list",
-   "url": "https://www.geeksforgeeks.org/problems/linked-list-insertion-1587115620/1"
+   "url": "https://www.geeksforgeeks.org/problems/linked-list-insertion-1587115620/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -6156,7 +6496,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st158-insertion-at-the-kth-position-of-linked-list",
-   "url": "https://takeuforward.org/practice/dsa/insertion-at-the-kth-position-of-ll?category=fundamentals-single-ll&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/insertion-at-the-kth-position-of-ll?category=fundamentals-single-ll&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -6228,7 +6572,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st159-insertion-before-the-value-x-in-linked-list",
-   "url": "https://takeuforward.org/practice/dsa/insertion-before-the-value-x-in-ll?category=fundamentals-single-ll&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/insertion-before-the-value-x-in-ll?category=fundamentals-single-ll&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -6300,7 +6648,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st173-add-one-to-a-number-represented-by-ll",
-   "url": "https://takeuforward.org/practice/dsa/add-one-to-a-number-represented-by-ll?category=faqs--medium&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/add-one-to-a-number-represented-by-ll?category=faqs--medium&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -6372,7 +6724,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st187-delete-all-occurrences-of-a-key-in-dll",
-   "url": "https://www.geeksforgeeks.org/problems/delete-all-occurrences-of-a-given-key-in-a-doubly-linked-list/1"
+   "url": "https://www.geeksforgeeks.org/problems/delete-all-occurrences-of-a-given-key-in-a-doubly-linked-list/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -6444,7 +6800,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st188-remove-duplicates-from-sorted-dll",
-   "url": "https://www.geeksforgeeks.org/problems/remove-duplicates-from-a-sorted-doubly-linked-list/1"
+   "url": "https://www.geeksforgeeks.org/problems/remove-duplicates-from-a-sorted-doubly-linked-list/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -6516,7 +6876,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st227-implement-queue-using-linkedlist",
-   "url": "https://takeuforward.org/practice/dsa/implement-queue-using-linkedlist?category=implementation&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/implement-queue-using-linkedlist?category=implementation&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -6588,7 +6952,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2095",
-   "url": "https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/"
+   "url": "https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -6660,7 +7028,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc457",
-   "url": "https://leetcode.com/problems/circular-array-loop/"
+   "url": "https://leetcode.com/problems/circular-array-loop/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -6732,7 +7104,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc876",
-   "url": "https://leetcode.com/problems/middle-of-the-linked-list/"
+   "url": "https://leetcode.com/problems/middle-of-the-linked-list/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -6747,7 +7123,7 @@
   "topic": "LeetCode",
   "subtopic": "Patterns",
   "subtopic_key": "LeetCode: Patterns",
-  "question_text": "**Length of Loop in a Linked List**\n\nGiven the `head` of a singly linked list, return the number of nodes in its loop. Return `0` if the list has no loop.\n\nA loop exists when repeatedly following `next` reaches a previously visited node. Test inputs use `pos` to indicate the zero-based index to which the tail connects. A `pos` of `-1` means the tail points to `None`. `pos` describes input construction and is not passed to `findLengthOfLoop`.\n\n### Example 1\n\n**Input:** `head = [1,2,3,4,5], pos = 1`\n\n**Output:** `4`\n\n**Explanation:** The tail connects to the node containing `2`. The loop is `2 -> 3 -> 4 -> 5 -> 2`, containing four nodes.\n\n### Example 2\n\n**Input:** `head = [1,3,7,4], pos = -1`\n\n**Output:** `0`\n\n**Explanation:** The tail points to `None`, so no loop exists.\n\n### Example 3\n\n**Input:** `head = [6,3,7], pos = 0`\n\n**Output:** `3`\n\n**Explanation:** The tail connects to the head, so all three nodes belong to the loop.\n\n### Constraints\n\n- `0 <= number of nodes <= 10^5`\n- `0 <= ListNode.val <= 10^4`\n- `pos` is `-1` or a valid zero-based index in the linked list.",
+  "question_text": "**Length of Loop in a Linked List**\n\nGiven the `head` of a singly linked list, return the number of nodes in its loop. Return `0` if the list has no loop.\n\nA loop exists when repeatedly following `next` reaches a previously visited node. Test inputs use `pos` to indicate the zero-based index to which the tail connects. A `pos` of `-1` means the tail points to `None`. `pos` describes input construction and is not passed to `findLengthOfLoop`.\n\n### Example 1\n\n**Input:** `head = [1,2,3,4,5]` (`pos = 1`: the tail links to index 1; not an argument)\n\n**Output:** `4`\n\n**Explanation:** The tail connects to the node containing `2`. The loop is `2 -> 3 -> 4 -> 5 -> 2`, containing four nodes.\n\n### Example 2\n\n**Input:** `head = [1,3,7,4]` (`pos = -1`: no loop; not an argument)\n\n**Output:** `0`\n\n**Explanation:** The tail points to `None`, so no loop exists.\n\n### Example 3\n\n**Input:** `head = [6,3,7]` (`pos = 0`: the tail links to index 0; not an argument)\n\n**Output:** `3`\n\n**Explanation:** The tail connects to the head, so all three nodes belong to the loop.\n\n### Constraints\n\n- `0 <= number of nodes <= 10^5`\n- `0 <= ListNode.val <= 10^4`\n- `pos` is `-1` or a valid zero-based index in the linked list.",
   "answer_code": "from typing import List, Optional\n\n# Definition for singly-linked list.\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef findLengthOfLoop(head):\n    slow = head\n    fast = head\n\n    while fast is not None and fast.next is not None:\n        slow = slow.next\n        fast = fast.next.next\n        if slow is fast:\n            length = 1\n            current = slow.next\n            while current is not slow:\n                length += 1\n                current = current.next\n            return length\n\n    return 0\n",
   "difficulty_score": 45,
   "difficulty_label": "medium",
@@ -6804,7 +7180,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st180-length-of-loop-in-ll",
-   "url": "https://takeuforward.org/practice/dsa/length-of-loop-in-ll?category=faqs--medium&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/length-of-loop-in-ll?category=faqs--medium&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "takeuforward"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -6876,7 +7256,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2074",
-   "url": "https://leetcode.com/problems/reverse-nodes-in-even-length-groups/"
+   "url": "https://leetcode.com/problems/reverse-nodes-in-even-length-groups/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -6948,7 +7332,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc92",
-   "url": "https://leetcode.com/problems/reverse-linked-list-ii/"
+   "url": "https://leetcode.com/problems/reverse-linked-list-ii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -7020,7 +7408,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc442",
-   "url": "https://leetcode.com/problems/find-all-duplicates-in-an-array/"
+   "url": "https://leetcode.com/problems/find-all-duplicates-in-an-array/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -7092,7 +7484,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1106",
-   "url": "https://leetcode.com/problems/parsing-a-boolean-expression/"
+   "url": "https://leetcode.com/problems/parsing-a-boolean-expression/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -7164,7 +7560,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc150",
-   "url": "https://leetcode.com/problems/evaluate-reverse-polish-notation/"
+   "url": "https://leetcode.com/problems/evaluate-reverse-polish-notation/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -7236,7 +7636,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "lc225",
-   "url": "https://leetcode.com/problems/implement-stack-using-queues/"
+   "url": "https://leetcode.com/problems/implement-stack-using-queues/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -7308,7 +7712,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "lc232",
-   "url": "https://leetcode.com/problems/implement-queue-using-stacks"
+   "url": "https://leetcode.com/problems/implement-queue-using-stacks",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -7323,7 +7731,7 @@
   "topic": "LeetCode",
   "subtopic": "Patterns",
   "subtopic_key": "LeetCode: Patterns",
-  "question_text": "**Baseball Game**\n\nYou are keeping the scores for a baseball game with strange rules. At the beginning of the game, you start with an empty record.\nYou are given a list of strings operations, where operations[i] is the ith operation you must apply to the record and is one of the following:\n\nAn integer x.\n\nRecord a new score of x.\n\n'+'.\n\nRecord a new score that is the sum of the previous two scores.\n\n'D'.\n\nRecord a new score that is the double of the previous score.\n\n'C'.\n\nInvalidate the previous score, removing it from the record.\n\nReturn the sum of all the scores on the record after applying all the operations.\nThe test cases are generated such that the answer and all intermediate calculations fit in a 32-bit integer and that all operations are valid.\n\n### Example 1\n\n**Input:** ops = [\"5\",\"2\",\"C\",\"D\",\"+\"]\n**Output:** 30\n**Explanation:** \n\"5\" - Add 5 to the record, record is now [5].\n\"2\" - Add 2 to the record, record is now [5, 2].\n\"C\" - Invalidate and remove the previous score, record is now [5].\n\"D\" - Add 2 * 5 = 10 to the record, record is now [5, 10].\n\"+\" - Add 5 + 10 = 15 to the record, record is now [5, 10, 15].\nThe total sum is 5 + 10 + 15 = 30.\n\n### Example 2\n\n**Input:** ops = [\"5\",\"-2\",\"4\",\"C\",\"D\",\"9\",\"+\",\"+\"]\n**Output:** 27\n**Explanation:** \n\"5\" - Add 5 to the record, record is now [5].\n\"-2\" - Add -2 to the record, record is now [5, -2].\n\"4\" - Add 4 to the record, record is now [5, -2, 4].\n\"C\" - Invalidate and remove the previous score, record is now [5, -2].\n\"D\" - Add 2 * -2 = -4 to the record, record is now [5, -2, -4].\n\"9\" - Add 9 to the record, record is now [5, -2, -4, 9].\n\"+\" - Add -4 + 9 = 5 to the record, record is now [5, -2, -4, 9, 5].\n\"+\" - Add 9 + 5 = 14 to the record, record is now [5, -2, -4, 9, 5, 14].\nThe total sum is 5 + -2 + -4 + 9 + 5 + 14 = 27.\n\n### Example 3\n\n**Input:** ops = [\"1\",\"C\"]\n**Output:** 0\n**Explanation:** \n\"1\" - Add 1 to the record, record is now [1].\n\"C\" - Invalidate and remove the previous score, record is now [].\nSince the record is empty, the total sum is 0.\n\n### Constraints\n\n- `1 <= operations.length <= 1000`\n- `operations[i] is \"C\", \"D\", \"+\", or a string representing an integer in the range [-3 * 10^4, 3 * 10^4].`\n- For operation \"+\", there will always be at least two previous scores on the record.\n- For operations \"C\" and \"D\", there will always be at least one previous score on the record.",
+  "question_text": "**Baseball Game**\n\nYou are keeping the scores for a baseball game with strange rules. At the beginning of the game, you start with an empty record.\nYou are given a list of strings operations, where operations[i] is the ith operation you must apply to the record and is one of the following:\n\nAn integer x.\n\nRecord a new score of x.\n\n'+'.\n\nRecord a new score that is the sum of the previous two scores.\n\n'D'.\n\nRecord a new score that is the double of the previous score.\n\n'C'.\n\nInvalidate the previous score, removing it from the record.\n\nReturn the sum of all the scores on the record after applying all the operations.\nThe test cases are generated such that the answer and all intermediate calculations fit in a 32-bit integer and that all operations are valid.\n\n### Example 1\n\n**Input:** operations = [\"5\",\"2\",\"C\",\"D\",\"+\"]\n**Output:** 30\n**Explanation:** \n\"5\" - Add 5 to the record, record is now [5].\n\"2\" - Add 2 to the record, record is now [5, 2].\n\"C\" - Invalidate and remove the previous score, record is now [5].\n\"D\" - Add 2 * 5 = 10 to the record, record is now [5, 10].\n\"+\" - Add 5 + 10 = 15 to the record, record is now [5, 10, 15].\nThe total sum is 5 + 10 + 15 = 30.\n\n### Example 2\n\n**Input:** operations = [\"5\",\"-2\",\"4\",\"C\",\"D\",\"9\",\"+\",\"+\"]\n**Output:** 27\n**Explanation:** \n\"5\" - Add 5 to the record, record is now [5].\n\"-2\" - Add -2 to the record, record is now [5, -2].\n\"4\" - Add 4 to the record, record is now [5, -2, 4].\n\"C\" - Invalidate and remove the previous score, record is now [5, -2].\n\"D\" - Add 2 * -2 = -4 to the record, record is now [5, -2, -4].\n\"9\" - Add 9 to the record, record is now [5, -2, -4, 9].\n\"+\" - Add -4 + 9 = 5 to the record, record is now [5, -2, -4, 9, 5].\n\"+\" - Add 9 + 5 = 14 to the record, record is now [5, -2, -4, 9, 5, 14].\nThe total sum is 5 + -2 + -4 + 9 + 5 + 14 = 27.\n\n### Example 3\n\n**Input:** operations = [\"1\",\"C\"]\n**Output:** 0\n**Explanation:** \n\"1\" - Add 1 to the record, record is now [1].\n\"C\" - Invalidate and remove the previous score, record is now [].\nSince the record is empty, the total sum is 0.\n\n### Constraints\n\n- `1 <= operations.length <= 1000`\n- `operations[i] is \"C\", \"D\", \"+\", or a string representing an integer in the range [-3 * 10^4, 3 * 10^4].`\n- For operation \"+\", there will always be at least two previous scores on the record.\n- For operations \"C\" and \"D\", there will always be at least one previous score on the record.",
   "answer_code": "from typing import List, Optional\n\nclass Solution:\n    def calPoints(self, operations: List[str]) -> int:\n        stk = []\n        for op in operations:\n            if op == \"+\":\n                stk.append(stk[-1] + stk[-2])\n            elif op == \"D\":\n                stk.append(stk[-1] << 1)\n            elif op == \"C\":\n                stk.pop()\n            else:\n                stk.append(int(op))\n        return sum(stk)\n",
   "difficulty_score": 30,
   "difficulty_label": "easy",
@@ -7380,7 +7788,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc682",
-   "url": "https://leetcode.com/problems/baseball-game/"
+   "url": "https://leetcode.com/problems/baseball-game/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -7452,7 +7864,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc71",
-   "url": "https://leetcode.com/problems/simplify-path/"
+   "url": "https://leetcode.com/problems/simplify-path/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -7524,7 +7940,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc735",
-   "url": "https://leetcode.com/problems/asteroid-collision/"
+   "url": "https://leetcode.com/problems/asteroid-collision/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -7596,7 +8016,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "lc901",
-   "url": "https://leetcode.com/problems/online-stock-span/"
+   "url": "https://leetcode.com/problems/online-stock-span/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -7668,7 +8092,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc921",
-   "url": "https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/"
+   "url": "https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -7740,7 +8168,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st222-implement-stack-using-arrays",
-   "url": "https://www.geeksforgeeks.org/problems/implement-stack-using-array/1"
+   "url": "https://www.geeksforgeeks.org/problems/implement-stack-using-array/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -7812,7 +8244,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st226-implement-stack-using-linkedlist",
-   "url": "https://takeuforward.org/practice/dsa/implement-stack-using-linkedlist?category=implementation&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/implement-stack-using-linkedlist?category=implementation&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "takeuforward"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -7884,7 +8320,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1063",
-   "url": "https://leetcode.com/problems/number-of-valid-subarrays/"
+   "url": "https://leetcode.com/problems/number-of-valid-subarrays/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -7956,7 +8396,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1793",
-   "url": "https://leetcode.com/problems/maximum-score-of-a-good-subarray/"
+   "url": "https://leetcode.com/problems/maximum-score-of-a-good-subarray/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -8028,7 +8472,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1944",
-   "url": "https://leetcode.com/problems/number-of-visible-people-in-a-queue/"
+   "url": "https://leetcode.com/problems/number-of-visible-people-in-a-queue/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -8100,7 +8548,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc402",
-   "url": "https://leetcode.com/problems/remove-k-digits/"
+   "url": "https://leetcode.com/problems/remove-k-digits/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -8172,7 +8624,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc496",
-   "url": "https://leetcode.com/problems/next-greater-element-i/"
+   "url": "https://leetcode.com/problems/next-greater-element-i/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -8244,7 +8700,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc503",
-   "url": "https://leetcode.com/problems/next-greater-element-ii/"
+   "url": "https://leetcode.com/problems/next-greater-element-ii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -8316,7 +8776,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc85",
-   "url": "https://leetcode.com/problems/maximal-rectangle/"
+   "url": "https://leetcode.com/problems/maximal-rectangle/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -8388,7 +8852,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc907",
-   "url": "https://leetcode.com/problems/sum-of-subarray-minimums/"
+   "url": "https://leetcode.com/problems/sum-of-subarray-minimums/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -8460,7 +8928,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc100",
-   "url": "https://leetcode.com/problems/same-tree/"
+   "url": "https://leetcode.com/problems/same-tree/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -8532,7 +9004,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1008",
-   "url": "https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/"
+   "url": "https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -8604,7 +9080,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1140",
-   "url": "https://leetcode.com/problems/stone-game-ii/"
+   "url": "https://leetcode.com/problems/stone-game-ii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -8676,7 +9156,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1192",
-   "url": "https://leetcode.com/problems/critical-connections-in-a-network/"
+   "url": "https://leetcode.com/problems/critical-connections-in-a-network/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -8748,7 +9232,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1312",
-   "url": "https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/"
+   "url": "https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -8820,7 +9308,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1325",
-   "url": "https://leetcode.com/problems/delete-leaves-with-a-given-value/"
+   "url": "https://leetcode.com/problems/delete-leaves-with-a-given-value/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -8892,7 +9384,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc140",
-   "url": "https://leetcode.com/problems/word-break-ii/"
+   "url": "https://leetcode.com/problems/word-break-ii/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -8964,7 +9460,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc188",
-   "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/"
+   "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -9036,7 +9536,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc222",
-   "url": "https://leetcode.com/problems/count-complete-tree-nodes/"
+   "url": "https://leetcode.com/problems/count-complete-tree-nodes/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -9108,7 +9612,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc309",
-   "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/"
+   "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -9180,7 +9688,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc329",
-   "url": "https://leetcode.com/problems/longest-increasing-path-in-a-matrix/"
+   "url": "https://leetcode.com/problems/longest-increasing-path-in-a-matrix/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -9252,7 +9764,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc332",
-   "url": "https://leetcode.com/problems/reconstruct-itinerary/"
+   "url": "https://leetcode.com/problems/reconstruct-itinerary/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -9324,7 +9840,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc572",
-   "url": "https://leetcode.com/problems/subtree-of-another-tree/"
+   "url": "https://leetcode.com/problems/subtree-of-another-tree/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -9396,7 +9916,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc714",
-   "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/"
+   "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -9468,7 +9992,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc877",
-   "url": "https://leetcode.com/problems/stone-game/"
+   "url": "https://leetcode.com/problems/stone-game/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -9540,7 +10068,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st136-power-set",
-   "url": "https://takeuforward.org/practice/dsa/power-set?category=implementation-problems&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/power-set?category=implementation-problems&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "takeuforward"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -9612,7 +10144,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc493",
-   "url": "https://leetcode.com/problems/reverse-pairs/"
+   "url": "https://leetcode.com/problems/reverse-pairs/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -9669,7 +10205,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc912",
-   "url": "https://leetcode.com/problems/sort-an-array/"
+   "url": "https://leetcode.com/problems/sort-an-array/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -9741,7 +10281,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc973",
-   "url": "https://leetcode.com/problems/k-closest-points-to-origin/"
+   "url": "https://leetcode.com/problems/k-closest-points-to-origin/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -9813,7 +10357,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st64-merge-sorting",
-   "url": "https://www.geeksforgeeks.org/problems/merge-sort/1"
+   "url": "https://www.geeksforgeeks.org/problems/merge-sort/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -9885,7 +10433,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st65-quick-sorting",
-   "url": "https://www.geeksforgeeks.org/problems/quick-sort/1"
+   "url": "https://www.geeksforgeeks.org/problems/quick-sort/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -9957,7 +10509,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st94-count-inversions",
-   "url": "https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1"
+   "url": "https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -10029,7 +10585,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc57",
-   "url": "https://leetcode.com/problems/insert-interval/"
+   "url": "https://leetcode.com/problems/insert-interval/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -10101,7 +10661,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1011",
-   "url": "https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/"
+   "url": "https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -10173,7 +10737,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1283",
-   "url": "https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/"
+   "url": "https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -10245,7 +10813,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1482",
-   "url": "https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/"
+   "url": "https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -10317,7 +10889,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1539",
-   "url": "https://leetcode.com/problems/kth-missing-positive-number/"
+   "url": "https://leetcode.com/problems/kth-missing-positive-number/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -10389,7 +10965,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc162",
-   "url": "https://leetcode.com/problems/find-peak-element/"
+   "url": "https://leetcode.com/problems/find-peak-element/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -10461,7 +11041,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc167",
-   "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/"
+   "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -10533,7 +11117,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1838",
-   "url": "https://leetcode.com/problems/frequency-of-the-most-frequent-element/"
+   "url": "https://leetcode.com/problems/frequency-of-the-most-frequent-element/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -10605,7 +11193,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1901",
-   "url": "https://leetcode.com/problems/find-a-peak-element-ii/"
+   "url": "https://leetcode.com/problems/find-a-peak-element-ii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -10677,7 +11269,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc410",
-   "url": "https://leetcode.com/problems/split-array-largest-sum/"
+   "url": "https://leetcode.com/problems/split-array-largest-sum/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -10749,7 +11345,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc540",
-   "url": "https://leetcode.com/problems/single-element-in-a-sorted-array/"
+   "url": "https://leetcode.com/problems/single-element-in-a-sorted-array/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -10821,7 +11421,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc69",
-   "url": "https://leetcode.com/problems/sqrtx/"
+   "url": "https://leetcode.com/problems/sqrtx/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -10893,7 +11497,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc704",
-   "url": "https://leetcode.com/problems/binary-search/"
+   "url": "https://leetcode.com/problems/binary-search/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -10965,7 +11573,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc774",
-   "url": "https://leetcode.com/problems/minimize-max-distance-to-gas-station/"
+   "url": "https://leetcode.com/problems/minimize-max-distance-to-gas-station/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -11037,7 +11649,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc81",
-   "url": "https://leetcode.com/problems/search-in-rotated-sorted-array-ii/"
+   "url": "https://leetcode.com/problems/search-in-rotated-sorted-array-ii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -11109,7 +11725,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc875",
-   "url": "https://leetcode.com/problems/koko-eating-bananas/"
+   "url": "https://leetcode.com/problems/koko-eating-bananas/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -11181,7 +11801,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "lc981",
-   "url": "https://leetcode.com/problems/time-based-key-value-store/"
+   "url": "https://leetcode.com/problems/time-based-key-value-store/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -11253,7 +11877,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st104-lower-bound",
-   "url": "https://www.geeksforgeeks.org/problems/implement-lower-bound/1"
+   "url": "https://www.geeksforgeeks.org/problems/implement-lower-bound/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -11325,7 +11953,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st105-upper-bound",
-   "url": "https://www.geeksforgeeks.org/problems/implement-upper-bound/1"
+   "url": "https://www.geeksforgeeks.org/problems/implement-upper-bound/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -11397,7 +12029,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st107-floor-and-ceil-in-sorted-array",
-   "url": "https://takeuforward.org/practice/dsa/floor-and-ceil-in-sorted-array?category=logic-building&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/floor-and-ceil-in-sorted-array?category=logic-building&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "takeuforward"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -11469,7 +12105,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st112-find-out-how-many-times-the-array-is-rotated",
-   "url": "https://takeuforward.org/practice/dsa/find-out-how-many-times-the-array-is-rotated?category=logic-building&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/find-out-how-many-times-the-array-is-rotated?category=logic-building&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -11541,7 +12181,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st114-find-square-root-of-a-number",
-   "url": "https://www.geeksforgeeks.org/problems/square-root/1"
+   "url": "https://www.geeksforgeeks.org/problems/square-root/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -11613,7 +12257,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st115-find-nth-root-of-a-number",
-   "url": "https://www.geeksforgeeks.org/problems/find-nth-root-of-m5843/1"
+   "url": "https://www.geeksforgeeks.org/problems/find-nth-root-of-m5843/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -11685,7 +12333,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st121-painter-s-partition",
-   "url": "https://www.geeksforgeeks.org/problems/the-painters-partition-problem1535/1"
+   "url": "https://www.geeksforgeeks.org/problems/the-painters-partition-problem1535/1",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -11757,7 +12409,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st122-aggressive-cows",
-   "url": "https://www.geeksforgeeks.org/problems/aggressive-cows/1"
+   "url": "https://www.geeksforgeeks.org/problems/aggressive-cows/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -11829,7 +12485,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st123-book-allocation-problem",
-   "url": "https://takeuforward.org/practice/dsa/book-allocation-problem?category=faqs&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/book-allocation-problem?category=faqs&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "takeuforward"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -11901,7 +12561,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st126-kth-element-of-2-sorted-arrays",
-   "url": "https://takeuforward.org/practice/dsa/kth-element-of-2-sorted-arrays?category=faqs&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/kth-element-of-2-sorted-arrays?category=faqs&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "takeuforward"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -11973,7 +12637,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st129-find-row-with-maximum-1-s",
-   "url": "https://takeuforward.org/practice/dsa/find-row-with-maximum-1's?category=2d-arrays&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/find-row-with-maximum-1's?category=2d-arrays&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -12045,7 +12713,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st133-matrix-median",
-   "url": "https://www.geeksforgeeks.org/problems/median-in-a-row-wise-sorted-matrix1527/1"
+   "url": "https://www.geeksforgeeks.org/problems/median-in-a-row-wise-sorted-matrix1527/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -12117,7 +12789,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc190",
-   "url": "https://leetcode.com/problems/reverse-bits/"
+   "url": "https://leetcode.com/problems/reverse-bits/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -12189,7 +12865,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc191",
-   "url": "https://leetcode.com/problems/number-of-1-bits/"
+   "url": "https://leetcode.com/problems/number-of-1-bits/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -12261,7 +12941,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc201",
-   "url": "https://leetcode.com/problems/bitwise-and-of-numbers-range/"
+   "url": "https://leetcode.com/problems/bitwise-and-of-numbers-range/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -12333,7 +13017,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2220",
-   "url": "https://leetcode.com/problems/minimum-bit-flips-to-convert-number/"
+   "url": "https://leetcode.com/problems/minimum-bit-flips-to-convert-number/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -12405,7 +13093,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc29",
-   "url": "https://leetcode.com/problems/divide-two-integers/"
+   "url": "https://leetcode.com/problems/divide-two-integers/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -12477,7 +13169,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc3133",
-   "url": "https://leetcode.com/problems/minimum-array-end/"
+   "url": "https://leetcode.com/problems/minimum-array-end/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -12549,7 +13245,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc338",
-   "url": "https://leetcode.com/problems/counting-bits/"
+   "url": "https://leetcode.com/problems/counting-bits/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -12621,7 +13321,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc371",
-   "url": "https://leetcode.com/problems/sum-of-two-integers/"
+   "url": "https://leetcode.com/problems/sum-of-two-integers/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -12693,7 +13397,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st192-single-number-ii",
-   "url": "https://takeuforward.org/practice/dsa/single-number---ii?category=problems&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/single-number---ii?category=problems&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -12765,7 +13473,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st193-single-number-iii",
-   "url": "https://takeuforward.org/practice/dsa/single-number---iii?category=problems&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/single-number---iii?category=problems&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -12837,7 +13549,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st196-xor-of-numbers-in-a-given-range",
-   "url": "https://www.geeksforgeeks.org/problems/find-xor-of-numbers-from-l-to-r/1"
+   "url": "https://www.geeksforgeeks.org/problems/find-xor-of-numbers-from-l-to-r/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -12909,7 +13625,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st74-find-missing-number",
-   "url": "https://takeuforward.org/practice/dsa/find-missing-number?category=logic-building&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/find-missing-number?category=logic-building&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -12981,7 +13701,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1134",
-   "url": "https://leetcode.com/problems/armstrong-number/"
+   "url": "https://leetcode.com/problems/armstrong-number/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -13053,7 +13777,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc168",
-   "url": "https://leetcode.com/problems/excel-sheet-column-title/"
+   "url": "https://leetcode.com/problems/excel-sheet-column-title/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -13125,7 +13853,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc204",
-   "url": "https://leetcode.com/problems/count-primes/"
+   "url": "https://leetcode.com/problems/count-primes/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -13197,7 +13929,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc214",
-   "url": "https://leetcode.com/problems/shortest-palindrome/"
+   "url": "https://leetcode.com/problems/shortest-palindrome/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -13269,7 +14005,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc50",
-   "url": "https://leetcode.com/problems/powx-n/"
+   "url": "https://leetcode.com/problems/powx-n/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -13341,7 +14081,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc67",
-   "url": "https://leetcode.com/problems/add-binary/"
+   "url": "https://leetcode.com/problems/add-binary/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -13413,7 +14157,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc7",
-   "url": "https://leetcode.com/problems/reverse-integer/"
+   "url": "https://leetcode.com/problems/reverse-integer/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -13485,7 +14233,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc9",
-   "url": "https://leetcode.com/problems/palindrome-number/"
+   "url": "https://leetcode.com/problems/palindrome-number/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -13557,7 +14309,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st82-pascal-s-triangle-ii",
-   "url": "https://www.geeksforgeeks.org/problems/pascal-triangle0652/1"
+   "url": "https://www.geeksforgeeks.org/problems/pascal-triangle0652/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -13629,7 +14385,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st93-find-the-repeating-and-missing-number",
-   "url": "https://www.geeksforgeeks.org/problems/find-missing-and-repeating2512/1"
+   "url": "https://www.geeksforgeeks.org/problems/find-missing-and-repeating2512/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -13701,7 +14461,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1028",
-   "url": "https://leetcode.com/problems/recover-a-tree-from-preorder-traversal/"
+   "url": "https://leetcode.com/problems/recover-a-tree-from-preorder-traversal/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -13773,7 +14537,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc106",
-   "url": "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/"
+   "url": "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -13845,7 +14613,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc144",
-   "url": "https://leetcode.com/problems/binary-tree-preorder-traversal/"
+   "url": "https://leetcode.com/problems/binary-tree-preorder-traversal/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -13917,7 +14689,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc145",
-   "url": "https://leetcode.com/problems/binary-tree-postorder-traversal/"
+   "url": "https://leetcode.com/problems/binary-tree-postorder-traversal/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -13989,7 +14765,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc606",
-   "url": "https://leetcode.com/problems/construct-string-from-binary-tree/"
+   "url": "https://leetcode.com/problems/construct-string-from-binary-tree/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -14061,7 +14841,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc889",
-   "url": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/"
+   "url": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -14133,7 +14917,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st248-pre-post-inorder-in-one-traversal",
-   "url": "https://takeuforward.org/practice/dsa/pre,-post,-inorder-in-one-traversal"
+   "url": "https://takeuforward.org/practice/dsa/pre,-post,-inorder-in-one-traversal",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -14205,7 +14993,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st255-children-sum-property-in-binary-tree",
-   "url": "https://www.geeksforgeeks.org/problems/children-sum-parent/1"
+   "url": "https://www.geeksforgeeks.org/problems/children-sum-parent/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -14277,7 +15069,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc103",
-   "url": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/"
+   "url": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -14349,7 +15145,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc107",
-   "url": "https://leetcode.com/problems/binary-tree-level-order-traversal-ii/"
+   "url": "https://leetcode.com/problems/binary-tree-level-order-traversal-ii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -14421,7 +15221,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1161",
-   "url": "https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/"
+   "url": "https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -14493,7 +15297,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc513",
-   "url": "https://leetcode.com/problems/find-bottom-left-tree-value/"
+   "url": "https://leetcode.com/problems/find-bottom-left-tree-value/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -14565,7 +15373,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc515",
-   "url": "https://leetcode.com/problems/find-largest-value-in-each-tree-row/"
+   "url": "https://leetcode.com/problems/find-largest-value-in-each-tree-row/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -14637,7 +15449,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc662",
-   "url": "https://leetcode.com/problems/maximum-width-of-binary-tree/"
+   "url": "https://leetcode.com/problems/maximum-width-of-binary-tree/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -14709,7 +15525,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st259-top-view-of-bt",
-   "url": "https://www.geeksforgeeks.org/problems/top-view-of-binary-tree/1"
+   "url": "https://www.geeksforgeeks.org/problems/top-view-of-binary-tree/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -14781,7 +15601,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st260-bottom-view-of-bt",
-   "url": "https://www.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1"
+   "url": "https://www.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -14853,7 +15677,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1373",
-   "url": "https://leetcode.com/problems/maximum-sum-bst-in-binary-tree/"
+   "url": "https://leetcode.com/problems/maximum-sum-bst-in-binary-tree/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -14925,7 +15753,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1448",
-   "url": "https://leetcode.com/problems/count-good-nodes-in-binary-tree/"
+   "url": "https://leetcode.com/problems/count-good-nodes-in-binary-tree/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -14997,7 +15829,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2246",
-   "url": "https://leetcode.com/problems/longest-path-with-different-adjacent-characters/"
+   "url": "https://leetcode.com/problems/longest-path-with-different-adjacent-characters/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -15069,7 +15905,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2322",
-   "url": "https://leetcode.com/problems/minimum-score-after-removals-on-a-tree/"
+   "url": "https://leetcode.com/problems/minimum-score-after-removals-on-a-tree/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -15141,7 +15981,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc337",
-   "url": "https://leetcode.com/problems/house-robber-iii/"
+   "url": "https://leetcode.com/problems/house-robber-iii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -15213,7 +16057,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc545",
-   "url": "https://leetcode.com/problems/boundary-of-binary-tree/"
+   "url": "https://leetcode.com/problems/boundary-of-binary-tree/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -15285,7 +16133,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc987",
-   "url": "https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/"
+   "url": "https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -15357,7 +16209,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st262-print-root-to-leaf-path-in-bt",
-   "url": "https://www.geeksforgeeks.org/problems/root-to-leaf-paths/1"
+   "url": "https://www.geeksforgeeks.org/problems/root-to-leaf-paths/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -15429,7 +16285,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "lc235",
-   "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/"
+   "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -15501,7 +16361,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "lc285",
-   "url": "https://leetcode.com/problems/inorder-successor-in-bst/"
+   "url": "https://leetcode.com/problems/inorder-successor-in-bst/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -15573,7 +16437,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc450",
-   "url": "https://leetcode.com/problems/delete-node-in-a-bst/"
+   "url": "https://leetcode.com/problems/delete-node-in-a-bst/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -15645,7 +16513,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc669",
-   "url": "https://leetcode.com/problems/trim-a-binary-search-tree/"
+   "url": "https://leetcode.com/problems/trim-a-binary-search-tree/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -15717,7 +16589,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc700",
-   "url": "https://leetcode.com/problems/search-in-a-binary-search-tree/"
+   "url": "https://leetcode.com/problems/search-in-a-binary-search-tree/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -15789,7 +16665,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc701",
-   "url": "https://leetcode.com/problems/insert-into-a-binary-search-tree/"
+   "url": "https://leetcode.com/problems/insert-into-a-binary-search-tree/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -15861,7 +16741,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st276-floor-and-ceil-in-a-bst",
-   "url": "https://takeuforward.org/practice/dsa/floor-and-ceil-in-a-bst?category=theory-and-basics&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/floor-and-ceil-in-a-bst?category=theory-and-basics&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -15933,7 +16817,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1091",
-   "url": "https://leetcode.com/problems/shortest-path-in-binary-matrix/"
+   "url": "https://leetcode.com/problems/shortest-path-in-binary-matrix/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -16005,7 +16893,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc127",
-   "url": "https://leetcode.com/problems/word-ladder/"
+   "url": "https://leetcode.com/problems/word-ladder/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -16077,7 +16969,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1462",
-   "url": "https://leetcode.com/problems/course-schedule-iv/"
+   "url": "https://leetcode.com/problems/course-schedule-iv/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -16149,7 +17045,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc323",
-   "url": "https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/"
+   "url": "https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -16221,7 +17121,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc417",
-   "url": "https://leetcode.com/problems/pacific-atlantic-water-flow/"
+   "url": "https://leetcode.com/problems/pacific-atlantic-water-flow/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -16293,7 +17197,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc542",
-   "url": "https://leetcode.com/problems/01-matrix/"
+   "url": "https://leetcode.com/problems/01-matrix/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -16365,7 +17273,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc547",
-   "url": "https://leetcode.com/problems/number-of-provinces/"
+   "url": "https://leetcode.com/problems/number-of-provinces/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -16437,7 +17349,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc752",
-   "url": "https://leetcode.com/problems/open-the-lock/"
+   "url": "https://leetcode.com/problems/open-the-lock/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -16509,7 +17425,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc785",
-   "url": "https://leetcode.com/problems/is-graph-bipartite/"
+   "url": "https://leetcode.com/problems/is-graph-bipartite/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -16581,7 +17501,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "lc863",
-   "url": "https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/"
+   "url": "https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -16653,7 +17577,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st266-minimum-time-taken-to-burn-the-bt-from-a-given-node",
-   "url": "https://takeuforward.org/practice/dsa/minimum-time-taken-to-burn-the-bt-from-a-given-node?category=faqs&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/minimum-time-taken-to-burn-the-bt-from-a-given-node?category=faqs&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -16725,7 +17653,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st298-connected-components",
-   "url": "https://www.geeksforgeeks.org/problems/number-of-provinces/1"
+   "url": "https://www.geeksforgeeks.org/problems/number-of-provinces/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -16797,7 +17729,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1020",
-   "url": "https://leetcode.com/problems/number-of-enclaves/"
+   "url": "https://leetcode.com/problems/number-of-enclaves/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -16869,7 +17805,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1568",
-   "url": "https://leetcode.com/problems/minimum-number-of-days-to-disconnect-island/"
+   "url": "https://leetcode.com/problems/minimum-number-of-days-to-disconnect-island/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -16941,7 +17881,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc695",
-   "url": "https://leetcode.com/problems/max-area-of-island/"
+   "url": "https://leetcode.com/problems/max-area-of-island/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -17013,7 +17957,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc711",
-   "url": "https://leetcode.com/problems/number-of-distinct-islands-ii/"
+   "url": "https://leetcode.com/problems/number-of-distinct-islands-ii/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -17085,7 +18033,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc733",
-   "url": "https://leetcode.com/problems/flood-fill/"
+   "url": "https://leetcode.com/problems/flood-fill/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -17157,7 +18109,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc827",
-   "url": "https://leetcode.com/problems/making-a-large-island/"
+   "url": "https://leetcode.com/problems/making-a-large-island/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -17229,7 +18185,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st306-number-of-distinct-islands",
-   "url": "https://www.geeksforgeeks.org/problems/number-of-distinct-islands/1"
+   "url": "https://www.geeksforgeeks.org/problems/number-of-distinct-islands/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -17301,7 +18261,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1203",
-   "url": "https://leetcode.com/problems/sort-items-by-groups-respecting-dependencies/"
+   "url": "https://leetcode.com/problems/sort-items-by-groups-respecting-dependencies/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -17373,7 +18337,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2050",
-   "url": "https://leetcode.com/problems/parallel-courses-iii/"
+   "url": "https://leetcode.com/problems/parallel-courses-iii/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -17445,7 +18413,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc210",
-   "url": "https://leetcode.com/problems/course-schedule-ii/"
+   "url": "https://leetcode.com/problems/course-schedule-ii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -17517,7 +18489,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2392",
-   "url": "https://leetcode.com/problems/build-a-matrix-with-conditions/"
+   "url": "https://leetcode.com/problems/build-a-matrix-with-conditions/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -17589,7 +18565,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc269",
-   "url": "https://leetcode.com/problems/alien-dictionary/"
+   "url": "https://leetcode.com/problems/alien-dictionary/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -17661,7 +18641,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc310",
-   "url": "https://leetcode.com/problems/minimum-height-trees/"
+   "url": "https://leetcode.com/problems/minimum-height-trees/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -17733,7 +18717,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc802",
-   "url": "https://leetcode.com/problems/find-eventual-safe-states/"
+   "url": "https://leetcode.com/problems/find-eventual-safe-states/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -17805,7 +18793,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st315-shortest-path-in-dag",
-   "url": "https://www.geeksforgeeks.org/problems/shortest-path-in-directed-acyclic-graph/1"
+   "url": "https://www.geeksforgeeks.org/problems/shortest-path-in-directed-acyclic-graph/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -17877,7 +18869,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1319",
-   "url": "https://leetcode.com/problems/number-of-operations-to-make-network-connected/"
+   "url": "https://leetcode.com/problems/number-of-operations-to-make-network-connected/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -17949,7 +18945,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1631",
-   "url": "https://leetcode.com/problems/path-with-minimum-effort/"
+   "url": "https://leetcode.com/problems/path-with-minimum-effort/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -18021,7 +19021,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc261",
-   "url": "https://leetcode.com/problems/graph-valid-tree/"
+   "url": "https://leetcode.com/problems/graph-valid-tree/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -18093,7 +19097,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc305",
-   "url": "https://leetcode.com/problems/number-of-islands-ii/"
+   "url": "https://leetcode.com/problems/number-of-islands-ii/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -18165,7 +19173,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc399",
-   "url": "https://leetcode.com/problems/evaluate-division/"
+   "url": "https://leetcode.com/problems/evaluate-division/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -18237,7 +19249,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc684",
-   "url": "https://leetcode.com/problems/redundant-connection/"
+   "url": "https://leetcode.com/problems/redundant-connection/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -18309,7 +19325,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc721",
-   "url": "https://leetcode.com/problems/accounts-merge/"
+   "url": "https://leetcode.com/problems/accounts-merge/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -18381,7 +19401,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc778",
-   "url": "https://leetcode.com/problems/swim-in-rising-water/"
+   "url": "https://leetcode.com/problems/swim-in-rising-water/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -18453,7 +19477,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc947",
-   "url": "https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/"
+   "url": "https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -18525,7 +19553,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1046",
-   "url": "https://leetcode.com/problems/last-stone-weight/"
+   "url": "https://leetcode.com/problems/last-stone-weight/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -18597,7 +19629,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1834",
-   "url": "https://leetcode.com/problems/single-threaded-cpu/"
+   "url": "https://leetcode.com/problems/single-threaded-cpu/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -18669,7 +19705,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1851",
-   "url": "https://leetcode.com/problems/minimum-interval-to-include-each-query/"
+   "url": "https://leetcode.com/problems/minimum-interval-to-include-each-query/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -18741,7 +19781,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "lc355",
-   "url": "https://leetcode.com/problems/design-twitter/"
+   "url": "https://leetcode.com/problems/design-twitter/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -18813,7 +19857,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "lc703",
-   "url": "https://leetcode.com/problems/kth-largest-element-in-a-stream/"
+   "url": "https://leetcode.com/problems/kth-largest-element-in-a-stream/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -18885,7 +19933,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st289-build-heap-from-a-given-array",
-   "url": "https://www.geeksforgeeks.org/problems/heapify-the-vector--102013/1"
+   "url": "https://www.geeksforgeeks.org/problems/heapify-the-vector--102013/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -18957,7 +20009,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st290-implement-min-heap",
-   "url": "https://www.geeksforgeeks.org/problems/min-heap-implementation/1"
+   "url": "https://www.geeksforgeeks.org/problems/min-heap-implementation/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -19029,7 +20085,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st291-implement-max-heap",
-   "url": "https://www.geeksforgeeks.org/problems/max-heap-implementation/1"
+   "url": "https://www.geeksforgeeks.org/problems/max-heap-implementation/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -19101,7 +20161,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st294-heap-sort",
-   "url": "https://www.geeksforgeeks.org/problems/heap-sort/1"
+   "url": "https://www.geeksforgeeks.org/problems/heap-sort/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -19173,7 +20237,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st295-k-th-largest-element-in-an-array",
-   "url": "https://takeuforward.org/practice/dsa/k-th-largest-element-in-an-array?category=theory-and-implementation&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/k-th-largest-element-in-an-array?category=theory-and-implementation&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "estimate"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -19245,7 +20313,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc480",
-   "url": "https://leetcode.com/problems/sliding-window-median/"
+   "url": "https://leetcode.com/problems/sliding-window-median/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -19317,7 +20389,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc373",
-   "url": "https://leetcode.com/problems/find-k-pairs-with-smallest-sums/"
+   "url": "https://leetcode.com/problems/find-k-pairs-with-smallest-sums/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -19389,7 +20465,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1334",
-   "url": "https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/"
+   "url": "https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -19404,7 +20484,7 @@
   "topic": "LeetCode",
   "subtopic": "Patterns",
   "subtopic_key": "LeetCode: Patterns",
-  "question_text": "**Path With Maximum Probability**\n\nYou are given an undirected weighted graph of n nodes (0-indexed), represented by an edge list where edges[i] = [a, b] is an undirected edge connecting the nodes a and b with a probability of success of traversing that edge succProb[i].\nGiven two nodes start and end, find the path with the maximum probability of success to go from start to end and return its success probability.\nIf there is no path from start to end, return 0. Your answer will be accepted if it differs from the correct answer by at most 1e-5.\n\n### Example 1\n\n**Input:** n = 3, edges = [[0,1],[1,2],[0,2]], succProb = [0.5,0.5,0.2], start = 0, end = 2\n**Output:** 0.25000\n**Explanation:** There are two paths from start to end, one having a probability of success = 0.2 and the other has 0.5 * 0.5 = 0.25.\n\n### Example 2\n\n**Input:** n = 3, edges = [[0,1],[1,2],[0,2]], succProb = [0.5,0.5,0.3], start = 0, end = 2\n**Output:** 0.30000\n\n### Example 3\n\n**Input:** n = 3, edges = [[0,1]], succProb = [0.5], start = 0, end = 2\n**Output:** 0.00000\n**Explanation:** There is no path between 0 and 2.\n\n### Constraints\n\n- `2 <= n <= 10^4`\n- `0 <= start, end < n`\n- start != end\n- `0 <= a, b < n`\n- a != b\n- `0 <= succProb.length == edges.length <= 2*10^4`\n- `0 <= succProb[i] <= 1`\n- There is at most one edge between every two nodes.",
+  "question_text": "**Path With Maximum Probability**\n\nYou are given an undirected weighted graph of n nodes (0-indexed), represented by an edge list where edges[i] = [a, b] is an undirected edge connecting the nodes a and b with a probability of success of traversing that edge succProb[i].\nGiven two nodes start and end, find the path with the maximum probability of success to go from start to end and return its success probability.\nIf there is no path from start to end, return 0. Your answer will be accepted if it differs from the correct answer by at most 1e-5.\n\n### Example 1\n\n**Input:** n = 3, edges = [[0,1],[1,2],[0,2]], succProb = [0.5,0.5,0.2], start_node = 0, end_node = 2\n**Output:** 0.25000\n**Explanation:** There are two paths from start to end, one having a probability of success = 0.2 and the other has 0.5 * 0.5 = 0.25.\n\n### Example 2\n\n**Input:** n = 3, edges = [[0,1],[1,2],[0,2]], succProb = [0.5,0.5,0.3], start_node = 0, end_node = 2\n**Output:** 0.30000\n\n### Example 3\n\n**Input:** n = 3, edges = [[0,1]], succProb = [0.5], start_node = 0, end_node = 2\n**Output:** 0.00000\n**Explanation:** There is no path between 0 and 2.\n\n### Constraints\n\n- `2 <= n <= 10^4`\n- `0 <= start, end < n`\n- start != end\n- `0 <= a, b < n`\n- a != b\n- `0 <= succProb.length == edges.length <= 2*10^4`\n- `0 <= succProb[i] <= 1`\n- There is at most one edge between every two nodes.",
   "answer_code": "from typing import List, Optional\n\nclass Solution:\n    def maxProbability(\n        self,\n        n: int,\n        edges: List[List[int]],\n        succProb: List[float],\n        start_node: int,\n        end_node: int,\n    ) -> float:\n        g: List[List[Tuple[int, float]]] = [[] for _ in range(n)]\n        for (a, b), p in zip(edges, succProb):\n            g[a].append((b, p))\n            g[b].append((a, p))\n        pq = [(-1, start_node)]\n        dist = [0] * n\n        dist[start_node] = 1\n        while pq:\n            w, a = heappop(pq)\n            w = -w\n            if dist[a] > w:\n                continue\n            for b, p in g[a]:\n                if (t := w * p) > dist[b]:\n                    dist[b] = t\n                    heappush(pq, (-t, b))\n        return dist[end_node]\n",
   "difficulty_score": 35,
   "difficulty_label": "easy",
@@ -19461,7 +20541,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1514",
-   "url": "https://leetcode.com/problems/path-with-maximum-probability/"
+   "url": "https://leetcode.com/problems/path-with-maximum-probability/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -19533,7 +20617,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1976",
-   "url": "https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/"
+   "url": "https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -19605,7 +20693,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2093",
-   "url": "https://leetcode.com/problems/minimum-cost-to-reach-city-with-discounts/"
+   "url": "https://leetcode.com/problems/minimum-cost-to-reach-city-with-discounts/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -19677,7 +20769,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2203",
-   "url": "https://leetcode.com/problems/minimum-weighted-subgraph-with-the-required-paths/"
+   "url": "https://leetcode.com/problems/minimum-weighted-subgraph-with-the-required-paths/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -19749,7 +20845,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc743",
-   "url": "https://leetcode.com/problems/network-delay-time/"
+   "url": "https://leetcode.com/problems/network-delay-time/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -19821,7 +20921,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc787",
-   "url": "https://leetcode.com/problems/cheapest-flights-within-k-stops/"
+   "url": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -19893,7 +20997,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc882",
-   "url": "https://leetcode.com/problems/reachable-nodes-in-subdivided-graph/"
+   "url": "https://leetcode.com/problems/reachable-nodes-in-subdivided-graph/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -19965,7 +21073,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1135",
-   "url": "https://leetcode.com/problems/connecting-cities-with-minimum-cost/"
+   "url": "https://leetcode.com/problems/connecting-cities-with-minimum-cost/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -20037,7 +21149,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1168",
-   "url": "https://leetcode.com/problems/optimize-water-distribution-in-a-village/"
+   "url": "https://leetcode.com/problems/optimize-water-distribution-in-a-village/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -20109,7 +21225,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1489",
-   "url": "https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/"
+   "url": "https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -20181,7 +21301,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1584",
-   "url": "https://leetcode.com/problems/min-cost-to-connect-all-points/"
+   "url": "https://leetcode.com/problems/min-cost-to-connect-all-points/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -20253,7 +21377,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1079",
-   "url": "https://leetcode.com/problems/letter-tile-possibilities/"
+   "url": "https://leetcode.com/problems/letter-tile-possibilities/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -20325,7 +21453,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1255",
-   "url": "https://leetcode.com/problems/maximum-score-words-formed-by-letters/"
+   "url": "https://leetcode.com/problems/maximum-score-words-formed-by-letters/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -20397,7 +21529,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1863",
-   "url": "https://leetcode.com/problems/sum-of-all-subset-xor-totals/"
+   "url": "https://leetcode.com/problems/sum-of-all-subset-xor-totals/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -20469,7 +21605,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2035",
-   "url": "https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/"
+   "url": "https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -20541,7 +21681,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2044",
-   "url": "https://leetcode.com/problems/count-number-of-maximum-bitwise-or-subsets/"
+   "url": "https://leetcode.com/problems/count-number-of-maximum-bitwise-or-subsets/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -20613,7 +21757,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc491",
-   "url": "https://leetcode.com/problems/non-decreasing-subsequences/"
+   "url": "https://leetcode.com/problems/non-decreasing-subsequences/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -20685,7 +21833,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc90",
-   "url": "https://leetcode.com/problems/subsets-ii/"
+   "url": "https://leetcode.com/problems/subsets-ii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -20757,7 +21909,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st141-subsets-i",
-   "url": "https://www.geeksforgeeks.org/problems/subset-sums2234/1"
+   "url": "https://www.geeksforgeeks.org/problems/subset-sums2234/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -20829,7 +21985,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc216",
-   "url": "https://leetcode.com/problems/combination-sum-iii/"
+   "url": "https://leetcode.com/problems/combination-sum-iii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -20901,7 +22061,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc47",
-   "url": "https://leetcode.com/problems/permutations-ii/"
+   "url": "https://leetcode.com/problems/permutations-ii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -20973,7 +22137,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc473",
-   "url": "https://leetcode.com/problems/matchsticks-to-square/"
+   "url": "https://leetcode.com/problems/matchsticks-to-square/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -21045,7 +22213,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc52",
-   "url": "https://leetcode.com/problems/n-queens-ii/"
+   "url": "https://leetcode.com/problems/n-queens-ii/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -21117,7 +22289,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc698",
-   "url": "https://leetcode.com/problems/partition-to-k-equal-sum-subsets/"
+   "url": "https://leetcode.com/problems/partition-to-k-equal-sum-subsets/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -21189,7 +22365,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc77",
-   "url": "https://leetcode.com/problems/combinations/"
+   "url": "https://leetcode.com/problems/combinations/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -21261,7 +22441,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st148-rat-in-a-maze",
-   "url": "https://www.geeksforgeeks.org/problems/rat-in-a-maze-problem/1"
+   "url": "https://www.geeksforgeeks.org/problems/rat-in-a-maze-problem/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -21333,7 +22517,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st149-m-coloring-problem",
-   "url": "https://www.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1"
+   "url": "https://www.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -21405,7 +22593,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1707",
-   "url": "https://leetcode.com/problems/maximum-xor-with-an-element-from-array/"
+   "url": "https://leetcode.com/problems/maximum-xor-with-an-element-from-array/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -21477,7 +22669,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1803",
-   "url": "https://leetcode.com/problems/count-pairs-with-xor-in-a-range/"
+   "url": "https://leetcode.com/problems/count-pairs-with-xor-in-a-range/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -21549,7 +22745,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "lc211",
-   "url": "https://leetcode.com/problems/design-add-and-search-words-data-structure/"
+   "url": "https://leetcode.com/problems/design-add-and-search-words-data-structure/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -21621,7 +22821,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc212",
-   "url": "https://leetcode.com/problems/word-search-ii/"
+   "url": "https://leetcode.com/problems/word-search-ii/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -21693,7 +22897,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc421",
-   "url": "https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/"
+   "url": "https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -21765,7 +22973,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc425",
-   "url": "https://leetcode.com/problems/word-squares/"
+   "url": "https://leetcode.com/problems/word-squares/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -21837,7 +23049,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc472",
-   "url": "https://leetcode.com/problems/concatenated-words/"
+   "url": "https://leetcode.com/problems/concatenated-words/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -21909,7 +23125,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc527",
-   "url": "https://leetcode.com/problems/word-abbreviation/"
+   "url": "https://leetcode.com/problems/word-abbreviation/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -21981,7 +23201,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc122",
-   "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/"
+   "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -22053,7 +23277,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc134",
-   "url": "https://leetcode.com/problems/gas-station/"
+   "url": "https://leetcode.com/problems/gas-station/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -22125,7 +23353,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc135",
-   "url": "https://leetcode.com/problems/candy/"
+   "url": "https://leetcode.com/problems/candy/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -22197,7 +23429,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1405",
-   "url": "https://leetcode.com/problems/longest-happy-string/"
+   "url": "https://leetcode.com/problems/longest-happy-string/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -22269,7 +23505,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1520",
-   "url": "https://leetcode.com/problems/maximum-number-of-non-overlapping-substrings/"
+   "url": "https://leetcode.com/problems/maximum-number-of-non-overlapping-substrings/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -22341,7 +23581,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1899",
-   "url": "https://leetcode.com/problems/merge-triplets-to-form-target-triplet/"
+   "url": "https://leetcode.com/problems/merge-triplets-to-form-target-triplet/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -22413,7 +23657,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2402",
-   "url": "https://leetcode.com/problems/meeting-rooms-iii/"
+   "url": "https://leetcode.com/problems/meeting-rooms-iii/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -22485,7 +23733,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc252",
-   "url": "https://leetcode.com/problems/meeting-rooms/"
+   "url": "https://leetcode.com/problems/meeting-rooms/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -22557,7 +23809,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc435",
-   "url": "https://leetcode.com/problems/non-overlapping-intervals/"
+   "url": "https://leetcode.com/problems/non-overlapping-intervals/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -22629,7 +23885,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc455",
-   "url": "https://leetcode.com/problems/assign-cookies/"
+   "url": "https://leetcode.com/problems/assign-cookies/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -22701,7 +23961,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc502",
-   "url": "https://leetcode.com/problems/ipo/"
+   "url": "https://leetcode.com/problems/ipo/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -22773,7 +24037,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc621",
-   "url": "https://leetcode.com/problems/task-scheduler/"
+   "url": "https://leetcode.com/problems/task-scheduler/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -22845,7 +24113,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc649",
-   "url": "https://leetcode.com/problems/dota2-senate/"
+   "url": "https://leetcode.com/problems/dota2-senate/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -22917,7 +24189,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc658",
-   "url": "https://leetcode.com/problems/find-k-closest-elements/"
+   "url": "https://leetcode.com/problems/find-k-closest-elements/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -22989,7 +24265,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc767",
-   "url": "https://leetcode.com/problems/reorganize-string/"
+   "url": "https://leetcode.com/problems/reorganize-string/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -23061,7 +24341,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc846",
-   "url": "https://leetcode.com/problems/hand-of-straights/"
+   "url": "https://leetcode.com/problems/hand-of-straights/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -23133,7 +24417,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc853",
-   "url": "https://leetcode.com/problems/car-fleet/"
+   "url": "https://leetcode.com/problems/car-fleet/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -23205,7 +24493,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc860",
-   "url": "https://leetcode.com/problems/lemonade-change/"
+   "url": "https://leetcode.com/problems/lemonade-change/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -23277,7 +24569,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st199-fractional-knapsack",
-   "url": "https://www.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1"
+   "url": "https://www.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -23349,7 +24645,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st201-shortest-job-first",
-   "url": "https://www.geeksforgeeks.org/problems/shortest-job-first/1"
+   "url": "https://www.geeksforgeeks.org/problems/shortest-job-first/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -23421,7 +24721,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st202-job-sequencing-problem",
-   "url": "https://www.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1"
+   "url": "https://www.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -23493,7 +24797,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st203-n-meetings-in-one-room",
-   "url": "https://www.geeksforgeeks.org/problems/maximum-meetings-in-one-room/1"
+   "url": "https://www.geeksforgeeks.org/problems/maximum-meetings-in-one-room/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -23565,7 +24873,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st207-minimum-number-of-platforms-required-for-a-railway",
-   "url": "https://takeuforward.org/practice/dsa/minimum-number-of-platforms-required-for-a-railway?category=scheduling-and-interval-problems&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/minimum-number-of-platforms-required-for-a-railway?category=scheduling-and-interval-problems&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "takeuforward"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -23637,7 +24949,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1043",
-   "url": "https://leetcode.com/problems/partition-array-for-maximum-sum/"
+   "url": "https://leetcode.com/problems/partition-array-for-maximum-sum/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -23709,7 +25025,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1048",
-   "url": "https://leetcode.com/problems/longest-string-chain/"
+   "url": "https://leetcode.com/problems/longest-string-chain/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -23781,7 +25101,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1137",
-   "url": "https://leetcode.com/problems/n-th-tribonacci-number/"
+   "url": "https://leetcode.com/problems/n-th-tribonacci-number/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -23853,7 +25177,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc123",
-   "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/"
+   "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -23925,7 +25253,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc132",
-   "url": "https://leetcode.com/problems/palindrome-partitioning-ii/"
+   "url": "https://leetcode.com/problems/palindrome-partitioning-ii/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -23997,7 +25329,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1406",
-   "url": "https://leetcode.com/problems/stone-game-iii/"
+   "url": "https://leetcode.com/problems/stone-game-iii/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -24069,7 +25405,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1871",
-   "url": "https://leetcode.com/problems/jump-game-vii/"
+   "url": "https://leetcode.com/problems/jump-game-vii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -24141,7 +25481,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc213",
-   "url": "https://leetcode.com/problems/house-robber-ii/"
+   "url": "https://leetcode.com/problems/house-robber-ii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -24213,7 +25557,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2707",
-   "url": "https://leetcode.com/problems/extra-characters-in-a-string/"
+   "url": "https://leetcode.com/problems/extra-characters-in-a-string/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -24285,7 +25633,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc343",
-   "url": "https://leetcode.com/problems/integer-break/"
+   "url": "https://leetcode.com/problems/integer-break/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -24357,7 +25709,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc368",
-   "url": "https://leetcode.com/problems/largest-divisible-subset/"
+   "url": "https://leetcode.com/problems/largest-divisible-subset/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -24429,7 +25785,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc377",
-   "url": "https://leetcode.com/problems/combination-sum-iv/"
+   "url": "https://leetcode.com/problems/combination-sum-iv/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -24501,7 +25861,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc509",
-   "url": "https://leetcode.com/problems/fibonacci-number/"
+   "url": "https://leetcode.com/problems/fibonacci-number/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -24573,7 +25937,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc746",
-   "url": "https://leetcode.com/problems/min-cost-climbing-stairs/"
+   "url": "https://leetcode.com/problems/min-cost-climbing-stairs/",
+   "source_difficulty": {
+    "label": "Easy",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -24645,7 +26013,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc91",
-   "url": "https://leetcode.com/problems/decode-ways/"
+   "url": "https://leetcode.com/problems/decode-ways/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -24717,7 +26089,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc978",
-   "url": "https://leetcode.com/problems/longest-turbulent-subarray/"
+   "url": "https://leetcode.com/problems/longest-turbulent-subarray/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -24789,7 +26165,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st90-kadane-s-algorithm",
-   "url": "https://www.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/1"
+   "url": "https://www.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/1",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "geeksforgeeks"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -24861,7 +26241,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1049",
-   "url": "https://leetcode.com/problems/last-stone-weight-ii/"
+   "url": "https://leetcode.com/problems/last-stone-weight-ii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -24933,7 +26317,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2291",
-   "url": "https://leetcode.com/problems/maximum-profit-from-trading-stocks/"
+   "url": "https://leetcode.com/problems/maximum-profit-from-trading-stocks/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -25005,7 +26393,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc474",
-   "url": "https://leetcode.com/problems/ones-and-zeroes/"
+   "url": "https://leetcode.com/problems/ones-and-zeroes/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -25077,7 +26469,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc494",
-   "url": "https://leetcode.com/problems/target-sum/"
+   "url": "https://leetcode.com/problems/target-sum/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -25149,7 +26545,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc879",
-   "url": "https://leetcode.com/problems/profitable-schemes/"
+   "url": "https://leetcode.com/problems/profitable-schemes/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -25221,7 +26621,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st137-check-if-there-exists-a-subsequence-with-sum-k",
-   "url": "https://takeuforward.org/practice/dsa/check-if-there-exists-a-subsequence-with-sum-k?category=subsequence-pattern-problems&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/check-if-there-exists-a-subsequence-with-sum-k?category=subsequence-pattern-problems&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "takeuforward"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -25293,7 +26697,11 @@
   "provenance": {
    "source": "generated: outputs from two agreeing reference solutions",
    "problem": "st138-count-all-subsequences-with-sum-k",
-   "url": "https://takeuforward.org/practice/dsa/count-all-subsequences-with-sum-k?category=subsequence-pattern-problems&source=strivers-a2z-dsa-sheet"
+   "url": "https://takeuforward.org/practice/dsa/count-all-subsequences-with-sum-k?category=subsequence-pattern-problems&source=strivers-a2z-dsa-sheet",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "takeuforward"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -25365,7 +26773,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc120",
-   "url": "https://leetcode.com/problems/triangle/"
+   "url": "https://leetcode.com/problems/triangle/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -25437,7 +26849,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1301",
-   "url": "https://leetcode.com/problems/number-of-paths-with-max-score/"
+   "url": "https://leetcode.com/problems/number-of-paths-with-max-score/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -25509,7 +26925,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1458",
-   "url": "https://leetcode.com/problems/max-dot-product-of-two-subsequences/"
+   "url": "https://leetcode.com/problems/max-dot-product-of-two-subsequences/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -25581,7 +27001,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc174",
-   "url": "https://leetcode.com/problems/dungeon-game/"
+   "url": "https://leetcode.com/problems/dungeon-game/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -25653,7 +27077,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2088",
-   "url": "https://leetcode.com/problems/count-fertile-pyramids-in-a-land/"
+   "url": "https://leetcode.com/problems/count-fertile-pyramids-in-a-land/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -25725,7 +27153,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc516",
-   "url": "https://leetcode.com/problems/longest-palindromic-subsequence/"
+   "url": "https://leetcode.com/problems/longest-palindromic-subsequence/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -25797,7 +27229,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc518",
-   "url": "https://leetcode.com/problems/coin-change-ii/"
+   "url": "https://leetcode.com/problems/coin-change-ii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -25869,7 +27305,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc63",
-   "url": "https://leetcode.com/problems/unique-paths-ii/"
+   "url": "https://leetcode.com/problems/unique-paths-ii/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -25941,7 +27381,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc10",
-   "url": "https://leetcode.com/problems/regular-expression-matching/"
+   "url": "https://leetcode.com/problems/regular-expression-matching/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -26013,7 +27457,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1092",
-   "url": "https://leetcode.com/problems/shortest-common-supersequence/"
+   "url": "https://leetcode.com/problems/shortest-common-supersequence/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -26085,7 +27533,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc115",
-   "url": "https://leetcode.com/problems/distinct-subsequences/"
+   "url": "https://leetcode.com/problems/distinct-subsequences/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -26157,7 +27609,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2060",
-   "url": "https://leetcode.com/problems/check-if-an-original-string-exists-given-two-encoded-strings/"
+   "url": "https://leetcode.com/problems/check-if-an-original-string-exists-given-two-encoded-strings/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -26229,7 +27685,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc44",
-   "url": "https://leetcode.com/problems/wildcard-matching/"
+   "url": "https://leetcode.com/problems/wildcard-matching/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -26301,7 +27761,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc583",
-   "url": "https://leetcode.com/problems/delete-operation-for-two-strings/"
+   "url": "https://leetcode.com/problems/delete-operation-for-two-strings/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -26373,7 +27837,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc727",
-   "url": "https://leetcode.com/problems/minimum-window-subsequence/"
+   "url": "https://leetcode.com/problems/minimum-window-subsequence/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -26445,7 +27913,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc97",
-   "url": "https://leetcode.com/problems/interleaving-string/"
+   "url": "https://leetcode.com/problems/interleaving-string/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -26517,7 +27989,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1671",
-   "url": "https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/"
+   "url": "https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -26589,7 +28065,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1691",
-   "url": "https://leetcode.com/problems/maximum-height-by-stacking-cuboids/"
+   "url": "https://leetcode.com/problems/maximum-height-by-stacking-cuboids/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -26661,7 +28141,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1713",
-   "url": "https://leetcode.com/problems/minimum-operations-to-make-a-subsequence/"
+   "url": "https://leetcode.com/problems/minimum-operations-to-make-a-subsequence/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -26733,7 +28217,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2111",
-   "url": "https://leetcode.com/problems/minimum-operations-to-make-the-array-k-increasing/"
+   "url": "https://leetcode.com/problems/minimum-operations-to-make-the-array-k-increasing/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -26805,7 +28293,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc354",
-   "url": "https://leetcode.com/problems/russian-doll-envelopes/"
+   "url": "https://leetcode.com/problems/russian-doll-envelopes/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -26877,7 +28369,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc673",
-   "url": "https://leetcode.com/problems/number-of-longest-increasing-subsequence/"
+   "url": "https://leetcode.com/problems/number-of-longest-increasing-subsequence/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -26949,7 +28445,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc960",
-   "url": "https://leetcode.com/problems/delete-columns-to-make-sorted-iii/"
+   "url": "https://leetcode.com/problems/delete-columns-to-make-sorted-iii/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -27021,7 +28521,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1246",
-   "url": "https://leetcode.com/problems/palindrome-removal/"
+   "url": "https://leetcode.com/problems/palindrome-removal/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -27093,7 +28597,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1547",
-   "url": "https://leetcode.com/problems/minimum-cost-to-cut-a-stick/"
+   "url": "https://leetcode.com/problems/minimum-cost-to-cut-a-stick/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -27165,7 +28673,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc1563",
-   "url": "https://leetcode.com/problems/stone-game-v/"
+   "url": "https://leetcode.com/problems/stone-game-v/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -27237,7 +28749,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc2019",
-   "url": "https://leetcode.com/problems/the-score-of-students-solving-math-expression/"
+   "url": "https://leetcode.com/problems/the-score-of-students-solving-math-expression/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -27309,7 +28825,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc312",
-   "url": "https://leetcode.com/problems/burst-balloons/"
+   "url": "https://leetcode.com/problems/burst-balloons/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -27381,7 +28901,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc471",
-   "url": "https://leetcode.com/problems/encode-string-with-shortest-length/"
+   "url": "https://leetcode.com/problems/encode-string-with-shortest-length/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -27453,7 +28977,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc664",
-   "url": "https://leetcode.com/problems/strange-printer/"
+   "url": "https://leetcode.com/problems/strange-printer/",
+   "source_difficulty": {
+    "label": "Hard",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,
@@ -27525,7 +29053,11 @@
   "provenance": {
    "source": "newfacade/LeetCodeDataset (Apache-2.0)",
    "problem": "lc678",
-   "url": "https://leetcode.com/problems/valid-parenthesis-string/"
+   "url": "https://leetcode.com/problems/valid-parenthesis-string/",
+   "source_difficulty": {
+    "label": "Medium",
+    "source": "leetcode"
+   }
   },
   "expected_artifact_type": "value",
   "supports_visual_output": false,

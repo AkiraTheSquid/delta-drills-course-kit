@@ -102,7 +102,7 @@ A ray is P(s) = O + sD with O = (0, 0) and D = (2, −1). For which value of s i
 P(s) = (1, 1) + s(2, −1), s ≥ 0. Is (−3, 3) on this ray?
 
 ### q50076
-A four-pixel camera includes both y-limits −3 and 3 at x = 1, equally spaced. What is the direction-y coordinate of pixel i = 2 (counting from i = 0)?
+A camera has 4 pixels in a row, numbered i = 0, 1, 2, 3. Pixel i's ray has direction (1, y_i, 0), and the four values y_0, y_1, y_2, y_3 are evenly spaced from −3 to 3, both ends included. What is y_2?
 
 ### q50077
 A = (0, 4, 2), B = (6, −2, 8). Which v puts A + v(B − A) at (4, 0, 6)?

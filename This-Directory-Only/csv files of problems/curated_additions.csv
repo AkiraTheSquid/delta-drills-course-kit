@@ -11444,3 +11444,646 @@ Numpy,Vectorization and broadcasting,"`hourly` is a 1-D float tensor of readings
 def solve(hourly):
     """"""Mean of each 6-hour quarter of every day.""""""
     return hourly.reshape(-1, 4, 6).mean(dim=2)",60,"tensor([[ 2.5000,  8.5000, 14.5000, 20.5000]])"
+PyTorch,rd-1,"`A` holds the activations of n prompts at one layer, shape `(n, d)`. Return the average activation of the prompts, shape `(d,)`.","import torch as t
+
+
+def solve(A):
+    """"""Average activation over the prompts.""""""
+    return A.mean(dim=0)
+",15,"[2.0, 3.0, 4.0]"
+PyTorch,rd-1,"`A` holds activations of n prompts at L layers, shape `(n, L, d)`. Return the average over the prompts of the activations at the LAST layer only, shape `(d,)`.","import torch as t
+
+
+def solve(A):
+    """"""Average activation at the last layer.""""""
+    return A[:, -1].mean(dim=0)
+",20,"[7.0, 8.0]"
+PyTorch,rd-1,"`H` holds the activations of harmful prompts, shape `(n, d)`, and `B` those of harmless prompts, shape `(m, d)`; n and m may differ. Return the vector that points from the harmless average to the harmful average, shape `(d,)`.","import torch as t
+
+
+def solve(H, B):
+    """"""Vector from the harmless average to the harmful average.""""""
+    return H.mean(dim=0) - B.mean(dim=0)
+",20,"[2.0, 5.0]"
+PyTorch,rd-1,"`H` holds the activations of harmful prompts, shape `(n, d)`, and `B` those of harmless prompts, shape `(m, d)`. Return the straight-line distance between the harmful average and the harmless average, as a Python float.","import torch as t
+
+
+def solve(H, B):
+    """"""Distance between the two class averages.""""""
+    return (H.mean(dim=0) - B.mean(dim=0)).norm().item()
+",25,5.0
+PyTorch,rd-1,"`r` is a nonzero vector, shape `(d,)`. Return the vector of length 1 that points the same way as `r`.","import torch as t
+
+
+def solve(r):
+    """"""Unit vector with the direction of r.""""""
+    return r / r.norm()
+",15,"[0.6, 0.8]"
+PyTorch,rd-1,"`R` holds one nonzero vector per layer, shape `(L, d)`. Return a table of the same shape in which every row has been rescaled to length 1.","import torch as t
+
+
+def solve(R):
+    """"""Each row rescaled to length 1.""""""
+    return R / R.norm(dim=1, keepdim=True)
+",25,"[[0.6, 0.8], [0.0, 1.0]]"
+PyTorch,rd-1,"`A` holds the activations of n prompts, shape `(n, d)`, and `flags` is a boolean tensor of length n that is True for the harmful prompts. Return the average activation of the harmful prompts only, shape `(d,)`.","import torch as t
+
+
+def solve(A, flags):
+    """"""Average of the flagged rows.""""""
+    return A[flags].mean(dim=0)
+",30,"[3.0, 4.0]"
+PyTorch,rd-1,"`acts` holds the activations of n prompts, shape `(n, d)`, and `labels` is an integer tensor of length n with 1 for a harmful prompt and 0 for a harmless one. Return the vector from the harmless average to the harmful average, shape `(d,)`.","import torch as t
+
+
+def solve(acts, labels):
+    """"""Harmful average minus harmless average.""""""
+    return acts[labels > 0].mean(dim=0) - acts[labels < 1].mean(dim=0)
+",35,"[3.0, 1.0]"
+PyTorch,rd-1,"`H` and `B` hold harmful and harmless activations at L layers, shapes `(n, L, d)` and `(m, L, d)`. Return the index of the layer at which the harmful average lies farthest from the harmless average, as a Python int.","import torch as t
+
+
+def solve(H, B):
+    """"""Layer with the longest difference vector.""""""
+    r = H.mean(dim=0) - B.mean(dim=0)
+    return r.norm(dim=1).argmax().item()
+",40,1
+PyTorch,rd-1,"`r` is a vector of shape `(d,)` that may be all zeros. Return `r` rescaled to length 1, or `r` itself (all zeros) when it has length 0.","import torch as t
+
+
+def solve(r):
+    """"""Unit vector, or zeros for a zero vector.""""""
+    n = r.norm()
+    return t.where(n > 0, r / n, r)
+",35,"[0.0, 0.6, 0.8]"
+PyTorch,rd-1,"`R` holds one difference vector per layer, shape `(L, d)`. Return a boolean tensor of length L that is True for each layer whose vector is longer than 0.000001.","import torch as t
+
+
+def solve(R):
+    """"""Which layers have a usable difference vector.""""""
+    return R.norm(dim=1) > 1e-6
+",35,"[False, True, False]"
+PyTorch,rd-1,"`H` and `B` hold harmful and harmless activations, shapes `(n, d)` and `(m, d)`. Return the index of the column in which the harmful average is above the harmless average by the largest amount, as a Python int.","import torch as t
+
+
+def solve(H, B):
+    """"""Column with the largest harmful-minus-harmless gap.""""""
+    return (H.mean(dim=0) - B.mean(dim=0)).argmax().item()
+",40,2
+PyTorch,rd-1,"`H` holds harmful and `B` harmless activations from one layer, shapes `(n, d)` and `(m, d)`, and their averages differ. Return the vector of length 1 that points from the harmless average to the harmful average, shape `(d,)`.","import torch as t
+
+
+def solve(H, B):
+    """"""Unit vector from the harmless to the harmful average.""""""
+    r = H.mean(dim=0) - B.mean(dim=0)
+    return r / r.norm()
+",55,"[1.0, 0.0]"
+PyTorch,rd-1,"`H` and `B` hold harmful and harmless activations at L layers, shapes `(n, L, d)` and `(m, L, d)`. For each layer build the vector from the harmless average to the harmful average and rescale it to length 1; a layer whose two averages are equal gets all zeros. Return shape `(L, d)`.","import torch as t
+
+
+def solve(H, B):
+    """"""Per-layer unit directions, zeros where the averages match.""""""
+    r = H.mean(dim=0) - B.mean(dim=0)
+    return r / r.norm(dim=1, keepdim=True).clamp(min=1e-12)
+",65,"[[0.0, 0.0], [1.0, 0.0]]"
+PyTorch,rd-1,"`H` and `B` hold harmful and harmless activations, shapes `(n, d)` and `(m, d)`, with different averages. Score each prompt by its dot product with the unit vector pointing from the harmless average to the harmful average. Return the fraction of (harmful, harmless) pairs in which the harmful prompt scores strictly higher, as a Python float.","import torch as t
+
+
+def solve(H, B):
+    """"""Fraction of pairs the direction orders correctly.""""""
+    r = H.mean(dim=0) - B.mean(dim=0)
+    u = r / r.norm()
+    sh = (H * u).sum(dim=1)
+    sb = (B * u).sum(dim=1)
+    return (sh.reshape(-1, 1) > sb.reshape(1, -1)).sum().item() / (len(sh) * len(sb))
+",70,1.0
+PyTorch,rd-1,"`layers` is an integer tensor of layer numbers, `kl` the KL divergence of each layer (same length), and `L` the total number of layers. Return a boolean tensor that is True for each layer that is before 0.8 times L AND has KL below 0.1.","import torch as t
+
+
+def solve(layers, kl, L):
+    """"""Mask of layers passing the position and KL filters.""""""
+    return (layers < 0.8 * L) & (kl < 0.1)
+",15,"[True, False, True, False]"
+PyTorch,rd-1,"`layers` holds layer numbers, `kl` their KL divergences and `add1` the share of harmless prompts the model refuses after the direction is added (all the same length), and `L` is the total number of layers. Return the layer numbers, as a Python list, of the layers that are before 0.8 times L, have KL below 0.1 and have `add1` above 0.","import torch as t
+
+
+def solve(layers, kl, add1, L):
+    """"""Layer numbers passing all three filters.""""""
+    keep = (layers < 0.8 * L) & (kl < 0.1) & (add1 > 0)
+    return layers[keep].tolist()
+",25,"[1, 4, 5]"
+PyTorch,rd-1,"`keep` is a boolean tensor saying which layers survived the filters and `bypass` holds each layer's bypass score (the share of harmful prompts still refused after removal; lower is better). Return a tensor in which surviving layers show their bypass score and every other layer shows 2.0, so that a later minimum can never pick a dropped layer.","import torch as t
+
+
+def solve(keep, bypass):
+    """"""Bypass score for kept layers, 2.0 elsewhere.""""""
+    return t.where(keep, bypass, t.tensor(2.0))
+",15,"[0.3, 2.0, 0.2]"
+PyTorch,rd-1,`keep` says which layers survived the filters and `bypass` is each layer's bypass score (lower is better). Return a boolean tensor that is True for the surviving layers whose bypass equals the lowest bypass among the surviving layers. At least one layer survives.,"import torch as t
+
+
+def solve(keep, bypass):
+    """"""Mask of the surviving layers tied for the lowest bypass.""""""
+    score = t.where(keep, bypass, t.tensor(2.0))
+    return score == score.min()
+",25,"[True, True, False, False]"
+PyTorch,rd-1,"`layers` holds layer numbers, `kl` their KL divergences, `add1` the share of harmless prompts refused after adding the direction, and `L` the total number of layers. Return how many layers pass all three filters (before 0.8 times L, KL below 0.1, `add1` above 0), as a Python int.","import torch as t
+
+
+def solve(layers, kl, add1, L):
+    """"""Number of layers passing all three filters.""""""
+    return ((layers < 0.8 * L) & (kl < 0.1) & (add1 > 0)).sum().item()
+",30,2
+PyTorch,rd-1,"`layers`, `kl`, `add1` and `L` are as before. Return, as a Python list, the layer numbers that are early enough (before 0.8 times L) and have KL below 0.1 but are dropped only because adding their direction does NOT cause refusals (`add1` is 0 or negative).","import torch as t
+
+
+def solve(layers, kl, add1, L):
+    """"""Layers dropped only by the add1 filter.""""""
+    mask = (layers < 0.8 * L) & (kl < 0.1) & (add1 <= 0)
+    return layers[mask].tolist()
+",35,"[1, 3]"
+PyTorch,rd-1,"`keep` is a boolean tensor of the layers that survived the filters and `bypass` is each layer's bypass score (lower is better; every score is below 1). At least one layer survives and no two surviving layers have the same score. Return the position of the surviving layer with the lowest bypass, as a Python int.","import torch as t
+
+
+def solve(keep, bypass):
+    """"""Position of the best surviving layer.""""""
+    return t.argmin(t.where(keep, bypass, t.tensor(2.0))).item()
+",35,2
+PyTorch,rd-1,"`keep` marks the layers that survived the filters, `bypass` holds each layer's bypass score (lower is better) and `kl` each layer's KL divergence. At least one layer survives. Return the position of the surviving layer with the lowest bypass; when several survivors tie on bypass, take the one with the smallest KL. Return a Python int.","import torch as t
+
+
+def solve(keep, bypass, kl):
+    """"""Best survivor, ties broken by KL.""""""
+    score = t.where(keep, bypass, t.tensor(2.0))
+    tied = score == score.min()
+    return t.argmin(t.where(tied, kl, t.tensor(float('inf')))).item()
+",45,1
+PyTorch,rd-1,"`keep` marks the layers that survived the filters and `bypass` is each layer's bypass score (lower is better, every score is below 1; no two survivors tie). Return the position of the surviving layer with the lowest bypass, or -1 when no layer survived. Return a Python int.","import torch as t
+
+
+def solve(keep, bypass):
+    """"""Best survivor, or -1 when there is none.""""""
+    i = t.argmin(t.where(keep, bypass, t.tensor(2.0)))
+    return t.where(keep.sum() > 0, i, -1).item()
+",40,-1
+PyTorch,rd-1,"`layers` holds layer numbers, `keep` marks the layers that survived the filters and `bypass` holds their bypass scores (every score is below 1; no two scores are equal). Return the layer numbers of the surviving layers only, as a Python list, ordered from lowest bypass to highest.","import torch as t
+
+
+def solve(layers, keep, bypass):
+    """"""Surviving layers ranked by bypass.""""""
+    score = t.where(keep, bypass, t.tensor(2.0))
+    n = keep.sum().item()
+    return layers[t.argsort(score)[:n]].tolist()
+",45,"[12, 13, 10]"
+PyTorch,rd-1,"`layers`, `kl`, `add1`, `bypass` and `L` describe the candidate directions: layer number, KL divergence, share of harmless prompts refused after adding the direction, share of harmful prompts still refused after removing it, and the total number of layers. Apply the paper's rule: keep layers that are before 0.8 times L, have KL below 0.1 and have `add1` above 0; of those take the lowest bypass, breaking ties on the smaller KL. Return the chosen layer NUMBER, or -1 if no layer qualifies. Python int.","import torch as t
+
+
+def solve(layers, kl, add1, bypass, L):
+    """"""Layer chosen by the selection rule, or -1.""""""
+    keep = (layers < 0.8 * L) & (kl < 0.1) & (add1 > 0)
+    score = t.where(keep, bypass, t.tensor(2.0))
+    tied = score == score.min()
+    i = t.argmin(t.where(tied, kl, t.tensor(float('inf'))))
+    return t.where(keep.sum() > 0, layers[i], -1).item()
+",60,7
+PyTorch,rd-1,"`table` has one row per candidate layer and four columns: layer number, KL divergence, share of harmless prompts refused after adding the direction (`add1`), and bypass score. `L` is the total number of layers. Keep rows whose layer number is below 0.8 times L, whose KL is below 0.1 and whose `add1` is above 0. Return the ROW POSITION of the kept row with the lowest bypass (smaller KL breaks a tie), or -1 if no row is kept. Python int.","import torch as t
+
+
+def solve(table, L):
+    """"""Row position chosen by the selection rule, or -1.""""""
+    layers = table[:, 0]
+    kl = table[:, 1]
+    add1 = table[:, 2]
+    bypass = table[:, 3]
+    keep = (layers < 0.8 * L) & (kl < 0.1) & (add1 > 0)
+    score = t.where(keep, bypass, t.tensor(2.0))
+    tied = score == score.min()
+    i = t.argmin(t.where(tied, kl, t.tensor(float('inf'))))
+    return t.where(keep.sum() > 0, i, -1).item()
+",60,2
+PyTorch,rd-1,"`R` holds one unit direction per layer, shape `(n, d)`, and `layers`, `kl`, `add1`, `bypass` and `L` describe those same n layers as in the selection rule (layer number, KL divergence, share of harmless prompts refused after adding, share of harmful prompts still refused after removing, total layers). Apply the rule: before 0.8 times L, KL below 0.1, `add1` above 0, lowest bypass, smaller KL breaks ties. Return the chosen layer's direction, shape `(d,)`, or a vector of zeros if no layer qualifies.","import torch as t
+
+
+def solve(R, layers, kl, add1, bypass, L):
+    """"""Direction of the chosen layer, zeros if none.""""""
+    keep = (layers < 0.8 * L) & (kl < 0.1) & (add1 > 0)
+    score = t.where(keep, bypass, t.tensor(2.0))
+    tied = score == score.min()
+    i = t.argmin(t.where(tied, kl, t.tensor(float('inf'))))
+    return t.where(keep.sum() > 0, R[i], t.zeros_like(R[i]))
+",65,"[0.0, 1.0]"
+PyTorch,rd-1,"`X` holds one activation per row, shape `(n, d)`, and `u` is a vector of length 1, shape `(d,)`. Return the dot product of every row with `u`, shape `(n,)`.","import torch as t
+
+
+def solve(X, u):
+    """"""Score of every row along u.""""""
+    return X @ u
+",15,"[1.0, 3.0, 5.0]"
+PyTorch,rd-1,"`X` holds activations for b prompts with s token positions each, shape `(b, s, d)`, and `u` is a vector of length 1, shape `(d,)`. Return, for each prompt, the average score of its tokens along `u`, shape `(b,)`.","import torch as t
+
+
+def solve(X, u):
+    """"""Average token score per prompt.""""""
+    return (X @ u).mean(dim=1)
+",20,"[3.6, 12.0]"
+PyTorch,rd-1,"`X` holds one activation per row, shape `(n, d)`, and `u` is a vector of length 1, shape `(d,)`. Return `X` with the component along `u` removed from every row, same shape.","import torch as t
+
+
+def solve(X, u):
+    """"""Rows with the component along u removed.""""""
+    return X - (X @ u)[..., None] * u
+",20,"[[0.0, 4.0], [0.0, 0.0]]"
+PyTorch,rd-1,"`X` holds activations for b prompts with s token positions each, shape `(b, s, d)`, and `u` is a vector of length 1, shape `(d,)`. Return the part of every token that lies along `u` (the amount ablation would remove), same shape as `X`.","import torch as t
+
+
+def solve(X, u):
+    """"""Component of every token along u.""""""
+    return (X @ u)[..., None] * u
+",25,"[[[0.48, 0.64], [2.16, 2.88], [3.84, 5.12]], [[5.52, 7.36], [7.2, 9.6], [8.88, 11.84]]]"
+PyTorch,rd-1,"`model` is a stack of linear layers, `u` is a vector of length 1 and `x` an input (a vector or a batch of rows). Return the output of `model` on `x` when the component along `u` is removed from the output of the FIRST layer only. Leave `model` exactly as you found it.","import torch as t
+
+
+def solve(model, u, x):
+    """"""Output with the first layer's output ablated.""""""
+    def hook(layer, inputs, output):
+        return output - (output @ u)[..., None] * u
+    handle = model[0].register_forward_hook(hook)
+    out = model(x)
+    handle.remove()
+    return out
+",30,"[[3.0, 3.0], [5.0, 3.0]]"
+PyTorch,rd-1,"`model` is a stack of linear layers, `u` is a vector of length 1 and `x` an input. Return the output of `model` on `x` when the component along `u` is removed from the output of EVERY layer. Leave `model` exactly as you found it.","import torch as t
+
+
+def solve(model, u, x):
+    """"""Output with every layer's output ablated.""""""
+    def hook(layer, inputs, output):
+        return output - (output @ u)[..., None] * u
+    handles = []
+    for layer in model:
+        handles.append(layer.register_forward_hook(hook))
+    out = model(x)
+    for handle in handles:
+        handle.remove()
+    return out
+",35,"[[0.0, 3.0], [5.0, 3.0]]"
+PyTorch,rd-1,"`X` holds one activation per row, shape `(n, d)`, and `r` is a nonzero vector of any length, shape `(d,)`. Return the score of every row along the direction `r` points in, shape `(n,)`.","import torch as t
+
+
+def solve(X, r):
+    """"""Score of every row along the direction of r.""""""
+    return X @ (r / r.norm())
+",30,"[1.2, 2.4]"
+PyTorch,rd-1,"`X` holds one activation per row, shape `(n, d)`, and `u` is a vector of length 1. Return True if no row has a component along `u` bigger in size than 0.0001 (so the direction is already removed), otherwise False.","import torch as t
+
+
+def solve(X, u):
+    """"""Whether the direction is already gone from X.""""""
+    return t.abs(X @ u).max().item() <= 1e-4
+",35,True
+PyTorch,rd-1,"`X` holds activations for b prompts with s token positions each, shape `(b, s, d)`, and `r` is a nonzero vector of any length, shape `(d,)`. Return `X` with the component along the direction of `r` removed from every token, same shape.","import torch as t
+
+
+def solve(X, r):
+    """"""Tokens with the component along r's direction removed.""""""
+    u = r / r.norm()
+    return X - (X @ u)[..., None] * u
+",40,"[[[1.12, -0.84], [0.16, -0.12]]]"
+PyTorch,rd-1,"`model` is a stack of three linear layers, `u` has length 1, `x` is an input and `hooked` is a list of layer positions (0, 1 or 2). Return the output of `model` on `x` when the component along `u` is removed from the output of each layer whose position is in `hooked`, and from no other layer. Leave `model` as you found it.","import torch as t
+
+
+def solve(model, u, x, hooked):
+    """"""Output with only the listed layers ablated.""""""
+    def hook(layer, inputs, output):
+        return output - (output @ u)[..., None] * u
+    handles = []
+    for i in hooked:
+        handles.append(model[i].register_forward_hook(hook))
+    out = model(x)
+    for handle in handles:
+        handle.remove()
+    return out
+",55,"[[0.0, 6.0], [5.0, 8.0]]"
+PyTorch,rd-1,"`model` is a stack of linear layers, `u` has length 1 and `x` is a single input vector. Remove the component along `u` from the output of the FIRST layer only, run the rest of the network, and return the score of the final output along `u`, as a Python float. Leave `model` as you found it.","import torch as t
+
+
+def solve(model, u, x):
+    """"""Component along u left in the output.""""""
+    def hook(layer, inputs, output):
+        return output - (output @ u)[..., None] * u
+    handle = model[0].register_forward_hook(hook)
+    out = model(x)
+    handle.remove()
+    return (out @ u).item()
+",45,3.0
+PyTorch,rd-1,"`model` is a stack of two linear layers, `u` has length 1 and `x` is an input. Return the output of `model` on `x` with the component along `u` removed from the output of every layer. The returned model must behave exactly as it did before your function ran.","import torch as t
+
+
+def solve(model, u, x):
+    """"""Ablated output, model left untouched.""""""
+    def hook(layer, inputs, output):
+        return output - (output @ u)[..., None] * u
+    handles = [model[0].register_forward_hook(hook), model[1].register_forward_hook(hook)]
+    out = model(x)
+    for handle in handles:
+        handle.remove()
+    return out
+",40,"[[0.0, 3.0], [5.0, 3.0]]"
+PyTorch,rd-1,"`H` holds harmful activations, shape `(n, d)`, `B` harmless activations, shape `(m, d)` (the two class averages differ), and `X` any activations to clean, shape `(k, d)`. Build the direction that points from the harmless average to the harmful average, and return `X` with the component along that direction removed from every row.","import torch as t
+
+
+def solve(H, B, X):
+    """"""X with the harmful-minus-harmless direction removed.""""""
+    r = H.mean(dim=0) - B.mean(dim=0)
+    u = r / r.norm()
+    return X - (X @ u)[..., None] * u
+",60,"[[0.4, 1.2], [0.3, 0.9]]"
+PyTorch,rd-1,"`H` and `B` hold harmful and harmless activations at L layers, shapes `(n, L, d)` and `(m, L, d)`, `l` is a layer position and `X` holds activations to clean at all L layers, shape `(b, L, d)`. Build the harmful-minus-harmless direction at layer `l`, rescale it to length 1, and remove its component from `X` at EVERY layer with that single direction. Return shape `(b, L, d)`.","import torch as t
+
+
+def solve(H, B, l, X):
+    """"""One direction, removed at every layer of X.""""""
+    r = H[:, l].mean(dim=0) - B[:, l].mean(dim=0)
+    u = r / r.norm()
+    return X - (X @ u)[..., None] * u
+",70,"[[[0.0, 1.0], [0.0, 1.0]]]"
+PyTorch,rd-1,"`H` holds harmful activations, shape `(n, d)`, not all zero, and `B` harmless activations, shape `(m, d)` (the class averages differ). Build the unit direction from the harmless average to the harmful average, and return the fraction of the harmful activations' total squared length that lies along it: the sum over rows of the squared score, divided by the sum over all entries of `H` squared. Python float between 0 and 1.","import torch as t
+
+
+def solve(H, B):
+    """"""Share of H's squared length along the direction.""""""
+    r = H.mean(dim=0) - B.mean(dim=0)
+    u = r / r.norm()
+    s = H @ u
+    return ((s * s).sum() / (H * H).sum()).item()
+",65,1.0
+PyTorch,rd-1,"`X` holds activations of harmless prompts, shape `(n, d)`, `r` is the difference-in-means vector, shape `(d,)`, and `c` is a number. Return `X` with `c` times `r` added to every row.","import torch as t
+
+
+def solve(X, r, c):
+    """"""Rows shifted by c times r.""""""
+    return X + c * r
+",15,"[[2.0, 3.0], [3.0, 2.0]]"
+PyTorch,rd-1,"`X` holds activations of harmless prompts, shape `(n, d)`, `r` is the difference-in-means vector, shape `(d,)`, and `c` is a number. Return the score of every row along the direction `r` points in (a vector of length 1) AFTER adding `c` times `r` to every row, shape `(n,)`.","import torch as t
+
+
+def solve(X, r, c):
+    """"""Scores along r's direction after the addition.""""""
+    u = r / r.norm()
+    return (X + c * r) @ u
+",25,"[5.6, 5.8]"
+PyTorch,rd-1,"`model` is a stack of linear layers, `r` is the vector to add, `x` is an input vector, and the number `c` is 1. Return the output of `model` on `x` when `r` is added to the output of the FIRST layer only. Leave `model` exactly as you found it.","import torch as t
+
+
+def solve(model, r, x):
+    """"""Output with r added after the first layer.""""""
+    c = 1
+    def hook(layer, inputs, output):
+        return output + c * r
+    handle = model[0].register_forward_hook(hook)
+    out = model(x)
+    handle.remove()
+    return out
+",30,"[[6.0, 5.0], [3.0, 3.0]]"
+PyTorch,rd-1,"`model` is a stack of linear layers, `r` is the vector to add, `x` is an input (a vector or a batch of rows), `k` is a layer position and `c` a number. Return the output of `model` on `x` when `c` times `r` is added to the output of layer `k` only. Leave `model` as you found it.","import torch as t
+
+
+def solve(model, r, x, k, c):
+    """"""Output with c*r added after layer k only.""""""
+    def hook(layer, inputs, output):
+        return output + c * r
+    handle = model[k].register_forward_hook(hook)
+    out = model(x)
+    handle.remove()
+    return out
+",35,"[[5.0, 3.0], [3.0, 3.0]]"
+PyTorch,rd-1,"`X` holds harmless activations, shape `(n, d)`, `r` is a nonzero vector, and `c` is a number. Return how much each row's score along the direction of `r` (a vector of length 1) changes when `c` times `r` is added to it, shape `(n,)`.","import torch as t
+
+
+def solve(X, r, c):
+    """"""Change in score caused by the addition.""""""
+    u = r / r.norm()
+    return (X + c * r) @ u - X @ u
+",30,"[5.0, 5.0]"
+PyTorch,rd-1,"`H` holds harmful activations, shape `(n, d)`, `B` holds harmless activations, shape `(m, d)` (their averages differ). Add the harmful-minus-harmless difference of the averages to every harmless row, then return the average score of the shifted rows along the unit direction of that difference, as a Python float.","import torch as t
+
+
+def solve(H, B):
+    """"""Average score of harmless rows after adding r.""""""
+    r = H.mean(dim=0) - B.mean(dim=0)
+    u = r / r.norm()
+    return ((B + r) @ u).mean().item()
+",40,2.84605
+PyTorch,rd-1,"`X` holds activations, shape `(n, d)`, and `r` is a nonzero vector. Return `X` after two steps in this order: first add `r` to every row, then remove from every row the component along the unit direction of `r`. Same shape as `X`.","import torch as t
+
+
+def solve(X, r):
+    """"""Add r, then ablate its direction.""""""
+    u = r / r.norm()
+    Y = X + r
+    return Y - (Y @ u)[..., None] * u
+",45,"[[-0.32, 0.24], [0.0, 0.0]]"
+PyTorch,rd-1,"`model` is a stack of linear layers applied to inputs of shape `(b, s, 2)` (b prompts, s token positions), `r` is a vector of length 2 and `k` is a layer position. Return the output of `model` on `x` when `r` is added at EVERY token position of the output of layer `k`. Leave `model` as you found it.","import torch as t
+
+
+def solve(model, r, x, k):
+    """"""Output with r added at all positions of layer k.""""""
+    def hook(layer, inputs, output):
+        return output + r
+    handle = model[k].register_forward_hook(hook)
+    out = model(x)
+    handle.remove()
+    return out
+",50,"[[[[4.0, 3.0], [4.0, 1.0]]], [[[3.0, 3.0], [3.0, 1.0]]]]"
+PyTorch,rd-1,"`X` holds harmless activations, shape `(n, d)`, `r` is a nonzero vector, `cs` is a one-dimensional tensor of coefficients in increasing order and `target` is a number. For each coefficient the average score of `X + c r` along the unit direction of `r` is the average score of `X` plus c times the length of `r`. Return the SMALLEST coefficient in `cs` whose average score is at least `target`, or -1.0 if none reaches it. Python float.","import torch as t
+
+
+def solve(X, r, cs, target):
+    """"""Smallest coefficient that reaches the target score.""""""
+    u = r / r.norm()
+    m = (X @ u).mean() + cs * r.norm()
+    best = t.where(m >= target, cs, t.tensor(1e9)).min()
+    return t.where(best < 1e9, best, -1.0).item()
+",55,0.5
+PyTorch,rd-1,"`model` is a stack of two linear layers, `r` is the vector to add, `x` is an input and `c` is a number. Return the output of `model` on `x` with `c` times `r` added to the output of the SECOND layer only, then the same call with the addition at the first layer only, stacked as a tensor of shape `(2, d)` (row 0 second layer, row 1 first layer). Leave `model` as you found it.","import torch as t
+
+
+def solve(model, r, x, c):
+    """"""Stacked outputs for the two insertion points.""""""
+    def hook(layer, inputs, output):
+        return output + c * r
+    outs = []
+    for k in [1, 0]:
+        handle = model[k].register_forward_hook(hook)
+        outs.append(model(x))
+        handle.remove()
+    return t.stack(outs)
+",50,"[[[4.0, 5.0], [6.0, 5.0]], [3.0, 3.0]]"
+PyTorch,rd-1,"`model` is a stack of two linear layers, `H` and `B` hold harmful and harmless activations at the output of the first layer (shapes `(n, 2)` and `(m, 2)`, with different averages), `x` is an input vector and `k` is a layer position. Build `r`, the harmful average minus the harmless average (not rescaled), and return the output of `model` on `x` with `r` added to the output of layer `k`. Leave `model` as you found it.","import torch as t
+
+
+def solve(model, H, B, x, k):
+    """"""Output with the difference in means added at layer k.""""""
+    r = H.mean(dim=0) - B.mean(dim=0)
+    def hook(layer, inputs, output):
+        return output + r
+    handle = model[k].register_forward_hook(hook)
+    out = model(x)
+    handle.remove()
+    return out
+",60,"[[5.0, 3.0], [3.0, 3.0]]"
+PyTorch,rd-1,"`model` is a stack of two linear layers, `u` is a vector of length 1, `r` is a vector to add and `x` is an input vector. Return a tensor of shape `(2, d)`. Row 0: the output when the component along `u` is removed from the output of EVERY layer. Row 1: the output when `r` is added to the output of the first layer only. Leave `model` as you found it.","import torch as t
+
+
+def solve(model, u, r, x):
+    """"""Stacked ablated and added outputs.""""""
+    def ablate(layer, inputs, output):
+        return output - (output @ u)[..., None] * u
+    def add(layer, inputs, output):
+        return output + r
+    hs = [layer.register_forward_hook(ablate) for layer in model]
+    first = model(x)
+    for h in hs:
+        h.remove()
+    h = model[0].register_forward_hook(add)
+    second = model(x)
+    h.remove()
+    return t.stack([first, second])
+",70,"[[[0.0, 3.0], [4.0, 3.0]], [3.0, 3.0]]"
+PyTorch,rd-1,"`H` holds harmful activations, shape `(n, d)`, `B` harmless activations, shape `(m, d)` (their averages differ), and `c` is a number. Let `r` be the harmful average minus the harmless average and `u` its unit direction. Return the gap that is LEFT between the average score of the harmful rows and the average score of the harmless rows after `c` times `r` has been added to every harmless row. Python float, harmful minus harmless.","import torch as t
+
+
+def solve(H, B, c):
+    """"""Gap left after adding c times r.""""""
+    r = H.mean(dim=0) - B.mean(dim=0)
+    u = r / r.norm()
+    return ((H @ u).mean() - ((B + c * r) @ u).mean()).item()
+",65,0.0
+PyTorch,rd-1,"`table` has one row per layer that was run. Columns: layer number, length of r, ablated harmful refusal share, KL on harmless prompts, add-1x refusal share, add-2x refusal share. `layer` is a layer number. Return the six numbers of the row for that layer as a list, or None if that layer is not in the table.","import torch as t
+
+
+def solve(table, layer):
+    """"""Row for a layer number, or None.""""""
+    rows = table[table[:, 0] == layer]
+    return rows[0].tolist() if rows.shape[0] > 0 else None
+",15,"[2.0, 2.0, 0.5, 0.2, 0.25, 0.5]"
+PyTorch,rd-1,"`table` has one row per layer that was run. Columns: layer number, length of r, ablated harmful refusal share, KL on harmless prompts, add-1x refusal share, add-2x refusal share. `base` is the refusal share with nothing removed, and `layer` is a layer number. Return how much ablating that layer lowered the refusal share (`base` minus its ablated share), or None if that layer is not in the table.","import torch as t
+
+
+def solve(table, base, layer):
+    """"""Drop in refusal from ablating a layer, or None.""""""
+    rows = table[table[:, 0] == layer]
+    return (base - rows[0, 2]).item() if rows.shape[0] > 0 else None
+",20,0.25
+PyTorch,rd-1,"`table` has one row per layer. Columns: layer number, length of r, ablated harmful refusal share, KL on harmless prompts, add-1x refusal share, add-2x refusal share. `base` is the refusal share with nothing removed and `gap` a number. A layer works both ways if ablating it lowers the refusal share by at least `gap` AND adding `r` once (add-1x) raises the harmless refusal share to at least `gap`. Return the layer numbers of those layers as a list.","import torch as t
+
+
+def solve(table, base, gap):
+    """"""Layers where ablation and addition both work.""""""
+    down = base - table[:, 2] >= gap
+    up = table[:, 4] >= gap
+    return table[down & up][:, 0].tolist()
+",25,"[1.0, 3.0, 4.0]"
+PyTorch,rd-1,"`table` has one row per layer. Columns: layer number, length of r, ablated harmful refusal share, KL on harmless prompts, add-1x refusal share, add-2x refusal share. `base` is the refusal share with nothing removed and `gap` a number. Return, as a list, the layer numbers where ablation lowered the refusal share by at least `gap` but the KL on harmless prompts is 0.1 or more (the effect works but is costly).","import torch as t
+
+
+def solve(table, base, gap):
+    """"""Layers that work but disturb harmless prompts.""""""
+    down = base - table[:, 2] >= gap
+    costly = table[:, 3] >= 0.1
+    return table[down & costly][:, 0].tolist()
+",30,[2.0]
+PyTorch,rd-1,"`table` has one row per layer. Columns: layer number, length of r, ablated harmful refusal share, KL on harmless prompts, add-1x refusal share, add-2x refusal share. `layer` is a layer number. Return how much the harmless refusal share rose when the added vector was doubled (add-2x minus add-1x) at that layer, or None if the layer is not in the table.","import torch as t
+
+
+def solve(table, layer):
+    """"""Extra refusal from doubling the added vector.""""""
+    rows = table[table[:, 0] == layer]
+    return (rows[0, 5] - rows[0, 4]).item() if rows.shape[0] > 0 else None
+",30,0.25
+PyTorch,rd-1,"Two refusal shares `a` and `b` were each measured on `n` prompts, so each moves in steps of 1/n. Return True if they differ by at least two steps' worth (2/n), and False if they differ by less.","import torch as t
+
+
+def solve(a, b, n):
+    """"""Whether the difference is at least two prompts' worth.""""""
+    return max(a - b, b - a) >= 2 / n - 1e-9
+",30,True
+PyTorch,rd-1,"`table` has one row per layer. Columns: layer number, length of r, ablated harmful refusal share, KL on harmless prompts, add-1x refusal share, add-2x refusal share. `base` is the refusal share with nothing removed and `gap` a number. Among the layers that work both ways (ablation lowers refusal by at least `gap` and add-1x refusal is at least `gap`), return the layer NUMBER with the smallest KL, as a Python int, or None if no layer works both ways. KL values are all different.","import torch as t
+
+
+def solve(table, base, gap):
+    """"""Cheapest layer that works both ways.""""""
+    both = (base - table[:, 2] >= gap) & (table[:, 4] >= gap)
+    if both.sum() == 0:
+        return None
+    kl = t.where(both, table[:, 3], t.tensor(float('inf')))
+    return int(table[t.argmin(kl), 0].item())
+",45,3
+PyTorch,rd-1,"`table` has one row per layer. Columns: layer number, length of r, ablated harmful refusal share, KL on harmless prompts, add-1x refusal share, add-2x refusal share. `thr` is a number. Return the smallest layer NUMBER whose ablated refusal share is at most `thr`, as a Python int, or None if no layer gets that low.","import torch as t
+
+
+def solve(table, thr):
+    """"""First layer where ablation gets refusal to thr or lower.""""""
+    ok = table[:, 2] <= thr
+    if ok.sum() == 0:
+        return None
+    return int(table[ok][:, 0].min().item())
+",35,2
+PyTorch,rd-1,"`table` has one row per layer. Columns: layer number, length of r, ablated harmful refusal share, KL on harmless prompts, add-1x refusal share, add-2x refusal share. `base` is the refusal share with nothing removed and `gap` a number. Count the layers where ablation lowered refusal by at least `gap` but adding `r` once did NOT raise harmless refusal to `gap` (a one-sided result). Python int.","import torch as t
+
+
+def solve(table, base, gap):
+    """"""Number of layers that pass only the ablation half.""""""
+    down = base - table[:, 2] >= gap
+    up = table[:, 4] >= gap
+    return (down.sum() - (down & up).sum()).item()
+",45,1
+PyTorch,rd-1,"`table` has one row per layer. Columns: layer number, length of r, ablated harmful refusal share, KL on harmless prompts, add-1x refusal share, add-2x refusal share. The sweep only ran two coefficients, 1 and 2. `layer` is a layer number and `c` a coefficient. Return the stored harmless refusal share for that layer and coefficient, or None if the layer is not in the table or `c` is not 1 or 2. Never estimate between the stored values.","import torch as t
+
+
+def solve(table, layer, c):
+    """"""Stored refusal share, or None when not stored.""""""
+    rows = table[table[:, 0] == layer]
+    if rows.shape[0] == 0:
+        return None
+    return rows[0, 4].item() if c == 1 else rows[0, 5].item() if c == 2 else None
+",45,0.25
+PyTorch,rd-1,"`table` has one row per layer, measured on 32 prompts per class. Columns: layer number, length of r, ablated harmful refusal share, KL on harmless prompts, add-1x refusal share, add-2x refusal share. `base` is the refusal share with nothing removed. Return, as a list, the layer numbers where ablation lowered refusal by MORE than two prompts' worth (2/32) and adding `r` once (add-1x) raised harmless refusal by more than two prompts' worth.","import torch as t
+
+
+def solve(table, base):
+    """"""Layers that work both ways beyond the noise.""""""
+    g = 2 / 32
+    both = (base - table[:, 2] > g) & (table[:, 4] > g)
+    return table[both][:, 0].tolist()
+",55,"[8.0, 9.0]"
+PyTorch,rd-1,"`table` has one row per layer. Columns: layer number, length of r, ablated harmful refusal share, KL on harmless prompts, add-1x refusal share, add-2x refusal share. `L` is the total number of layers in the model. Apply the paper's selection rule: keep layers before 0.8 times L, with KL below 0.1 and add-1x refusal above 0; take the lowest ablated refusal among them; break ties on the smaller KL. Return the layer NUMBER as a Python int, or None if no layer is kept.","import torch as t
+
+
+def solve(table, L):
+    """"""Layer chosen by the paper's rule, or None.""""""
+    keep = (table[:, 0] < 0.8 * L) & (table[:, 3] < 0.1) & (table[:, 4] > 0)
+    if keep.sum() == 0:
+        return None
+    score = t.where(keep, table[:, 2], t.tensor(2.0))
+    tied = score == score.min()
+    best = t.argmin(t.where(tied, table[:, 3], t.tensor(float('inf'))))
+    return int(table[best, 0].item())
+",70,4
+PyTorch,rd-1,"`table` has one row per layer. Columns: layer number, length of r, ablated harmful refusal share, KL on harmless prompts, add-1x refusal share, add-2x refusal share. `base` is the refusal share with nothing removed, `layer` a layer number and `c` a coefficient; the sweep only ran coefficients 1 and 2. Return a list of three numbers for that layer: how much ablation lowered refusal (`base` minus its ablated share), its KL, and the stored harmless refusal share at coefficient `c`. Return None if the layer is not in the table or `c` is not 1 or 2.","import torch as t
+
+
+def solve(table, base, layer, c):
+    """"""Short report for one layer, or None if not stored.""""""
+    rows = table[table[:, 0] == layer]
+    if rows.shape[0] == 0:
+        return None
+    row = rows[0]
+    if c == 1:
+        added = row[4].item()
+    elif c == 2:
+        added = row[5].item()
+    else:
+        return None
+    return [(base - row[2]).item(), row[3].item(), added]
+",60,"[0.25, 0.2, 0.25]"

@@ -42,6 +42,14 @@ The classic instances:
 In raw PyTorch each of these is a permute+reshape pair you must derive;
 in einops the pattern is the derivation.
 
+Step through it yourself. Watch which name counts fastest inside the
+parentheses, and edit the pattern to try your own order:
+
+```figure einops-console merge-axes
+Interactive figure: step through 'c h w -> c (h w)', '(w h)', '(c h) w' and
+the batch-into-width layouts, one element at a time.
+```
+
 ## Worked example
 
 Task: flatten an image's spatial axes per channel; lay a batch out side by

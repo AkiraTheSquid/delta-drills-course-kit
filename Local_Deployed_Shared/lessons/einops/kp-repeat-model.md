@@ -41,6 +41,15 @@ directly, or be keywords (`(h k), k=3`).
 New-axis literals work too: `'h w -> h w 3'` copies a grayscale image into
 3 identical channels.
 
+Step through it yourself. A name new on the right only counts copies; where
+it sits inside the parentheses decides whether copies sit together or the
+whole block repeats:
+
+```figure einops-console repeat-model
+Interactive figure: step through '(h r) w' against '(r h) w', a new axis,
+an upsample and a tile, one copied element at a time.
+```
+
 ## Worked example
 
 Task: broadcast an embedding across time; stretch rows; whole-image stack —

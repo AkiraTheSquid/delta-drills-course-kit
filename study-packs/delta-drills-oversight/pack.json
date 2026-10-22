@@ -1,331 +1,10 @@
 {
  "id": "delta-drills-oversight",
  "title": "Delta Drills and AI oversight",
- "version": "0.7.1",
+ "version": "0.20.0",
  "vetted": false,
  "course": "delta-drills",
  "sources": [
-  {
-   "id": "rk2006",
-   "title": "Test-Enhanced Learning: Taking Memory Tests Improves Long-Term Retention",
-   "authors": "Roediger, H. L., & Karpicke, J. D.",
-   "year": 2006,
-   "venue": "Psychological Science 17(3), 249-255",
-   "url": "https://doi.org/10.1111/j.1467-9280.2006.01693.x",
-   "path": "docs/architecture/primary-sources/2006_roediger-karpicke_test-enhanced-learning.pdf",
-   "kind": "paper"
-  },
-  {
-   "id": "pel2017",
-   "title": "Bayesian knowledge tracing, logistic models, and beyond: an overview of learner modeling techniques",
-   "authors": "Pelánek, R.",
-   "year": 2017,
-   "venue": "User Modeling and User-Adapted Interaction 27, 313-350",
-   "url": "https://doi.org/10.1007/s11257-017-9193-2",
-   "path": "docs/architecture/primary-sources/2017_pelanek_bkt-logistic-and-beyond.pdf",
-   "kind": "paper"
-  },
-  {
-   "id": "sky2023",
-   "title": "Optimized, Individualized Spaced Repetition in Hierarchical Knowledge Structures",
-   "authors": "Skycak, J.",
-   "year": 2023,
-   "venue": "The Math Academy Way (working draft)",
-   "url": "https://www.justinmath.com/individualized-spaced-repetition-in-hierarchical-knowledge-structures/",
-   "path": "docs/architecture/primary-sources/2023_skycak_fire-spaced-repetition.html",
-   "kind": "post"
-  },
-  {
-   "id": "dd-bkt",
-   "title": "bkt_mastery.py (the app's mastery model)",
-   "authors": "Delta Drills",
-   "year": 2026,
-   "path": "This-Directory-Only/backend/app/bkt_mastery.py",
-   "kind": "app-source"
-  },
-  {
-   "id": "dd-memory",
-   "title": "memory_model.py (the app's memory model)",
-   "authors": "Delta Drills",
-   "year": 2026,
-   "path": "This-Directory-Only/backend/app/memory_model.py",
-   "kind": "app-source"
-  },
-  {
-   "id": "pel2016",
-   "title": "Applications of the Elo rating system in adaptive educational systems",
-   "authors": "Pelánek, R.",
-   "year": 2016,
-   "venue": "Computers & Education 98, 169-179",
-   "url": "https://doi.org/10.1016/j.compedu.2016.03.017",
-   "path": "docs/architecture/primary-sources/2016_pelanek_elo-adaptive-educational.pdf",
-   "kind": "paper"
-  },
-  {
-   "id": "aleks2021",
-   "title": "A practical perspective on knowledge space theory: ALEKS and its data",
-   "authors": "Cosyn, E., Uzun, H., Doble, C., & Matayoshi, J.",
-   "year": 2021,
-   "venue": "Journal of Mathematical Psychology 101, 102512",
-   "url": "https://doi.org/10.1016/j.jmp.2021.102512",
-   "path": "docs/architecture/primary-sources/2021_cosyn-uzun-doble-matayoshi_aleks-kst-practical.pdf",
-   "kind": "paper"
-  },
-  {
-   "id": "dd-graph",
-   "title": "kc_graph.py (the prerequisite gate)",
-   "authors": "Delta Drills",
-   "year": 2026,
-   "path": "This-Directory-Only/backend/app/kc_graph.py",
-   "kind": "app-source"
-  },
-  {
-   "id": "dd-explore",
-   "title": "kc_explore.py (explore, then settle)",
-   "authors": "Delta Drills",
-   "year": 2026,
-   "path": "This-Directory-Only/backend/app/kc_explore.py",
-   "kind": "app-source"
-  },
-  {
-   "id": "dd-logistic",
-   "title": "logistic_engine.py (the additive-logistic engine)",
-   "authors": "Delta Drills",
-   "year": 2026,
-   "path": "This-Directory-Only/backend/app/logistic_engine.py",
-   "kind": "app-source"
-  },
-  {
-   "id": "dd-ability",
-   "title": "ability_model.py (ability θ and XP)",
-   "authors": "Delta Drills",
-   "year": 2026,
-   "path": "This-Directory-Only/backend/app/ability_model.py",
-   "kind": "app-source"
-  },
-  {
-   "id": "dd-beliefs",
-   "title": "concept_tutor/beliefs.py (Study mode's belief)",
-   "authors": "Delta Drills",
-   "year": 2026,
-   "path": "This-Directory-Only/backend/app/concept_tutor/beliefs.py",
-   "kind": "app-source"
-  },
-  {
-   "id": "dd-memfeed",
-   "title": "concept_tutor/memory_feed.py (Study mode's memory)",
-   "authors": "Delta Drills",
-   "year": 2026,
-   "path": "This-Directory-Only/backend/app/concept_tutor/memory_feed.py",
-   "kind": "app-source"
-  },
-  {
-   "id": "dd-planner",
-   "title": "concept_tutor/planner.py (Study mode's next move)",
-   "authors": "Delta Drills",
-   "year": 2026,
-   "path": "This-Directory-Only/backend/app/concept_tutor/planner.py",
-   "kind": "app-source"
-  },
-  {
-   "id": "maw2024",
-   "title": "The Math Academy Way (working draft)",
-   "authors": "Skycak, J., & Roberts, A.",
-   "year": 2024,
-   "url": "https://www.justinmath.com/files/the-math-academy-way.pdf",
-   "path": "docs/architecture/primary-sources/encompassing/2024_skycak-roberts_the-math-academy-way.pdf",
-   "kind": "doc"
-  },
-  {
-   "id": "dd-authoring",
-   "title": "lessons/AUTHORING.md (the four-stage drill ladder)",
-   "authors": "Delta Drills",
-   "year": 2026,
-   "path": "Local_Deployed_Shared/lessons/AUTHORING.md",
-   "kind": "app-source"
-  },
-  {
-   "id": "dd-evidence",
-   "title": "concept_tutor/evidence.py (Study mode's evidence rows)",
-   "authors": "Delta Drills",
-   "year": 2026,
-   "path": "This-Directory-Only/backend/app/concept_tutor/evidence.py",
-   "kind": "app-source"
-  },
-  {
-   "id": "dd-tutor-explore",
-   "title": "concept_tutor/explore.py (Study mode's explore stages)",
-   "authors": "Delta Drills",
-   "year": 2026,
-   "path": "This-Directory-Only/backend/app/concept_tutor/explore.py",
-   "kind": "app-source"
-  },
-  {
-   "id": "gb2023",
-   "title": "AI Control: Improving Safety Despite Intentional Subversion",
-   "authors": "Greenblatt, R., Shlegeris, B., Sachan, K., & Roger, F.",
-   "year": 2023,
-   "venue": "ICML 2024; arXiv:2312.06942",
-   "url": "https://arxiv.org/abs/2312.06942",
-   "path": "docs/architecture/primary-sources/oversight/2023_greenblatt_ai-control.pdf",
-   "kind": "paper"
-  },
-  {
-   "id": "bow2022",
-   "title": "Measuring Progress on Scalable Oversight for Large Language Models",
-   "authors": "Bowman, S. R., et al.",
-   "year": 2022,
-   "venue": "arXiv:2211.03540",
-   "url": "https://arxiv.org/abs/2211.03540",
-   "path": "docs/architecture/primary-sources/oversight/2022_bowman_scalable-oversight-sandwiching.pdf",
-   "kind": "paper"
-  },
-  {
-   "id": "irv2018",
-   "title": "AI safety via debate",
-   "authors": "Irving, G., Christiano, P., & Amodei, D.",
-   "year": 2018,
-   "venue": "arXiv:1805.00899",
-   "url": "https://arxiv.org/abs/1805.00899",
-   "path": "docs/architecture/primary-sources/oversight/2018_irving_ai-safety-via-debate.pdf",
-   "kind": "paper"
-  },
-  {
-   "id": "khan2024",
-   "title": "Debating with More Persuasive LLMs Leads to More Truthful Answers",
-   "authors": "Khan, A., et al.",
-   "year": 2024,
-   "venue": "ICML 2024; arXiv:2402.06782",
-   "url": "https://arxiv.org/abs/2402.06782",
-   "path": "docs/architecture/primary-sources/oversight/2024_khan_debate-persuasive.pdf",
-   "kind": "paper"
-  },
-  {
-   "id": "ken2024",
-   "title": "On scalable oversight with weak LLMs judging strong LLMs",
-   "authors": "Kenton, Z., et al.",
-   "year": 2024,
-   "venue": "NeurIPS 2024; arXiv:2407.04622",
-   "url": "https://arxiv.org/abs/2407.04622",
-   "path": "docs/architecture/primary-sources/oversight/2024_kenton_weak-judges-strong.pdf",
-   "kind": "paper"
-  },
-  {
-   "id": "bc2020",
-   "title": "Debate update: Obfuscated arguments problem",
-   "authors": "Barnes, B., & Christiano, P.",
-   "year": 2020,
-   "venue": "AI Alignment Forum",
-   "url": "https://www.alignmentforum.org/posts/PJLABqQ962hZEqhdB/debate-update-obfuscated-arguments-problem",
-   "path": "docs/architecture/primary-sources/oversight/2020_barnes-christiano_obfuscated-arguments.html",
-   "kind": "post"
-  },
-  {
-   "id": "vdw2024",
-   "title": "AI Sandbagging: Language Models can Strategically Underperform on Evaluations",
-   "authors": "van der Weij, T., Hofstätter, F., Jaffe, O., Brown, S. F., & Ward, F. R.",
-   "year": 2024,
-   "venue": "ICLR 2025; arXiv:2406.07358",
-   "url": "https://arxiv.org/abs/2406.07358",
-   "path": "docs/architecture/primary-sources/oversight/2024_vanderweij_sandbagging.pdf",
-   "kind": "paper"
-  },
-  {
-   "id": "gas2025",
-   "title": "Automated Researchers Can Subtly Sandbag",
-   "authors": "Gasteiger, J., Khan, A., Bowman, S., Mikulik, V., Perez, E., & Roger, F.",
-   "year": 2025,
-   "venue": "Anthropic Alignment Science Blog",
-   "url": "https://alignment.anthropic.com/2025/automated-researchers-sandbag/",
-   "path": "docs/architecture/primary-sources/oversight/2025_gasteiger_automated-researchers-sandbag.html",
-   "kind": "post"
-  },
-  {
-   "id": "pw2024",
-   "title": "Stress-Testing Capability Elicitation With Password-Locked Models",
-   "authors": "Greenblatt, R., Roger, F., Krasheninnikov, D., & Krueger, D.",
-   "year": 2024,
-   "venue": "NeurIPS 2024; arXiv:2405.19550",
-   "url": "https://arxiv.org/abs/2405.19550",
-   "path": "docs/architecture/primary-sources/oversight/2024_greenblatt_password-locked.pdf",
-   "kind": "paper"
-  },
-  {
-   "id": "ban2021",
-   "title": "Does the Whole Exceed its Parts? The Effect of AI Explanations on Complementary Team Performance",
-   "authors": "Bansal, G., et al.",
-   "year": 2021,
-   "venue": "CHI 2021; arXiv:2006.14779",
-   "url": "https://arxiv.org/abs/2006.14779",
-   "path": "docs/architecture/primary-sources/oversight/2021_bansal_whole-exceed-parts.pdf",
-   "kind": "paper"
-  },
-  {
-   "id": "jain2025",
-   "title": "Human-AI Complementarity: A Goal for Amplified Oversight",
-   "authors": "Jain, R., Bridgers, S., et al.",
-   "year": 2025,
-   "venue": "arXiv:2510.26518",
-   "url": "https://arxiv.org/abs/2510.26518",
-   "path": "docs/architecture/primary-sources/oversight/2025_jain_human-ai-complementarity.pdf",
-   "kind": "paper"
-  },
-  {
-   "id": "bur2023",
-   "title": "Weak-to-Strong Generalization: Eliciting Strong Capabilities With Weak Supervision",
-   "authors": "Burns, C., et al.",
-   "year": 2023,
-   "venue": "ICML 2024; arXiv:2312.09390",
-   "url": "https://arxiv.org/abs/2312.09390",
-   "path": "docs/architecture/primary-sources/oversight/2023_burns_weak-to-strong.pdf",
-   "kind": "paper"
-  },
-  {
-   "id": "bas2025",
-   "title": "Generative AI without guardrails can harm learning: Evidence from high school mathematics",
-   "authors": "Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, Ö., & Mariman, R.",
-   "year": 2025,
-   "venue": "PNAS 122(26)",
-   "url": "https://doi.org/10.1073/pnas.2422633122",
-   "path": "docs/architecture/primary-sources/oversight/2025_bastani_gai-without-guardrails.pdf",
-   "kind": "paper"
-  },
-  {
-   "id": "kes2025",
-   "title": "AI tutoring outperforms in-class active learning",
-   "authors": "Kestin, G., Miller, K., Klales, A., Milbourne, T., & Ponti, G.",
-   "year": 2025,
-   "venue": "Scientific Reports 15, 17458",
-   "url": "https://doi.org/10.1038/s41598-025-97652-6",
-   "path": "docs/architecture/primary-sources/oversight/2025_kestin_ai-tutoring-rct.pdf",
-   "kind": "paper"
-  },
-  {
-   "id": "gib2026",
-   "title": "AI Control and Scalable Oversight for a Conceptual Tutor: The Focused Slice (the course author's design note)",
-   "authors": "Gibson, S.",
-   "year": 2026,
-   "venue": "design note",
-   "url": null,
-   "path": "docs/architecture/primary-sources/oversight/2026_gibson_control-oversight-focused-slice.md",
-   "kind": "doc"
-  },
-  {
-   "id": "dd-voice",
-   "title": "voice.py (what the tutor says)",
-   "authors": "Delta Drills",
-   "year": 2026,
-   "path": "This-Directory-Only/backend/app/concept_tutor/voice.py",
-   "kind": "app-source"
-  },
-  {
-   "id": "dd-session",
-   "title": "session.py (the closed-book rule)",
-   "authors": "Delta Drills",
-   "year": 2026,
-   "path": "This-Directory-Only/backend/app/concept_tutor/session.py",
-   "kind": "app-source"
-  },
   {
    "id": "cy-fips199",
    "title": "FIPS 199: Standards for Security Categorization of Federal Information and Information Systems",
@@ -965,58 +644,764 @@
    "license": "© the authors; short quotation with attribution and link."
   },
   {
-   "id": "bs-mehlman",
-   "title": "Biostatistics Review for USMLE Step 1, 2CK, 3",
-   "authors": "MehlmanMedical",
-   "year": 2023,
-   "venue": "MEHLMANMEDICAL.COM",
-   "url": "https://mehlmanmedical.com",
+   "id": "bio-structure",
+   "title": "Cell Structure and Function Notes",
+   "authors": "AP Biology class notes (teacher's deck)",
+   "year": 2026,
+   "venue": "AP Biology, Unit 2 (2.1, 2.2, 2.10, 2.11)",
    "kind": "doc",
-   "path": "docs/architecture/primary-sources/biostat/mehlman-biostatistics-review.pdf",
-   "license": "All material is copyrighted and the property of mehlmanmedical. Private course; not redistributed."
+   "path": "docs/architecture/primary-sources/biology/cell-structure-notes.txt",
+   "license": "Class material shared by the student. Private course; not redistributed."
+  },
+  {
+   "id": "bio-size",
+   "title": "Cell Size Notes",
+   "authors": "AP Biology class notes (teacher's deck)",
+   "year": 2026,
+   "venue": "AP Biology, Unit 2 (2.3)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/cell-size-notes.txt",
+   "license": "Class material shared by the student. Private course; not redistributed."
+  },
+  {
+   "id": "os3-summary",
+   "title": "Ch. 3 Biological Macromolecules: Chapter Summary",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/3-chapter-summary.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/3-chapter-summary",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os3-terms",
+   "title": "Ch. 3 Biological Macromolecules: Key Terms",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/3-key-terms.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/3-key-terms",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os5-summary",
+   "title": "Ch. 5 Structure and Function of Plasma Membranes: Chapter Summary",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/5-chapter-summary.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/5-chapter-summary",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os5-terms",
+   "title": "Ch. 5 Structure and Function of Plasma Membranes: Key Terms",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/5-key-terms.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/5-key-terms",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os6-summary",
+   "title": "Ch. 6 Metabolism: Chapter Summary",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/6-chapter-summary.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/6-chapter-summary",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os7-summary",
+   "title": "Ch. 7 Cellular Respiration: Chapter Summary",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/7-chapter-summary.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/7-chapter-summary",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os7-terms",
+   "title": "Ch. 7 Cellular Respiration: Key Terms",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/7-key-terms.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/7-key-terms",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os8-summary",
+   "title": "Ch. 8 Photosynthesis: Chapter Summary",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/8-chapter-summary.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/8-chapter-summary",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os9-summary",
+   "title": "Ch. 9 Cell Communication: Chapter Summary",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/9-chapter-summary.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/9-chapter-summary",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os10-summary",
+   "title": "Ch. 10 Cell Reproduction: Chapter Summary",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/10-chapter-summary.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/10-chapter-summary",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os10-terms",
+   "title": "Ch. 10 Cell Reproduction: Key Terms",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/10-key-terms.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/10-key-terms",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os11-summary",
+   "title": "Ch. 11 Meiosis and Sexual Reproduction: Chapter Summary",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/11-chapter-summary.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/11-chapter-summary",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os14-summary",
+   "title": "Ch. 14 DNA Structure and Function: Chapter Summary",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/14-chapter-summary.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/14-chapter-summary",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os15-summary",
+   "title": "Ch. 15 Genes and Proteins: Chapter Summary",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/15-chapter-summary.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/15-chapter-summary",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os3.4",
+   "title": "3.4 Proteins",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/3-4-proteins.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/3-4-proteins",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os3.5",
+   "title": "3.5 Nucleic Acids",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/3-5-nucleic-acids.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/3-5-nucleic-acids",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os5.2",
+   "title": "5.2 Passive Transport",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/5-2-passive-transport.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/5-2-passive-transport",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os5.4",
+   "title": "5.4 Bulk Transport",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/5-4-bulk-transport.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/5-4-bulk-transport",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os6.2",
+   "title": "6.2 Potential, Kinetic, Free, and Activation Energy",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/6-2-potential-kinetic-free-and-activation-energy.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/6-2-potential-kinetic-free-and-activation-energy",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os6.5",
+   "title": "6.5 Enzymes",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/6-5-enzymes.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/6-5-enzymes",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os7.2",
+   "title": "7.2 Glycolysis",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/7-2-glycolysis.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/7-2-glycolysis",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os7.3",
+   "title": "7.3 Oxidation of Pyruvate and the Citric Acid Cycle",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os7.4",
+   "title": "7.4 Oxidative Phosphorylation",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/7-4-oxidative-phosphorylation.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/7-4-oxidative-phosphorylation",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os7.5",
+   "title": "7.5 Metabolism without Oxygen",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/7-5-metabolism-without-oxygen.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/7-5-metabolism-without-oxygen",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os8.1",
+   "title": "8.1 Overview of Photosynthesis",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/8-1-overview-of-photosynthesis.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/8-1-overview-of-photosynthesis",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os8.2",
+   "title": "8.2 The Light-Dependent Reaction of Photosynthesis",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/8-2-the-light-dependent-reaction-of-photosynthesis.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/8-2-the-light-dependent-reaction-of-photosynthesis",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os9.2",
+   "title": "9.2 Propagation of the Signal",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/9-2-propagation-of-the-signal.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/9-2-propagation-of-the-signal",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os10.2",
+   "title": "10.2 The Cell Cycle",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/10-2-the-cell-cycle.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/10-2-the-cell-cycle",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os10.3",
+   "title": "10.3 Control of the Cell Cycle",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/10-3-control-of-the-cell-cycle.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/10-3-control-of-the-cell-cycle",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os10.4",
+   "title": "10.4 Cancer and the Cell Cycle",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/10-4-cancer-and-the-cell-cycle.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/10-4-cancer-and-the-cell-cycle",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os10.5",
+   "title": "10.5 Prokaryotic Cell Division",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/10-5-prokaryotic-cell-division.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/10-5-prokaryotic-cell-division",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os14.2",
+   "title": "14.2 DNA Structure and Sequencing",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/14-2-dna-structure-and-sequencing.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/14-2-dna-structure-and-sequencing",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os15.2",
+   "title": "15.2 Prokaryotic Transcription",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/15-2-prokaryotic-transcription.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/15-2-prokaryotic-transcription",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "os15.3",
+   "title": "15.3 Eukaryotic Transcription",
+   "authors": "Julianne Zedalis, John Eggebrecht et al. (OpenStax)",
+   "year": 2018,
+   "venue": "Biology for AP Courses, OpenStax (Rice University)",
+   "kind": "doc",
+   "path": "docs/architecture/primary-sources/biology/dat/openstax-ap-bio/15-3-eukaryotic-transcription.txt",
+   "url": "https://openstax.org/books/biology-ap-courses/pages/15-3-eukaryotic-transcription",
+   "license": "OpenStax, Biology for AP Courses, CC BY-NC-SA 4.0 (access for free at openstax.org). Private course; quoted with attribution, not redistributed."
+  },
+  {
+   "id": "bdgov-src-evals",
+   "title": "AI Safety Evaluations: An Explainer",
+   "authors": "Jessica Ji, Vikram Venkatram, Steph Batalis",
+   "year": 2025,
+   "venue": "CSET",
+   "url": "https://cset.georgetown.edu/article/ai-safety-evaluations-an-explainer/",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/evals.txt",
+   "kind": "post",
+   "license": "Copyright remains with the cited authors. Public reading snapshot for private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-common-elements",
+   "title": "Common Elements of Frontier AI Safety Policies",
+   "authors": "METR",
+   "year": 2025,
+   "venue": "METR",
+   "url": "https://metr.org/common-elements",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/common-elements.txt",
+   "kind": "post",
+   "license": "Copyright remains with the cited authors. Public reading snapshot for private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-optionality",
+   "title": "Radical Optionality",
+   "authors": "Christoph Winter, Charlie Bullock",
+   "year": 2026,
+   "venue": "Institute for Law & AI",
+   "url": "https://radical-optionality.ai/",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/optionality.txt",
+   "kind": "post",
+   "license": "Copyright remains with the cited authors. Public reading snapshot for private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-visions",
+   "title": "Strategic Visions in AI Governance: Mapping Pathways to Victory",
+   "authors": "Oscar Delaney, Maria Kostylew, Oliver Guest, Peter Wildeford",
+   "year": 2026,
+   "venue": "IAPS",
+   "url": "https://static1.squarespace.com/static/64edf8e7f2b10d716b5ba0e1/t/697ba5166a5f471745732db3/1769710870770/Strategic+Visions.pdf",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/visions.txt",
+   "kind": "paper",
+   "license": "Copyright remains with the cited authors. Public reading snapshot for private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-assumptions",
+   "title": "AI Governance at the Frontier: Unpacking Foundational Assumptions",
+   "authors": "Mina Narayanan, Jessica Ji, Vikram Venkatram, Ngor Luong",
+   "year": 2025,
+   "venue": "CSET",
+   "url": "https://cset.georgetown.edu/publication/ai-governance-at-the-frontier/",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/assumptions.txt",
+   "kind": "paper",
+   "license": "Copyright remains with the cited authors. Public reading snapshot for private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-victory",
+   "title": "AI governance needs a theory of victory",
+   "authors": "Corin Katzke, Justin Bullock",
+   "year": 2024,
+   "venue": "Convergence Analysis",
+   "url": "https://www.convergenceanalysis.org/publications/ai-governance-needs-a-theory-of-victory",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/victory.txt",
+   "kind": "post",
+   "license": "Copyright remains with the cited authors. Public reading snapshot for private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-plan",
+   "title": "AI 2040: Plan A",
+   "authors": "Thomas Larsen, Romeo Dean, Brendan Halstead, Eli Lifland, Ryan Greenblatt, Daniel Kokotajlo",
+   "year": 2026,
+   "venue": "AI Futures Project",
+   "url": "https://ai-2040.com/",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/plan.txt",
+   "kind": "post",
+   "license": "Copyright remains with the cited authors. Public reading snapshot for private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-acceleration",
+   "title": "Preparing for the Intelligence Explosion",
+   "authors": "William MacAskill, Fin Moorhouse",
+   "year": 2025,
+   "venue": "Forethought",
+   "url": "https://www.forethought.org/research/preparing-for-the-intelligence-explosion",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/acceleration.txt",
+   "kind": "post",
+   "license": "Copyright remains with the cited authors. Public reading snapshot for private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-coups",
+   "title": "AI-Enabled Coups: How a Small Group Could Use AI to Seize Power",
+   "authors": "Tom Davidson, Lukas Finnveden, Rose Hadshar",
+   "year": 2025,
+   "venue": "Forethought",
+   "url": "https://www.forethought.org/research/ai-enabled-coups-how-a-small-group-could-use-ai-to-seize-power",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/coups.txt",
+   "kind": "post",
+   "license": "Copyright remains with the cited authors. Public reading snapshot for private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-open-weights",
+   "title": "On the Societal Impact of Open Foundation Models",
+   "authors": "Rishi Bommasani et al.",
+   "year": 2024,
+   "venue": "arXiv:2403.07918",
+   "url": "https://arxiv.org/html/2403.07918v1",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/open-weights.txt",
+   "kind": "paper",
+   "license": "Copyright remains with the cited authors. Public reading snapshot for private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-if-then",
+   "title": "If-Then Commitments for AI Risk Reduction",
+   "authors": "Holden Karnofsky",
+   "year": 2024,
+   "venue": "Carnegie Endowment",
+   "url": "https://carnegieendowment.org/research/2024/09/if-then-commitments-for-ai-risk-reduction",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/if-then.txt",
+   "kind": "post",
+   "license": "Copyright remains with the cited authors. Public reading snapshot for private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-policy-career",
+   "title": "AI policy and strategy",
+   "authors": "80,000 Hours",
+   "year": 2026,
+   "venue": "80,000 Hours",
+   "url": "https://80000hours.org/career-reviews/ai-policy-and-strategy/",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/policy-career.txt",
+   "kind": "post",
+   "license": "Copyright remains with the cited authors. Public reading snapshot for private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-surge",
+   "title": "Building AI Surge Capacity",
+   "authors": "Cara Labrador et al.",
+   "year": 2025,
+   "venue": "IAPS",
+   "url": "https://www.iaps.ai/research/building-ai-surge-capacity",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/surge.txt",
+   "kind": "post",
+   "license": "Copyright remains with the cited authors. Public reading snapshot for private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-incident",
+   "title": "Independent investigation of the OpenAI / Hugging Face incident",
+   "authors": "Ryan Greenblatt, Ajeya Cotra, Hjalmar Wijk",
+   "year": 2026,
+   "venue": "METR",
+   "url": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/incident.txt",
+   "kind": "post",
+   "license": "Copyright remains with the cited authors. Public reading snapshot for private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-system-card",
+   "title": "GPT-6 Astra System Card",
+   "authors": "OpenAI",
+   "year": 2026,
+   "venue": "OpenAI Deployment Safety Hub",
+   "url": "https://deploymentsafety.openai.com/gpt-6-astra",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/system-card.txt",
+   "kind": "doc",
+   "license": "Copyright OpenAI. Public reading snapshot for private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-lesson-1-1",
+   "title": "State of Play at the Frontier",
+   "authors": "BlueDot Impact",
+   "year": 2026,
+   "venue": "Frontier AI Governance",
+   "url": "https://bluedot.org/courses/ai-governance/1/1",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/authenticated/unit-1-1.md",
+   "kind": "doc",
+   "license": "BlueDot Impact course material, retained for authorized private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-lesson-1-2",
+   "title": "Independent Evaluations",
+   "authors": "BlueDot Impact",
+   "year": 2026,
+   "venue": "Frontier AI Governance",
+   "url": "https://bluedot.org/courses/ai-governance/1/2",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/authenticated/unit-1-2.md",
+   "kind": "doc",
+   "license": "BlueDot Impact course material, retained for authorized private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-lesson-1-3",
+   "title": "The Hugging Face Incident and the System Card",
+   "authors": "BlueDot Impact",
+   "year": 2026,
+   "venue": "Frontier AI Governance",
+   "url": "https://bluedot.org/courses/ai-governance/1/3",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/authenticated/unit-1-3.md",
+   "kind": "doc",
+   "license": "BlueDot Impact course material, retained for authorized private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-lesson-1-4",
+   "title": "Exercise: The Briefing",
+   "authors": "BlueDot Impact",
+   "year": 2026,
+   "venue": "Frontier AI Governance",
+   "url": "https://bluedot.org/courses/ai-governance/1/4",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/authenticated/unit-1-4.md",
+   "kind": "doc",
+   "license": "BlueDot Impact course material, retained for authorized private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-lesson-2-1",
+   "title": "Power, Windows, and Dependencies",
+   "authors": "BlueDot Impact",
+   "year": 2026,
+   "venue": "Frontier AI Governance",
+   "url": "https://bluedot.org/courses/ai-governance/2/1",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/authenticated/unit-2-1.md",
+   "kind": "doc",
+   "license": "BlueDot Impact course material, retained for authorized private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-lesson-2-2",
+   "title": "Exercise: Map it out",
+   "authors": "BlueDot Impact",
+   "year": 2026,
+   "venue": "Frontier AI Governance",
+   "url": "https://bluedot.org/courses/ai-governance/2/2",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/authenticated/unit-2-2.md",
+   "kind": "doc",
+   "license": "BlueDot Impact course material, retained for authorized private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-lesson-3-1",
+   "title": "Visions of Victory",
+   "authors": "BlueDot Impact",
+   "year": 2026,
+   "venue": "Frontier AI Governance",
+   "url": "https://bluedot.org/courses/ai-governance/3/1",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/authenticated/unit-3-1.md",
+   "kind": "doc",
+   "license": "BlueDot Impact course material, retained for authorized private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-lesson-3-2",
+   "title": "Face off: Plan S vs Plan A",
+   "authors": "BlueDot Impact",
+   "year": 2026,
+   "venue": "Frontier AI Governance",
+   "url": "https://bluedot.org/courses/ai-governance/3/2",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/authenticated/unit-3-2.md",
+   "kind": "doc",
+   "license": "BlueDot Impact course material, retained for authorized private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-lesson-3-3",
+   "title": "Argue it out (with yourself)",
+   "authors": "BlueDot Impact",
+   "year": 2026,
+   "venue": "Frontier AI Governance",
+   "url": "https://bluedot.org/courses/ai-governance/3/3",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/authenticated/unit-3-3.md",
+   "kind": "doc",
+   "license": "BlueDot Impact course material, retained for authorized private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-lesson-4-1",
+   "title": "Grappling with the Intelligence Explosion",
+   "authors": "BlueDot Impact",
+   "year": 2026,
+   "venue": "Frontier AI Governance",
+   "url": "https://bluedot.org/courses/ai-governance/4/1",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/authenticated/unit-4-1.md",
+   "kind": "doc",
+   "license": "BlueDot Impact course material, retained for authorized private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-lesson-4-2",
+   "title": "Exercise: Governance Under Acceleration",
+   "authors": "BlueDot Impact",
+   "year": 2026,
+   "venue": "Frontier AI Governance",
+   "url": "https://bluedot.org/courses/ai-governance/4/2",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/authenticated/unit-4-2.md",
+   "kind": "doc",
+   "license": "BlueDot Impact course material, retained for authorized private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-lesson-5-1",
+   "title": "Contested Questions in AI Governance",
+   "authors": "BlueDot Impact",
+   "year": 2026,
+   "venue": "Frontier AI Governance",
+   "url": "https://bluedot.org/courses/ai-governance/5/1",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/authenticated/unit-5-1.md",
+   "kind": "doc",
+   "license": "BlueDot Impact course material, retained for authorized private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-lesson-5-2",
+   "title": "How should we handle open weights as models get more capable?",
+   "authors": "BlueDot Impact",
+   "year": 2026,
+   "venue": "Frontier AI Governance",
+   "url": "https://bluedot.org/courses/ai-governance/5/2",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/authenticated/unit-5-2.md",
+   "kind": "doc",
+   "license": "BlueDot Impact course material, retained for authorized private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-lesson-5-3",
+   "title": "When, if ever, should frontier development be slowed - and by whom?",
+   "authors": "BlueDot Impact",
+   "year": 2026,
+   "venue": "Frontier AI Governance",
+   "url": "https://bluedot.org/courses/ai-governance/5/3",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/authenticated/unit-5-3.md",
+   "kind": "doc",
+   "license": "BlueDot Impact course material, retained for authorized private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-lesson-6-1",
+   "title": "Finding Your Leverage Point",
+   "authors": "BlueDot Impact",
+   "year": 2026,
+   "venue": "Frontier AI Governance",
+   "url": "https://bluedot.org/courses/ai-governance/6/1",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/authenticated/unit-6-1.md",
+   "kind": "doc",
+   "license": "BlueDot Impact course material, retained for authorized private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-lesson-6-2",
+   "title": "More Career Resources",
+   "authors": "BlueDot Impact",
+   "year": 2026,
+   "venue": "Frontier AI Governance",
+   "url": "https://bluedot.org/courses/ai-governance/6/2",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/authenticated/unit-6-2.md",
+   "kind": "doc",
+   "license": "BlueDot Impact course material, retained for authorized private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-lesson-6-3",
+   "title": "Next Steps: Fellowships",
+   "authors": "BlueDot Impact",
+   "year": 2026,
+   "venue": "Frontier AI Governance",
+   "url": "https://bluedot.org/courses/ai-governance/6/3",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/authenticated/unit-6-3.md",
+   "kind": "doc",
+   "license": "BlueDot Impact course material, retained for authorized private study; no redistribution license asserted."
+  },
+  {
+   "id": "bdgov-src-lesson-6-4",
+   "title": "Next steps: Programs",
+   "authors": "BlueDot Impact",
+   "year": 2026,
+   "venue": "Frontier AI Governance",
+   "url": "https://bluedot.org/courses/ai-governance/6/4",
+   "path": "docs/architecture/primary-sources/bluedot-ai-governance/authenticated/unit-6-4.md",
+   "kind": "doc",
+   "license": "BlueDot Impact course material, retained for authorized private study; no redistribution license asserted."
   }
  ],
  "sections": [
-  {
-   "id": "ddsci",
-   "title": "The learning science",
-   "color": "#16A34A"
-  },
-  {
-   "id": "ddmem",
-   "title": "Memory and review",
-   "color": "#0891B2"
-  },
-  {
-   "id": "ddknow",
-   "title": "Mastery and the frontier",
-   "color": "#2563EB"
-  },
-  {
-   "id": "ddpred",
-   "title": "Predicting a success",
-   "color": "#DB2777"
-  },
-  {
-   "id": "ddstudy",
-   "title": "Study mode's model",
-   "color": "#EA580C"
-  },
-  {
-   "id": "tutor",
-   "title": "The tutor's guardrails",
-   "color": "#0D9488"
-  },
-  {
-   "id": "control",
-   "title": "AI control",
-   "color": "#D97706"
-  },
-  {
-   "id": "oversight",
-   "title": "Scalable oversight",
-   "color": "#7C3AED"
-  },
   {
    "id": "cyfound",
    "title": "Security foundations",
@@ -1088,68 +1473,122 @@
    "color": "#6D28D9"
   },
   {
-   "id": "bsfreq",
-   "title": "Disease frequency",
+   "id": "biofound",
+   "title": "Studying cells",
    "color": "#0F766E"
   },
   {
-   "id": "bsdx",
-   "title": "Diagnostic tests",
-   "color": "#2563EB"
-  },
-  {
-   "id": "bsrisk",
-   "title": "Risk and effect measures",
+   "id": "bioprok",
+   "title": "Prokaryotic cells",
    "color": "#B45309"
   },
   {
-   "id": "bsdesign",
-   "title": "Study designs",
+   "id": "bioeuk",
+   "title": "Eukaryotic cells",
+   "color": "#2563EB"
+  },
+  {
+   "id": "bioendo",
+   "title": "The endomembrane system",
    "color": "#7C3AED"
   },
   {
-   "id": "bsbias",
-   "title": "Bias and confounding",
-   "color": "#B91C1C"
+   "id": "bioenergy",
+   "title": "Mitochondria and chloroplasts",
+   "color": "#15803D"
   },
   {
-   "id": "bsdesc",
-   "title": "Describing data",
+   "id": "biocyto",
+   "title": "The cytoskeleton",
+   "color": "#BE185D"
+  },
+  {
+   "id": "biowall",
+   "title": "Walls, matrix and junctions",
+   "color": "#92400E"
+  },
+  {
+   "id": "biocompare",
+   "title": "Comparing cells",
+   "color": "#4D7C0F"
+  },
+  {
+   "id": "biosize",
+   "title": "Cell size",
    "color": "#0369A1"
   },
   {
-   "id": "bsinf",
-   "title": "Statistical inference",
+   "id": "datmol",
+   "title": "DAT: Biomolecules",
+   "color": "#9333EA"
+  },
+  {
+   "id": "datmemb",
+   "title": "DAT: Membranes and transport",
+   "color": "#0891B2"
+  },
+  {
+   "id": "datenz",
+   "title": "DAT: Energy and enzymes",
+   "color": "#CA8A04"
+  },
+  {
+   "id": "datresp",
+   "title": "DAT: Cellular respiration",
+   "color": "#DC2626"
+  },
+  {
+   "id": "datphoto",
+   "title": "DAT: Photosynthesis",
+   "color": "#16A34A"
+  },
+  {
+   "id": "datsig",
+   "title": "DAT: Cell signaling",
+   "color": "#DB2777"
+  },
+  {
+   "id": "datdiv",
+   "title": "DAT: Cell division",
+   "color": "#4F46E5"
+  },
+  {
+   "id": "datgene",
+   "title": "DAT: DNA to protein",
+   "color": "#475569"
+  },
+  {
+   "id": "bdgov1",
+   "title": "State of Play at the Frontier",
+   "color": "#0369A1"
+  },
+  {
+   "id": "bdgov2",
+   "title": "Power, Windows, and Dependencies",
+   "color": "#0F766E"
+  },
+  {
+   "id": "bdgov3",
+   "title": "The Proposal Landscape",
+   "color": "#7E22CE"
+  },
+  {
+   "id": "bdgov4",
+   "title": "Race Conditions, Power Concentration and Governance in the Limit",
+   "color": "#B45309"
+  },
+  {
+   "id": "bdgov5",
+   "title": "Contested Questions in AI Governance",
+   "color": "#BE123C"
+  },
+  {
+   "id": "bdgov6",
+   "title": "Finding Your Leverage Point",
    "color": "#4D7C0F"
   }
  ],
  "courses": [
-  {
-   "id": "delta-drills-learning",
-   "title": "How Delta Drills teaches",
-   "eyebrow": "The learning science the app rests on, then its own maths: memory, mastery, prediction and Study mode.",
-   "sections": [
-    "ddsci",
-    "ddmem",
-    "ddknow",
-    "ddpred",
-    "ddstudy"
-   ],
-   "review": {
-    "mc": 60,
-    "free": 120
-   }
-  },
-  {
-   "id": "ai-control",
-   "title": "AI control and oversight",
-   "eyebrow": "The tutor's guardrails as a control setup, then AI control and scalable oversight.",
-   "sections": [
-    "tutor",
-    "control",
-    "oversight"
-   ]
-  },
   {
    "id": "cyber-ai-control",
    "title": "Cybersecurity and AI control",
@@ -1177,19 +1616,156 @@
    }
   },
   {
-   "id": "step3-biostat",
-   "title": "Step 3 Biostatistics",
-   "eyebrow": "Biostatistics and epidemiology for USMLE Step 3, from the MehlmanMedical Biostatistics Review: frequency, diagnostic tests, risk, study designs, bias and inference.",
+   "id": "ap-bio-cells",
+   "title": "AP Biology: Cells",
+   "eyebrow": "AP Biology Unit 2 from her class slides (cell theory, every organelle, junctions, cell size), then the DAT's cell and molecular biology.",
    "sections": [
-    "bsfreq",
-    "bsdx",
-    "bsrisk",
-    "bsdesign",
-    "bsbias",
-    "bsdesc",
-    "bsinf"
+    "biofound",
+    "bioprok",
+    "bioeuk",
+    "bioendo",
+    "bioenergy",
+    "biocyto",
+    "biowall",
+    "biocompare",
+    "biosize",
+    "datmol",
+    "datmemb",
+    "datenz",
+    "datresp",
+    "datphoto",
+    "datsig",
+    "datdiv",
+    "datgene"
    ],
-   "link": "usmle-step-3"
+   "units": [
+    {
+     "id": "class",
+     "title": "Her class: Unit 2 slides",
+     "eyebrow": "Cell structure and function and cell size, from her teacher's decks.",
+     "sections": [
+      "biofound",
+      "bioprok",
+      "bioeuk",
+      "bioendo",
+      "bioenergy",
+      "biocyto",
+      "biowall",
+      "biocompare",
+      "biosize"
+     ]
+    },
+    {
+     "id": "dat",
+     "title": "DAT: Cell and molecular biology",
+     "eyebrow": "Biomolecules, membranes, enzymes, respiration, photosynthesis, signaling, division and DNA to protein, multiple choice in the DAT's style.",
+     "sections": [
+      "datmol",
+      "datmemb",
+      "datenz",
+      "datresp",
+      "datphoto",
+      "datsig",
+      "datdiv",
+      "datgene"
+     ]
+    }
+   ],
+   "public": true,
+   "default_on": false,
+   "link": "ap-bio-cells",
+   "review": {
+    "mc": 120,
+    "free": 120
+   },
+   "cram_order": [
+    "bioeuk",
+    "bioendo",
+    "bioprok",
+    "bioenergy",
+    "biosize",
+    "biocompare",
+    "biocyto",
+    "biowall",
+    "biofound",
+    "datmol",
+    "datmemb",
+    "datenz",
+    "datresp",
+    "datphoto",
+    "datsig",
+    "datdiv",
+    "datgene"
+   ],
+   "cram_clock": {
+    "answer": {
+     "mc": 45,
+     "free": 150
+    },
+    "review": {
+     "mc": 30,
+     "free": 75
+    }
+   }
+  },
+  {
+   "id": "bluedot-ai-governance",
+   "title": "BlueDot Impact: Frontier AI Governance",
+   "eyebrow": "BlueDot Impact’s full six-unit course with original lessons, reading guides and assignments, plus authored conceptual practice and Jev grading rubrics. Rubrics are not official BlueDot answer keys.",
+   "sections": [
+    "bdgov1",
+    "bdgov2",
+    "bdgov3",
+    "bdgov4",
+    "bdgov5",
+    "bdgov6"
+   ],
+   "default_on": false,
+   "link": "bluedot-ai-governance",
+   "units": [
+    {
+     "id": "unit-1",
+     "title": "1. State of Play at the Frontier",
+     "sections": [
+      "bdgov1"
+     ]
+    },
+    {
+     "id": "unit-2",
+     "title": "2. Power, Windows, and Dependencies",
+     "sections": [
+      "bdgov2"
+     ]
+    },
+    {
+     "id": "unit-3",
+     "title": "3. The Proposal Landscape",
+     "sections": [
+      "bdgov3"
+     ]
+    },
+    {
+     "id": "unit-4",
+     "title": "4. Race Conditions, Power Concentration and Governance in the Limit",
+     "sections": [
+      "bdgov4"
+     ]
+    },
+    {
+     "id": "unit-5",
+     "title": "5. Contested Questions in AI Governance",
+     "sections": [
+      "bdgov5"
+     ]
+    },
+    {
+     "id": "unit-6",
+     "title": "6. Finding Your Leverage Point",
+     "sections": [
+      "bdgov6"
+     ]
+    }
+   ]
   }
  ],
  "figures": [
@@ -1556,6 +2132,2287 @@
    "caption": "Possible payouts mapped on two axes — freedom of spending and long-term influence — with the taxonomy's examples in each quadrant, and toggles showing which payouts appeal to which AI motivations.",
    "credit": "Interactive figure from the XLab AI Control track",
    "url": "https://tracks.xlabtracks.workers.dev/tracks/control/module-5/barriers-to-trading#ins-demo-payment-map"
+  }
+ ],
+ "diagrams": [
+  {
+   "id": "fractionation",
+   "title": "Differential centrifugation",
+   "w": 767,
+   "h": 296,
+   "boxes": [
+    [
+     176,
+     246,
+     254,
+     290
+    ],
+    [
+     338,
+     246,
+     414,
+     291
+    ],
+    [
+     505,
+     246,
+     573,
+     290
+    ],
+    [
+     640,
+     246,
+     760,
+     290
+    ],
+    [
+     248,
+     100,
+     336,
+     118
+    ],
+    [
+     410,
+     100,
+     500,
+     120
+    ],
+    [
+     572,
+     100,
+     662,
+     120
+    ],
+    [
+     14,
+     209,
+     87,
+     242
+    ]
+   ],
+   "labels": [
+    "whole cells nuclei cytoskeletons",
+    "mitochondria lysosomes peroxisomes",
+    "microsomes other small vesicles",
+    "ribosomes viruses large macromolecules",
+    "supernatant 1",
+    "supernatant 2",
+    "supernatant 3",
+    "cell homogenate"
+   ]
+  },
+  {
+   "id": "tree-of-life",
+   "title": "The three domains of life",
+   "w": 907,
+   "h": 396,
+   "boxes": [
+    [
+     152,
+     104,
+     232,
+     128
+    ],
+    [
+     430,
+     106,
+     506,
+     127
+    ],
+    [
+     708,
+     104,
+     782,
+     128
+    ],
+    [
+     282,
+     380,
+     406,
+     396
+    ],
+    [
+     796,
+     128,
+     857,
+     152
+    ],
+    [
+     796,
+     173,
+     843,
+     200
+    ],
+    [
+     798,
+     208,
+     847,
+     234
+    ]
+   ],
+   "labels": [
+    "Bacteria",
+    "Archaea",
+    "Eukarya",
+    "Common ancestor",
+    "Animals",
+    "Fungi",
+    "Plants"
+   ]
+  },
+  {
+   "id": "prokaryote",
+   "title": "A prokaryotic cell",
+   "w": 442,
+   "h": 276,
+   "boxes": [
+    [
+     156,
+     30,
+     258,
+     50
+    ],
+    [
+     300,
+     38,
+     350,
+     60
+    ],
+    [
+     216,
+     50,
+     266,
+     71
+    ],
+    [
+     368,
+     45,
+     396,
+     68
+    ],
+    [
+     254,
+     67,
+     304,
+     90
+    ],
+    [
+     106,
+     74,
+     190,
+     94
+    ],
+    [
+     94,
+     106,
+     157,
+     126
+    ],
+    [
+     42,
+     208,
+     97,
+     230
+    ],
+    [
+     112,
+     246,
+     174,
+     268
+    ]
+   ],
+   "labels": [
+    "plasma membrane",
+    "plasmid",
+    "cell wall",
+    "pili",
+    "capsule",
+    "nucleoid (DNA)",
+    "ribosomes",
+    "flagellum",
+    "cytoplasm"
+   ]
+  },
+  {
+   "id": "plant-cell",
+   "title": "A plant cell",
+   "w": 520,
+   "h": 450,
+   "boxes": [
+    [
+     302,
+     47,
+     386,
+     69
+    ],
+    [
+     144,
+     54,
+     222,
+     76
+    ],
+    [
+     446,
+     106,
+     520,
+     130
+    ],
+    [
+     0,
+     117,
+     68,
+     150
+    ],
+    [
+     439,
+     128,
+     520,
+     176
+    ],
+    [
+     0,
+     156,
+     73,
+     180
+    ],
+    [
+     436,
+     180,
+     496,
+     204
+    ],
+    [
+     225,
+     204,
+     283,
+     230
+    ],
+    [
+     435,
+     208,
+     504,
+     232
+    ],
+    [
+     450,
+     227,
+     514,
+     262
+    ],
+    [
+     6,
+     232,
+     76,
+     268
+    ],
+    [
+     456,
+     269,
+     494,
+     304
+    ],
+    [
+     336,
+     316,
+     420,
+     361
+    ],
+    [
+     175,
+     333,
+     250,
+     356
+    ]
+   ],
+   "labels": [
+    "Mitochondria",
+    "Chloroplast",
+    "Cytoplasm",
+    "Plasma Membrane",
+    "rough endoplasmic reticulum",
+    "Peroxisome",
+    "Nucleus",
+    "Vacuole",
+    "Nucleolus",
+    "Nuclear Envelope",
+    "Golgi Apparatus",
+    "Cell Wall",
+    "smooth endoplasmic reticulum",
+    "Ribosomes"
+   ]
+  },
+  {
+   "id": "euglena",
+   "title": "Structure of a Euglena",
+   "w": 500,
+   "h": 424,
+   "boxes": [
+    [
+     344,
+     55,
+     436,
+     84
+    ],
+    [
+     230,
+     80,
+     306,
+     108
+    ],
+    [
+     116,
+     128,
+     236,
+     153
+    ],
+    [
+     73,
+     164,
+     150,
+     190
+    ],
+    [
+     1,
+     207,
+     104,
+     254
+    ],
+    [
+     356,
+     272,
+     500,
+     299
+    ],
+    [
+     230,
+     316,
+     300,
+     344
+    ],
+    [
+     98,
+     370,
+     207,
+     399
+    ],
+    [
+     367,
+     375,
+     466,
+     403
+    ]
+   ],
+   "labels": [
+    "Flagellum",
+    "Eyespot",
+    "Mitochondria",
+    "Nucleus",
+    "Contractile Vacuole",
+    "Golgi Apparatus",
+    "Pellicle",
+    "Chloroplasts",
+    "Nucleolus"
+   ]
+  },
+  {
+   "id": "amoeba",
+   "title": "An amoeba",
+   "w": 538,
+   "h": 394,
+   "boxes": [
+    [
+     299,
+     18,
+     392,
+     50
+    ],
+    [
+     142,
+     54,
+     261,
+     81
+    ],
+    [
+     414,
+     90,
+     505,
+     120
+    ],
+    [
+     22,
+     126,
+     130,
+     152
+    ],
+    [
+     22,
+     196,
+     92,
+     226
+    ],
+    [
+     417,
+     214,
+     504,
+     244
+    ],
+    [
+     363,
+     262,
+     454,
+     292
+    ],
+    [
+     356,
+     303,
+     476,
+     332
+    ],
+    [
+     24,
+     317,
+     108,
+     347
+    ],
+    [
+     233,
+     342,
+     386,
+     369
+    ]
+   ],
+   "labels": [
+    "Fat droplet",
+    "Mitochondrion",
+    "Pseudopod",
+    "Food vacuole",
+    "Nucleus",
+    "Ectoplasm",
+    "Endoplasm",
+    "Cell membrane",
+    "Lysosome",
+    "Contractile vacuole"
+   ]
+  },
+  {
+   "id": "animal-cell",
+   "title": "An animal cell",
+   "w": 350,
+   "h": 278,
+   "boxes": [
+    [
+     221,
+     0,
+     278,
+     14
+    ],
+    [
+     72,
+     9,
+     128,
+     36
+    ],
+    [
+     266,
+     18,
+     316,
+     44
+    ],
+    [
+     48,
+     38,
+     98,
+     56
+    ],
+    [
+     1,
+     64,
+     82,
+     91
+    ],
+    [
+     292,
+     63,
+     342,
+     79
+    ],
+    [
+     22,
+     98,
+     61,
+     116
+    ],
+    [
+     298,
+     96,
+     350,
+     112
+    ],
+    [
+     6,
+     124,
+     50,
+     140
+    ],
+    [
+     298,
+     124,
+     350,
+     140
+    ],
+    [
+     0,
+     152,
+     42,
+     168
+    ],
+    [
+     284,
+     166,
+     330,
+     184
+    ],
+    [
+     0,
+     186,
+     42,
+     214
+    ],
+    [
+     266,
+     196,
+     350,
+     224
+    ],
+    [
+     238,
+     222,
+     309,
+     241
+    ],
+    [
+     0,
+     234,
+     52,
+     254
+    ],
+    [
+     211,
+     238,
+     263,
+     256
+    ],
+    [
+     40,
+     264,
+     87,
+     278
+    ],
+    [
+     162,
+     266,
+     195,
+     278
+    ]
+   ],
+   "labels": [
+    "Mitochondria",
+    "Intermediate filament",
+    "Plasma membrane",
+    "Ribosomes",
+    "rough endoplasmic reticulum",
+    "Microtubule",
+    "Nucleus",
+    "Centrosome",
+    "Nucleolus",
+    "Microfilament",
+    "Chromatin",
+    "Lysosome",
+    "Golgi apparatus",
+    "smooth endoplasmic reticulum",
+    "Secretory vesicle",
+    "Golgi vesicle",
+    "Peroxisome",
+    "Cytoplasm",
+    "Vacuole"
+   ]
+  },
+  {
+   "id": "differentiation",
+   "title": "Cell differentiation",
+   "w": 714,
+   "h": 349,
+   "boxes": [
+    [
+     288,
+     21,
+     460,
+     66
+    ],
+    [
+     615,
+     132,
+     678,
+     158
+    ],
+    [
+     176,
+     154,
+     286,
+     202
+    ],
+    [
+     8,
+     210,
+     65,
+     256
+    ],
+    [
+     587,
+     247,
+     691,
+     274
+    ],
+    [
+     200,
+     298,
+     474,
+     348
+    ]
+   ],
+   "labels": [
+    "Expression of neuron-specific gene",
+    "Neuron",
+    "Identical daughter cells",
+    "Single cell",
+    "Epithelial cell",
+    "Expression of epithelial-specific gene"
+   ]
+  },
+  {
+   "id": "endomembrane-path",
+   "title": "From rough ER to the plasma membrane",
+   "w": 1148,
+   "h": 1600,
+   "boxes": [
+    [
+     124,
+     337,
+     260,
+     378
+    ],
+    [
+     929,
+     655,
+     1124,
+     738
+    ],
+    [
+     373,
+     856,
+     504,
+     897
+    ],
+    [
+     956,
+     854,
+     1114,
+     890
+    ],
+    [
+     33,
+     915,
+     205,
+     957
+    ],
+    [
+     953,
+     1181,
+     1117,
+     1219
+    ],
+    [
+     31,
+     1296,
+     204,
+     1382
+    ],
+    [
+     58,
+     1482,
+     223,
+     1563
+    ],
+    [
+     553,
+     1558,
+     863,
+     1596
+    ]
+   ],
+   "labels": [
+    "Nucleus",
+    "Transitional ER",
+    "cis face",
+    "Cisternae",
+    "rough endoplasmic reticulum",
+    "trans face",
+    "Golgi Apparatus",
+    "Transport vesicle",
+    "Plasma membrane"
+   ]
+  },
+  {
+   "id": "nucleus",
+   "title": "The nucleus",
+   "w": 542,
+   "h": 377,
+   "boxes": [
+    [
+     0,
+     20,
+     116,
+     69
+    ],
+    [
+     0,
+     102,
+     90,
+     127
+    ],
+    [
+     0,
+     160,
+     94,
+     187
+    ],
+    [
+     0,
+     219,
+     118,
+     246
+    ],
+    [
+     0,
+     277,
+     116,
+     306
+    ],
+    [
+     0,
+     336,
+     154,
+     364
+    ],
+    [
+     242,
+     338,
+     336,
+     365
+    ]
+   ],
+   "labels": [
+    "endoplasmic reticulum",
+    "Nucleolus",
+    "Chromatin",
+    "Nucleoplasm",
+    "Nuclear pore",
+    "Nuclear envelope",
+    "Ribosome"
+   ]
+  },
+  {
+   "id": "nucleus-table",
+   "title": "Components of the nucleus",
+   "w": 1077,
+   "h": 657,
+   "boxes": [
+    [
+     39,
+     134,
+     214,
+     173
+    ],
+    [
+     39,
+     253,
+     258,
+     296
+    ],
+    [
+     37,
+     325,
+     195,
+     415
+    ],
+    [
+     39,
+     490,
+     205,
+     530
+    ]
+   ],
+   "labels": [
+    "Chromatin",
+    "Nucleoplasm",
+    "Nuclear envelope",
+    "Nucleolus"
+   ]
+  },
+  {
+   "id": "ribosome",
+   "title": "A ribosome translating mRNA",
+   "w": 544,
+   "h": 440,
+   "boxes": [
+    [
+     450,
+     36,
+     516,
+     84
+    ],
+    [
+     0,
+     44,
+     144,
+     90
+    ],
+    [
+     450,
+     132,
+     544,
+     200
+    ],
+    [
+     454,
+     218,
+     510,
+     245
+    ],
+    [
+     0,
+     260,
+     62,
+     286
+    ],
+    [
+     0,
+     374,
+     92,
+     440
+    ]
+   ],
+   "labels": [
+    "Amino acid",
+    "Growing peptide chain",
+    "Ribosome large subunit",
+    "tRNA",
+    "mRNA",
+    "Ribosome small subunit"
+   ]
+  },
+  {
+   "id": "free-vs-bound",
+   "title": "Free and membrane-bound ribosomes",
+   "w": 800,
+   "h": 600,
+   "boxes": [
+    [
+     57,
+     6,
+     284,
+     37
+    ],
+    [
+     410,
+     6,
+     665,
+     35
+    ],
+    [
+     416,
+     230,
+     564,
+     278
+    ],
+    [
+     69,
+     462,
+     150,
+     490
+    ],
+    [
+     265,
+     462,
+     380,
+     490
+    ],
+    [
+     86,
+     508,
+     209,
+     536
+    ],
+    [
+     230,
+     508,
+     344,
+     537
+    ],
+    [
+     420,
+     460,
+     520,
+     510
+    ],
+    [
+     535,
+     507,
+     625,
+     557
+    ],
+    [
+     617,
+     461,
+     721,
+     489
+    ],
+    [
+     644,
+     534,
+     742,
+     560
+    ]
+   ],
+   "labels": [
+    "Free ribosomes in cytosol",
+    "Membrane-bound ribosomes",
+    "Endoplasmic reticulum lumen",
+    "Nucleus",
+    "Peroxisomes",
+    "Mitochondria",
+    "Chloroplasts",
+    "Plasma membrane",
+    "Secretory vesicles",
+    "Endosomes",
+    "Lysosomes"
+   ]
+  },
+  {
+   "id": "er",
+   "title": "Rough and smooth ER",
+   "w": 528,
+   "h": 396,
+   "boxes": [
+    [
+     354,
+     19,
+     493,
+     44
+    ],
+    [
+     452,
+     48,
+     524,
+     71
+    ],
+    [
+     4,
+     101,
+     98,
+     125
+    ],
+    [
+     364,
+     312,
+     524,
+     353
+    ],
+    [
+     242,
+     369,
+     486,
+     394
+    ]
+   ],
+   "labels": [
+    "Nuclear envelope",
+    "Nucleus",
+    "Ribosomes",
+    "rough endoplasmic reticulum",
+    "smooth endoplasmic reticulum"
+   ]
+  },
+  {
+   "id": "golgi",
+   "title": "The Golgi apparatus",
+   "w": 600,
+   "h": 501,
+   "boxes": [
+    [
+     163,
+     68,
+     300,
+     126
+    ],
+    [
+     449,
+     73,
+     574,
+     112
+    ],
+    [
+     462,
+     108,
+     538,
+     132
+    ],
+    [
+     460,
+     255,
+     560,
+     296
+    ],
+    [
+     458,
+     318,
+     596,
+     377
+    ],
+    [
+     462,
+     383,
+     588,
+     421
+    ],
+    [
+     40,
+     405,
+     168,
+     446
+    ]
+   ],
+   "labels": [
+    "Cis face \"receiving\" side of Golgi apparatus",
+    "Transport vesicle from rough ER",
+    "Cisternae",
+    "New vesicles forming",
+    "Trans face \"shipping\" side of Golgi apparatus",
+    "Secretory vesicle from trans face",
+    "Transport vesicle from the Golgi"
+   ]
+  },
+  {
+   "id": "exocytosis",
+   "title": "A secretory vesicle",
+   "w": 960,
+   "h": 720,
+   "boxes": [
+    [
+     253,
+     53,
+     428,
+     82
+    ],
+    [
+     796,
+     53,
+     876,
+     82
+    ],
+    [
+     810,
+     272,
+     878,
+     300
+    ],
+    [
+     529,
+     293,
+     628,
+     344
+    ]
+   ],
+   "labels": [
+    "plasma membrane",
+    "Outside",
+    "Inside",
+    "secretory vesicle"
+   ]
+  },
+  {
+   "id": "plant-cell-2",
+   "title": "A plant cell's large central vacuole",
+   "w": 650,
+   "h": 362,
+   "boxes": [
+    [
+     434,
+     22,
+     500,
+     46
+    ],
+    [
+     458,
+     42,
+     548,
+     66
+    ],
+    [
+     484,
+     61,
+     554,
+     89
+    ],
+    [
+     18,
+     124,
+     146,
+     148
+    ],
+    [
+     48,
+     190,
+     140,
+     218
+    ],
+    [
+     76,
+     227,
+     149,
+     252
+    ],
+    [
+     82,
+     263,
+     162,
+     286
+    ],
+    [
+     538,
+     268,
+     630,
+     290
+    ],
+    [
+     450,
+     292,
+     546,
+     314
+    ],
+    [
+     70,
+     300,
+     204,
+     322
+    ],
+    [
+     181,
+     326,
+     236,
+     350
+    ],
+    [
+     414,
+     326,
+     472,
+     350
+    ]
+   ],
+   "labels": [
+    "Ribosome",
+    "Mitochondrion",
+    "Cytoplasm",
+    "Large central vacuole",
+    "Golgi complex",
+    "Chloroplast",
+    "Cytoskeleton",
+    "Cellulose fibers",
+    "Cell membrane",
+    "endoplasmic reticulum",
+    "Nucleus",
+    "Cell wall"
+   ]
+  },
+  {
+   "id": "paramecium",
+   "title": "A paramecium",
+   "w": 331,
+   "h": 152,
+   "boxes": [
+    [
+     268,
+     48,
+     330,
+     78
+    ]
+   ],
+   "labels": [
+    "Contractile vacuoles"
+   ]
+  },
+  {
+   "id": "lysosome",
+   "title": "Lysosomes digest food",
+   "w": 1280,
+   "h": 720,
+   "boxes": [
+    [
+     22,
+     1,
+     311,
+     28
+    ],
+    [
+     1066,
+     0,
+     1260,
+     50
+    ],
+    [
+     20,
+     37,
+     213,
+     68
+    ],
+    [
+     21,
+     84,
+     158,
+     115
+    ],
+    [
+     19,
+     130,
+     156,
+     187
+    ],
+    [
+     774,
+     258,
+     916,
+     287
+    ],
+    [
+     1142,
+     483,
+     1259,
+     536
+    ],
+    [
+     27,
+     581,
+     202,
+     608
+    ],
+    [
+     168,
+     684,
+     323,
+     712
+    ],
+    [
+     810,
+     682,
+     978,
+     711
+    ]
+   ],
+   "labels": [
+    "endoplasmic reticulum",
+    "exocytosis and elimination",
+    "cell membrane",
+    "cytoplasm",
+    "Golgi apparatus",
+    "lysosomes",
+    "digestive vacuole",
+    "food particles",
+    "endocytosis",
+    "food vacuole"
+   ]
+  },
+  {
+   "id": "peroxisome",
+   "title": "A peroxisome",
+   "w": 355,
+   "h": 280,
+   "boxes": [
+    [
+     262,
+     46,
+     320,
+     65
+    ],
+    [
+     262,
+     100,
+     307,
+     120
+    ],
+    [
+     262,
+     146,
+     332,
+     165
+    ],
+    [
+     262,
+     190,
+     340,
+     210
+    ]
+   ],
+   "labels": [
+    "Lipid bilayer",
+    "Enzymes",
+    "Crystalline core",
+    "Transport protein"
+   ]
+  },
+  {
+   "id": "endomembrane",
+   "title": "The endomembrane system",
+   "w": 1600,
+   "h": 831,
+   "boxes": [
+    [
+     33,
+     328,
+     280,
+     367
+    ],
+    [
+     1037,
+     46,
+     1220,
+     85
+    ],
+    [
+     1038,
+     191,
+     1257,
+     237
+    ],
+    [
+     1181,
+     713,
+     1596,
+     752
+    ],
+    [
+     496,
+     386,
+     691,
+     432
+    ],
+    [
+     560,
+     761,
+     809,
+     807
+    ]
+   ],
+   "labels": [
+    "smooth endoplasmic reticulum",
+    "Nucleus",
+    "rough endoplasmic reticulum",
+    "Plasma membrane",
+    "cis Golgi",
+    "trans Golgi"
+   ]
+  },
+  {
+   "id": "chloroplast",
+   "title": "Chloroplast anatomy",
+   "w": 1406,
+   "h": 402,
+   "boxes": [
+    [
+     241,
+     62,
+     439,
+     94
+    ],
+    [
+     171,
+     359,
+     348,
+     398
+    ],
+    [
+     616,
+     95,
+     751,
+     126
+    ],
+    [
+     613,
+     259,
+     759,
+     292
+    ],
+    [
+     594,
+     155,
+     876,
+     218
+    ]
+   ],
+   "labels": [
+    "Ribosomes",
+    "Thylakoid",
+    "Stroma",
+    "Granum",
+    "Inner and outer membranes"
+   ]
+  },
+  {
+   "id": "mitochondrion",
+   "title": "A mitochondrion",
+   "w": 658,
+   "h": 383,
+   "boxes": [
+    [
+     256,
+     0,
+     414,
+     20
+    ],
+    [
+     471,
+     14,
+     595,
+     38
+    ],
+    [
+     102,
+     28,
+     239,
+     52
+    ],
+    [
+     575,
+     48,
+     658,
+     76
+    ],
+    [
+     0,
+     64,
+     60,
+     92
+    ],
+    [
+     0,
+     84,
+     62,
+     109
+    ],
+    [
+     364,
+     292,
+     504,
+     315
+    ]
+   ],
+   "labels": [
+    "Mitochondrial DNA",
+    "Matrix Granule",
+    "Inner membrane",
+    "Ribosome",
+    "Matrix",
+    "Cristae",
+    "Outer membrane"
+   ]
+  },
+  {
+   "id": "cilia",
+   "title": "Cilia and flagella structure",
+   "w": 409,
+   "h": 254,
+   "boxes": [
+    [
+     359,
+     108,
+     408,
+     140
+    ],
+    [
+     168,
+     47,
+     246,
+     89
+    ],
+    [
+     280,
+     46,
+     326,
+     79
+    ],
+    [
+     335,
+     61,
+     409,
+     106
+    ],
+    [
+     131,
+     102,
+     204,
+     134
+    ],
+    [
+     24,
+     236,
+     178,
+     254
+    ]
+   ],
+   "labels": [
+    "Dynein Arms",
+    "Outer Microtubule Doublet",
+    "Radial Spoke",
+    "Central Microtubule (Axoneme)",
+    "Plasma Membrane",
+    "Basal Body (Kinetosome)"
+   ]
+  },
+  {
+   "id": "centrosome",
+   "title": "A centrosome",
+   "w": 408,
+   "h": 252,
+   "boxes": [
+    [
+     92,
+     24,
+     198,
+     50
+    ],
+    [
+     260,
+     222,
+     345,
+     242
+    ],
+    [
+     116,
+     230,
+     205,
+     252
+    ]
+   ],
+   "labels": [
+    "Centrosome",
+    "Microtubule",
+    "Centrioles"
+   ]
+  },
+  {
+   "id": "cytoskeleton",
+   "title": "The three cytoskeleton filaments",
+   "w": 1076,
+   "h": 313,
+   "boxes": [
+    [
+     123,
+     111,
+     292,
+     136
+    ],
+    [
+     731,
+     108,
+     897,
+     130
+    ],
+    [
+     145,
+     175,
+     305,
+     201
+    ],
+    [
+     722,
+     288,
+     882,
+     313
+    ],
+    [
+     145,
+     212,
+     306,
+     238
+    ],
+    [
+     730,
+     209,
+     889,
+     235
+    ],
+    [
+     333,
+     277,
+     448,
+     301
+    ]
+   ],
+   "labels": [
+    "Intermediate Filaments",
+    "Intermediate Filaments",
+    "Microfilaments (Actin)",
+    "Microfilaments (Actin)",
+    "Microtubules (Tubulin)",
+    "Microtubules (Tubulin)",
+    "Cell membrane"
+   ]
+  },
+  {
+   "id": "cell-wall",
+   "title": "Cellulose in a plant cell wall",
+   "w": 764,
+   "h": 556,
+   "boxes": [
+    [
+     280,
+     26,
+     480,
+     76
+    ],
+    [
+     168,
+     80,
+     262,
+     104
+    ],
+    [
+     390,
+     83,
+     488,
+     108
+    ],
+    [
+     126,
+     272,
+     228,
+     300
+    ],
+    [
+     578,
+     434,
+     764,
+     458
+    ],
+    [
+     262,
+     532,
+     460,
+     556
+    ]
+   ],
+   "labels": [
+    "Cellulose microfibrils in a plant cell wall",
+    "Cell walls",
+    "Microfibril",
+    "Plant cells",
+    "Cellulose molecules",
+    "β Glucose monomer"
+   ]
+  },
+  {
+   "id": "fungal-cell",
+   "title": "A fungal cell",
+   "w": 800,
+   "h": 597,
+   "boxes": [
+    [
+     118,
+     153,
+     286,
+     195
+    ],
+    [
+     158,
+     198,
+     286,
+     235
+    ],
+    [
+     50,
+     245,
+     284,
+     280
+    ],
+    [
+     70,
+     290,
+     284,
+     324
+    ],
+    [
+     66,
+     356,
+     284,
+     390
+    ],
+    [
+     151,
+     400,
+     284,
+     435
+    ]
+   ],
+   "labels": [
+    "Cytoplasm",
+    "Nucleus",
+    "Cell membrane",
+    "Chitin cell wall",
+    "Mitochondrion",
+    "Vacuole"
+   ]
+  },
+  {
+   "id": "bacterial-wall",
+   "title": "A Gram-positive bacterial cell wall",
+   "w": 960,
+   "h": 419,
+   "boxes": [
+    [
+     766,
+     48,
+     878,
+     73
+    ],
+    [
+     514,
+     138,
+     586,
+     162
+    ],
+    [
+     508,
+     191,
+     595,
+     230
+    ],
+    [
+     621,
+     274,
+     684,
+     298
+    ]
+   ],
+   "labels": [
+    "Peptidoglycan",
+    "Cell wall",
+    "Plasma membrane",
+    "Protein"
+   ]
+  },
+  {
+   "id": "ecm",
+   "title": "The extracellular matrix",
+   "w": 544,
+   "h": 591,
+   "boxes": [
+    [
+     346,
+     2,
+     540,
+     32
+    ],
+    [
+     400,
+     36,
+     532,
+     64
+    ],
+    [
+     464,
+     87,
+     532,
+     114
+    ],
+    [
+     15,
+     153,
+     138,
+     181
+    ],
+    [
+     390,
+     199,
+     526,
+     226
+    ],
+    [
+     318,
+     272,
+     420,
+     296
+    ],
+    [
+     0,
+     542,
+     97,
+     588
+    ],
+    [
+     240,
+     537,
+     313,
+     566
+    ],
+    [
+     345,
+     542,
+     510,
+     590
+    ]
+   ],
+   "labels": [
+    "Proteoglycan complex",
+    "Carbohydrates",
+    "Protein",
+    "Collagen fiber",
+    "Polysaccharide",
+    "Fibronectin",
+    "Plasma membrane",
+    "Integrin",
+    "Microfilaments of the cytoskeleton"
+   ]
+  },
+  {
+   "id": "junctions",
+   "title": "Animal cell junctions",
+   "w": 495,
+   "h": 440,
+   "boxes": [
+    [
+     5,
+     128,
+     115,
+     148
+    ],
+    [
+     24,
+     338,
+     114,
+     358
+    ],
+    [
+     250,
+     399,
+     336,
+     422
+    ],
+    [
+     160,
+     308,
+     232,
+     340
+    ],
+    [
+     386,
+     350,
+     438,
+     382
+    ],
+    [
+     141,
+     30,
+     192,
+     62
+    ]
+   ],
+   "labels": [
+    "Adhesion junction",
+    "Tight junction",
+    "Gap junction",
+    "Tight junction proteins",
+    "Protein channels",
+    "Protein filaments"
+   ]
+  },
+  {
+   "id": "plasmodesma",
+   "title": "Plasmodesmata",
+   "w": 544,
+   "h": 289,
+   "boxes": [
+    [
+     282,
+     17,
+     410,
+     44
+    ],
+    [
+     422,
+     46,
+     502,
+     74
+    ],
+    [
+     412,
+     108,
+     510,
+     136
+    ],
+    [
+     410,
+     160,
+     486,
+     186
+    ]
+   ],
+   "labels": [
+    "Plasmodesma",
+    "Cell wall",
+    "Cytoplasm",
+    "Vacuole"
+   ]
+  },
+  {
+   "id": "homeostasis",
+   "title": "How every animal exchanges with its environment",
+   "w": 1551,
+   "h": 1068,
+   "boxes": [
+    [
+     435,
+     174,
+     532,
+     224
+    ],
+    [
+     30,
+     192,
+     150,
+     235
+    ],
+    [
+     30,
+     271,
+     145,
+     349
+    ],
+    [
+     861,
+     186,
+     1019,
+     272
+    ],
+    [
+     765,
+     125,
+     870,
+     206
+    ],
+    [
+     746,
+     466,
+     970,
+     551
+    ],
+    [
+     1108,
+     614,
+     1236,
+     665
+    ],
+    [
+     1333,
+     327,
+     1519,
+     404
+    ],
+    [
+     295,
+     659,
+     440,
+     740
+    ],
+    [
+     510,
+     778,
+     651,
+     818
+    ],
+    [
+     715,
+     779,
+     796,
+     824
+    ],
+    [
+     1275,
+     780,
+     1485,
+     899
+    ]
+   ],
+   "labels": [
+    "Lungs",
+    "Oxygen",
+    "Carbon dioxide",
+    "Capillary exchange",
+    "Tissue fluid",
+    "Cardiovascular system",
+    "Kidneys",
+    "Nitrogenous wastes",
+    "Digestive tract",
+    "Nutrients",
+    "Liver",
+    "Indigestible food residues (feces)"
+   ]
+  },
+  {
+   "id": "cube-table",
+   "title": "Surface area to volume of three cubes",
+   "w": 632,
+   "h": 400,
+   "boxes": [
+    [
+     294,
+     244,
+     449,
+     267
+    ],
+    [
+     460,
+     244,
+     614,
+     267
+    ],
+    [
+     293,
+     286,
+     378,
+     311
+    ],
+    [
+     459,
+     286,
+     552,
+     311
+    ],
+    [
+     291,
+     328,
+     331,
+     356
+    ],
+    [
+     458,
+     328,
+     508,
+     356
+    ]
+   ],
+   "labels": [
+    "24 mm²",
+    "96 mm²",
+    "8 mm³",
+    "64 mm³",
+    "3/1",
+    "1.5/1"
+   ]
+  },
+  {
+   "id": "formulas",
+   "title": "AP Biology formula sheet: surface area and volume",
+   "w": 1346,
+   "h": 384,
+   "boxes": [
+    [
+     8,
+     91,
+     127,
+     129
+    ],
+    [
+     10,
+     349,
+     111,
+     382
+    ],
+    [
+     459,
+     347,
+     533,
+     383
+    ],
+    [
+     12,
+     179,
+     256,
+     210
+    ],
+    [
+     460,
+     179,
+     553,
+     211
+    ],
+    [
+     10,
+     263,
+     208,
+     297
+    ],
+    [
+     460,
+     263,
+     564,
+     295
+    ]
+   ],
+   "labels": [
+    "SA = 4πr²",
+    "SA = 6s²",
+    "V = s³",
+    "SA = 2lh + 2lw + 2wh",
+    "V = lwh",
+    "SA = 2πrh + 2πr²",
+    "V = πr²h"
+   ]
+  },
+  {
+   "id": "radius-scaling",
+   "title": "Radius, surface area and volume as a cell grows",
+   "w": 600,
+   "h": 205,
+   "boxes": [
+    [
+     288,
+     0,
+     310,
+     17
+    ],
+    [
+     365,
+     44,
+     387,
+     63
+    ],
+    [
+     454,
+     74,
+     482,
+     93
+    ],
+    [
+     516,
+     112,
+     538,
+     130
+    ]
+   ],
+   "labels": [
+    "9X",
+    "4X",
+    "27X",
+    "8X"
+   ]
+  },
+  {
+   "id": "many-cubes",
+   "title": "Why cells are small and organisms are made up of cells",
+   "w": 664,
+   "h": 420,
+   "boxes": [
+    [
+     430,
+     186,
+     480,
+     216
+    ],
+    [
+     560,
+     186,
+     612,
+     216
+    ],
+    [
+     434,
+     366,
+     481,
+     398
+    ]
+   ],
+   "labels": [
+    "150",
+    "750",
+    "1.2"
+   ]
+  },
+  {
+   "id": "portrait-history",
+   "title": "Robert Hooke",
+   "w": 300,
+   "h": 416,
+   "boxes": [
+    [
+     0,
+     360,
+     300,
+     416
+    ]
+   ],
+   "labels": [
+    "Robert Hooke"
+   ]
+  },
+  {
+   "id": "portrait-leeuwenhoek",
+   "title": "Anton Leeuwenhoek",
+   "w": 300,
+   "h": 416,
+   "boxes": [
+    [
+     0,
+     360,
+     300,
+     416
+    ]
+   ],
+   "labels": [
+    "Anton Leeuwenhoek"
+   ]
+  },
+  {
+   "id": "portrait-schleiden",
+   "title": "Matthias Schleiden",
+   "w": 300,
+   "h": 416,
+   "boxes": [
+    [
+     0,
+     360,
+     300,
+     416
+    ]
+   ],
+   "labels": [
+    "Matthias Schleiden"
+   ]
+  },
+  {
+   "id": "portrait-schwann",
+   "title": "Theodor Schwann",
+   "w": 300,
+   "h": 416,
+   "boxes": [
+    [
+     0,
+     360,
+     300,
+     416
+    ]
+   ],
+   "labels": [
+    "Theodor Schwann"
+   ]
   }
  ]
 }

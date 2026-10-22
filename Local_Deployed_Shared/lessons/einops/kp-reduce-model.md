@@ -44,6 +44,14 @@ Details that matter in the drills:
   survivors while reducing (`'b c h w -> c b'` is legal), and — the next
   KP — parenthesized factors turn reduce into pooling.
 
+Step through it yourself. Every name missing on the right pulls its numbers
+into one cell:
+
+```figure einops-console reduce-model
+Interactive figure: step through 'h w -> w', 'h w -> 1 w', 'b c h w -> b' and
+friends; each step gathers the numbers one output cell reduces.
+```
+
 ## Worked example
 
 Task: per-image scalar means; per-column max keeping a singleton row; and a

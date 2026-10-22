@@ -38,6 +38,14 @@ Together these subsume t.stack / t.unsqueeze / t.squeeze with the
 same pattern language you're already using — one notation for the whole
 shape-plumbing toolbox.
 
+Step through it yourself. A `1` adds or removes an axis of length one;
+nothing moves relative to anything else:
+
+```figure einops-console singleton-and-lists
+Interactive figure: step through 'h w -> 1 h w', '1 h w -> h w', a unit axis
+inside, and a batch laid side by side.
+```
+
 ## Worked example
 
 Task: stack a list of images into a batch; insert a singleton axis into a

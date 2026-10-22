@@ -35,6 +35,7 @@ import validate_math
 from validate_math import math_bank
 from lesson_lib import (LESSONS_DIR, REPO, all_kp_paths, code_fences, flat_question, load_bank,
                         load_registry, parse_kp, split_items)
+import lesson_images
 import lesson_quality as quality
 import lesson_width as width
 sys.path.insert(0, str(LESSONS_DIR))
@@ -434,11 +435,16 @@ def check_previews(paths, errors):
 
 
 def check_coverage(registry, bank, kps, errors):
+    # A lesson-less course (LeetCode Patterns) is drills only, by design: its
+    # KCs have no KP file to find. Without this, --coverage failed on all 40
+    # leetcode.* KCs on every run since that course landed (2026-09-25).
+    from audit_solution_prereqs import LESSONLESS_PREFIXES
     kp_kcs = [kp["kc"] for kp in kps if kp]
     dupes = {k for k in kp_kcs if kp_kcs.count(k) > 1}
     for d in dupes:
         errors.append(f"coverage: kc {d} has multiple KP files")
-    missing = {kc["id"] for kc in registry["kcs"]} - set(kp_kcs)
+    missing = {kc["id"] for kc in registry["kcs"]
+               if not kc["id"].startswith(LESSONLESS_PREFIXES)} - set(kp_kcs)
     for m in sorted(missing):
         errors.append(f"coverage: kc {m} has no KP file")
     tags_path = LESSONS_DIR / "qmatrix_tags.json"
@@ -477,6 +483,7 @@ def main(argv):
         validate_math.check_all(errors)
         for w in validate_math.WARNINGS:
             print(f"WARN — {w}")
+        lesson_images.check_all(paths, bank, errors)
     if coverage:
         check_coverage(registry, bank, kps, errors)
     if LEAK_WARNINGS:

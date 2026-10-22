@@ -42,6 +42,18 @@
   through `require()`.
 - `content_mcp/backup.py`: the one-day-old safety net.
 - `content_mcp/lessons.py` / `graph.py` / `drills.py`: the three content layers.
+- `content_mcp/courses.py` / `images.py` / `problems.py` / `glossary.py`: course
+  rows + units, lesson pictures (`lessons/images/`), multiple-choice problems,
+  the glossary kept in step with `graph_add_kc`.
+- `content_mcp/atoms.py`: the mastery-atom graph (`arena_drillable_v1.json`) and
+  drill tags (`question_atom_tags.jsonl`); every new drill needs a tag or the
+  bank audit blocks it (`atom_tag_missing`).
+- `content_mcp/clocks.py`: the per-KC placement answer clock
+  (`lessons/placement_time_caps.json`), set by `graph_add_kc answer_secs`.
+- `content_mcp/study.py` / `study_images.py` / `ops_study.py`: Study courses
+  (free / mc / card / image-occlusion `label`) written to `study-courses/<id>/`.
+  Anything needing pydantic or Pillow runs `scripts/study_course.py` under the
+  content python, so this package stays stdlib-only.
 - `content_mcp/pipeline.py`: runs the repo's validators under the backend venv.
 - `bin/dd-content`, `bin/dd-content-mcp`: entry points. Both prefer the backend
   venv interpreter, because bare `python3` on this machine has no torch.
@@ -95,6 +107,14 @@
 - **Reads never need the password; writes always do.** A tool that changes a
   file and is registered without `needs_auth=True` is a bug — `watch.py` checks
   for it.
+- 🔴 **Within ONE override layer the exporter keeps the LAST record per id, no
+  merge.** `drill_update` therefore writes the full merged record; a bare
+  `{id, field}` once dropped a drill's test cases (watch.py guards it).
+- 🔴 **Study ids are namespaced by course** (`<course>.<local>`, diagrams
+  `<course>-<local>`). `study_apply` replaces only what the course owns in the
+  shared pack and refuses a prefix that a builder already owns
+  (`.contrib/applied.json`). A pack rebuild drops applied courses → re-run
+  `study_apply`.
 - The pipeline must run under `This-Directory-Only/backend/.venv/bin/python3`.
   Bare `python3` has no torch: every torch drill validates as broken and
   `expected_output` is left stale instead of recomputed.
@@ -131,6 +151,7 @@
   - Status: `ACTIVE`.
 
 ## Recent Changes
+- 2026-10-21: Whole-course authoring tested end to end in a scratch kit. New: `course_create`/`course_add_unit`, `image_add/list/remove`, `problems_*` (MC), `atom_list`/`atom_add`/`drill_tag` (+ `drill_add atoms=`), `graph_add_kc answer_secs`, and 12 `study_*` tools for Study courses incl. image occlusion (preview PNG with grid + numbered boxes). `pipeline_check` order is now export → compile → colab → notebooks → qmatrix → symbols → validate → audit_bank. Fixed: `drill_update` wiped every other override field; `drill_add`/`drill_update` warn on a starter that does the work.
 - 2026-10-07: Public course kit (`ops/course-kit/`). Interpreter order is now backend venv -> `DELTA_DRILLS_PYTHON` -> `<repo>/.venv` (the kit's venv) -> `python3`, in `paths.python_for_content()` and both `bin/` scripts. `set-password --password -` reads stdin. The kit ships NO `auth.json`, so its users set their own password. `CONTRIBUTING-CONTENT.md` covers both repos.
 - 2026-09-02: Created. 28 tools over lessons/graph/drills/pipeline/backup, an
   MCP stdio server and the `dd-content` CLI generated from one registry,

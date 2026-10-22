@@ -540,5 +540,11 @@ window.DD_GLOSSARY.kcLesson = {
   "cnn.resnet34": ["ARENA 0.2 — Neural networks and ResNets", "Assemble ResNet34 from stem, groups and head"],
   "cnn.feature-extraction": ["ARENA 0.2 — Neural networks and ResNets", "Reuse pretrained weights: copy, freeze, replace the head"],
   "cnn.training-loop": ["ARENA 0.2 — Neural networks and ResNets", "A training loop over batches: forward, loss, backward, step, validate"],
-  "cnn.forward-hooks": ["ARENA 0.2 — Neural networks and ResNets", "Hooks watch a module's output"]
+  "cnn.forward-hooks": ["ARENA 0.2 — Neural networks and ResNets", "Hooks watch a module's output"],
+  "math.orthogonal-projection": ["Linear algebra for ARENA 0.1", "Components along a direction, and removing them"],
+  "refusal.diff-in-means": ["Refusal direction (Arditi et al. 2024)", "The refusal direction is a difference of two averages"],
+  "refusal.pick-layer": ["Refusal direction (Arditi et al. 2024)", "Pick the layer where the direction works"],
+  "refusal.direction-ablation": ["Refusal direction (Arditi et al. 2024)", "Ablate the direction: remove its component everywhere"],
+  "refusal.activation-addition": ["Refusal direction (Arditi et al. 2024)", "Add the direction to make a harmless prompt look harmful"],
+  "refusal.read-intervention-table": ["Refusal direction (Arditi et al. 2024)", "Read the saved intervention table without over-reading it"]
 };

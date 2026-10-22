@@ -1,0 +1,135 @@
+{
+ "kc": "refusal.pick-layer",
+ "problems": [
+  {
+   "id": 50136,
+   "kind": "statement",
+   "difficulty": 50,
+   "prompt": "Two layers both pass every filter. After removing the direction, the model still refuses 10% of harmful prompts at layer X and 40% at layer Y. Which layer does the rule keep?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "Layer X, since less refusal is left after its direction is removed."
+    },
+    {
+     "key": "B",
+     "text": "Layer Y, since more refusal left over shows a stronger direction."
+    },
+    {
+     "key": "C",
+     "text": "The later of the two, since later layers hold more refined directions."
+    },
+    {
+     "key": "D",
+     "text": "Neither, since any refusal left above zero fails one of the filters."
+    }
+   ],
+   "answer": "A",
+   "solution": "Among the layers that survive the filters, the rule keeps the one with the lowest leftover refusal after removal. Lower means the removal did more.\n\n- B: reads leftover refusal backwards. More left over means a weaker removal.\n- C: once the filters are passed, the layer's position plays no part in the choice.\n- D: no filter asks for zero leftover refusal. Leftover refusal is only compared between surviving layers."
+  },
+  {
+   "id": 50137,
+   "kind": "statement",
+   "difficulty": 60,
+   "prompt": "One candidate layer has the best removal score in the whole sweep, but a very large KL (the distance between the model's word probabilities on harmless prompts before and after the removal). Why does the rule still reject it?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "A large KL means its direction is noisy, so its good score is probably just luck."
+    },
+    {
+     "key": "B",
+     "text": "A large KL means adding the direction fails, so that layer cannot cause refusals."
+    },
+    {
+     "key": "C",
+     "text": "A large KL means the two class averages barely differ there, so its arrow is weak."
+    },
+    {
+     "key": "D",
+     "text": "The removal also disturbs ordinary prompts, so its good score may come from damage."
+    }
+   ],
+   "answer": "D",
+   "solution": "The KL filter is a damage check. If removing the direction moves the model's word choices on harmless prompts a lot, the removal is doing far more than switching off refusal, and a broken model also stops refusing.\n\n- A: KL is not a measure of noise in the direction. It measures change on harmless prompts.\n- B: that is what the separate addition filter checks. KL is measured with the direction removed.\n- C: how far apart the class averages are is the arrow's length, a different number from KL."
+  },
+  {
+   "id": 50138,
+   "kind": "statement",
+   "difficulty": 65,
+   "prompt": "A collaborator wants to drop the filter on layer number, since layers near the end of the model often have the best removal scores. What is the main risk?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "Late layers have longer difference arrows, so their removal scores come out inflated."
+    },
+    {
+     "key": "B",
+     "text": "Nothing, since a lower removal score is always a better direction, wherever it comes from."
+    },
+    {
+     "key": "C",
+     "text": "Late directions often steer the words written, so a good score may not reflect refusing."
+    },
+    {
+     "key": "D",
+     "text": "Nothing, since late layers have seen the whole prompt and give the most reliable direction."
+    }
+   ],
+   "answer": "C",
+   "solution": "Late layers sit close to the output, where directions tend to act on the words being written. A strong score there can mean the answer text was disturbed, which is not the same as the decision to refuse being removed.\n\n- A: the removal uses the arrow rescaled to length one, so the arrow's raw length does not enter the score.\n- B: a better number can come from a different effect than the one you meant to measure.\n- D: every layer at the chosen position has seen the whole prompt, so that does not set late layers apart."
+  },
+  {
+   "id": 50139,
+   "kind": "statement",
+   "difficulty": 75,
+   "prompt": "The selection is rerun on a new model, and no layer passes all three filters. What should the selection report?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "The layer with the lowest removal score, ignoring the filters once."
+    },
+    {
+     "key": "B",
+     "text": "That no layer qualifies, so there is no chosen layer to report."
+    },
+    {
+     "key": "C",
+     "text": "Layer 0, since a search over all-equal scores returns position 0."
+    },
+    {
+     "key": "D",
+     "text": "The layer with the smallest KL, since it does the least harm of all."
+    }
+   ],
+   "answer": "B",
+   "solution": "The rule is to filter first, then take the lowest score among the layers that remain. If nothing remains there is nothing to take the lowest of, and the honest report is that there is no choice.\n\n- A: ignores the filters the rule just applied.\n- C: this is the trap of a search that returns position 0 when every score is tied. That position is not a real answer.\n- D: smaller KL is only a tie-break among layers that passed, not a way to rescue an empty list."
+  },
+  {
+   "id": 50140,
+   "kind": "statement",
+   "difficulty": 80,
+   "prompt": "By mistake, someone combines the three layer filters with \"or\" instead of \"and\". The chosen layer turns out to have a large KL. Why?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "With \"or\", a layer that failed the KL filter stays in as long as it passes another one."
+    },
+    {
+     "key": "B",
+     "text": "With \"or\", the tie-break on KL is skipped, so ties are settled by the layer's position."
+    },
+    {
+     "key": "C",
+     "text": "With \"or\", the filters run after the lowest score is chosen instead of before it."
+    },
+    {
+     "key": "D",
+     "text": "With \"or\", the layers kept are exactly the ones that fail all three of the filters."
+    }
+   ],
+   "answer": "A",
+   "solution": "With \"and\" a layer must pass all three filters. With \"or\" it only has to pass one, so a layer that fails the KL filter can pass the layer-number filter and stay in the running.\n\n- B: the tie-break is a separate step. Changing how the filters combine does not remove it.\n- C: how the filters are combined does not change when they are applied.\n- D: \"or\" keeps more layers than \"and\". It does not invert the filters."
+  }
+ ]
+}

@@ -43,23 +43,50 @@ VALIDATE_SCRIPT = SCRIPTS / "validate_lessons.py"
 COMPILE_SCRIPT = SCRIPTS / "compile_lessons.py"
 QMATRIX_SCRIPT = SCRIPTS / "build_qmatrix.py"
 WEB_NOTEBOOKS_SCRIPT = SCRIPTS / "compile_web_notebooks.py"
+COLAB_NOTEBOOKS_SCRIPT = SCRIPTS / "generate_colab_notebooks.py"
 
 THIS_ONLY = REPO / "This-Directory-Only"
 CSV_DIR = THIS_ONLY / "csv files of problems"
 CURATED_CSV = CSV_DIR / "curated_additions.csv"
 CHATGPT = THIS_ONLY / "chatgpt"
 CURATED_OVERRIDES = CHATGPT / "curated_overrides.jsonl"
+ATOM_TAGS = THIS_ONLY / "backend" / "app" / "data" / "question_atom_tags.jsonl"
+ATOM_GRAPH = THIS_ONLY / "backend" / "app" / "data" / "concept_graphs" / "arena_drillable_v1.json"
+
+# Study courses (content_mcp/study.py): a contributor's tracked source set, the
+# helper that checks it against the pack model, and the pack it merges into —
+# the live one in the private repo, the published copy in the course kit.
+STUDY_COURSES = REPO / "study-courses"
+STUDY_HELPER = SCRIPTS / "study_course.py"
+STUDY_PACK_ID = "delta-drills-oversight"   # backend config.py concept_tutor_pack
+LIVE_STUDY_PACK = THIS_ONLY / "backend" / "app" / "data" / "concept_packs" / STUDY_PACK_ID
+KIT_STUDY_PACK = REPO / "study-packs" / STUDY_PACK_ID
+
+
+def study_pack() -> Path | None:
+    for candidate in (LIVE_STUDY_PACK, KIT_STUDY_PACK):
+        if (candidate / "pack.json").exists():
+            return candidate
+    return None
+
 
 BACKEND_PY = THIS_ONLY / "backend" / ".venv" / "bin" / "python3"
 KIT_PY = REPO / ".venv" / "bin" / "python3"
 
-# Courses = every lessons/ subdirectory that actually holds KP markdown.
+# A course folder made by `course_create` carries this marker, so a course
+# exists (and `lesson_create` accepts it) before its first page does. Git does
+# not track an empty directory; without the marker a fresh course would vanish
+# on the next clone and `courses()` could not tell it from a typo.
+COURSE_MARKER = "course.json"
+
+
+# Courses = every lessons/ subdirectory that holds KP markdown or a marker.
 def courses() -> list[str]:
     if not LESSONS.is_dir():
         return []
     found = []
     for child in sorted(LESSONS.iterdir()):
-        if child.is_dir() and any(child.glob("kp-*.md")):
+        if child.is_dir() and (any(child.glob("kp-*.md")) or (child / COURSE_MARKER).exists()):
             found.append(child.name)
     return found
 
@@ -107,6 +134,10 @@ CONTENT_PATHS: list[tuple[str, list[str] | None]] = [
     ("Local_Deployed_Shared/pipeline/retired_question_ids.json", None),
     ("This-Directory-Only/csv files of problems", ["*.csv"]),
     ("This-Directory-Only/chatgpt", ["*.jsonl", "function_mode_*.json"]),
+    # atom_add / drill_tag write these two.
+    ("This-Directory-Only/backend/app/data/question_atom_tags.jsonl", None),
+    ("study-courses", None),
+    ("This-Directory-Only/backend/app/data/concept_graphs/arena_drillable_v1.json", None),
 ]
 
 BACKUP_EXCLUDE = {"__pycache__", ".venv", "api_key.txt", ".git", "node_modules"}

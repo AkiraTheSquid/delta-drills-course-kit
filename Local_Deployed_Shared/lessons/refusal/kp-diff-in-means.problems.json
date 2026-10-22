@@ -1,0 +1,135 @@
+{
+ "kc": "refusal.diff-in-means",
+ "problems": [
+  {
+   "id": 50131,
+   "kind": "statement",
+   "difficulty": 45,
+   "prompt": "A teammate builds the direction from 40 harmful prompts and 10 harmless ones. They worry that the larger class will tilt the arrow toward the harmful side. What is the right response?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "Drop 30 harmful prompts, since the bigger class has a bigger average that dominates."
+    },
+    {
+     "key": "B",
+     "text": "Nothing needs fixing: each class is averaged on its own first, so the sizes drop out."
+    },
+    {
+     "key": "C",
+     "text": "Weight the harmless average by 4, so that both sides carry the same total weight."
+    },
+    {
+     "key": "D",
+     "text": "Subtract the two class sums instead, so that the two class sizes cancel each other."
+    }
+   ],
+   "answer": "B",
+   "solution": "Each class is reduced to one average vector before anything is subtracted, so the number of prompts in a class does not enter the subtraction. A bigger class only makes its own average less noisy.\n\n- A: treats an average as if it grew with the number of prompts. It does not.\n- C: invents a correction for a problem that does not exist, and it would distort the arrow.\n- D: sums do grow with class size, so subtracting sums would make the sizes matter instead of cancel."
+  },
+  {
+   "id": 50132,
+   "kind": "statement",
+   "difficulty": 55,
+   "prompt": "Two people build the direction from the same activations. Their arrows have the same length but point in exactly opposite ways. What is the most likely cause?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "They subtracted the two class averages in opposite orders."
+    },
+    {
+     "key": "B",
+     "text": "One averaged over the wrong axis, mixing numbers within a prompt."
+    },
+    {
+     "key": "C",
+     "text": "One of them used more harmful prompts than the other did."
+    },
+    {
+     "key": "D",
+     "text": "One of them took the activations from an earlier layer."
+    }
+   ],
+   "answer": "A",
+   "solution": "Swapping the order of a subtraction flips the sign of the result and changes nothing else. Same length, opposite direction is exactly that signature.\n\n- B: averaging over the wrong axis changes the shape and the numbers. It does not produce a clean mirror image.\n- C: class sizes do not enter the subtraction, and they could not flip the arrow exactly.\n- D: a different layer gives a different arrow, with a different length, not an exact mirror of this one."
+  },
+  {
+   "id": 50133,
+   "kind": "statement",
+   "difficulty": 60,
+   "prompt": "A reviewer says that rescaling the arrow to length one \"throws away information about how different the two classes are, so the direction is worse.\" What does rescaling actually change?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "The direction, slightly, because a shorter arrow points a little less precisely."
+    },
+    {
+     "key": "B",
+     "text": "The ranking of prompts by score, since each score is divided by a different amount."
+    },
+    {
+     "key": "C",
+     "text": "Nothing at all, so the step can be skipped without affecting anything later on."
+    },
+    {
+     "key": "D",
+     "text": "Only the length: the direction, and the ranking of prompts by score, stay the same."
+    }
+   ],
+   "answer": "D",
+   "solution": "Dividing a vector by its own length gives a vector with the same direction and length one. Every score along it is the old score divided by the same constant, so the ranking of prompts is unchanged. The reviewer is right that the size is gone, but it is kept separately, and the direction is no worse.\n\n- A: a vector does not point less precisely when it is shorter.\n- B: every score is divided by the same positive number, the arrow's length, so no two scores swap places.\n- C: the direction is unchanged, but the size is not, and the removal and scoring formulas rely on a length of one."
+  },
+  {
+   "id": 50134,
+   "kind": "statement",
+   "difficulty": 70,
+   "prompt": "At one layer, the harmful and harmless averages come out exactly equal. What should a pipeline that builds a unit direction for every layer do with that layer?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "Use the harmful average there instead, because it still points toward where harmful prompts lie."
+    },
+    {
+     "key": "B",
+     "text": "Pick a random unit vector there, because with equal averages every direction is equally good."
+    },
+    {
+     "key": "C",
+     "text": "Mark it as having no direction, since its difference has length zero and dividing gives NaN."
+    },
+    {
+     "key": "D",
+     "text": "Normalise it as usual, because dividing a zero vector by its length just returns all zeros."
+    }
+   ],
+   "answer": "C",
+   "solution": "When the two averages match, their difference is the zero vector. It has no direction, and dividing by its length, zero, gives NaN in every entry. The pipeline has to handle that layer on purpose.\n\n- A: nothing in the method falls back to one class's average, and that average is not a difference between classes.\n- B: the method has no randomness. A random vector would be reported as if it were a finding.\n- D: zero divided by zero is NaN, not zero. Getting zeros needs an explicit check."
+  },
+  {
+   "id": 50135,
+   "kind": "statement",
+   "difficulty": 75,
+   "prompt": "Someone hands you a vector and says it is the refusal direction. You have the harmful and harmless activations. Which check best tests the claim that it separates the two classes?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "Check that its length is one, since a genuine refusal direction always comes as a unit vector."
+    },
+    {
+     "key": "B",
+     "text": "Score both classes along it and check the harmful scores mostly sit above the harmless."
+    },
+    {
+     "key": "C",
+     "text": "Check that it points mostly along one coordinate, the way the toy example's direction does."
+    },
+    {
+     "key": "D",
+     "text": "Remove it from the harmful activations and check that their scores along it drop to zero."
+    }
+   ],
+   "answer": "B",
+   "solution": "A direction separates the classes if the two classes land in different places along it. Scoring both classes and comparing them is that test, directly.\n\n- A: any vector can be rescaled to length one. Length says nothing about where the classes fall.\n- C: the toy direction happens to lie near one coordinate. A real direction can spread over thousands of them.\n- D: removing ANY direction sends every score along it to zero, so this check passes for every vector."
+  }
+ ]
+}

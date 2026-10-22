@@ -28,6 +28,13 @@ at model rank is that the ORDER on the right is now a design decision. ARENA
 keeps `batch posn nheads d_head` for every activation, and the next einsum in
 the file assumes that layout.
 
+Step through the three contractions of one attention head on tiny shapes:
+
+```figure einops-console attention
+Interactive figure: step through the projection 'b s d, d n -> b s n', the
+scores 'b q d, b k d -> b q k' and the weighted sum of values.
+```
+
 ## Watch out
 - **Survivors in the wrong order** — `-> b n s` and `-> b s n` are both legal
   and contain the same numbers; only one lines up with the tensor you
@@ -147,6 +154,14 @@ Finally, `...` stands for "whatever leading axes there are". A pattern with
 example, a batch, or a batch of batches, without rewriting it:
 
 > `"... inst feats, inst hidden feats -> ... inst hidden"`
+
+Step through it yourself with two heads — the head axis is kept on both
+sides, so each head is its own contraction:
+
+```figure einops-console attention-heads
+Interactive figure: step through the per-head projection and the per-head
+attention scores with full axis names.
+```
 
 ## Watch out
 - **Same name for two axes that must range independently** — passing a

@@ -44,6 +44,14 @@ Everything here is the merge/split KPs at model-shaped rank; what this KP
 adds is fluency with the CONVENTIONS (batch first, which name is slow) that
 the drills — and real checkpoints — assume.
 
+Step through it yourself. The flatten, the head split and the head merge are
+each one pattern:
+
+```figure einops-console dl-flatten-heads
+Interactive figure: step through 'b c h w -> b (c h w)', the head split
+'b t (nh d) -> b nh t d', its inverse, and a global average pool.
+```
+
 ## Worked example
 
 Task: flatten conv features for a classifier; merge attention heads; split

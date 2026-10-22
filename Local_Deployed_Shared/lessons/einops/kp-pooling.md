@@ -367,6 +367,14 @@ Interactive figure: pick the block size (h2 rows by w2 columns), then step
 from the image, to the pulled-apart blocks, to one number per block.
 ```
 
+The same idea in the general console, with the loop it stands for —
+including the windows before they are reduced:
+
+```figure einops-console pooling
+Interactive figure: step through '(h h2) -> h', the unreduced windows,
+a 2 × 2 max pool and the blocks pulled apart.
+```
+
 ## Watch out
 
 - **Here `h2` counts rows of the IMAGE.** In the one-axis grid above, `h2`

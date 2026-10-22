@@ -423,6 +423,22 @@ below. Grading is a key compare on the server (`grading.grade_choice`) or,
 with no backend, in `practice/math-drill.js`. The key never reaches the
 browser before `/submit`.
 
+## Pictures (2026-10-21)
+
+Add a picture with the content MCP's `image_add` (course + file + alt): it
+copies the file to `lessons/<course>/images/` and returns the markdown to
+paste, `![alt](/lessons/<course>/images/<file>)`. Rules, enforced by
+`scripts/lesson_images.py` in `validate_lessons.py`:
+
+- The src is ROOT-ABSOLUTE. A relative src breaks on deep links (the SPA
+  rewrite answers it with index.html, a 200 nothing reports).
+- PNG, JPEG, GIF or WebP only; no SVG (same-origin SVG can run script).
+- `https://` is the only other scheme; alt text is required.
+
+Pictures render in the practice lesson pane, the KG concept panel and
+`lessons/viewer.html`. Image-occlusion cards are a Study-course feature
+(`study_diagram_add`), not a lesson-page one.
+
 ## Notes — the metadata layer
 
 One optional Markdown file per concept in `notes/<kc-id>.md`, front matter

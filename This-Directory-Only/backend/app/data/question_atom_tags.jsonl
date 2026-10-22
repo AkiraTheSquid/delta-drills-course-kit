@@ -2213,3 +2213,109 @@
 {"question_id": 1741, "atoms": [{"atom_id": "reshape-window-pool", "confidence": 0.9}, {"atom_id": "view-vs-reshape", "confidence": 0.6}]}
 {"question_id": 1742, "atoms": [{"atom_id": "reshape-window-pool", "confidence": 0.9}, {"atom_id": "view-vs-reshape", "confidence": 0.6}]}
 {"question_id": 1743, "atoms": [{"atom_id": "reshape-window-pool", "confidence": 0.9}, {"atom_id": "view-vs-reshape", "confidence": 0.6}]}
+{"question_id": 1744, "atoms": [{"atom_id": "rd-class-mean", "confidence": 1.0}]}
+{"question_id": 1745, "atoms": [{"atom_id": "rd-class-mean", "confidence": 1.0}]}
+{"question_id": 1746, "atoms": [{"atom_id": "rd-diff-in-means", "confidence": 1.0}]}
+{"question_id": 1747, "atoms": [{"atom_id": "rd-diff-in-means", "confidence": 1.0}]}
+{"question_id": 1748, "atoms": [{"atom_id": "rd-unit-direction", "confidence": 1.0}, {"atom_id": "vector-normalize-keepdim", "confidence": 0.5}]}
+{"question_id": 1749, "atoms": [{"atom_id": "rd-unit-direction", "confidence": 1.0}, {"atom_id": "vector-normalize-keepdim", "confidence": 0.5}]}
+{"question_id": 1750, "atoms": [{"atom_id": "rd-class-mean", "confidence": 1.0}]}
+{"question_id": 1751, "atoms": [{"atom_id": "rd-diff-in-means", "confidence": 1.0}]}
+{"question_id": 1752, "atoms": [{"atom_id": "rd-diff-in-means", "confidence": 1.0}]}
+{"question_id": 1753, "atoms": [{"atom_id": "rd-unit-direction", "confidence": 1.0}, {"atom_id": "vector-normalize-keepdim", "confidence": 0.5}]}
+{"question_id": 1754, "atoms": [{"atom_id": "rd-diff-in-means", "confidence": 1.0}]}
+{"question_id": 1755, "atoms": [{"atom_id": "rd-diff-in-means", "confidence": 1.0}]}
+{"question_id": 1756, "atoms": [{"atom_id": "rd-diff-in-means", "confidence": 1.0}, {"atom_id": "rd-unit-direction", "confidence": 1.0}, {"atom_id": "vector-normalize-keepdim", "confidence": 0.5}]}
+{"question_id": 1757, "atoms": [{"atom_id": "rd-diff-in-means", "confidence": 1.0}, {"atom_id": "rd-unit-direction", "confidence": 1.0}, {"atom_id": "vector-normalize-keepdim", "confidence": 0.5}]}
+{"question_id": 1758, "atoms": [{"atom_id": "rd-diff-in-means", "confidence": 1.0}, {"atom_id": "rd-unit-direction", "confidence": 1.0}, {"atom_id": "vector-normalize-keepdim", "confidence": 0.5}, {"atom_id": "la-dot-products-norms", "confidence": 0.5}]}
+{"question_id": 1759, "atoms": [{"atom_id": "rd-select-layer", "confidence": 1.0}, {"atom_id": "boolean-mask-combine", "confidence": 0.5}]}
+{"question_id": 1760, "atoms": [{"atom_id": "rd-select-layer", "confidence": 1.0}, {"atom_id": "boolean-mask-combine", "confidence": 0.5}]}
+{"question_id": 1761, "atoms": [{"atom_id": "rd-select-layer", "confidence": 1.0}, {"atom_id": "boolean-mask-combine", "confidence": 0.5}]}
+{"question_id": 1762, "atoms": [{"atom_id": "rd-select-layer", "confidence": 1.0}, {"atom_id": "boolean-mask-combine", "confidence": 0.5}]}
+{"question_id": 1763, "atoms": [{"atom_id": "rd-select-layer", "confidence": 1.0}, {"atom_id": "boolean-mask-combine", "confidence": 0.5}]}
+{"question_id": 1764, "atoms": [{"atom_id": "rd-select-layer", "confidence": 1.0}, {"atom_id": "boolean-mask-combine", "confidence": 0.5}]}
+{"question_id": 1765, "atoms": [{"atom_id": "rd-select-layer", "confidence": 1.0}, {"atom_id": "boolean-mask-combine", "confidence": 0.5}]}
+{"question_id": 1766, "atoms": [{"atom_id": "rd-select-layer", "confidence": 1.0}, {"atom_id": "boolean-mask-combine", "confidence": 0.5}]}
+{"question_id": 1767, "atoms": [{"atom_id": "rd-select-layer", "confidence": 1.0}, {"atom_id": "boolean-mask-combine", "confidence": 0.5}]}
+{"question_id": 1768, "atoms": [{"atom_id": "rd-select-layer", "confidence": 1.0}, {"atom_id": "boolean-mask-combine", "confidence": 0.5}]}
+{"question_id": 1769, "atoms": [{"atom_id": "rd-select-layer", "confidence": 1.0}, {"atom_id": "boolean-mask-combine", "confidence": 0.5}]}
+{"question_id": 1770, "atoms": [{"atom_id": "rd-select-layer", "confidence": 1.0}, {"atom_id": "boolean-mask-combine", "confidence": 0.5}]}
+{"question_id": 1771, "atoms": [{"atom_id": "rd-select-layer", "confidence": 1.0}, {"atom_id": "rd-unit-direction", "confidence": 0.5}]}
+{"question_id": 1772, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}, {"atom_id": "la-orthogonal-projection", "confidence": 0.5}]}
+{"question_id": 1773, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}, {"atom_id": "la-orthogonal-projection", "confidence": 0.5}]}
+{"question_id": 1774, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}, {"atom_id": "la-orthogonal-projection", "confidence": 0.5}]}
+{"question_id": 1775, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}, {"atom_id": "la-orthogonal-projection", "confidence": 0.5}]}
+{"question_id": 1776, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}, {"atom_id": "la-orthogonal-projection", "confidence": 0.5}]}
+{"question_id": 1777, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}, {"atom_id": "la-orthogonal-projection", "confidence": 0.5}]}
+{"question_id": 1778, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}, {"atom_id": "la-orthogonal-projection", "confidence": 0.5}]}
+{"question_id": 1779, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}, {"atom_id": "la-orthogonal-projection", "confidence": 0.5}]}
+{"question_id": 1780, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}, {"atom_id": "la-orthogonal-projection", "confidence": 0.5}]}
+{"question_id": 1781, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}, {"atom_id": "la-orthogonal-projection", "confidence": 0.5}]}
+{"question_id": 1782, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}, {"atom_id": "la-orthogonal-projection", "confidence": 0.5}]}
+{"question_id": 1783, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}, {"atom_id": "la-orthogonal-projection", "confidence": 0.5}]}
+{"question_id": 1784, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}, {"atom_id": "rd-unit-direction", "confidence": 0.5}, {"atom_id": "rd-diff-in-means", "confidence": 0.5}]}
+{"question_id": 1785, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}, {"atom_id": "rd-unit-direction", "confidence": 0.5}, {"atom_id": "rd-diff-in-means", "confidence": 0.5}]}
+{"question_id": 1786, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}, {"atom_id": "rd-diff-in-means", "confidence": 0.5}, {"atom_id": "rd-unit-direction", "confidence": 0.5}]}
+{"question_id": 1787, "atoms": [{"atom_id": "rd-add-direction", "confidence": 1.0}, {"atom_id": "rd-ablate-direction", "confidence": 0.3}]}
+{"question_id": 1788, "atoms": [{"atom_id": "rd-add-direction", "confidence": 1.0}, {"atom_id": "rd-ablate-direction", "confidence": 0.3}]}
+{"question_id": 1789, "atoms": [{"atom_id": "rd-add-direction", "confidence": 1.0}, {"atom_id": "rd-ablate-direction", "confidence": 0.3}]}
+{"question_id": 1790, "atoms": [{"atom_id": "rd-add-direction", "confidence": 1.0}, {"atom_id": "rd-ablate-direction", "confidence": 0.3}]}
+{"question_id": 1791, "atoms": [{"atom_id": "rd-add-direction", "confidence": 1.0}, {"atom_id": "rd-ablate-direction", "confidence": 0.3}]}
+{"question_id": 1792, "atoms": [{"atom_id": "rd-add-direction", "confidence": 1.0}, {"atom_id": "rd-diff-in-means", "confidence": 0.5}]}
+{"question_id": 1793, "atoms": [{"atom_id": "rd-add-direction", "confidence": 1.0}, {"atom_id": "rd-ablate-direction", "confidence": 0.6}]}
+{"question_id": 1794, "atoms": [{"atom_id": "rd-add-direction", "confidence": 1.0}, {"atom_id": "rd-ablate-direction", "confidence": 0.3}]}
+{"question_id": 1795, "atoms": [{"atom_id": "rd-add-direction", "confidence": 1.0}, {"atom_id": "rd-ablate-direction", "confidence": 0.3}]}
+{"question_id": 1796, "atoms": [{"atom_id": "rd-add-direction", "confidence": 1.0}, {"atom_id": "rd-ablate-direction", "confidence": 0.3}]}
+{"question_id": 1797, "atoms": [{"atom_id": "rd-add-direction", "confidence": 1.0}, {"atom_id": "rd-diff-in-means", "confidence": 0.5}]}
+{"question_id": 1798, "atoms": [{"atom_id": "rd-add-direction", "confidence": 1.0}, {"atom_id": "rd-ablate-direction", "confidence": 0.7}]}
+{"question_id": 1799, "atoms": [{"atom_id": "rd-add-direction", "confidence": 1.0}, {"atom_id": "rd-diff-in-means", "confidence": 0.5}, {"atom_id": "rd-unit-direction", "confidence": 0.3}]}
+{"question_id": 1800, "atoms": [{"atom_id": "rd-read-intervention", "confidence": 1.0}]}
+{"question_id": 1801, "atoms": [{"atom_id": "rd-read-intervention", "confidence": 1.0}]}
+{"question_id": 1802, "atoms": [{"atom_id": "rd-read-intervention", "confidence": 1.0}]}
+{"question_id": 1803, "atoms": [{"atom_id": "rd-read-intervention", "confidence": 1.0}]}
+{"question_id": 1804, "atoms": [{"atom_id": "rd-read-intervention", "confidence": 1.0}]}
+{"question_id": 1805, "atoms": [{"atom_id": "rd-read-intervention", "confidence": 1.0}]}
+{"question_id": 1806, "atoms": [{"atom_id": "rd-read-intervention", "confidence": 1.0}]}
+{"question_id": 1807, "atoms": [{"atom_id": "rd-read-intervention", "confidence": 1.0}]}
+{"question_id": 1808, "atoms": [{"atom_id": "rd-read-intervention", "confidence": 1.0}]}
+{"question_id": 1809, "atoms": [{"atom_id": "rd-read-intervention", "confidence": 1.0}]}
+{"question_id": 1810, "atoms": [{"atom_id": "rd-read-intervention", "confidence": 1.0}, {"atom_id": "rd-select-layer", "confidence": 0.3}]}
+{"question_id": 1811, "atoms": [{"atom_id": "rd-read-intervention", "confidence": 1.0}, {"atom_id": "rd-select-layer", "confidence": 0.7}]}
+{"question_id": 1812, "atoms": [{"atom_id": "rd-read-intervention", "confidence": 1.0}]}
+{"question_id": 50119, "atoms": [{"atom_id": "la-orthogonal-projection", "confidence": 1.0}]}
+{"question_id": 50120, "atoms": [{"atom_id": "la-orthogonal-projection", "confidence": 1.0}]}
+{"question_id": 50121, "atoms": [{"atom_id": "la-orthogonal-projection", "confidence": 1.0}]}
+{"question_id": 50122, "atoms": [{"atom_id": "la-orthogonal-projection", "confidence": 1.0}]}
+{"question_id": 50123, "atoms": [{"atom_id": "la-orthogonal-projection", "confidence": 1.0}]}
+{"question_id": 50124, "atoms": [{"atom_id": "la-orthogonal-projection", "confidence": 1.0}]}
+{"question_id": 50125, "atoms": [{"atom_id": "la-orthogonal-projection", "confidence": 1.0}]}
+{"question_id": 50126, "atoms": [{"atom_id": "la-orthogonal-projection", "confidence": 1.0}]}
+{"question_id": 50127, "atoms": [{"atom_id": "la-orthogonal-projection", "confidence": 1.0}]}
+{"question_id": 50128, "atoms": [{"atom_id": "la-orthogonal-projection", "confidence": 1.0}]}
+{"question_id": 50129, "atoms": [{"atom_id": "la-orthogonal-projection", "confidence": 1.0}]}
+{"question_id": 50130, "atoms": [{"atom_id": "la-orthogonal-projection", "confidence": 1.0}]}
+{"question_id": 50131, "atoms": [{"atom_id": "rd-diff-in-means", "confidence": 1.0}]}
+{"question_id": 50132, "atoms": [{"atom_id": "rd-diff-in-means", "confidence": 1.0}]}
+{"question_id": 50133, "atoms": [{"atom_id": "rd-diff-in-means", "confidence": 1.0}]}
+{"question_id": 50134, "atoms": [{"atom_id": "rd-diff-in-means", "confidence": 1.0}]}
+{"question_id": 50135, "atoms": [{"atom_id": "rd-diff-in-means", "confidence": 1.0}]}
+{"question_id": 50136, "atoms": [{"atom_id": "rd-select-layer", "confidence": 1.0}]}
+{"question_id": 50137, "atoms": [{"atom_id": "rd-select-layer", "confidence": 1.0}]}
+{"question_id": 50138, "atoms": [{"atom_id": "rd-select-layer", "confidence": 1.0}]}
+{"question_id": 50139, "atoms": [{"atom_id": "rd-select-layer", "confidence": 1.0}]}
+{"question_id": 50140, "atoms": [{"atom_id": "rd-select-layer", "confidence": 1.0}]}
+{"question_id": 50141, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}]}
+{"question_id": 50142, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}]}
+{"question_id": 50143, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}]}
+{"question_id": 50144, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}]}
+{"question_id": 50145, "atoms": [{"atom_id": "rd-ablate-direction", "confidence": 1.0}]}
+{"question_id": 50146, "atoms": [{"atom_id": "rd-add-direction", "confidence": 1.0}]}
+{"question_id": 50147, "atoms": [{"atom_id": "rd-add-direction", "confidence": 1.0}]}
+{"question_id": 50148, "atoms": [{"atom_id": "rd-add-direction", "confidence": 1.0}]}
+{"question_id": 50149, "atoms": [{"atom_id": "rd-add-direction", "confidence": 1.0}]}
+{"question_id": 50150, "atoms": [{"atom_id": "rd-add-direction", "confidence": 1.0}]}
+{"question_id": 50151, "atoms": [{"atom_id": "rd-read-intervention", "confidence": 1.0}]}
+{"question_id": 50152, "atoms": [{"atom_id": "rd-read-intervention", "confidence": 1.0}]}
+{"question_id": 50153, "atoms": [{"atom_id": "rd-read-intervention", "confidence": 1.0}]}
+{"question_id": 50154, "atoms": [{"atom_id": "rd-read-intervention", "confidence": 1.0}]}
+{"question_id": 50155, "atoms": [{"atom_id": "rd-read-intervention", "confidence": 1.0}]}

@@ -41,6 +41,14 @@ tensors, two conventions in play, and the pattern as the single place the
 truth lives. This is the level ARENA's einops exercises (and real model
 surgery) operate at.
 
+Step through it yourself. `(g c)` and `(c g)` pick different channels for
+each group — watch which ones land in group 0:
+
+```figure einops-console channel-groups-temporal
+Interactive figure: step through 'b (g c) h w -> g b c h w' against '(c g)',
+a group shuffle, and pairs of frames averaged.
+```
+
 ## Worked example
 
 Task: split interleaved channel groups, compare with the contiguous reading

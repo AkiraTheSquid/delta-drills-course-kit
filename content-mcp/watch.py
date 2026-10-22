@@ -19,7 +19,13 @@ sys.path.insert(0, HERE)
 # adding a write op without a password gate FAILS instead of passing quietly.
 WRITE_OPS = frozenset({
     "backup_now", "backup_restore",
-    "drill_add", "drill_retire", "drill_update",
+    "course_add_unit", "course_create",
+    "image_add", "image_remove",
+    "problems_add", "problems_update",
+    "atom_add",
+    "study_apply", "study_concept_add", "study_course_create", "study_diagram_add",
+    "study_diagram_update", "study_question_add", "study_remove", "study_source_add",
+    "drill_add", "drill_retire", "drill_tag", "drill_update",
     "graph_add_kc", "graph_update_kc",
     "lesson_create", "lesson_edit", "lesson_write",
     "pipeline_check", "pipeline_step",

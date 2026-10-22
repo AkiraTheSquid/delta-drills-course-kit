@@ -1,413 +1,5 @@
 [
  {
-  "a": "deltadrills.mastery",
-  "b": "deltadrills.retrievability",
-  "type": "contrasts",
-  "relation_constraints": [
-   "Mastery is what was learned; retrievability is whether it can be recalled now, and the app keeps them separate."
-  ]
- },
- {
-  "a": "deltadrills.retrievability",
-  "b": "deltadrills.spaced-repetition",
-  "type": "explains",
-  "relation_constraints": [
-   "The forgetting curve predicts recall, and a review is scheduled when that prediction falls to the target."
-  ]
- },
- {
-  "a": "deltadrills.fire",
-  "b": "deltadrills.spaced-repetition",
-  "type": "is-a",
-  "relation_constraints": [
-   "FIRe is spaced repetition generalised to a hierarchy: advanced practice gives discounted review credit to encompassed concepts."
-  ]
- },
- {
-  "a": "deltadrills.fsrs-update",
-  "b": "deltadrills.spaced-repetition",
-  "type": "explains",
-  "relation_constraints": [
-   "Stability grows most after a success made when recall had dropped, which is why spaced reviews lengthen each gap and massed ones barely do."
-  ]
- },
- {
-  "a": "deltadrills.prereq-gate",
-  "b": "deltadrills.mastery",
-  "type": "depends-on",
-  "relation_constraints": [
-   "The gate reads the BKT posterior: a prerequisite is learned when its crosswalk-weighted mastery reaches 0.85."
-  ]
- },
- {
-  "a": "deltadrills.explore",
-  "b": "deltadrills.prereq-gate",
-  "type": "contrasts",
-  "relation_constraints": [
-   "The gate waits until prerequisites are learned; explore probes concepts past the frontier and settles them at 0.95, which then counts as learned for the gate."
-  ]
- },
- {
-  "a": "deltadrills.credit-propagation",
-  "b": "deltadrills.fire",
-  "type": "explains",
-  "relation_constraints": [
-   "FIRe is the idea; propagation is its arithmetic: path weights × 0.5 for credit, w·(1 − R) shares for blame, upward lapses at w × 0.5."
-  ]
- },
- {
-  "a": "deltadrills.logistic-engine",
-  "b": "deltadrills.mastery",
-  "type": "contrasts",
-  "relation_constraints": [
-   "BKT gives P(known) with no uncertainty; the engine predicts P(correct) on a specific problem from a weighted sum of features and carries a posterior."
-  ]
- },
- {
-  "a": "deltadrills.ability",
-  "b": "deltadrills.logistic-engine",
-  "type": "example-of",
-  "relation_constraints": [
-   "The ability model is a logistic model of ability minus difficulty (like Rasch or Elo), with guess, slip and recall added."
-  ]
- },
- {
-  "a": "tutor.same-model",
-  "b": "deltadrills.explore",
-  "type": "example-of",
-  "relation_constraints": [
-   "Study mode's belief is the explore model's log-odds belief, with the grader's probability entered as virtual evidence."
-  ]
- },
- {
-  "a": "deltadrills.spaced-repetition",
-  "b": "deltadrills.mastery",
-  "type": "contrasts",
-  "relation_constraints": [
-   "Mastery records what was learned and says nothing about forgetting; spaced repetition handles forgetting, scheduling a review for when predicted recall falls, so a concept can be mastered and still be due."
-  ]
- },
- {
-  "a": "deltadrills.desirable-difficulty",
-  "b": "deltadrills.spaced-repetition",
-  "type": "example-of",
-  "relation_constraints": [
-   "Spacing is one of the most robust desirable difficulties: it lowers performance while practising and raises it on a later test."
-  ]
- },
- {
-  "a": "deltadrills.interleaving",
-  "b": "deltadrills.desirable-difficulty",
-  "type": "example-of",
-  "relation_constraints": [
-   "Interleaving (mixing) is a desirable difficulty: mixed review feels harder and goes worse in practice than a blocked set, yet is retained better; learners avoid it because they judge by practice performance."
-  ]
- },
- {
-  "a": "deltadrills.expertise-reversal",
-  "b": "deltadrills.worked-examples",
-  "type": "contrasts",
-  "relation_constraints": [
-   "Worked examples help novices most by cutting cognitive load; by the expertise reversal effect the same scaffold helps an expert least, so the app fades it: the example sits in the Lesson, the Faded drill has none, Integrated never shows one."
-  ]
- },
- {
-  "a": "deltadrills.composition",
-  "b": "deltadrills.expertise-reversal",
-  "type": "depends-on",
-  "relation_constraints": [
-   "Integrated practice, all of a concept's ideas at once, comes last on the ladder, after the scaffold has been faded on the parts."
-  ]
- },
- {
-  "a": "deltadrills.target-retention",
-  "b": "deltadrills.retrievability",
-  "type": "depends-on",
-  "relation_constraints": [
-   "The due time is the elapsed time at which the forgetting curve R(t) with stability S falls to the target."
-  ]
- },
- {
-  "a": "deltadrills.lapse",
-  "b": "deltadrills.fsrs-update",
-  "type": "contrasts",
-  "relation_constraints": [
-   "A success multiplies stability by a growth factor; a miss replaces it with a much smaller post-lapse stability, scaled by p_skill."
-  ]
- },
- {
-  "a": "deltadrills.blame",
-  "b": "deltadrills.credit-propagation",
-  "type": "contrasts",
-  "relation_constraints": [
-   "Credit for a correct answer flows down to encompassed concepts; blame for a miss is shared down by w·(1 − R) and also lapses the concepts above."
-  ]
- },
- {
-  "a": "deltadrills.compression",
-  "b": "deltadrills.fire",
-  "type": "explains",
-  "relation_constraints": [
-   "Because practice on an advanced concept gives implicit credit, choosing it first can clear several due reviews at once."
-  ]
- },
- {
-  "a": "deltadrills.transit",
-  "b": "deltadrills.mastery",
-  "type": "depends-on",
-  "relation_constraints": [
-   "BKT's Bayes update says what an answer shows; the transit is the separate step that models learning, applied only after a correct answer."
-  ]
- },
- {
-  "a": "deltadrills.probe-choice",
-  "b": "deltadrills.explore",
-  "type": "depends-on",
-  "relation_constraints": [
-   "Settling says when a concept's belief is high enough; probe choice says which unsettled concept to ask about next."
-  ]
- },
- {
-  "a": "deltadrills.irt",
-  "b": "deltadrills.mastery",
-  "type": "contrasts",
-  "relation_constraints": [
-   "IRT holds a continuous skill constant, as in a test, so on its own it does not model learning; BKT's mastery is the probability of a binary known state, moved by Bayes' rule and a learning transit, so it registers learning."
-  ]
- },
- {
-  "a": "deltadrills.probe-cost",
-  "b": "deltadrills.probe-choice",
-  "type": "depends-on",
-  "relation_constraints": [
-   "Probe choice ranks which concept to ask about; the cost gate decides whether asking it beats teaching it outright."
-  ]
- },
- {
-  "a": "deltadrills.logistic-engine",
-  "b": "deltadrills.elo",
-  "type": "explains",
-  "relation_constraints": [
-   "Elo is the engine's two-feature case, ability minus item difficulty fitted online; the engine adds features to the same logistic."
-  ]
- },
- {
-  "a": "deltadrills.irt",
-  "b": "deltadrills.logistic-engine",
-  "type": "example-of",
-  "relation_constraints": [
-   "IRT is one configuration of the additive logistic: skill minus item difficulty with the skill held constant; the engine adds features so the skill can change."
-  ]
- },
- {
-  "a": "deltadrills.uncertainty",
-  "b": "deltadrills.elo",
-  "type": "mitigates",
-  "relation_constraints": [
-   "Elo's constant K is a fixed step; carrying a posterior makes updates large when little is known and small once the estimate is sure, as Glicko does."
-  ]
- },
- {
-  "a": "deltadrills.stretch-zone",
-  "b": "deltadrills.ability",
-  "type": "depends-on",
-  "relation_constraints": [
-   "zpd is computed from skill(θ, d): the learning step is largest where the ability model gives a problem a 50% chance."
-  ]
- },
- {
-  "a": "tutor.virtual-evidence",
-  "b": "tutor.same-model",
-  "type": "example-of",
-  "relation_constraints": [
-   "Virtual evidence is the one change Study mode makes to the drills' log-odds belief: a probability grade instead of right or wrong."
-  ]
- },
- {
-  "a": "tutor.integrated-question",
-  "b": "deltadrills.composition",
-  "type": "example-of",
-  "relation_constraints": [
-   "An integrated question is a composed task, harder than its parts, so each target counts at half weight and the relation is graded on its own."
-  ]
- },
- {
-  "a": "tutor.staged-diagnostic",
-  "b": "tutor.listed-integrated",
-  "type": "depends-on",
-  "relation_constraints": [
-   "The explore stage opens with broad listed questions, graded per target and down-weighted as a testlet."
-  ]
- },
- {
-  "a": "tutor.integrated-question",
-  "b": "tutor.listed-integrated",
-  "type": "contrasts",
-  "relation_constraints": [
-   "A listed question's parts stand alone and suit anyone; an integrated question's answer relates them, so it waits for P(all targets) ≥ 0.6 and grades the relation onto the edge."
-  ]
- },
- {
-  "a": "deltadrills.why-drills",
-  "b": "tutor.guardrails",
-  "type": "explains",
-  "relation_constraints": [
-   "The testing effect is why the book closes: retrieval without the answer in view is what builds lasting memory, and an AI that hands over answers removes it."
-  ]
- },
- {
-  "a": "oversight.sandwiching",
-  "b": "oversight.scalable-oversight",
-  "type": "example-of",
-  "relation_constraints": [
-   "Sandwiching is an experimental stand-in for scalable oversight: non-experts play the humans who cannot check a stronger system."
-  ]
- },
- {
-  "a": "control.trusted-monitoring",
-  "b": "control.setup",
-  "type": "example-of",
-  "relation_constraints": [
-   "Trusted monitoring is a control protocol: the trusted model scores the untrusted one and trusted labor audits the top scores."
-  ]
- },
- {
-  "a": "control.defer-and-edit",
-  "b": "control.trusted-monitoring",
-  "type": "depends-on",
-  "relation_constraints": [
-   "Defer to trusted and trusted editing reuse the trusted monitor's suspicion score for outputs below the audit cut-off."
-  ]
- },
- {
-  "a": "control.untrusted-monitoring",
-  "b": "control.trusted-monitoring",
-  "type": "contrasts",
-  "relation_constraints": [
-   "An untrusted monitor is more capable than a trusted one but can collude with the policy; a trusted monitor cannot collude but misses subtle attacks."
-  ]
- },
- {
-  "a": "control.evaluation",
-  "b": "control.setup",
-  "type": "explains",
-  "relation_constraints": [
-   "A control evaluation is how a protocol's safety is measured: a red team plays the untrusted model at its worst."
-  ]
- },
- {
-  "a": "oversight.obfuscated-arguments",
-  "b": "oversight.debate",
-  "type": "contrasts",
-  "relation_constraints": [
-   "Obfuscated arguments break debate's central claim: a lie can be harder to refute than to tell when its flaw cannot be located."
-  ]
- },
- {
-  "a": "oversight.elicitation",
-  "b": "oversight.sandbagging",
-  "type": "mitigates",
-  "relation_constraints": [
-   "Fine-tuning on good demonstrations can unlock deliberately hidden capability, but only when someone can demonstrate it."
-  ]
- },
- {
-  "a": "tutor.verified-quotes",
-  "b": "oversight.over-reliance",
-  "type": "mitigates",
-  "relation_constraints": [
-   "Showing verified source quotations instead of persuasive model prose is the evidence-over-explanation fix for over-reliance."
-  ]
- },
- {
-  "a": "tutor.verified-quotes",
-  "b": "control.defer-and-edit",
-  "type": "example-of",
-  "relation_constraints": [
-   "The grounding check is defer to trusted: feedback the checker does not rate as supported is replaced by a fixed template."
-  ]
- },
- {
-  "a": "tutor.control-roles",
-  "b": "control.setup",
-  "type": "example-of",
-  "relation_constraints": [
-   "The tutor maps onto a control setup: chat model untrusted, Jev trusted, the author as trusted labor."
-  ]
- },
- {
-  "a": "oversight.weak-to-strong",
-  "b": "control.setup",
-  "type": "contrasts",
-  "relation_constraints": [
-   "Weak-to-strong research tries to make weak supervision train strong models well; control makes no attempt to create stronger trusted models and only limits the damage."
-  ]
- },
- {
-  "a": "tutor.teaching-overseers",
-  "b": "oversight.sandwiching",
-  "type": "depends-on",
-  "relation_constraints": [
-   "Whether teaching overseers works is measured with a sandwiching design: tutored non-experts judged against an expert's answer key."
-  ]
- },
- {
-  "a": "tutor.guardrails",
-  "b": "oversight.over-reliance",
-  "type": "mitigates",
-  "relation_constraints": [
-   "Withholding answers stops the learner leaning on the AI, the learning version of over-reliance."
-  ]
- },
- {
-  "a": "control.untrusted-monitoring",
-  "b": "control.setup",
-  "type": "example-of",
-  "relation_constraints": [
-   "Untrusted monitoring uses a second copy of the setup's strong untrusted model as the monitor: more capable than the trusted model, but it may recognise its twin's attacks, so it is tested on backdoored examples made with the limited trusted labor."
-  ]
- },
- {
-  "a": "control.evaluation",
-  "b": "control.defer-and-edit",
-  "type": "evidence-for",
-  "relation_constraints": [
-   "Moving the defer/edit threshold trades usefulness for safety, and a control evaluation measures each side separately: usefulness with the real model, safety with a red team's attack policy."
-  ]
- },
- {
-  "a": "oversight.debate",
-  "b": "oversight.scalable-oversight",
-  "type": "example-of",
-  "relation_constraints": [
-   "Debate is a proposed method for scalable oversight: a weaker judge supervises stronger agents by picking the side that gave the most true, useful information."
-  ]
- },
- {
-  "a": "oversight.obfuscated-arguments",
-  "b": "oversight.scalable-oversight",
-  "type": "explains",
-  "relation_constraints": [
-   "Obfuscated arguments limit debate as a scalable oversight method: when a fatal flaw cannot be located the weaker judge cannot supervise, so debate can only be trusted on arguments small enough for spot checks."
-  ]
- },
- {
-  "a": "tutor.verified-quotes",
-  "b": "tutor.control-roles",
-  "type": "example-of",
-  "relation_constraints": [
-   "Because the chat model is the untrusted model, its quotes count only if they match the source exactly, and its feedback must pass the trusted monitor's (Jev's) grounding check or be replaced by a template."
-  ]
- },
- {
-  "a": "tutor.control-roles",
-  "b": "oversight.over-reliance",
-  "type": "mitigates",
-  "relation_constraints": [
-   "People accept an AI's explanation whether or not it is correct, so the tutor does not take its untrusted chat model's persuasive prose on trust: a trusted monitor checks it, and evidence is favoured over explanation."
-  ]
- },
- {
   "a": "cyfound.risk",
   "b": "cyfound.cia-triad",
   "type": "depends-on",
@@ -1368,579 +960,659 @@
   ]
  },
  {
-  "a": "bsfreq.incidence",
-  "b": "bsfreq.prevalence",
+  "a": "bioprok.prokaryote",
+  "b": "bioeuk.eukaryote",
   "type": "contrasts",
   "relation_constraints": [
-   "Prevalence counts every existing case over the total population; incidence counts new cases over the population at risk."
+   "Prokaryotes have no nucleus or membrane-bound organelles; eukaryotes compartmentalize with internal membranes."
   ]
  },
  {
-  "a": "bsfreq.duration",
-  "b": "bsfreq.prevalence",
+  "a": "bioeuk.autotroph",
+  "b": "bioeuk.heterotroph",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Photoautotrophs make food from light; chemoheterotrophs take food in."
+  ]
+ },
+ {
+  "a": "bioendo.bound-ribosomes",
+  "b": "bioendo.pathway",
   "type": "explains",
   "relation_constraints": [
-   "A long disease stays counted in prevalence for years."
+   "A secreted protein is made on a bound ribosome, not a free one."
   ]
  },
  {
-  "a": "bsfreq.prev-inc-dynamics",
-  "b": "bsfreq.prevalence",
-  "type": "explains",
-  "relation_constraints": [
-   "Longer survival keeps cases in prevalence; cure or death removes them."
-  ]
- },
- {
-  "a": "bsfreq.acute",
-  "b": "bsfreq.duration",
+  "a": "bioendo.rough-er",
+  "b": "bioendo.smooth-er",
   "type": "contrasts",
   "relation_constraints": [
-   "Short diseases: prevalence close to incidence; chronic ones: prevalence far above it."
+   "Rough ER has bound ribosomes and makes proteins; smooth ER has none, packages, detoxifies and makes lipids."
   ]
  },
  {
-  "a": "bsfreq.definition-change",
-  "b": "bsfreq.new-cases",
+  "a": "bioendo.lysosomes",
+  "b": "bioendo.peroxisomes",
   "type": "contrasts",
   "relation_constraints": [
-   "Both change the number of new cases: removing a risk factor lowers it, a lower cut-off raises it."
+   "Lysosomes (from the Golgi, hydrolytic enzymes, animal cells) vs peroxisomes (from mitochondria + ER vesicles, break down fatty acids and H2O2)."
   ]
  },
  {
-  "a": "bsfreq.new-cases",
-  "b": "bsfreq.prev-inc-dynamics",
+  "a": "bioendo.central-vacuole",
+  "b": "bioendo.contractile-vacuole",
   "type": "contrasts",
   "relation_constraints": [
-   "Fewer new cases move incidence (and prevalence); longer survival moves prevalence only."
+   "A central vacuole stores water for turgor; a contractile vacuole expels excess water."
   ]
  },
  {
-  "a": "bsfreq.prev-inc-dynamics",
-  "b": "bsfreq.incidence",
-  "type": "explains",
-  "relation_constraints": [
-   "Only new-case drivers (risk factors, definitions) move incidence; treatment does not."
-  ]
- },
- {
-  "a": "bsfreq.mortality",
-  "b": "bsfreq.mortality-cfr",
+  "a": "bioenergy.mitochondria",
+  "b": "bioenergy.chloroplasts",
   "type": "contrasts",
   "relation_constraints": [
-   "Same deaths, two denominators: the people affected (case fatality rate) or the total population (mortality)."
+   "Mitochondria release energy from glucose as ATP; chloroplasts capture light energy to make glucose."
   ]
  },
  {
-  "a": "bsfreq.mortality",
-  "b": "bsfreq.incidence",
-  "type": "depends-on",
-  "relation_constraints": [
-   "Mortality = incidence x case fatality rate (15% of 600/100,000 = 90/100,000)."
-  ]
- },
- {
-  "a": "bsdx.sensitivity",
-  "b": "bsdx.two-by-two",
-  "type": "depends-on",
-  "relation_constraints": [
-   "Sensitivity = TP/(TP+FN), read down the disease-present column."
-  ]
- },
- {
-  "a": "bsdx.specificity",
-  "b": "bsdx.two-by-two",
-  "type": "depends-on",
-  "relation_constraints": [
-   "Specificity = TN/(TN+FP), read down the disease-absent column."
-  ]
- },
- {
-  "a": "bsdx.predictive-values",
-  "b": "bsdx.two-by-two",
-  "type": "depends-on",
-  "relation_constraints": [
-   "PPV = TP/(TP+FP) and NPV = TN/(TN+FN), read across the test-result rows."
-  ]
- },
- {
-  "a": "bsdx.sensitivity",
-  "b": "bsdx.specificity",
-  "type": "contrasts",
-  "relation_constraints": [
-   "Sensitivity conditions on disease present; specificity on disease absent."
-  ]
- },
- {
-  "a": "bsdx.npv",
-  "b": "bsdx.predictive-values",
-  "type": "contrasts",
-  "relation_constraints": [
-   "PPV divides by everyone who tested positive; NPV by everyone who tested negative."
-  ]
- },
- {
-  "a": "bsdx.sensitivity",
-  "b": "bsdx.predictive-values",
-  "type": "contrasts",
-  "relation_constraints": [
-   "Sensitivity is P(positive | disease), fixed by the test; PPV is P(disease | positive), which moves with prevalence."
-  ]
- },
- {
-  "a": "bsdx.pv-prevalence",
-  "b": "bsdx.predictive-values",
-  "type": "explains",
-  "relation_constraints": [
-   "Higher prevalence raises PPV and lowers NPV."
-  ]
- },
- {
-  "a": "bsdx.pv-prevalence",
-  "b": "bsfreq.prevalence",
-  "type": "depends-on",
-  "relation_constraints": [
-   "Predictive values depend on how common the disease is in the tested population."
-  ]
- },
- {
-  "a": "bsdx.screen-vs-confirm",
-  "b": "bsdx.sensitivity",
-  "type": "depends-on",
-  "relation_constraints": [
-   "Screen with the most sensitive test: few false negatives."
-  ]
- },
- {
-  "a": "bsdx.confirmatory",
-  "b": "bsdx.screen-vs-confirm",
-  "type": "contrasts",
-  "relation_constraints": [
-   "Screen with high sensitivity (few false negatives); confirm with high specificity (few false positives)."
-  ]
- },
- {
-  "a": "bsdx.test-order",
-  "b": "bsdx.screen-vs-confirm",
-  "type": "depends-on",
-  "relation_constraints": [
-   "The more sensitive test goes first."
-  ]
- },
- {
-  "a": "bsdx.confirmatory",
-  "b": "bsdx.specificity",
-  "type": "depends-on",
-  "relation_constraints": [
-   "Confirm with the most specific test: few false positives."
-  ]
- },
- {
-  "a": "bsdx.cutoff",
-  "b": "bsdx.sensitivity",
-  "type": "causes",
-  "relation_constraints": [
-   "Calling more results positive raises sensitivity."
-  ]
- },
- {
-  "a": "bsdx.cutoff",
-  "b": "bsdx.specificity",
-  "type": "causes",
-  "relation_constraints": [
-   "Calling more results positive lowers specificity."
-  ]
- },
- {
-  "a": "bsdx.cutoff",
-  "b": "bsdx.screen-vs-confirm",
-  "type": "explains",
-  "relation_constraints": [
-   "A screening program lowers the cut-off to miss fewer cases, accepting more false positives for confirmation to sort out."
-  ]
- },
- {
-  "a": "bsrisk.odds-ratio",
-  "b": "bsrisk.relative-risk",
-  "type": "contrasts",
-  "relation_constraints": [
-   "RR compares risks (cohort); OR compares odds of exposure (case-control)."
-  ]
- },
- {
-  "a": "bsrisk.attributable-risk",
-  "b": "bsrisk.relative-risk",
-  "type": "contrasts",
-  "relation_constraints": [
-   "Attributable risk is the difference in risk; relative risk is the ratio."
-  ]
- },
- {
-  "a": "bsrisk.rrr",
-  "b": "bsrisk.arr-rrr",
-  "type": "contrasts",
-  "relation_constraints": [
-   "ARR is the difference in risk; RRR is the proportion of the baseline risk that disappeared."
-  ]
- },
- {
-  "a": "bsrisk.arr-rrr",
-  "b": "bsrisk.attributable-risk",
-  "type": "is-a",
-  "relation_constraints": [
-   "Absolute risk reduction is the risk difference when the intervention lowers risk."
-  ]
- },
- {
-  "a": "bsrisk.nnt-nnh",
-  "b": "bsrisk.arr-rrr",
-  "type": "depends-on",
-  "relation_constraints": [
-   "NNT = 1 / ARR, not 1 / RRR."
-  ]
- },
- {
-  "a": "bsrisk.nnh",
-  "b": "bsrisk.nnt-nnh",
-  "type": "contrasts",
-  "relation_constraints": [
-   "NNT counts patients treated for one to be helped; NNH counts patients exposed for one to be harmed."
-  ]
- },
- {
-  "a": "bsrisk.nnh",
-  "b": "bsrisk.attributable-risk",
-  "type": "depends-on",
-  "relation_constraints": [
-   "NNH = 1 / attributable risk."
-  ]
- },
- {
-  "a": "bsdesign.cohort",
-  "b": "bsrisk.relative-risk",
-  "type": "depends-on",
-  "relation_constraints": [
-   "A cohort study follows exposed and unexposed people and reports relative risk."
-  ]
- },
- {
-  "a": "bsdesign.case-control",
-  "b": "bsrisk.odds-ratio",
-  "type": "depends-on",
-  "relation_constraints": [
-   "A case-control study compares exposure odds in cases and controls and reports the odds ratio."
-  ]
- },
- {
-  "a": "bsdesign.cross-sectional",
-  "b": "bsfreq.prevalence",
-  "type": "depends-on",
-  "relation_constraints": [
-   "A cross-sectional study is a snapshot that measures prevalence."
-  ]
- },
- {
-  "a": "bsdesign.rct",
-  "b": "bsdesign.cohort",
-  "type": "contrasts",
-  "relation_constraints": [
-   "Both follow groups forward; only a trial assigns the exposure (an active intervention)."
-  ]
- },
- {
-  "a": "bsdesign.phase-3",
-  "b": "bsdesign.rct",
+  "a": "bioenergy.cristae",
+  "b": "bioenergy.thylakoids",
   "type": "example-of",
   "relation_constraints": [
-   "Phase III is a large randomized comparison with placebo or the standard of care."
+   "Both fold or stack internal membranes (cristae, grana) to increase surface area."
   ]
  },
  {
-  "a": "bsdesign.meta-analysis",
-  "b": "bsdesign.rct",
+  "a": "bioendo.free-ribosomes",
+  "b": "bioendo.bound-ribosomes",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Free ribosomes make cytoplasmic proteins; bound ribosomes on the rough ER make membrane and excretory proteins."
+  ]
+ },
+ {
+  "a": "bioenergy.thylakoids",
+  "b": "bioenergy.stroma",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Thylakoids host the first part of photosynthesis; the stroma the second half."
+  ]
+ },
+ {
+  "a": "bioenergy.plastids",
+  "b": "bioenergy.chromoplasts",
+  "type": "example-of",
+  "relation_constraints": [
+   "Chromoplasts are plastids that do not photosynthesize."
+  ]
+ },
+ {
+  "a": "biocompare.plant-only",
+  "b": "biocompare.animal-only",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Plant-only vs animal-only structures."
+  ]
+ },
+ {
+  "a": "bioenergy.endosymbiosis",
+  "b": "bioprok.prokaryote",
+  "type": "explains",
+  "relation_constraints": [
+   "Mitochondria and chloroplasts descend from engulfed prokaryotes, hence their own circular DNA."
+  ]
+ },
+ {
+  "a": "biowall.tight",
+  "b": "biowall.gap",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Tight junctions seal cells together; gap junctions open channels between their cytoplasms."
+  ]
+ },
+ {
+  "a": "biowall.gap",
+  "b": "biowall.plasmodesmata",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Gap junctions connect animal cytoplasms; plasmodesmata do the same through plant cell walls."
+  ]
+ },
+ {
+  "a": "biowall.walls",
+  "b": "biowall.ecm",
+  "type": "contrasts",
+  "relation_constraints": [
+   "Plants, fungi and bacteria have polysaccharide walls; animal cells have a protein ECM."
+  ]
+ },
+ {
+  "a": "biosize.sa-v",
+  "b": "biosize.shape",
+  "type": "explains",
+  "relation_constraints": [
+   "Folds and long thin shapes raise SA:V."
+  ]
+ },
+ {
+  "a": "biosize.sa-v",
+  "b": "biosize.multicellular",
+  "type": "explains",
+  "relation_constraints": [
+   "Many small cells keep SA:V high in a big organism."
+  ]
+ },
+ {
+  "a": "bioeuk.eukaryote",
+  "b": "bioenergy.cristae",
+  "type": "example-of",
+  "relation_constraints": [
+   "Internal membranes increase surface area for reactions, as cristae do."
+  ]
+ },
+ {
+  "a": "biocyto.cytoskeleton",
+  "b": "biocyto.cilia",
   "type": "depends-on",
   "relation_constraints": [
-   "A meta-analysis is only as good as the studies it pools."
+   "Cilia and flagella are built from the cytoskeleton's microtubules."
   ]
  },
  {
-  "a": "bsbias.recall",
-  "b": "bsdesign.case-control",
-  "type": "depends-on",
-  "relation_constraints": [
-   "Recall bias threatens case-control and other retrospective studies that depend on patients' memory."
-  ]
- },
- {
-  "a": "bsbias.blinding",
-  "b": "bsbias.observer-blinding",
-  "type": "mitigates",
-  "relation_constraints": [
-   "Blinding in clinical trials prevents observer bias."
-  ]
- },
- {
-  "a": "bsbias.blinding",
-  "b": "bsdesign.rct",
-  "type": "mitigates",
-  "relation_constraints": [
-   "Blinding in a trial prevents observer bias and placebo effects."
-  ]
- },
- {
-  "a": "bsbias.attrition",
-  "b": "bsbias.selection",
-  "type": "is-a",
-  "relation_constraints": [
-   "Attrition bias is a form of selection bias."
-  ]
- },
- {
-  "a": "bsbias.berkson",
-  "b": "bsbias.selection",
-  "type": "is-a",
-  "relation_constraints": [
-   "Recruiting hospitalized patients selects people who are less healthy and differently exposed than the general population."
-  ]
- },
- {
-  "a": "bsbias.attrition",
-  "b": "bsdesign.cohort",
-  "type": "depends-on",
-  "relation_constraints": [
-   "Uneven loss to follow-up in a cohort is attrition bias, a form of selection bias."
-  ]
- },
- {
-  "a": "bsbias.confounding",
-  "b": "bsrisk.relative-risk",
+  "a": "bioendo.nucleolus",
+  "b": "bioendo.ribosomes",
   "type": "causes",
   "relation_constraints": [
-   "A confounder can create or hide an association in the relative risk."
+   "The nucleolus makes the ribosomal subunits."
   ]
  },
  {
-  "a": "bsdesign.cohort",
-  "b": "bsbias.confounding",
+  "a": "bioendo.golgi",
+  "b": "bioendo.lysosomes",
+  "type": "causes",
+  "relation_constraints": [
+   "Lysosomes are produced by the Golgi apparatus."
+  ]
+ },
+ {
+  "a": "bioprok.pili",
+  "b": "bioprok.plasmids",
+  "type": "causes",
+  "relation_constraints": [
+   "Pili reel in other bacteria to exchange plasmids."
+  ]
+ },
+ {
+  "a": "bdgov.contextual-evals",
+  "b": "bdgov.model-evals",
   "type": "depends-on",
   "relation_constraints": [
-   "A cohort study is observational: exposure is not randomized, so its association holds only once a confounder linked to both exposure and outcome is measured and adjusted for."
+   "Understanding Contextual safety evaluations uses Model safety evaluations."
   ]
  },
  {
-  "a": "bsbias.lead-length-time",
-  "b": "bsdx.screen-vs-confirm",
+  "a": "bdgov.proxy-limits",
+  "b": "bdgov.contextual-evals",
   "type": "depends-on",
   "relation_constraints": [
-   "Screening programs are where lead-time and length-time bias arise."
+   "Understanding Evaluation proxies uses Contextual safety evaluations."
   ]
  },
  {
-  "a": "bsbias.length-time",
-  "b": "bsbias.lead-length-time",
-  "type": "contrasts",
-  "relation_constraints": [
-   "Lead-time: diagnosis moved earlier; length-time: screening finds the slow, long-latency cases."
-  ]
- },
- {
-  "a": "bsbias.length-time",
-  "b": "bsdx.screen-vs-confirm",
+  "a": "bdgov.jaggedness",
+  "b": "bdgov.model-evals",
   "type": "depends-on",
   "relation_constraints": [
-   "Screening programs are where length-time bias arises."
+   "Understanding Capability jaggedness uses Model safety evaluations."
   ]
  },
  {
-  "a": "bsbias.lead-length-time",
-  "b": "bsfreq.prev-inc-dynamics",
-  "type": "contrasts",
-  "relation_constraints": [
-   "Real survival gains raise prevalence; lead-time only moves the diagnosis date earlier."
-  ]
- },
- {
-  "a": "bsbias.hawthorne",
-  "b": "bsbias.observer-blinding",
-  "type": "contrasts",
-  "relation_constraints": [
-   "Hawthorne: participants change because they are watched; observer bias: researchers' beliefs change the reading."
-  ]
- },
- {
-  "a": "bsbias.measurement-procedure",
-  "b": "bsbias.observer-blinding",
-  "type": "contrasts",
-  "relation_constraints": [
-   "Measurement bias comes from instruments; observer bias from the researcher's belief."
-  ]
- },
- {
-  "a": "bsbias.procedure",
-  "b": "bsbias.measurement-procedure",
-  "type": "contrasts",
-  "relation_constraints": [
-   "Procedure bias: the groups are not treated equally; measurement bias: faulty equipment gives incorrect readings."
-  ]
- },
- {
-  "a": "bsdesc.median",
-  "b": "bsdesc.central-tendency",
-  "type": "contrasts",
-  "relation_constraints": [
-   "The mean adds every value; the median only needs the middle one."
-  ]
- },
- {
-  "a": "bsdesc.mode",
-  "b": "bsdesc.central-tendency",
-  "type": "contrasts",
-  "relation_constraints": [
-   "The mode is the most frequent value, not a sum or a middle."
-  ]
- },
- {
-  "a": "bsdesc.outliers-skew",
-  "b": "bsdesc.central-tendency",
+  "a": "bdgov.time-horizon",
+  "b": "bdgov.model-evals",
   "type": "depends-on",
   "relation_constraints": [
-   "An outlier moves the mean most, the median less and the mode least."
+   "Understanding Task time horizons uses Model safety evaluations."
   ]
  },
  {
-  "a": "bsdesc.negative-skew",
-  "b": "bsdesc.skew-shape",
-  "type": "contrasts",
+  "a": "bdgov.system-card",
+  "b": "bdgov.model-evals",
+  "type": "depends-on",
   "relation_constraints": [
-   "Positive skew: mean > median > mode; negative skew: the opposite."
+   "Understanding Developer system cards uses Model safety evaluations."
   ]
  },
  {
-  "a": "bsdesc.bimodal",
-  "b": "bsdesc.skew-shape",
-  "type": "contrasts",
+  "a": "bdgov.investigation-scope",
+  "b": "bdgov.proxy-limits",
+  "type": "depends-on",
   "relation_constraints": [
-   "A skewed distribution has one peak and a tail; a bimodal one has two peaks."
+   "Understanding Investigation scope uses Evaluation proxies."
   ]
  },
  {
-  "a": "bsdesc.skew-shape",
-  "b": "bsdesc.outliers-skew",
+  "a": "bdgov.evidence-briefing",
+  "b": "bdgov.investigation-scope",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Evidence-bounded briefing uses Investigation scope."
+  ]
+ },
+ {
+  "a": "bdgov.evidence-briefing",
+  "b": "bdgov.system-card",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Evidence-bounded briefing uses Developer system cards."
+  ]
+ },
+ {
+  "a": "bdgov.capability-threshold",
+  "b": "bdgov.model-evals",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Capability thresholds uses Model safety evaluations."
+  ]
+ },
+ {
+  "a": "bdgov.deployment-mitigation",
+  "b": "bdgov.capability-threshold",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Deployment safeguards uses Capability thresholds."
+  ]
+ },
+ {
+  "a": "bdgov.weight-security",
+  "b": "bdgov.capability-threshold",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Model weight security uses Capability thresholds."
+  ]
+ },
+ {
+  "a": "bdgov.surge-capacity",
+  "b": "bdgov.pacing-problem",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding AI surge capacity uses The pacing problem."
+  ]
+ },
+ {
+  "a": "bdgov.authority-capacity",
+  "b": "bdgov.legal-authority",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Institutional capacity uses Legal authority to act."
+  ]
+ },
+ {
+  "a": "bdgov.legal-authority",
+  "b": "bdgov.frontier-governance",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Legal authority to act uses Frontier AI governance."
+  ]
+ },
+ {
+  "a": "bdgov.crux",
+  "b": "bdgov.strategic-vision",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Strategic cruxes uses Strategic visions."
+  ]
+ },
+ {
+  "a": "bdgov.robust-objective",
+  "b": "bdgov.strategic-vision",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Robust policy objectives uses Strategic visions."
+  ]
+ },
+ {
+  "a": "bdgov.centralized-control",
+  "b": "bdgov.strategic-vision",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Centralized AI control uses Strategic visions."
+  ]
+ },
+ {
+  "a": "bdgov.private-government",
+  "b": "bdgov.strategic-vision",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Private or government control uses Strategic visions."
+  ]
+ },
+ {
+  "a": "bdgov.theory-victory",
+  "b": "bdgov.strategic-vision",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding A theory of victory uses Strategic visions."
+  ]
+ },
+ {
+  "a": "bdgov.optionality",
+  "b": "bdgov.pacing-problem",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Radical optionality uses The pacing problem."
+  ]
+ },
+ {
+  "a": "bdgov.institutional-lead",
+  "b": "bdgov.pacing-problem",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Institutional lead times uses The pacing problem."
+  ]
+ },
+ {
+  "a": "bdgov.assumption-audit",
+  "b": "bdgov.strategic-vision",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Proposal assumption analysis uses Strategic visions."
+  ]
+ },
+ {
+  "a": "bdgov.plan-a",
+  "b": "bdgov.crux",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Plan A's coordination mechanism uses Strategic cruxes."
+  ]
+ },
+ {
+  "a": "bdgov.plan-a",
+  "b": "bdgov.theory-victory",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Plan A's coordination mechanism uses A theory of victory."
+  ]
+ },
+ {
+  "a": "bdgov.moratorium",
+  "b": "bdgov.plan-a",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding A frontier-development moratorium uses Plan A's coordination mechanism."
+  ]
+ },
+ {
+  "a": "bdgov.steelman",
+  "b": "bdgov.crux",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Steelmanning a policy position uses Strategic cruxes."
+  ]
+ },
+ {
+  "a": "bdgov.decision-compression",
+  "b": "bdgov.pacing-problem",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Compressed decision windows uses The pacing problem."
+  ]
+ },
+ {
+  "a": "bdgov.decision-compression",
+  "b": "bdgov.software-feedback",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Compressed decision windows uses AI research feedback."
+  ]
+ },
+ {
+  "a": "bdgov.nondelegable-prep",
+  "b": "bdgov.institutional-lead",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Preparation before superintelligence uses Institutional lead times."
+  ]
+ },
+ {
+  "a": "bdgov.nondelegable-prep",
+  "b": "bdgov.decision-compression",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Preparation before superintelligence uses Compressed decision windows."
+  ]
+ },
+ {
+  "a": "bdgov.singular-loyalty",
+  "b": "bdgov.centralized-control",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Singular AI loyalty uses Centralized AI control."
+  ]
+ },
+ {
+  "a": "bdgov.secret-loyalty",
+  "b": "bdgov.singular-loyalty",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Secret AI loyalty uses Singular AI loyalty."
+  ]
+ },
+ {
+  "a": "bdgov.stress-test",
+  "b": "bdgov.decision-compression",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Governance stress-testing uses Compressed decision windows."
+  ]
+ },
+ {
+  "a": "bdgov.stress-test",
+  "b": "bdgov.authority-capacity",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Governance stress-testing uses Institutional capacity."
+  ]
+ },
+ {
+  "a": "bdgov.marginal-risk",
+  "b": "bdgov.open-properties",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Marginal misuse risk uses Open-weight release."
+  ]
+ },
+ {
+  "a": "bdgov.marginal-risk",
+  "b": "bdgov.contextual-evals",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Marginal misuse risk uses Contextual safety evaluations."
+  ]
+ },
+ {
+  "a": "bdgov.open-benefits",
+  "b": "bdgov.open-properties",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Scientific access through open weights uses Open-weight release."
+  ]
+ },
+ {
+  "a": "bdgov.if-then",
+  "b": "bdgov.capability-threshold",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding If-then commitments uses Capability thresholds."
+  ]
+ },
+ {
+  "a": "bdgov.conditional-agreement",
+  "b": "bdgov.if-then",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Agreement under forecast disagreement uses If-then commitments."
+  ]
+ },
+ {
+  "a": "bdgov.policy-coherence",
+  "b": "bdgov.strategic-vision",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Policy position coherence uses Strategic visions."
+  ]
+ },
+ {
+  "a": "bdgov.policy-coherence",
+  "b": "bdgov.crux",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Policy position coherence uses Strategic cruxes."
+  ]
+ },
+ {
+  "a": "bdgov.policy-implementation",
+  "b": "bdgov.assumption-audit",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Policy implementation uses Proposal assumption analysis."
+  ]
+ },
+ {
+  "a": "bdgov.relationships",
+  "b": "bdgov.policy-implementation",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Policy relationship-building uses Policy implementation."
+  ]
+ },
+ {
+  "a": "bdgov.career-fit",
+  "b": "bdgov.relationships",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding Personal fit for policy work uses Policy relationship-building."
+  ]
+ },
+ {
+  "a": "bdgov.leverage-plan",
+  "b": "bdgov.career-fit",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding A personal governance contribution plan uses Personal fit for policy work."
+  ]
+ },
+ {
+  "a": "bdgov.leverage-plan",
+  "b": "bdgov.policy-implementation",
+  "type": "depends-on",
+  "relation_constraints": [
+   "Understanding A personal governance contribution plan uses Policy implementation."
+  ]
+ },
+ {
+  "a": "bdgov.model-evals",
+  "b": "bdgov.contextual-evals",
   "type": "explains",
   "relation_constraints": [
-   "A tail of extreme values pulls the mean furthest, so a positive skew has mean > median > mode."
+   "Model safety evaluations establish output capability; contextual safety evaluations test effects on users or connected systems. Output evidence can motivate a contextual study, but does not establish its result. The relationship is evidence about capability followed by evidence about practical effect."
   ]
  },
  {
-  "a": "bsdesc.normal-sd",
-  "b": "bsdesc.central-tendency",
-  "type": "depends-on",
-  "relation_constraints": [
-   "In a normal distribution mean = median = mode, and SDs are measured from the mean."
-  ]
- },
- {
-  "a": "bsinf.type-1",
-  "b": "bsinf.errors-power",
-  "type": "contrasts",
-  "relation_constraints": [
-   "Type I rejects a true null; type II fails to reject a false null."
-  ]
- },
- {
-  "a": "bsinf.power",
-  "b": "bsinf.errors-power",
-  "type": "depends-on",
-  "relation_constraints": [
-   "Power = 1 - beta, and beta is the probability of a type II error."
-  ]
- },
- {
-  "a": "bsinf.alternative",
-  "b": "bsinf.hypotheses",
-  "type": "contrasts",
-  "relation_constraints": [
-   "The null says no difference; the alternative says there is one."
-  ]
- },
- {
-  "a": "bsinf.errors-power",
-  "b": "bsinf.hypotheses",
-  "type": "depends-on",
-  "relation_constraints": [
-   "Type I rejects a true null; type II fails to reject a false null."
-  ]
- },
- {
-  "a": "bsinf.p-value",
-  "b": "bsinf.hypotheses",
-  "type": "evidence-for",
-  "relation_constraints": [
-   "p < 0.05 is the usual evidence to reject the null."
-  ]
- },
- {
-  "a": "bsinf.confidence-interval",
-  "b": "bsinf.p-value",
-  "type": "evidence-for",
-  "relation_constraints": [
-   "A 95% CI excluding the null value corresponds to p < 0.05."
-  ]
- },
- {
-  "a": "bsinf.confidence-interval",
-  "b": "bsrisk.relative-risk",
-  "type": "depends-on",
-  "relation_constraints": [
-   "An RR interval is read against 1: entirely above = risk factor, entirely below = protective."
-  ]
- },
- {
-  "a": "bsinf.clinical-vs-statistical",
-  "b": "bsinf.p-value",
-  "type": "contrasts",
-  "relation_constraints": [
-   "p < 0.05 says unlikely to be chance, not that the effect matters to patients."
-  ]
- },
- {
-  "a": "bsinf.clinical-vs-statistical",
-  "b": "bsinf.confidence-interval",
-  "type": "contrasts",
-  "relation_constraints": [
-   "A CI that excludes 0 can still hold only clinically trivial differences."
-  ]
- },
- {
-  "a": "bsinf.anova",
-  "b": "bsinf.choosing-test",
-  "type": "contrasts",
-  "relation_constraints": [
-   "t-test: the means of two groups; ANOVA: the means of three or more."
-  ]
- },
- {
-  "a": "bsinf.chi-square",
-  "b": "bsinf.choosing-test",
-  "type": "contrasts",
-  "relation_constraints": [
-   "Chi-square compares percentages or proportions, never means."
-  ]
- },
- {
-  "a": "bsinf.choosing-test",
-  "b": "bsinf.hypotheses",
-  "type": "depends-on",
-  "relation_constraints": [
-   "Each test (t, ANOVA, chi-square) tests a null of no difference."
-  ]
- },
- {
-  "a": "bsinf.power",
-  "b": "bsdesign.meta-analysis",
+  "a": "bdgov.proxy-limits",
+  "b": "bdgov.capability-threshold",
   "type": "explains",
   "relation_constraints": [
-   "Pooling studies raises power, lowering the chance of a type II error."
+   "Evaluation proxies are intermediary evidence. A capability threshold specifies an ability associated with risk; a knowledge score supports that trigger only insofar as it validly measures that ability. Investigate the gap rather than treating the score as either proof or worthless."
+  ]
+ },
+ {
+  "a": "bdgov.weight-security",
+  "b": "bdgov.open-properties",
+  "type": "explains",
+  "relation_constraints": [
+   "Model weight security prevents unauthorized acquisition. Open-weight release deliberately distributes weights and enables local copies that cannot simply be recalled. Preventing theft before release and controlling use after intentional release are different problems; protecting the hosted interface cannot revoke copies."
+  ]
+ },
+ {
+  "a": "bdgov.crux",
+  "b": "bdgov.robust-objective",
+  "type": "explains",
+  "relation_constraints": [
+   "A strategic crux changes the relative feasibility or desirability of competing visions. A robust policy objective such as reducing a shared security vulnerability can remain valuable under either resolution. The uncertainty can matter greatly for strategy while leaving this priority shared."
+  ]
+ },
+ {
+  "a": "bdgov.optionality",
+  "b": "bdgov.institutional-lead",
+  "type": "explains",
+  "relation_constraints": [
+   "Radical optionality preserves future governance decisions through proactive preparation. Institutional lead times are the years needed to recruit expertise and build effective institutions. If transformative capabilities arrive before that preparation begins, those years still have to pass before a response is usable. Starting capacity-building beforehand preserves options without committing now to one final regulatory regime. Waiting for arrival can therefore remove the ability to respond during the crucial initial window."
+  ]
+ },
+ {
+  "a": "bdgov.centralized-control",
+  "b": "bdgov.private-government",
+  "type": "explains",
+  "relation_constraints": [
+   "Private or government control identifies whether companies or governments control development. Centralized AI control concerns the distribution of decision power. Replacing a sole private controller with a sole public controller changes ownership and authority without necessarily distributing control."
+  ]
+ },
+ {
+  "a": "bdgov.software-feedback",
+  "b": "bdgov.decision-compression",
+  "type": "explains",
+  "relation_constraints": [
+   "AI research feedback can produce better AI that accelerates further improvements. If this shortens the interval between consequential capabilities, decision windows compress relative to unchanged institutional processes. A one-off productivity improvement need not generate a sustained loop, so compression is conditional."
+  ]
+ },
+ {
+  "a": "bdgov.singular-loyalty",
+  "b": "bdgov.secret-loyalty",
+  "type": "explains",
+  "relation_constraints": [
+   "Singular AI loyalty can replace independent personnel with an obedient workforce, reducing the need to win human supporters. Secret AI loyalty conceals a different controller behind apparent institutional service and can spread across copies. Both can concentrate effective power through different mechanisms."
+  ]
+ },
+ {
+  "a": "bdgov.marginal-risk",
+  "b": "bdgov.open-benefits",
+  "type": "explains",
+  "relation_constraints": [
+   "Benefits of open foundation models include local modification and experiments that support scientific research and innovation, plus wider decision-making power; weights alone do not guarantee training-data transparency. Marginal misuse risk asks how much additional harm release enables compared with existing tools. Compare release with non-release, including both additional scientific work and additional misuse in those alternatives. Scientific benefit does not erase added harm, and a harmful possibility does not establish its incremental magnitude or erase benefit. Investigate both, state uncertainty, and justify the tradeoff; evidence can support either recommendation."
+  ]
+ },
+ {
+  "a": "bdgov.if-then",
+  "b": "bdgov.conditional-agreement",
+  "type": "explains",
+  "relation_constraints": [
+   "An if-then commitment specifies a capability condition and consequential mitigation response, including delay if needed. Agreement under forecast disagreement is possible because both can accept the response if the condition arises without sharing an arrival date. They still need a usable trigger and response."
+  ]
+ },
+ {
+  "a": "bdgov.policy-implementation",
+  "b": "bdgov.relationships",
+  "type": "explains",
+  "relation_constraints": [
+   "Policy relationship-building makes work understandable and builds trust through reliability. Policy implementation requires others to translate ideas into action under institutional constraints. Trust and communication help that translation without making implementation automatic."
+  ]
+ },
+ {
+  "a": "bdgov.evidence-briefing",
+  "b": "bdgov.frontier-governance",
+  "type": "example-of",
+  "relation_constraints": [
+   "Translating capability evidence into a decision-relevant briefing is one way to contribute to frontier AI governance through institutions and relationships."
+  ]
+ },
+ {
+  "a": "bdgov.optionality",
+  "b": "bdgov.strategic-vision",
+  "type": "example-of",
+  "relation_constraints": [
+   "Radical optionality is a governance strategy under uncertainty that can be compared using the strategic-vision framework; this does not claim it is one of the IAPS report’s nine named visions."
   ]
  }
 ]

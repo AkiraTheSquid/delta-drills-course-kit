@@ -3,3 +3,6 @@
 numpy>=1.24.0
 einops>=0.7.0
 torch>=2.0
+# Study courses (study_check / study_diagram_*): the pack model and the pictures.
+pydantic>=2.5
+Pillow>=10.0

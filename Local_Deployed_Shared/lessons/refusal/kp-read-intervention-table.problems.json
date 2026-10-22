@@ -1,0 +1,135 @@
+{
+ "kc": "refusal.read-intervention-table",
+ "problems": [
+  {
+   "id": 50151,
+   "kind": "statement",
+   "difficulty": 50,
+   "prompt": "After the removal, no reply to a harmful prompt contains a stock refusal phrase such as \"I cannot\". A reviewer concludes the model now gives real harmful help. What is the gap in that reasoning?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "There is no gap, since a reply with no refusal phrase in it has to be a harmful answer."
+    },
+    {
+     "key": "B",
+     "text": "No refusal phrase only shows it stopped refusing; the reply may still be vague or garbled."
+    },
+    {
+     "key": "C",
+     "text": "The phrases should have been counted on the harmless prompts, not on the harmful ones."
+    },
+    {
+     "key": "D",
+     "text": "The reviewer should have read the KL column instead, since KL measures how harmful replies are."
+    }
+   ],
+   "answer": "B",
+   "solution": "The table decides \"refused\" by looking for stock phrases. A reply without them is not a refusal, but it may still be unhelpful, off-topic or broken. Whether the content is actually harmful needs a separate check of the replies themselves.\n\n- A: a reply can avoid the phrases and still say nothing useful.\n- C: refusals of harmful prompts are exactly what the removal is meant to change, so they are counted there.\n- D: KL measures how much the removal changes harmless prompts, not whether replies to harmful ones are harmful."
+  },
+  {
+   "id": 50152,
+   "kind": "statement",
+   "difficulty": 60,
+   "prompt": "On 32 prompts, two layers' refusal shares differ by exactly one prompt. What can you conclude?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "Nothing reliable, since one prompt out of 32 is within ordinary noise."
+    },
+    {
+     "key": "B",
+     "text": "The layer with fewer refusals is better, since any gap is a real gap."
+    },
+    {
+     "key": "C",
+     "text": "The gap is real, since both layers were run on the same 32 prompts."
+    },
+    {
+     "key": "D",
+     "text": "The two layers are equivalent, so their directions must be the same."
+    }
+   ],
+   "answer": "A",
+   "solution": "On 32 prompts each share moves in steps of one thirty-second, and a single prompt can flip from one run to the next. A one-step gap is the size of ordinary noise, so it cannot settle a choice.\n\n- B: picks a winner from a gap no larger than the noise.\n- C: using the same prompts helps a comparison, but a single prompt flipping is still too little to go on.\n- D: two different directions can give similar shares on 32 prompts. Similar results do not make them the same."
+  },
+  {
+   "id": 50153,
+   "kind": "statement",
+   "difficulty": 65,
+   "prompt": "The table stores results for coefficients 1 and 2, and a report asks for coefficient 3. What should the reader do?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "Extend the trend from 1 to 2 and report the value where it lands at 3."
+    },
+    {
+     "key": "B",
+     "text": "Report the coefficient 2 value, since it is the nearest stored coefficient."
+    },
+    {
+     "key": "C",
+     "text": "Report zero, since a coefficient with no entry in the table had no effect."
+    },
+    {
+     "key": "D",
+     "text": "Say it was not measured, since the table holds only coefficients 1 and 2."
+    }
+   ],
+   "answer": "D",
+   "solution": "A trend through two points is a guess about a point nobody measured. The reader reports what the table holds and says plainly what it does not.\n\n- A: extrapolation is a guess dressed up as a measurement, and these effects are not straight lines.\n- B: reports another coefficient's result as if it were this one's.\n- C: an empty cell is unknown, not zero."
+  },
+  {
+   "id": 50154,
+   "kind": "statement",
+   "difficulty": 75,
+   "prompt": "Layer P: removal drops harmful refusal to nearly zero, but adding the direction does not raise refusal on harmless prompts. Layer Q: both work, and the removal barely changes harmless prompts. Layer R: both work, but the removal changes harmless prompts a lot. Which layer best supports the claim that the model uses this direction for refusal, and that removing it is cheap?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "Layer P, since its removal effect is the strongest of the three."
+    },
+    {
+     "key": "B",
+     "text": "Layer R, since both effects show up there, whatever the cost."
+    },
+    {
+     "key": "C",
+     "text": "Layer Q, since both effects show up there at a small cost."
+    },
+    {
+     "key": "D",
+     "text": "Any of them, since each one shows removal lowering refusal."
+    }
+   ],
+   "answer": "C",
+   "solution": "The claim needs both effects (the direction can switch refusal off and on) and a small side effect (removing it leaves harmless prompts alone). Only Q has all of that.\n\n- A: one effect only, so the direction is not shown to produce refusal.\n- B: both effects, but the large change on harmless prompts means removal is not cheap.\n- D: removal working is only half of the claim."
+  },
+  {
+   "id": 50155,
+   "kind": "statement",
+   "difficulty": 80,
+   "prompt": "In the table, removing layer M's direction lowers harmful refusal from 72% to 53%, and adding it makes 0% of harmless prompts refused. At layer N, removal gives 0% and adding gives 31%. A summary says \"layer M holds a weaker copy of the refusal direction.\" What does the table support?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "The summary: a smaller drop on removal means a weaker version of the same refusal direction."
+    },
+    {
+     "key": "B",
+     "text": "Only that removal at M lowers refusal; with no added refusals, M is not shown to drive it."
+    },
+    {
+     "key": "C",
+     "text": "That M is the better layer, since adding its direction left harmless prompts completely alone."
+    },
+    {
+     "key": "D",
+     "text": "That M's drop is noise, since 19 percentage points is less than one prompt's worth out of 32."
+    }
+   ],
+   "answer": "B",
+   "solution": "At M only one half of the test works: removal lowers refusal, but addition does nothing. That is not evidence that M's direction drives refusal, weakly or otherwise, so \"a weaker copy\" reads more into the table than it holds. N works both ways.\n\n- A: reads one half of the test as the whole claim, and assumes the two layers share one direction.\n- C: for the addition test, causing no refusals is a failure, not a virtue.\n- D: one prompt out of 32 is about 3 points, so a 19-point drop is about six prompts, beyond noise."
+  }
+ ]
+}

@@ -16,7 +16,9 @@ import json
 from dataclasses import dataclass, field
 from typing import Any, Callable
 
-from . import auth, backup, drills, graph, lessons, paths, pipeline
+from . import problems as mc
+from . import atoms as atoms_mod
+from . import auth, backup, courses, drills, graph, images, lessons, paths, pipeline
 
 
 @dataclass
@@ -124,6 +126,64 @@ def _status():
     }
 
 
+# ── courses ────────────────────────────────────────────────────────────────
+@op("course_list", "Every course folder with its units, page count and image count, plus every unit in the registry.")
+def _course_list():
+    return courses.list_courses()
+
+
+@op("course_create",
+    "Start a NEW course: its folder under lessons/ and its first unit (the `lesson` id concepts name). "
+    "kind 'code' = runnable Python drills; kind 'math' = prose + multiple-choice pages (topic must be Mathematics). "
+    "For free-response or image-occlusion questions use the study_* tools instead.",
+    {"course": {**STR, "description": "Folder name, lowercase-dashes, e.g. 'probability'."},
+     "unit": {**STR, "description": "New unit id like 'pb-1' (short prefix, dash, number)."},
+     "title": {**STR, "description": "The course's title."},
+     "topic": {**STR, "description": "Topic the unit's drills are filed under, e.g. 'Probability'."},
+     "unit_title": {**STR, "description": "The first unit's title (defaults to the course title)."},
+     "description": STR,
+     "kind": {**STR, "description": "'code' (default) or 'math'."},
+     "subtopic_key": STR},
+    ["course", "unit", "title", "topic"], needs_auth=True)
+def _course_create(course, unit, title, topic, unit_title=None, description="", kind="code",
+                   subtopic_key=None):
+    return courses.create_course(course, unit, title, topic, unit_title, description, kind, subtopic_key)
+
+
+@op("course_add_unit", "Add another unit (registry lesson) to an existing course folder.",
+    {"course": STR, "unit": STR, "title": STR, "topic": STR, "subtopic_key": STR},
+    ["course", "unit", "title", "topic"], needs_auth=True)
+def _course_add_unit(course, unit, title, topic, subtopic_key=None):
+    return courses.add_unit(course, unit, title, topic, subtopic_key)
+
+
+# ── images ─────────────────────────────────────────────────────────────────
+@op("image_add",
+    "Put a picture (PNG/JPEG/GIF/WebP, <=2 MB; no SVG) into a course and get back the markdown that shows it. "
+    "Works in lesson pages, drill prompts and multiple-choice prompts/solutions.",
+    {"course": STR,
+     "alt": {**STR, "description": "What the picture shows (required; read aloud by screen readers)."},
+     "source_path": {**STR, "description": "A local image file to copy in."},
+     "data_base64": {**STR, "description": "The image bytes, base64, instead of source_path."},
+     "name": {**STR, "description": "File name to store it under (default: from the source)."},
+     "replace": {**BOOL, "description": "Overwrite an existing file of that name."}},
+    ["course", "alt"], needs_auth=True)
+def _image_add(course, alt, source_path=None, data_base64=None, name=None, replace=False):
+    return images.add(course, alt, source_path, data_base64, name, replace)
+
+
+@op("image_list", "Every picture in a course (or all courses) and which pages/drills show it.",
+    {"course": STR})
+def _image_list(course=None):
+    return images.list_images(course)
+
+
+@op("image_remove", "Delete a picture nothing shows any more.",
+    {"course": STR, "name": STR}, ["course", "name"], needs_auth=True)
+def _image_remove(course, name):
+    return images.remove(course, name)
+
+
 # ── lessons ────────────────────────────────────────────────────────────────
 @op("lesson_list", "List every KP page with its title, rung drill ids and drill count.",
     {"course": {**STR, "description": "Restrict to one course folder (python, numpy, einops)."}})
@@ -171,6 +231,29 @@ def _lesson_create(course: str, kc: str, markdown: str):
     return lessons.create_kp(course, kc, markdown)
 
 
+# ── multiple-choice problems (math pages, or MC items on a code page) ────────
+@op("problems_read", "The multiple-choice problems file beside a KC's page.",
+    {"kc": STR}, ["kc"])
+def _problems_read(kc):
+    return mc.read(kc)
+
+
+@op("problems_add",
+    "Add multiple-choice problems to a KC (kp-<slug>.problems.json). Ids are minted when omitted. "
+    "Schema: {kind: compute|derivation-step|statement, prompt, choices:[{key:A,text,value?}], answer, solution, "
+    "difficulty 10-100, verify:{sympy:{truth}} for compute/derivation-step}.",
+    {"kc": STR, "problems": {"type": "array", "items": {"type": "object"}}},
+    ["kc", "problems"], needs_auth=True)
+def _problems_add(kc, problems: list):
+    return mc.add(kc, problems)
+
+
+@op("problems_update", "Change fields of one multiple-choice problem in place (its id stays).",
+    {"kc": STR, "id": INT, "fields": {"type": "object"}}, ["kc", "id", "fields"], needs_auth=True)
+def _problems_update(kc, id: int, fields: dict):
+    return mc.update(kc, id, fields)
+
+
 # ── concept graph ──────────────────────────────────────────────────────────
 @op("graph_list", "The concept graph: every KC with its prereqs, teaching position and drill count.",
     {"lesson": {**STR, "description": "Restrict to one lesson id, e.g. np-1."}})
@@ -187,17 +270,21 @@ def _graph_read(kc: str):
 @op("graph_add_kc",
     "Add a concept node. Inserted after its last prereq so teaching order stays a linear extension.",
     {"kc": STR, "lesson": STR, "title": STR, "prereqs": STRS, "syntax": BOOL,
-     "after": {**STR, "description": "Insert directly after this KC instead of after the last prereq."}},
+     "after": {**STR, "description": "Insert directly after this KC instead of after the last prereq."},
+     "answer_secs": {**INT, "description": "Answer clock per drill, 1-1200 s (default 600). Short "
+                     "one-call answers 180-300; ARENA-sized exercises up to 1200."}},
     ["kc", "lesson", "title"], needs_auth=True)
-def _graph_add(kc: str, lesson: str, title: str, prereqs=None, syntax: bool = True, after=None):
-    return graph.add_kc(kc, lesson, title, prereqs, syntax, after)
+def _graph_add(kc: str, lesson: str, title: str, prereqs=None, syntax: bool = True, after=None,
+               answer_secs=None):
+    return graph.add_kc(kc, lesson, title, prereqs, syntax, after, answer_secs)
 
 
 @op("graph_update_kc", "Change a concept's title, prereqs, lesson, or its position in the sequence.",
-    {"kc": STR, "title": STR, "prereqs": STRS, "lesson": STR, "after": STR},
+    {"kc": STR, "title": STR, "prereqs": STRS, "lesson": STR, "after": STR,
+     "answer_secs": {**INT, "description": "Answer clock per drill, 1-1200 s."}},
     ["kc"], needs_auth=True)
-def _graph_update(kc: str, title=None, prereqs=None, lesson=None, after=None):
-    return graph.update_kc(kc, title, prereqs, lesson, after)
+def _graph_update(kc: str, title=None, prereqs=None, lesson=None, after=None, answer_secs=None):
+    return graph.update_kc(kc, title, prereqs, lesson, after, answer_secs)
 
 
 # ── drills ─────────────────────────────────────────────────────────────────
@@ -225,12 +312,23 @@ def _drill_next_id():
      "difficulty": {**INT, "description": "0-100; <=35 easy, <=65 medium, else hard."},
      "expected_output": STR,
      "override": {"type": "object",
-                  "description": "function_name, starter_code, test_cases, wrong_examples, ..."}},
+                  "description": "function_name, starter_code, test_cases, wrong_examples, ..."},
+     "atoms": {"type": "array", "items": {}, "description":
+               "Mastery atoms this drill trains (ids from atom_list / atom_add, or "
+               "{atom_id, confidence}). Without them a correct answer moves no mastery "
+               "and the bank gate fails the drill (atom_tag_missing)."}},
     ["topic", "subtopic", "question_text", "answer_code"], needs_auth=True)
 def _drill_add(topic, subtopic, question_text, answer_code, difficulty: int = 50,
-               expected_output: str = "", override=None):
-    return drills.add(topic, subtopic, question_text, answer_code, difficulty,
-                      expected_output, override)
+               expected_output: str = "", override=None, atoms=None):
+    if atoms:
+        tags_ok = atoms_mod.resolve(atoms)  # refuse a bad atom before the CSV row exists
+    result = drills.add(topic, subtopic, question_text, answer_code, difficulty,
+                        expected_output, override)
+    if atoms:
+        result["atoms"] = atoms_mod.tag(result["id"], tags_ok)["atoms"]
+    else:
+        result["atom_warning"] = "No atoms given — drill_tag it before pipeline_check."
+    return result
 
 
 @op("drill_update", "Change an existing drill by appending an override record (last layer wins).",
@@ -238,6 +336,32 @@ def _drill_add(topic, subtopic, question_text, answer_code, difficulty: int = 50
     ["id", "fields"], needs_auth=True)
 def _drill_update(id: int, fields: dict):
     return drills.update(id, fields)
+
+
+@op("drill_tag",
+    "Set the mastery atoms a drill trains (appends its tag row; the last row per drill wins).",
+    {"id": INT, "atoms": {"type": "array", "items": {},
+                          "description": "Atom ids, or {atom_id, confidence} objects."}},
+    ["id", "atoms"], needs_auth=True)
+def _drill_tag(id: int, atoms: list):
+    return atoms_mod.tag(id, atoms)
+
+
+@op("atom_list", "Search the mastery-atom graph (id, title, topic, how many drills train each).",
+    {"query": STR, "limit": INT})
+def _atom_list(query: str = "", limit: int = 40):
+    return atoms_mod.list_atoms(query, limit)
+
+
+@op("atom_add",
+    "Add a mastery atom to the BKT graph: prereqs (existing atoms) OR root=true. A new "
+    "course's drills need an atom of their own to tag.",
+    {"atom": STR, "title": STR, "description": STR, "topic": STR,
+     "subtopic": {**STR, "description": "Usually the unit's subtopic_key, e.g. 'Probability: Probability basics'."},
+     "prereqs": {"type": "array", "items": STR}, "root": {"type": "boolean"}},
+    ["atom", "title", "description", "topic", "subtopic"], needs_auth=True)
+def _atom_add(atom, title, description, topic, subtopic, prereqs=None, root: bool = False):
+    return atoms_mod.add(atom, title, description, topic, subtopic, prereqs, root)
 
 
 @op("drill_retire", "Stop serving a drill without renumbering anything behind it.",
@@ -313,3 +437,7 @@ def catalogue() -> list[dict]:
 
 def as_json(value: Any) -> str:
     return json.dumps(value, indent=2, default=str)
+
+
+# The Study-course tools register themselves into REGISTRY on import.
+from . import ops_study  # noqa: E402,F401

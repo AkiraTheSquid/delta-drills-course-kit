@@ -91,6 +91,12 @@
    "topic": "LeetCode",
    "title": "LeetCode Patterns",
    "subtopic_key": "LeetCode: Patterns"
+  },
+  {
+   "id": "rd-1",
+   "topic": "PyTorch",
+   "title": "Refusal direction (Arditi et al. 2024)",
+   "subtopic_key": "PyTorch: rd-1"
   }
  ],
  "kcs": [
@@ -232,7 +238,10 @@
    "syntax": true,
    "prereqs": [
     "python.values-and-names"
-   ]
+   ],
+   "encompassing": {
+    "python.values-and-names": 0.8
+   }
   },
   {
    "id": "python.lists-and-tuples",
@@ -241,7 +250,10 @@
    "syntax": true,
    "prereqs": [
     "python.types-and-conversion"
-   ]
+   ],
+   "encompassing": {
+    "python.types-and-conversion": 0.5
+   }
   },
   {
    "id": "python.indexing",
@@ -250,7 +262,10 @@
    "syntax": true,
    "prereqs": [
     "python.lists-and-tuples"
-   ]
+   ],
+   "encompassing": {
+    "python.lists-and-tuples": 0.8
+   }
   },
   {
    "id": "python.calling-functions",
@@ -259,7 +274,10 @@
    "syntax": true,
    "prereqs": [
     "python.types-and-conversion"
-   ]
+   ],
+   "encompassing": {
+    "python.types-and-conversion": 0.5
+   }
   },
   {
    "id": "python.defining-functions",
@@ -268,7 +286,10 @@
    "syntax": true,
    "prereqs": [
     "python.calling-functions"
-   ]
+   ],
+   "encompassing": {
+    "python.calling-functions": 0.7
+   }
   },
   {
    "id": "python.dots-and-imports",
@@ -277,7 +298,10 @@
    "syntax": true,
    "prereqs": [
     "python.calling-functions"
-   ]
+   ],
+   "encompassing": {
+    "python.calling-functions": 0.7
+   }
   },
   {
    "id": "python.control-flow",
@@ -289,7 +313,12 @@
     "python.lists-and-tuples",
     "python.indexing"
    ],
-   "assessment": "composite"
+   "assessment": "composite",
+   "encompassing": {
+    "python.defining-functions": 0.6,
+    "python.lists-and-tuples": 0.7,
+    "python.indexing": 0.6
+   }
   },
   {
    "id": "torch.tensor-model",
@@ -300,7 +329,12 @@
     "python.indexing",
     "python.defining-functions",
     "python.dots-and-imports"
-   ]
+   ],
+   "encompassing": {
+    "python.indexing": 0.4,
+    "python.defining-functions": 0.6,
+    "python.dots-and-imports": 0.6
+   }
   },
   {
    "id": "torch.transpose-axes",
@@ -1651,6 +1685,102 @@
    ],
    "encompassing": {
     "leetcode.dp-grid": 0.5
+   }
+  },
+  {
+   "id": "math.orthogonal-projection",
+   "lesson": "ma-00",
+   "title": "Components along a direction, and removing them",
+   "syntax": false,
+   "prereqs": [
+    "math.dot-products-norms"
+   ],
+   "encompassing": {
+    "math.dot-products-norms": 0.3
+   }
+  },
+  {
+   "id": "refusal.diff-in-means",
+   "lesson": "rd-1",
+   "title": "The refusal direction is a difference of two averages",
+   "syntax": false,
+   "prereqs": [
+    "torch.axis-reductions",
+    "tensor.row-normalization",
+    "torch.boolean-masking",
+    "torch.elementwise-ops",
+    "math.dot-products-norms"
+   ],
+   "encompassing": {
+    "torch.axis-reductions": 0.3,
+    "tensor.row-normalization": 0.3
+   }
+  },
+  {
+   "id": "refusal.pick-layer",
+   "lesson": "rd-1",
+   "title": "Pick the layer where the direction works",
+   "syntax": false,
+   "prereqs": [
+    "refusal.diff-in-means",
+    "torch.boolean-masking",
+    "torch.argmin-argmax",
+    "torch.sorting"
+   ],
+   "encompassing": {
+    "refusal.diff-in-means": 0.2,
+    "torch.boolean-masking": 0.3
+   }
+  },
+  {
+   "id": "refusal.direction-ablation",
+   "lesson": "rd-1",
+   "title": "Ablate the direction: remove its component everywhere",
+   "syntax": false,
+   "prereqs": [
+    "refusal.diff-in-means",
+    "math.orthogonal-projection",
+    "torch.broadcasting-rules",
+    "torch.dot-matmul-patterns",
+    "cnn.forward-hooks",
+    "python.control-flow"
+   ],
+   "encompassing": {
+    "math.orthogonal-projection": 0.4,
+    "cnn.forward-hooks": 0.2,
+    "torch.dot-matmul-patterns": 0.2
+   }
+  },
+  {
+   "id": "refusal.activation-addition",
+   "lesson": "rd-1",
+   "title": "Add the direction to make a harmless prompt look harmful",
+   "syntax": false,
+   "prereqs": [
+    "refusal.diff-in-means",
+    "refusal.direction-ablation",
+    "cnn.forward-hooks"
+   ],
+   "encompassing": {
+    "cnn.forward-hooks": 0.3,
+    "refusal.direction-ablation": 0.2
+   }
+  },
+  {
+   "id": "refusal.read-intervention-table",
+   "lesson": "rd-1",
+   "title": "Read the saved intervention table without over-reading it",
+   "syntax": false,
+   "prereqs": [
+    "refusal.pick-layer",
+    "refusal.direction-ablation",
+    "refusal.activation-addition",
+    "python.control-flow"
+   ],
+   "encompassing": {
+    "refusal.pick-layer": 0.4,
+    "refusal.direction-ablation": 0.4,
+    "refusal.activation-addition": 0.4
    }
   }
  ]

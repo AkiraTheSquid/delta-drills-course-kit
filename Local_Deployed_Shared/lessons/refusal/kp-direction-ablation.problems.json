@@ -1,0 +1,135 @@
+{
+ "kc": "refusal.direction-ablation",
+ "problems": [
+  {
+   "id": 50141,
+   "kind": "statement",
+   "difficulty": 50,
+   "prompt": "A unit direction is removed from a batch of prompts, harmful and harmless alike. Which statement is true of every prompt afterwards?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "Harmful prompts score zero; harmless ones are unchanged."
+    },
+    {
+     "key": "B",
+     "text": "Harmful prompts now score the harmless class average."
+    },
+    {
+     "key": "C",
+     "text": "Its score along the direction has flipped its sign."
+    },
+    {
+     "key": "D",
+     "text": "Its score along the direction is now exactly zero."
+    }
+   ],
+   "answer": "D",
+   "solution": "Removing the component along a direction subtracts exactly the part of the activation that lies along it. What remains has nothing along that direction, whatever the prompt started at.\n\n- A: the formula never looks at which class a prompt belongs to.\n- B: every score goes to zero, which is not the harmless average.\n- C: subtracting the component once sends it to zero. Only subtracting it twice would flip the sign."
+  },
+  {
+   "id": 50142,
+   "kind": "statement",
+   "difficulty": 60,
+   "prompt": "The removal formula is x minus (the score of x) times the direction. Someone applies it with a direction that was never rescaled to length one. What goes wrong?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "Nothing, since the dot product already makes up for the direction's length."
+    },
+    {
+     "key": "B",
+     "text": "The sign of the component flips, since the removal always overshoots by two."
+    },
+    {
+     "key": "C",
+     "text": "The wrong amount is removed, so a component is left over or too much is taken."
+    },
+    {
+     "key": "D",
+     "text": "The result is right up to an overall rescaling of the whole activation."
+    }
+   ],
+   "answer": "C",
+   "solution": "The score times the direction removes the right amount only when the direction has length one. With length k the amount removed is k squared times too big, so the result still has a component along the direction, or has lost more than it should.\n\n- A: the dot product grows with the length of the direction. It does not cancel it.\n- B: the error depends on the length. Overshooting by exactly two is one special length, not the general case.\n- D: the error is along one direction only, so the result is not a rescaled copy of the right answer."
+  },
+  {
+   "id": 50143,
+   "kind": "statement",
+   "difficulty": 60,
+   "prompt": "Removing the direction at a single layer leaves the model refusing just as before. What best explains why the method removes it at every layer?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "Each layer has its own refusal direction, so each layer needs its own removal."
+    },
+    {
+     "key": "B",
+     "text": "Later layers can write the direction back in, so a single removal does not last."
+    },
+    {
+     "key": "C",
+     "text": "The single removal was at the wrong layer; one well-chosen layer would suffice."
+    },
+    {
+     "key": "D",
+     "text": "The model notices the change at that layer and deliberately compensates for it."
+    }
+   ],
+   "answer": "B",
+   "solution": "Each layer adds its output to a running vector that is passed on. A layer after the removal can add the direction back, so the cut does not stick. Removing it at every layer keeps it out.\n\n- A: the method removes ONE direction, taken from one layer, at every layer.\n- C: the problem is not where the cut is but that later layers can undo it.\n- D: nothing in the model detects the change. Later layers simply compute from what they receive."
+  },
+  {
+   "id": 50144,
+   "kind": "statement",
+   "difficulty": 75,
+   "prompt": "The direction is built from activations at layer 18, yet the method also removes it at layer 3. What makes that a well-defined thing to do?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "Every layer reads and writes one running vector of the same size, so one direction fits everywhere."
+    },
+    {
+     "key": "B",
+     "text": "Layer 3 keeps its own copy of the direction, and the method looks that copy up when it gets there."
+    },
+    {
+     "key": "C",
+     "text": "The direction is rebuilt from layer 3's own activations before it is removed at that layer."
+    },
+    {
+     "key": "D",
+     "text": "It is not well defined, so the method only removes it at layers close to the one it came from."
+    }
+   ],
+   "answer": "A",
+   "solution": "Each layer reads from and adds to the same running vector, which has the same size at every layer, so a direction built at one layer is a direction at every layer, and removing it is a well-defined operation everywhere. Whether removing it there HELPS is a separate question, which the measurements answer.\n\n- B: there is one shared running vector, not a copy of the direction per layer.\n- C: nothing is rebuilt. The same direction is reused at every layer.\n- D: the method removes it at every layer, from the first to the last."
+  },
+  {
+   "id": 50145,
+   "kind": "statement",
+   "difficulty": 80,
+   "prompt": "Two engineers remove the direction at every layer. One measures only how often harmful prompts are still refused. The other also runs harmless prompts with the removal and compares the model's word probabilities with and without it. What does the second check add?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "Nothing, since harmless prompts have no component along the direction to be removed."
+    },
+    {
+     "key": "B",
+     "text": "It shows whether harmless prompts start being refused once the direction is removed."
+    },
+    {
+     "key": "C",
+     "text": "It makes the refusal measurement more precise, since it brings in more test prompts."
+    },
+    {
+     "key": "D",
+     "text": "It shows whether the removal damages ordinary behaviour, not just whether refusal drops."
+    }
+   ],
+   "answer": "D",
+   "solution": "A removal that breaks the model would also stop it refusing. Comparing word probabilities on harmless prompts (the KL used by the layer filter) checks that the removal leaves ordinary behaviour mostly alone, which is what makes a low refusal share mean something.\n\n- A: harmless prompts do have scores along the direction, only smaller ones, so the removal changes them too.\n- B: refusals on harmless prompts are what ADDING the direction tests, not removing it.\n- C: the second check measures something different on different prompts. It does not refine the refusal count."
+  }
+ ]
+}

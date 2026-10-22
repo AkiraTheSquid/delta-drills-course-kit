@@ -1,0 +1,407 @@
+{
+ "kc": "math.orthogonal-projection",
+ "problems": [
+  {
+   "id": 50119,
+   "kind": "compute",
+   "difficulty": 20,
+   "prompt": "r̂ = (1, 0) is a unit vector and x = (3, 4). What is the component of x along r̂, the number x · r̂?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "3",
+     "value": "3"
+    },
+    {
+     "key": "B",
+     "text": "4",
+     "value": "4"
+    },
+    {
+     "key": "C",
+     "text": "5",
+     "value": "5"
+    },
+    {
+     "key": "D",
+     "text": "7",
+     "value": "7"
+    }
+   ],
+   "answer": "A",
+   "solution": "Multiply matching entries and add: $3\\cdot1+4\\cdot0=3$. The component along $\\hat r$ is how far $x$ reaches in that direction.\n\n- B: the other coordinate, which is how far $x$ reaches perpendicular to $\\hat r$.\n- C: the length of $x$, which ignores direction.\n- D: the sum of the coordinates.",
+   "verify": {
+    "sympy": {
+     "truth": "Matrix([3,4]).dot(Matrix([1,0]))"
+    }
+   }
+  },
+  {
+   "id": 50120,
+   "kind": "compute",
+   "difficulty": 25,
+   "prompt": "x = (3, 4) and r̂ = (0, 1) is a unit vector. Remove the part of x along r̂, that is x − (x · r̂) r̂. What vector is left?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "(0, 4)",
+     "value": "Matrix([0, 4])"
+    },
+    {
+     "key": "B",
+     "text": "(3, 0)",
+     "value": "Matrix([3, 0])"
+    },
+    {
+     "key": "C",
+     "text": "(3, 4)",
+     "value": "Matrix([3, 4])"
+    },
+    {
+     "key": "D",
+     "text": "(0, 0)",
+     "value": "Matrix([0, 0])"
+    }
+   ],
+   "answer": "B",
+   "solution": "The component is $x\\cdot\\hat r=4$, so the part along $\\hat r$ is $4\\hat r=(0,4)$. Subtract it: $(3,4)-(0,4)=(3,0)$.\n\n- A: this is the removed part, not what is left.\n- C: nothing was removed.\n- D: removing the part along one direction does not remove the rest of the vector.",
+   "verify": {
+    "sympy": {
+     "truth": "Matrix([3, 0])"
+    }
+   }
+  },
+  {
+   "id": 50121,
+   "kind": "compute",
+   "difficulty": 35,
+   "prompt": "r̂ = (2/3, 1/3, 2/3) is a unit vector and x = (3, 6, 9). What is the component of x along r̂?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "18",
+     "value": "18"
+    },
+    {
+     "key": "B",
+     "text": "10",
+     "value": "10"
+    },
+    {
+     "key": "C",
+     "text": "30",
+     "value": "30"
+    },
+    {
+     "key": "D",
+     "text": "9",
+     "value": "9"
+    }
+   ],
+   "answer": "B",
+   "solution": "$x\\cdot\\hat r=3\\cdot\\tfrac23+6\\cdot\\tfrac13+9\\cdot\\tfrac23=2+2+6=10$.\n\n- A: the sum of the coordinates of $x$, which treats every direction as equally weighted.\n- C: the dot product with the unscaled direction $(2,1,2)$. That direction has length 3, so the answer is three times too big.\n- D: the largest coordinate of $x$.",
+   "verify": {
+    "sympy": {
+     "truth": "Matrix([3,6,9]).dot(Matrix([2,1,2]))/3"
+    }
+   }
+  },
+  {
+   "id": 50122,
+   "kind": "compute",
+   "difficulty": 45,
+   "prompt": "r = (1, 1) is NOT a unit vector, and x = (4, 0). The part of x along r is ((x · r) / (r · r)) r. What is it?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "(4, 4)",
+     "value": "Matrix([4, 4])"
+    },
+    {
+     "key": "B",
+     "text": "(2, 0)",
+     "value": "Matrix([2, 0])"
+    },
+    {
+     "key": "C",
+     "text": "(2, 2)",
+     "value": "Matrix([2, 2])"
+    },
+    {
+     "key": "D",
+     "text": "(2√2, 2√2)",
+     "value": "Matrix([2*sqrt(2),2*sqrt(2)])"
+    }
+   ],
+   "answer": "C",
+   "solution": "$x\\cdot r=4$ and $r\\cdot r=2$, so the part along $r$ is $\\tfrac42 r=(2,2)$.\n\n- A: $(x\\cdot r)\\,r$ with no division. Dividing by $r\\cdot r$ is what makes the formula work for a direction that is not unit length.\n- B: only the first coordinate of $x$ is kept, which is not a part along $r$.\n- D: divides by the length $\\lVert r\\rVert$ instead of $r\\cdot r=\\lVert r\\rVert^2$.",
+   "verify": {
+    "sympy": {
+     "truth": "Matrix([2, 2])"
+    }
+   }
+  },
+  {
+   "id": 50123,
+   "kind": "compute",
+   "difficulty": 50,
+   "prompt": "r̂ = (3/5, 4/5) is a unit vector and x = (5, 0). What is x with its part along r̂ removed?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "(9/5, 12/5)",
+     "value": "Matrix([Rational(9,5),Rational(12,5)])"
+    },
+    {
+     "key": "B",
+     "text": "(2, −3)",
+     "value": "Matrix([2, -3])"
+    },
+    {
+     "key": "C",
+     "text": "(16/5, −12/5)",
+     "value": "Matrix([Rational(16,5),Rational(-12,5)])"
+    },
+    {
+     "key": "D",
+     "text": "(22/5, −4/5)",
+     "value": "Matrix([Rational(22,5),Rational(-4,5)])"
+    }
+   ],
+   "answer": "C",
+   "solution": "The component is $x\\cdot\\hat r=3$, so the removed part is $3\\hat r=(9/5,12/5)$. Then $x-3\\hat r=(5-9/5,\\,0-12/5)=(16/5,-12/5)$.\n\n- A: the removed part itself.\n- B: subtracts the number 3 from each coordinate instead of subtracting $3\\hat r$.\n- D: subtracts $\\hat r$ once, forgetting to scale it by the component 3.",
+   "verify": {
+    "sympy": {
+     "truth": "Matrix([5,0])-Matrix([5,0]).dot(Matrix([3,4]))/25*Matrix([3,4])"
+    }
+   }
+  },
+  {
+   "id": 50124,
+   "kind": "compute",
+   "difficulty": 50,
+   "prompt": "x has length 13 and its component along the unit vector r̂ is 5. After the part along r̂ is removed, how long is what is left?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "12",
+     "value": "12"
+    },
+    {
+     "key": "B",
+     "text": "8",
+     "value": "8"
+    },
+    {
+     "key": "C",
+     "text": "√194",
+     "value": "sqrt(194)"
+    },
+    {
+     "key": "D",
+     "text": "18",
+     "value": "18"
+    }
+   ],
+   "answer": "A",
+   "solution": "The removed part and the remainder are perpendicular, so their squared lengths add up to $\\lVert x\\rVert^2$: $13^2=5^2+\\ell^2$, so $\\ell^2=144$ and $\\ell=12$.\n\n- B: subtracts lengths, $13-5$, but lengths of perpendicular parts do not subtract.\n- C: adds the squares, $13^2+5^2$, instead of subtracting.\n- D: adds the lengths.",
+   "verify": {
+    "sympy": {
+     "truth": "sqrt(13**2-5**2)"
+    }
+   }
+  },
+  {
+   "id": 50125,
+   "kind": "compute",
+   "difficulty": 55,
+   "prompt": "r̂ = (3/5, 4/5) is a unit vector and x = (5, 0). Remove the part of x along r̂, then measure the result's component along r̂ again. What is it?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "3",
+     "value": "3"
+    },
+    {
+     "key": "B",
+     "text": "−3",
+     "value": "-3"
+    },
+    {
+     "key": "C",
+     "text": "16/5",
+     "value": "Rational(16,5)"
+    },
+    {
+     "key": "D",
+     "text": "0",
+     "value": "0"
+    }
+   ],
+   "answer": "D",
+   "solution": "The remainder $(16/5,-12/5)$ has component $\\tfrac{16}{5}\\cdot\\tfrac35-\\tfrac{12}{5}\\cdot\\tfrac45=\\tfrac{48-48}{25}=0$. The remainder is perpendicular to $\\hat r$ by construction.\n\n- A: the original component, as if nothing had been removed.\n- B: the removal overshot to the other side. Subtracting exactly the component never overshoots.\n- C: the first coordinate of the remainder, which is not a component along $\\hat r$.",
+   "verify": {
+    "sympy": {
+     "truth": "Matrix([Rational(16,5),Rational(-12,5)]).dot(Matrix([3,4]))/5"
+    }
+   }
+  },
+  {
+   "id": 50126,
+   "kind": "compute",
+   "difficulty": 40,
+   "prompt": "r̂ = (1, 0) is a unit vector and x = (−2, 1). Which statement about x and r̂ is correct?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "x · r̂ = 2, so x points the same way as r̂.",
+     "value": "2"
+    },
+    {
+     "key": "B",
+     "text": "x · r̂ = −2, so x leans against r̂, and removing its part along r̂ moves the first coordinate from −2 up to 0.",
+     "value": "-2"
+    },
+    {
+     "key": "C",
+     "text": "x · r̂ = 1, because the second coordinate is the one that matters.",
+     "value": "1"
+    },
+    {
+     "key": "D",
+     "text": "x · r̂ = −1, so x leans against r̂.",
+     "value": "-1"
+    }
+   ],
+   "answer": "B",
+   "solution": "$x\\cdot\\hat r=-2\\cdot1+1\\cdot0=-2$. A negative component means $x$ leans against $\\hat r$. Removing the part along $\\hat r$ means subtracting $-2\\hat r$, which moves the first coordinate from $-2$ to $0$.\n\n- A: takes the size and drops the sign.\n- C and D: read the second coordinate, which is perpendicular to $\\hat r$.",
+   "verify": {
+    "sympy": {
+     "truth": "Matrix([-2,1]).dot(Matrix([1,0]))"
+    }
+   }
+  },
+  {
+   "id": 50127,
+   "kind": "statement",
+   "difficulty": 45,
+   "prompt": "A teammate removes the part of an activation x along the unit direction r̂, and then, to be safe, removes the part along r̂ a second time. What does the second removal do?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "It takes away more of x, because the first removal only took part of the component."
+    },
+    {
+     "key": "B",
+     "text": "Nothing. After the first removal x has no part left along r̂, so there is nothing for the second one to take."
+    },
+    {
+     "key": "C",
+     "text": "It moves x to the other side of r̂, because a second subtraction overshoots."
+    },
+    {
+     "key": "D",
+     "text": "It shrinks the other directions too, because the removal is applied to the whole vector."
+    }
+   ],
+   "answer": "B",
+   "solution": "The first removal subtracts exactly the component, so the remainder has component $0$ along $\\hat r$. A second removal subtracts $0\\cdot\\hat r$, which changes nothing. Removing a direction is a one-time operation, and repeating it is harmless.\n\n- A: assumes the first removal was partial. It was exact.\n- C: assumes each subtraction pushes past zero. It lands exactly on zero.\n- D: the removal only changes the part along $\\hat r$. Everything perpendicular to it is untouched."
+  },
+  {
+   "id": 50128,
+   "kind": "compute",
+   "difficulty": 60,
+   "prompt": "Harmful activations average (6, 2) and harmless activations average (2, 2). Take r as the harmful average minus the harmless average and r̂ as r divided by its length. What is x = (5, 3) after the part along r̂ is removed?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "(5, 0)",
+     "value": "Matrix([5, 0])"
+    },
+    {
+     "key": "B",
+     "text": "(1, 3)",
+     "value": "Matrix([1, 3])"
+    },
+    {
+     "key": "C",
+     "text": "(0, 3)",
+     "value": "Matrix([0, 3])"
+    },
+    {
+     "key": "D",
+     "text": "(4, 3)",
+     "value": "Matrix([4, 3])"
+    }
+   ],
+   "answer": "C",
+   "solution": "$r=(6,2)-(2,2)=(4,0)$, so $\\hat r=(1,0)$. The component of $x$ is $5$, so removing it leaves $(5,3)-5(1,0)=(0,3)$.\n\n- A: keeps only the part along $\\hat r$, the opposite of removing it.\n- B: subtracts $r$ itself instead of the part of $x$ along $r$.\n- D: subtracts $\\hat r$ once, not scaled by the component.",
+   "verify": {
+    "sympy": {
+     "truth": "Matrix([0, 3])"
+    }
+   }
+  },
+  {
+   "id": 50129,
+   "kind": "compute",
+   "difficulty": 65,
+   "prompt": "x = (5, 3), r = (4, 0) and r̂ = (1, 0). First remove the part of x along r̂. Then add r to the result. What vector do you get?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "(9, 3)",
+     "value": "Matrix([9, 3])"
+    },
+    {
+     "key": "B",
+     "text": "(5, 3)",
+     "value": "Matrix([5, 3])"
+    },
+    {
+     "key": "C",
+     "text": "(0, 3)",
+     "value": "Matrix([0, 3])"
+    },
+    {
+     "key": "D",
+     "text": "(4, 3)",
+     "value": "Matrix([4, 3])"
+    }
+   ],
+   "answer": "D",
+   "solution": "Removing the part along $\\hat r$ gives $(0,3)$. Adding $r=(4,0)$ gives $(4,3)$. The first coordinate ends at the length of $r$ whatever it started as, which is why add-after-remove sets the direction's component instead of piling onto the old one.\n\n- A: adds $r$ without removing first, so the old component stays.\n- B: assumes adding $r$ undoes the removal. It adds the size of $r$, not the size that was removed.\n- C: forgets the addition.",
+   "verify": {
+    "sympy": {
+     "truth": "Matrix([4, 3])"
+    }
+   }
+  },
+  {
+   "id": 50130,
+   "kind": "statement",
+   "difficulty": 70,
+   "prompt": "Two teams use the same activations. Team A calls the raw mean difference r and uses it directly. Team B uses r̂, the same vector divided by its length. Each team removes the part along its vector from x, and each adds its vector to x. Which comparison holds?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "The removed results differ and the added results are equal."
+    },
+    {
+     "key": "B",
+     "text": "The removed results are equal and the added results differ."
+    },
+    {
+     "key": "C",
+     "text": "Both results are equal."
+    },
+    {
+     "key": "D",
+     "text": "Both results differ."
+    }
+   ],
+   "answer": "B",
+   "solution": "Removing a part along a direction depends only on the direction, and $r$ and $\\hat r$ point the same way, so the two removals give the same vector. Adding a vector depends on its length: $x+r$ and $x+\\hat r$ differ unless $\\lVert r\\rVert=1$. So the removed results are equal and the added results differ.\n\n- A: swaps the two operations.\n- C: true only if $r$ already has length 1.\n- D: the removal formula divides by the length, so the scale cancels."
+  }
+ ]
+}

@@ -12,8 +12,8 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-MODULES = ["paths", "auth", "backup", "lessons", "graph", "drills", "pipeline", "ops",
-           "server", "cli"]
+MODULES = ["paths", "auth", "backup", "lessons", "graph", "glossary", "courses", "images",
+           "problems", "drills", "atoms", "clocks", "study", "study_images", "ops_study", "pipeline", "ops", "server", "cli"]
 
 
 def check_imports():
@@ -102,6 +102,25 @@ def check_override_whitelist_matches_the_exporter():
         )
 
 
+def check_drill_update_keeps_the_payload():
+    """Inside one override file the exporter keeps only the LAST record per id,
+    so drill_update must write the merged record: a bare {id, starter_code}
+    once exported a drill with zero test cases (2026-10-21)."""
+    import tempfile
+    from pathlib import Path
+    from content_mcp import drills, paths
+    real, repo = paths.CURATED_OVERRIDES, paths.REPO
+    with tempfile.TemporaryDirectory() as tmp:
+        paths.REPO, paths.CURATED_OVERRIDES = Path(tmp), Path(tmp) / "o.jsonl"
+        try:
+            paths.CURATED_OVERRIDES.write_text('{"id": 7, "test_cases": [1], "starter_code": "a"}\n')
+            drills.update(7, {"starter_code": "b"}, _require_existing=False)
+            last = drills._last_record(7)
+        finally:
+            paths.CURATED_OVERRIDES, paths.REPO = real, repo
+    assert last == {"id": 7, "test_cases": [1], "starter_code": "b"}, f"drill_update lost fields: {last}"
+
+
 if __name__ == "__main__":
     checks = [
         check_imports,
@@ -112,6 +131,7 @@ if __name__ == "__main__":
         check_content_actually_parses,
         check_registry_is_structurally_sound,
         check_override_whitelist_matches_the_exporter,
+        check_drill_update_keeps_the_payload,
     ]
     for fn in checks:
         try:

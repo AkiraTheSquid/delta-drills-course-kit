@@ -32,6 +32,14 @@ Two things carry over from `rearrange`: names are whole words separated by
 spaces (`"batch seq -> seq batch"` is fine), and the pattern is the whole
 derivation — no `dim=` to look up, no `.T`.
 
+Step through it yourself. A name missing on the right is summed; the loop
+shows the sum it stands for:
+
+```figure einops-console einsum-one
+Interactive figure: step through 'i j -> j', 'i j -> i', 'i j -> j i' and
+'i j ->' on a 2 × 3 matrix.
+```
+
 ## Worked example
 
 We take one 2×3 matrix and ask for its total, its column sums, its row sums and its transpose — four patterns, one operand — and check that the surviving names alone decide each shape.
@@ -135,6 +143,14 @@ For these matrix products, the shared name has the SAME length in both
 operands, matching the `(m, n) @ (n, p)` rule. More generally, einsum also
 allows a shared axis of length 1 to broadcast against the other operand.
 
+Step through it yourself. Each result cell lights up the row and column it
+pairs, multiplies them and sums the shared name:
+
+```figure einops-console einsum-two
+Interactive figure: step through a matrix product, matrix × vector and
+'i k, j k -> i j', one result cell at a time.
+```
+
 ## Worked example
 
 We multiply a matrix by a vector, then by a second matrix, and check which shared name is summed in each case.
@@ -235,6 +251,13 @@ missing names sum (Rocktäschel §2.7–2.9, and the trace):
   every `j`, no summation because no name is missing.
 - **Repeat a name INSIDE one operand**: `"i i ->"` walks the diagonal of a
   square matrix and sums it — the trace; `"i i -> i"` is the diagonal itself.
+
+Step through it yourself. Same pattern idea, different keep/drop choices:
+
+```figure einops-console einsum-repeated
+Interactive figure: step through dot, outer, elementwise, trace and
+diagonal, one result cell at a time.
+```
 
 ## Worked example
 
@@ -352,6 +375,14 @@ computation per index. That is what "batched" means (Rocktäschel §2.10):
 
 Compare with `"i j, j k -> i k"`: adding `b` to every operand and to the
 output is the whole change. No `torch.bmm`, no `unsqueeze`, no loop.
+
+Step through it yourself. `b` is kept and shared, so each batch item is its
+own small product:
+
+```figure einops-console einsum-batch
+Interactive figure: step through a batched matmul, a per-row dot and a
+batched outer product.
+```
 
 ## Worked example
 

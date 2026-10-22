@@ -22425,6 +22425,920 @@
   ],
   "source": "kp-integrated"
  },
+ "1744": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1745": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1746": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1747": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1748": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1749": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1750": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1751": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1752": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1753": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1754": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1755": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1756": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "1757": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "1758": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "1759": {
+  "target_kcs": [
+   "refusal.pick-layer"
+  ],
+  "supporting_kcs": [
+   "torch.boolean-masking",
+   "torch.argmin-argmax",
+   "torch.sorting",
+   "refusal.diff-in-means"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1760": {
+  "target_kcs": [
+   "refusal.pick-layer"
+  ],
+  "supporting_kcs": [
+   "torch.boolean-masking",
+   "torch.argmin-argmax",
+   "torch.sorting",
+   "refusal.diff-in-means"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1761": {
+  "target_kcs": [
+   "refusal.pick-layer"
+  ],
+  "supporting_kcs": [
+   "torch.boolean-masking",
+   "torch.argmin-argmax",
+   "torch.sorting",
+   "refusal.diff-in-means"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1762": {
+  "target_kcs": [
+   "refusal.pick-layer"
+  ],
+  "supporting_kcs": [
+   "torch.boolean-masking",
+   "torch.argmin-argmax",
+   "torch.sorting",
+   "refusal.diff-in-means"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1763": {
+  "target_kcs": [
+   "refusal.pick-layer"
+  ],
+  "supporting_kcs": [
+   "torch.boolean-masking",
+   "torch.argmin-argmax",
+   "torch.sorting",
+   "refusal.diff-in-means"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1764": {
+  "target_kcs": [
+   "refusal.pick-layer"
+  ],
+  "supporting_kcs": [
+   "torch.boolean-masking",
+   "torch.argmin-argmax",
+   "torch.sorting",
+   "refusal.diff-in-means"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1765": {
+  "target_kcs": [
+   "refusal.pick-layer"
+  ],
+  "supporting_kcs": [
+   "torch.boolean-masking",
+   "torch.argmin-argmax",
+   "torch.sorting",
+   "refusal.diff-in-means"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1766": {
+  "target_kcs": [
+   "refusal.pick-layer"
+  ],
+  "supporting_kcs": [
+   "torch.boolean-masking",
+   "torch.argmin-argmax",
+   "torch.sorting",
+   "refusal.diff-in-means"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1767": {
+  "target_kcs": [
+   "refusal.pick-layer"
+  ],
+  "supporting_kcs": [
+   "torch.boolean-masking",
+   "torch.argmin-argmax",
+   "torch.sorting",
+   "refusal.diff-in-means"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1768": {
+  "target_kcs": [
+   "refusal.pick-layer"
+  ],
+  "supporting_kcs": [
+   "torch.boolean-masking",
+   "torch.argmin-argmax",
+   "torch.sorting",
+   "refusal.diff-in-means"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1769": {
+  "target_kcs": [
+   "refusal.pick-layer"
+  ],
+  "supporting_kcs": [
+   "torch.boolean-masking",
+   "torch.argmin-argmax",
+   "torch.sorting",
+   "refusal.diff-in-means"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "1770": {
+  "target_kcs": [
+   "refusal.pick-layer"
+  ],
+  "supporting_kcs": [
+   "torch.boolean-masking",
+   "torch.argmin-argmax",
+   "torch.sorting",
+   "refusal.diff-in-means"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "1771": {
+  "target_kcs": [
+   "refusal.pick-layer"
+  ],
+  "supporting_kcs": [
+   "torch.boolean-masking",
+   "torch.argmin-argmax",
+   "torch.sorting",
+   "refusal.diff-in-means"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "1772": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1773": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1774": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1775": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1776": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1777": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1778": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1779": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1780": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1781": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1782": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1783": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1784": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "1785": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "1786": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "1787": {
+  "target_kcs": [
+   "refusal.activation-addition"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "refusal.direction-ablation",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1788": {
+  "target_kcs": [
+   "refusal.activation-addition"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "refusal.direction-ablation",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1789": {
+  "target_kcs": [
+   "refusal.activation-addition"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "refusal.direction-ablation",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1790": {
+  "target_kcs": [
+   "refusal.activation-addition"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "refusal.direction-ablation",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1791": {
+  "target_kcs": [
+   "refusal.activation-addition"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "refusal.direction-ablation",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1792": {
+  "target_kcs": [
+   "refusal.activation-addition"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "refusal.direction-ablation",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1793": {
+  "target_kcs": [
+   "refusal.activation-addition"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "refusal.direction-ablation",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1794": {
+  "target_kcs": [
+   "refusal.activation-addition"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "refusal.direction-ablation",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1795": {
+  "target_kcs": [
+   "refusal.activation-addition"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "refusal.direction-ablation",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1796": {
+  "target_kcs": [
+   "refusal.activation-addition"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "refusal.direction-ablation",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1797": {
+  "target_kcs": [
+   "refusal.activation-addition"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "refusal.direction-ablation",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "1798": {
+  "target_kcs": [
+   "refusal.activation-addition"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "refusal.direction-ablation",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "1799": {
+  "target_kcs": [
+   "refusal.activation-addition"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "refusal.direction-ablation",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "1800": {
+  "target_kcs": [
+   "refusal.read-intervention-table"
+  ],
+  "supporting_kcs": [
+   "refusal.pick-layer",
+   "refusal.direction-ablation",
+   "refusal.activation-addition",
+   "torch.boolean-masking"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1801": {
+  "target_kcs": [
+   "refusal.read-intervention-table"
+  ],
+  "supporting_kcs": [
+   "refusal.pick-layer",
+   "refusal.direction-ablation",
+   "refusal.activation-addition",
+   "torch.boolean-masking"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1802": {
+  "target_kcs": [
+   "refusal.read-intervention-table"
+  ],
+  "supporting_kcs": [
+   "refusal.pick-layer",
+   "refusal.direction-ablation",
+   "refusal.activation-addition",
+   "torch.boolean-masking"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1803": {
+  "target_kcs": [
+   "refusal.read-intervention-table"
+  ],
+  "supporting_kcs": [
+   "refusal.pick-layer",
+   "refusal.direction-ablation",
+   "refusal.activation-addition",
+   "torch.boolean-masking"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "1804": {
+  "target_kcs": [
+   "refusal.read-intervention-table"
+  ],
+  "supporting_kcs": [
+   "refusal.pick-layer",
+   "refusal.direction-ablation",
+   "refusal.activation-addition",
+   "torch.boolean-masking"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1805": {
+  "target_kcs": [
+   "refusal.read-intervention-table"
+  ],
+  "supporting_kcs": [
+   "refusal.pick-layer",
+   "refusal.direction-ablation",
+   "refusal.activation-addition",
+   "torch.boolean-masking"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1806": {
+  "target_kcs": [
+   "refusal.read-intervention-table"
+  ],
+  "supporting_kcs": [
+   "refusal.pick-layer",
+   "refusal.direction-ablation",
+   "refusal.activation-addition",
+   "torch.boolean-masking"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1807": {
+  "target_kcs": [
+   "refusal.read-intervention-table"
+  ],
+  "supporting_kcs": [
+   "refusal.pick-layer",
+   "refusal.direction-ablation",
+   "refusal.activation-addition",
+   "torch.boolean-masking"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1808": {
+  "target_kcs": [
+   "refusal.read-intervention-table"
+  ],
+  "supporting_kcs": [
+   "refusal.pick-layer",
+   "refusal.direction-ablation",
+   "refusal.activation-addition",
+   "torch.boolean-masking"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1809": {
+  "target_kcs": [
+   "refusal.read-intervention-table"
+  ],
+  "supporting_kcs": [
+   "refusal.pick-layer",
+   "refusal.direction-ablation",
+   "refusal.activation-addition",
+   "torch.boolean-masking"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "1810": {
+  "target_kcs": [
+   "refusal.read-intervention-table"
+  ],
+  "supporting_kcs": [
+   "refusal.pick-layer",
+   "refusal.direction-ablation",
+   "refusal.activation-addition",
+   "torch.boolean-masking"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "1811": {
+  "target_kcs": [
+   "refusal.read-intervention-table"
+  ],
+  "supporting_kcs": [
+   "refusal.pick-layer",
+   "refusal.direction-ablation",
+   "refusal.activation-addition",
+   "torch.boolean-masking"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "1812": {
+  "target_kcs": [
+   "refusal.read-intervention-table"
+  ],
+  "supporting_kcs": [
+   "refusal.pick-layer",
+   "refusal.direction-ablation",
+   "refusal.activation-addition",
+   "torch.boolean-masking"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
  "50000": {
   "target_kcs": [
    "math.ray-geometry"
@@ -23604,6 +24518,456 @@
   ],
   "new_syntax": [],
   "source": "kp-faded"
+ },
+ "50119": {
+  "target_kcs": [
+   "math.orthogonal-projection"
+  ],
+  "supporting_kcs": [
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "50120": {
+  "target_kcs": [
+   "math.orthogonal-projection"
+  ],
+  "supporting_kcs": [
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-faded"
+ },
+ "50121": {
+  "target_kcs": [
+   "math.orthogonal-projection"
+  ],
+  "supporting_kcs": [
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50122": {
+  "target_kcs": [
+   "math.orthogonal-projection"
+  ],
+  "supporting_kcs": [
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50123": {
+  "target_kcs": [
+   "math.orthogonal-projection"
+  ],
+  "supporting_kcs": [
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50124": {
+  "target_kcs": [
+   "math.orthogonal-projection"
+  ],
+  "supporting_kcs": [
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50125": {
+  "target_kcs": [
+   "math.orthogonal-projection"
+  ],
+  "supporting_kcs": [
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50126": {
+  "target_kcs": [
+   "math.orthogonal-projection"
+  ],
+  "supporting_kcs": [
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50127": {
+  "target_kcs": [
+   "math.orthogonal-projection"
+  ],
+  "supporting_kcs": [
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50128": {
+  "target_kcs": [
+   "math.orthogonal-projection"
+  ],
+  "supporting_kcs": [
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "50129": {
+  "target_kcs": [
+   "math.orthogonal-projection"
+  ],
+  "supporting_kcs": [
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "50130": {
+  "target_kcs": [
+   "math.orthogonal-projection"
+  ],
+  "supporting_kcs": [
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "50131": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50132": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50133": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50134": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "50135": {
+  "target_kcs": [
+   "refusal.diff-in-means"
+  ],
+  "supporting_kcs": [
+   "torch.axis-reductions",
+   "tensor.row-normalization",
+   "torch.boolean-masking",
+   "torch.elementwise-ops",
+   "math.dot-products-norms"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "50136": {
+  "target_kcs": [
+   "refusal.pick-layer"
+  ],
+  "supporting_kcs": [
+   "torch.boolean-masking",
+   "torch.argmin-argmax",
+   "torch.sorting",
+   "refusal.diff-in-means"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50137": {
+  "target_kcs": [
+   "refusal.pick-layer"
+  ],
+  "supporting_kcs": [
+   "torch.boolean-masking",
+   "torch.argmin-argmax",
+   "torch.sorting",
+   "refusal.diff-in-means"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50138": {
+  "target_kcs": [
+   "refusal.pick-layer"
+  ],
+  "supporting_kcs": [
+   "torch.boolean-masking",
+   "torch.argmin-argmax",
+   "torch.sorting",
+   "refusal.diff-in-means"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50139": {
+  "target_kcs": [
+   "refusal.pick-layer"
+  ],
+  "supporting_kcs": [
+   "torch.boolean-masking",
+   "torch.argmin-argmax",
+   "torch.sorting",
+   "refusal.diff-in-means"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "50140": {
+  "target_kcs": [
+   "refusal.pick-layer"
+  ],
+  "supporting_kcs": [
+   "torch.boolean-masking",
+   "torch.argmin-argmax",
+   "torch.sorting",
+   "refusal.diff-in-means"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "50141": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50142": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50143": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50144": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "50145": {
+  "target_kcs": [
+   "refusal.direction-ablation"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "math.orthogonal-projection",
+   "torch.broadcasting-rules",
+   "torch.dot-matmul-patterns",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "50146": {
+  "target_kcs": [
+   "refusal.activation-addition"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "refusal.direction-ablation",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50147": {
+  "target_kcs": [
+   "refusal.activation-addition"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "refusal.direction-ablation",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50148": {
+  "target_kcs": [
+   "refusal.activation-addition"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "refusal.direction-ablation",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50149": {
+  "target_kcs": [
+   "refusal.activation-addition"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "refusal.direction-ablation",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "50150": {
+  "target_kcs": [
+   "refusal.activation-addition"
+  ],
+  "supporting_kcs": [
+   "refusal.diff-in-means",
+   "refusal.direction-ablation",
+   "cnn.forward-hooks"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "50151": {
+  "target_kcs": [
+   "refusal.read-intervention-table"
+  ],
+  "supporting_kcs": [
+   "refusal.pick-layer",
+   "refusal.direction-ablation",
+   "refusal.activation-addition",
+   "torch.boolean-masking"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50152": {
+  "target_kcs": [
+   "refusal.read-intervention-table"
+  ],
+  "supporting_kcs": [
+   "refusal.pick-layer",
+   "refusal.direction-ablation",
+   "refusal.activation-addition",
+   "torch.boolean-masking"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50153": {
+  "target_kcs": [
+   "refusal.read-intervention-table"
+  ],
+  "supporting_kcs": [
+   "refusal.pick-layer",
+   "refusal.direction-ablation",
+   "refusal.activation-addition",
+   "torch.boolean-masking"
+  ],
+  "new_syntax": [],
+  "source": "kp-independent"
+ },
+ "50154": {
+  "target_kcs": [
+   "refusal.read-intervention-table"
+  ],
+  "supporting_kcs": [
+   "refusal.pick-layer",
+   "refusal.direction-ablation",
+   "refusal.activation-addition",
+   "torch.boolean-masking"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
+ },
+ "50155": {
+  "target_kcs": [
+   "refusal.read-intervention-table"
+  ],
+  "supporting_kcs": [
+   "refusal.pick-layer",
+   "refusal.direction-ablation",
+   "refusal.activation-addition",
+   "torch.boolean-masking"
+  ],
+  "new_syntax": [],
+  "source": "kp-integrated"
  },
  "60000": {
   "target_kcs": [

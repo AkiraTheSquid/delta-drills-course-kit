@@ -45,6 +45,14 @@ data is actually packed (which factor is slow), the OUTPUT side to describe
 what the task wants — then hand einops the block sizes. When the packing
 order is ambiguous in your head, build a tiny arange example and round-trip.
 
+Step through it yourself. Follow one 2 × 2 block: it becomes a patch, or
+four channels of one pixel:
+
+```figure einops-console patches-space-depth
+Interactive figure: step through image-to-patches, patches-to-image,
+space-to-depth and depth-to-space on a 4 × 4 image.
+```
+
 ## Worked example
 
 Task: extract 2×2 patches from an image, reassemble them, and run a

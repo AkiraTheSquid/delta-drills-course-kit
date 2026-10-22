@@ -39,6 +39,14 @@ Reading a split-merge pattern: first find every parenthesized group on the
 left (what gets unpacked, and in what packing order), then on the right
 (what gets packed). The names in the middle just carry through.
 
+Step through it yourself. A split reads the input as if the parentheses were
+already there; the loop shows the fold it undoes:
+
+```figure einops-console split-axes
+Interactive figure: step through 'c (h w) -> c h w', 'b (n p) d -> b n p d'
+and the tile-stack-to-image split + merge.
+```
+
 ## Worked example
 
 Task: restore a flattened image given its height; split a sequence into

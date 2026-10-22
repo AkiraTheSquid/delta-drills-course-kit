@@ -1,0 +1,220 @@
+{
+  "_comment": "ARENA exercise GROUPS: the third level under a section (0.1 -> 0.1.2). A group is a run of ARENA's own exercises whose code builds on each other, worked in order as one small codebase. Parts are keyed like lessons/arena_exercise_kcs.json (slug, then the function the exercise defines). `fn` and the group fields are authored; `cell`, `kc` and `title` on each part are filled and checked by scripts/check_arena_groups.py --write. Only exercises with a stub and a concept belong here: given code (Sequential, copy_weights, the hook helpers) is not a part, and 0.1's video & lighting exercises have no concept yet.",
+  "version": 1,
+  "sections": {
+    "0-1": [
+      {
+        "id": "0.1.1",
+        "title": "1D rays and segments",
+        "why": "intersect_ray_1d takes the rays make_rays_1d builds; intersect_rays_1d batches the same solve over every ray and segment.",
+        "parts": [
+          {
+            "fn": "make_rays_1d",
+            "cell": "0-1-c014",
+            "kc": "raytracing.make-rays-1d",
+            "title": "make_rays_1d"
+          },
+          {
+            "fn": "intersect_ray_1d",
+            "cell": "0-1-c123",
+            "kc": "raytracing.segment-intersection",
+            "title": "Solve a ray–segment intersection"
+          },
+          {
+            "fn": "intersect_rays_1d",
+            "cell": "0-1-c137",
+            "kc": "raytracing.batched-segments",
+            "title": "Every ray against every segment"
+          }
+        ]
+      },
+      {
+        "id": "0.1.2",
+        "title": "2D camera, triangles and meshes",
+        "why": "raytrace_triangle fires make_rays_2d's rays at triangle_ray_intersects's test; raytrace_mesh extends it to every triangle and keeps the nearest hit.",
+        "parts": [
+          {
+            "fn": "make_rays_2d",
+            "cell": "0-1-c142",
+            "kc": "raytracing.make-rays-2d",
+            "title": "A two-dimensional camera as a batch of rays"
+          },
+          {
+            "fn": "triangle_ray_intersects",
+            "cell": "0-1-c149",
+            "kc": "raytracing.triangle-intersection",
+            "title": "Barycentric coordinates and triangle hits"
+          },
+          {
+            "fn": "raytrace_triangle",
+            "cell": "0-1-c156",
+            "kc": "raytracing.triangle-intersection",
+            "title": "Barycentric coordinates and triangle hits"
+          },
+          {
+            "fn": "raytrace_mesh",
+            "cell": "0-1-c168",
+            "kc": "raytracing.mesh-visibility",
+            "title": "Render the nearest visible mesh surface"
+          }
+        ]
+      }
+    ],
+    "0-2": [
+      {
+        "id": "0.2.1",
+        "title": "Your own MLP",
+        "why": "SimpleMLP is built out of the ReLU and Linear modules written just before it.",
+        "parts": [
+          {
+            "fn": "ReLU",
+            "cell": "0-2-c017",
+            "kc": "cnn.module-state",
+            "title": "Modules own computation and trainable state"
+          },
+          {
+            "fn": "Linear",
+            "cell": "0-2-c021",
+            "kc": "cnn.linear-layer",
+            "title": "A learned affine map on the last axis"
+          },
+          {
+            "fn": "SimpleMLP",
+            "cell": "0-2-c027",
+            "kc": "cnn.mlp",
+            "title": "Compose a multilayer image classifier"
+          }
+        ]
+      },
+      {
+        "id": "0.2.2",
+        "title": "ResNet34 from your own modules",
+        "why": "ResidualBlock uses Conv2d and BatchNorm2d, BlockGroup stacks ResidualBlocks, ResNet34 assembles BlockGroups with AveragePool and Linear, and feature extraction reuses that ResNet34.",
+        "parts": [
+          {
+            "fn": "Conv2d",
+            "cell": "0-2-c059",
+            "kc": "cnn.convolution-2d",
+            "title": "Image filters combine channels and local geometry"
+          },
+          {
+            "fn": "BatchNorm2d",
+            "cell": "0-2-c071",
+            "kc": "cnn.batch-normalization",
+            "title": "BatchNorm separates current data from running state"
+          },
+          {
+            "fn": "AveragePool",
+            "cell": "0-2-c075",
+            "kc": "cnn.pooling",
+            "title": "Pool spatial evidence while preserving channels"
+          },
+          {
+            "fn": "ResidualBlock",
+            "cell": "0-2-c079",
+            "kc": "cnn.residual-block",
+            "title": "The residual block"
+          },
+          {
+            "fn": "BlockGroup",
+            "cell": "0-2-c082",
+            "kc": "cnn.block-group",
+            "title": "A group of residual blocks"
+          },
+          {
+            "fn": "ResNet34",
+            "cell": "0-2-c085",
+            "kc": "cnn.resnet34",
+            "title": "Assembling ResNet34"
+          },
+          {
+            "fn": "get_resnet_for_feature_extraction",
+            "cell": "0-2-c107",
+            "kc": "cnn.feature-extraction",
+            "title": "Pretrained weights and feature extraction"
+          }
+        ]
+      },
+      {
+        "id": "0.2.3",
+        "title": "Strided views",
+        "why": "trace, then matrix-vector, then matrix-matrix: each as_strided view generalises the last one's stride arithmetic.",
+        "parts": [
+          {
+            "fn": "as_strided_trace",
+            "cell": "0-2-c127",
+            "kc": "cnn.stride-views",
+            "title": "Tensor strides describe addresses, not shapes"
+          },
+          {
+            "fn": "as_strided_mv",
+            "cell": "0-2-c130",
+            "kc": "cnn.stride-views",
+            "title": "Tensor strides describe addresses, not shapes"
+          },
+          {
+            "fn": "as_strided_mm",
+            "cell": "0-2-c133",
+            "kc": "cnn.stride-views",
+            "title": "Tensor strides describe addresses, not shapes"
+          }
+        ]
+      },
+      {
+        "id": "0.2.4",
+        "title": "Convolutions from scratch",
+        "why": "the minimal convolutions grow from 1D to 2D, padding is added, conv1d and conv2d call pad1d and pad2d, and maxpool2d reuses conv2d's windowing and padding.",
+        "parts": [
+          {
+            "fn": "conv1d_minimal_simple",
+            "cell": "0-2-c138",
+            "kc": "cnn.convolution-1d",
+            "title": "Convolution shares one filter across positions"
+          },
+          {
+            "fn": "conv1d_minimal",
+            "cell": "0-2-c141",
+            "kc": "cnn.convolution-1d",
+            "title": "Convolution shares one filter across positions"
+          },
+          {
+            "fn": "conv2d_minimal",
+            "cell": "0-2-c145",
+            "kc": "cnn.convolution-2d",
+            "title": "Image filters combine channels and local geometry"
+          },
+          {
+            "fn": "pad1d",
+            "cell": "0-2-c150",
+            "kc": "cnn.convolution-1d",
+            "title": "Convolution shares one filter across positions"
+          },
+          {
+            "fn": "pad2d",
+            "cell": "0-2-c150",
+            "kc": "cnn.convolution-2d",
+            "title": "Image filters combine channels and local geometry"
+          },
+          {
+            "fn": "conv1d",
+            "cell": "0-2-c157",
+            "kc": "cnn.convolution-1d",
+            "title": "Convolution shares one filter across positions"
+          },
+          {
+            "fn": "conv2d",
+            "cell": "0-2-c160",
+            "kc": "cnn.convolution-2d",
+            "title": "Image filters combine channels and local geometry"
+          },
+          {
+            "fn": "maxpool2d",
+            "cell": "0-2-c166",
+            "kc": "cnn.pooling",
+            "title": "Pool spatial evidence while preserving channels"
+          }
+        ]
+      }
+    ]
+  }
+}

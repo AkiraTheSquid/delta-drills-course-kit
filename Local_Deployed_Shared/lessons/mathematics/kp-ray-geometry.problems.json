@@ -328,7 +328,7 @@
       "id": 50076,
       "kind": "compute",
       "difficulty": 55,
-      "prompt": "A four-pixel camera includes both y-limits −3 and 3 at x = 1, equally spaced. What is the direction-y coordinate of pixel i = 2 (counting from i = 0)?",
+      "prompt": "A camera has 4 pixels in a row, numbered i = 0, 1, 2, 3. Pixel i's ray has direction (1, y_i, 0), and the four values y_0, y_1, y_2, y_3 are evenly spaced from −3 to 3, both ends included. What is y_2?",
       "choices": [
         {
           "key": "A",

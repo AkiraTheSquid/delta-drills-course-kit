@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import json
 
-from . import lessons, paths
+from . import clocks, glossary, lessons, paths
 
 
 def load() -> dict:
@@ -134,8 +134,10 @@ def add_kc(
     prereqs: list[str] | None = None,
     syntax: bool = True,
     after: str | None = None,
+    answer_secs: int | None = None,
 ) -> dict:
     """Insert a concept. Default position is straight after its last prereq."""
+    clocks.validate(answer_secs)
     registry = load()
     known = _by_id(registry)
     if kc_id in known:
@@ -161,11 +163,14 @@ def add_kc(
     if problems:
         raise ValueError("Refusing to write a broken registry: " + "; ".join(problems))
     _save(registry)
-    return {"added": kc_id, "position": position, "node": node}
+    return {"added": kc_id, "position": position, "node": node, **glossary.sync(kc_id, registry),
+            **clocks.ensure(kc_id, answer_secs)}
 
 
 def update_kc(kc_id: str, title: str | None = None, prereqs: list[str] | None = None,
-              lesson: str | None = None, after: str | None = None) -> dict:
+              lesson: str | None = None, after: str | None = None,
+              answer_secs: int | None = None) -> dict:
+    clocks.validate(answer_secs)
     registry = load()
     order = [k["id"] for k in registry["kcs"]]
     if kc_id not in order:
@@ -187,4 +192,5 @@ def update_kc(kc_id: str, title: str | None = None, prereqs: list[str] | None = 
     if problems:
         raise ValueError("Refusing to write a broken registry: " + "; ".join(problems))
     _save(registry)
-    return {"updated": kc_id, "node": node}
+    return {"updated": kc_id, "node": node, **glossary.sync(kc_id, registry),
+            **clocks.ensure(kc_id, answer_secs)}

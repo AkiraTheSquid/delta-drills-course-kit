@@ -40,6 +40,14 @@ The montage also runs in REVERSE — carving a grid image back into a batch —
 by swapping the pattern's sides: `'(g1 h) (g2 w) c -> (g1 g2) h w c'` with
 two keywords, since neither factor of each merged axis is inferable alone.
 
+Step through it yourself with six letter images — the grid shape is just
+which of g1, g2 counts fastest:
+
+```figure einops-console grids-montage
+Interactive figure: six letter images laid out as a 2 × 3 sheet, a 3 × 2
+sheet and one long row, then the sheet cut back into images.
+```
+
 ## Worked example
 
 Task: six images into a 3-row × 2-column grid, row-major — verified by

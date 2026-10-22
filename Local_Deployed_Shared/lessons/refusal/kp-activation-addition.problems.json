@@ -1,0 +1,135 @@
+{
+ "kc": "refusal.activation-addition",
+ "problems": [
+  {
+   "id": 50146,
+   "kind": "statement",
+   "difficulty": 50,
+   "prompt": "A coefficient times the difference vector is added to every harmless activation. What happens to their scores along the unit direction?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "Every score is set to the harmful average, whatever it started at."
+    },
+    {
+     "key": "B",
+     "text": "Every score is multiplied by the coefficient, so big ones grow most."
+    },
+    {
+     "key": "C",
+     "text": "Every score rises by the same amount, whatever it started at."
+    },
+    {
+     "key": "D",
+     "text": "Every score rises, but low ones rise more, so the spread narrows."
+    }
+   ],
+   "answer": "C",
+   "solution": "Adding a fixed vector shifts each score by that vector's own score, the same amount for every prompt. That differs from removal, which sends every score to the same value, zero.\n\n- A: that would be an overwrite. Addition shifts, so the prompts keep their spread.\n- B: multiplying would stretch the spread. Adding a vector does not.\n- D: the shift does not depend on where a score started, so the spread stays the same."
+  },
+  {
+   "id": 50147,
+   "kind": "statement",
+   "difficulty": 60,
+   "prompt": "The direction is added at one layer, not at every layer the way removal is. What is the reason?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "Only the chosen layer holds the direction, so the other layers would just ignore it."
+    },
+    {
+     "key": "B",
+     "text": "What is added is carried forward to later layers, so adding again would stack it up."
+    },
+    {
+     "key": "C",
+     "text": "Additions at different layers cancel out, since each layer undoes the one before."
+    },
+    {
+     "key": "D",
+     "text": "Adding at every layer equals adding once, so the extra additions would be wasted."
+    }
+   ],
+   "answer": "B",
+   "solution": "Removal has to be repeated because later layers can write the direction back. An addition is carried forward in the running vector that every later layer receives, so adding at every layer would add it again and again.\n\n- A: the running vector is shared, so every layer sees what was added. Nothing ignores it.\n- C: nothing in the model undoes additions. They accumulate.\n- D: repeated additions pile up, so the total push would be many times larger."
+  },
+  {
+   "id": 50148,
+   "kind": "statement",
+   "difficulty": 65,
+   "prompt": "A run with coefficient 2 is compared with a run with coefficient 1, on the same harmless prompts. What does the idea behind the method lead you to expect for the share of prompts refused?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "A share that rises or levels off near the top, but does not fall."
+    },
+    {
+     "key": "B",
+     "text": "The same share, because the direction being added has not changed."
+    },
+    {
+     "key": "C",
+     "text": "A lower share, because the second push undoes the first one."
+    },
+    {
+     "key": "D",
+     "text": "Exactly twice the share that was measured with coefficient 1."
+    }
+   ],
+   "answer": "A",
+   "solution": "A larger coefficient moves the scores further along the same direction, so the method predicts refusals rising, or levelling off because the share cannot exceed one. Real models are not perfectly linear, so a single measured pair can wobble; the expectation is about the tendency.\n\n- B: the size of the push is the coefficient, so a bigger coefficient is a bigger push.\n- C: nothing in the idea says a second push cancels the first.\n- D: a share cannot double past one, and nothing makes it scale in proportion."
+  },
+  {
+   "id": 50149,
+   "kind": "statement",
+   "difficulty": 75,
+   "prompt": "A learner adds the unit direction instead of the difference vector. How does the result compare with adding the difference vector?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "It gives exactly the same activations, since both vectors point the same way."
+    },
+    {
+     "key": "B",
+     "text": "It moves the harmless average exactly onto the harmful average, as intended."
+    },
+    {
+     "key": "C",
+     "text": "It shifts the scores the other way, since rescaling to length one flips the sign."
+    },
+    {
+     "key": "D",
+     "text": "It shifts every score by one instead of by the gap between the two averages."
+    }
+   ],
+   "answer": "D",
+   "solution": "Adding the difference vector moves the harmless average onto the harmful average, because it is exactly the gap between them. The unit vector has length one, so it moves every score by one, which equals the gap only by coincidence.\n\n- A: they point the same way but differ in length, so they shift by different amounts.\n- B: only the full difference vector closes the gap exactly.\n- C: dividing by a positive length keeps the direction. Nothing flips."
+  },
+  {
+   "id": 50150,
+   "kind": "statement",
+   "difficulty": 80,
+   "prompt": "Removing the direction weakens refusal on harmful prompts, and adding it creates refusal on harmless prompts. What does running both tests show that either one alone does not?",
+   "choices": [
+    {
+     "key": "A",
+     "text": "Nothing new, since either test on its own already shows the direction causes refusal."
+    },
+    {
+     "key": "B",
+     "text": "That the direction is the only thing in the model behind refusal, and nothing else."
+    },
+    {
+     "key": "C",
+     "text": "That the direction can switch refusal both off and on, not just go along with it."
+    },
+    {
+     "key": "D",
+     "text": "Nothing new about the direction, but checking twice halves the measurement noise."
+    }
+   ],
+   "answer": "C",
+   "solution": "One test alone leaves open that the direction merely goes along with refusal, or that the intervention changed something else. Both together show the direction can switch refusal off and on.\n\n- A: removal alone could work by breaking something else; addition alone could add refusal through a side route. Each answers a different question.\n- B: showing a direction matters is not showing it is the only cause.\n- D: the two tests measure different things on different prompts, so they are not repeats of one measurement."
+  }
+ ]
+}

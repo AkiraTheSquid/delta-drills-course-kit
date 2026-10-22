@@ -740,6 +740,42 @@
    "kc": "leetcode.dp-intervals"
   },
   {
+   "id": "kc:math.orthogonal-projection",
+   "kind": "kc",
+   "title": "Components along a direction, and removing them",
+   "kc": "math.orthogonal-projection"
+  },
+  {
+   "id": "kc:refusal.diff-in-means",
+   "kind": "kc",
+   "title": "The refusal direction is a difference of two averages",
+   "kc": "refusal.diff-in-means"
+  },
+  {
+   "id": "kc:refusal.pick-layer",
+   "kind": "kc",
+   "title": "Pick the layer where the direction works",
+   "kc": "refusal.pick-layer"
+  },
+  {
+   "id": "kc:refusal.direction-ablation",
+   "kind": "kc",
+   "title": "Ablate the direction: remove its component everywhere",
+   "kc": "refusal.direction-ablation"
+  },
+  {
+   "id": "kc:refusal.activation-addition",
+   "kind": "kc",
+   "title": "Add the direction to make a harmless prompt look harmful",
+   "kc": "refusal.activation-addition"
+  },
+  {
+   "id": "kc:refusal.read-intervention-table",
+   "kind": "kc",
+   "title": "Read the saved intervention table without over-reading it",
+   "kc": "refusal.read-intervention-table"
+  },
+  {
    "id": "section:0-0",
    "kind": "section",
    "section": "0-0",
@@ -17976,6 +18012,121 @@
   {
    "source": "kc:leetcode.dp-grid",
    "target": "kc:leetcode.dp-intervals",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:math.dot-products-norms",
+   "target": "kc:math.orthogonal-projection",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:torch.axis-reductions",
+   "target": "kc:refusal.diff-in-means",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:tensor.row-normalization",
+   "target": "kc:refusal.diff-in-means",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:torch.boolean-masking",
+   "target": "kc:refusal.diff-in-means",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:torch.elementwise-ops",
+   "target": "kc:refusal.diff-in-means",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:math.dot-products-norms",
+   "target": "kc:refusal.diff-in-means",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:refusal.diff-in-means",
+   "target": "kc:refusal.pick-layer",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:torch.boolean-masking",
+   "target": "kc:refusal.pick-layer",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:torch.argmin-argmax",
+   "target": "kc:refusal.pick-layer",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:torch.sorting",
+   "target": "kc:refusal.pick-layer",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:refusal.diff-in-means",
+   "target": "kc:refusal.direction-ablation",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:math.orthogonal-projection",
+   "target": "kc:refusal.direction-ablation",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:torch.broadcasting-rules",
+   "target": "kc:refusal.direction-ablation",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:torch.dot-matmul-patterns",
+   "target": "kc:refusal.direction-ablation",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:cnn.forward-hooks",
+   "target": "kc:refusal.direction-ablation",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:python.control-flow",
+   "target": "kc:refusal.direction-ablation",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:refusal.diff-in-means",
+   "target": "kc:refusal.activation-addition",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:refusal.direction-ablation",
+   "target": "kc:refusal.activation-addition",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:cnn.forward-hooks",
+   "target": "kc:refusal.activation-addition",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:refusal.pick-layer",
+   "target": "kc:refusal.read-intervention-table",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:refusal.direction-ablation",
+   "target": "kc:refusal.read-intervention-table",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:refusal.activation-addition",
+   "target": "kc:refusal.read-intervention-table",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "kc:python.control-flow",
+   "target": "kc:refusal.read-intervention-table",
    "relation": "prerequisite"
   },
   {

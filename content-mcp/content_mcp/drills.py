@@ -15,6 +15,7 @@ id — retired and deleted ids still consume their slot.
 
 from __future__ import annotations
 
+import ast
 import contextlib
 import csv
 import fcntl
@@ -197,8 +198,46 @@ def _append_locked(topic, subtopic, question_text, answer_code,
         "id": minted,
         "csv": str(paths.CURATED_CSV.relative_to(paths.REPO)),
         "override_written": wrote_override,
-        "next_step": "Run pipeline_export to rebuild the bank, then pipeline_check.",
+        **_starter_note(override),
+        "next_step": "Run pipeline_check — it re-exports the bank first, so this id is live after it.",
     }
+
+
+def _starter_note(fields: dict | None) -> dict:
+    """Flag a starter the validator will refuse on a Solo/Integrated drill, now
+    rather than after a minutes-long pipeline_check. Mirrors
+    scripts/content_safety.py::is_stub: imports plus an empty `def` — a
+    docstring, `pass`, `...` or `raise NotImplementedError` — and nothing else.
+    `return None` counts as work (and uses `None`, which the prerequisite
+    ratchet refuses until a page teaches it). A Faded drill may carry a real
+    scaffold, and only the page says which rung a drill is on, so this warns
+    instead of refusing."""
+    starter = (fields or {}).get("starter_code")
+    if not starter:
+        return {}
+    name = (fields or {}).get("function_name") or "solve"
+    try:
+        tree = ast.parse(starter)
+    except SyntaxError as err:
+        return {"starter_warning": f"starter_code does not parse: {err}"}
+    def empty(stmt):
+        if isinstance(stmt, ast.Pass):
+            return True
+        if isinstance(stmt, ast.Expr) and isinstance(stmt.value, ast.Constant):
+            return isinstance(stmt.value.value, str) or stmt.value.value is Ellipsis
+        return (isinstance(stmt, ast.Raise) and isinstance(stmt.exc, ast.Call)
+                and isinstance(stmt.exc.func, ast.Name) and stmt.exc.func.id == "NotImplementedError")
+    stub = any(isinstance(n, ast.FunctionDef) and n.name == name for n in tree.body) and all(
+        isinstance(n, (ast.Import, ast.ImportFrom))
+        or (isinstance(n, ast.FunctionDef) and n.name == name and all(empty(s) for s in n.body))
+        for n in tree.body)
+    if stub:
+        return {}
+    return {"starter_warning": (
+        "starter_code holds executable work. A Solo or Integrated drill fails validate with "
+        "STARTER_IMPLEMENTATION, and `return None` on any rung fails the prerequisite ratchet "
+        "(None is taught late). Use an empty def — a docstring plus `pass` — unless this is a "
+        "Faded drill whose scaffold is the point.")}
 
 
 def _check_fields(fields: dict) -> None:
@@ -214,6 +253,23 @@ def exists(qid: int) -> bool:
     return any(int(record["id"]) == int(qid) for record in bank())
 
 
+def _last_record(qid: int) -> dict:
+    """This id's current record in curated_overrides.jsonl, or {}."""
+    found: dict = {}
+    if not paths.CURATED_OVERRIDES.exists():
+        return found
+    for line in paths.CURATED_OVERRIDES.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        try:
+            record = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if int(record.get("id", -1)) == qid:
+            found = record
+    return found
+
+
 def update(qid: int, fields: dict, _require_existing: bool = True) -> dict:
     """Append an override record. Later records win, so this is also an edit."""
     _check_fields(fields)
@@ -223,14 +279,21 @@ def update(qid: int, fields: dict, _require_existing: bool = True) -> dict:
             "is silently ignored by the export, so this would report success and "
             "change nothing. Check the id with drill_search."
         )
-    record = {"id": int(qid), **fields}
+    # 🔴 WITHIN one layer file the exporter keeps only the LAST record per id
+    # (export_questions_json._read_jsonl_overrides; backend/app/questions.py
+    # matches) — fields merge ACROSS layers, never inside one. A drill authored
+    # by drill_add keeps its whole payload (test_cases, starter, answer) in this
+    # same file, so a bare `{id, starter_code}` record used to replace it and the
+    # drill was exported with zero test cases. Write the merged record instead.
+    record = {**_last_record(int(qid)), **fields, "id": int(qid)}
     with open(paths.CURATED_OVERRIDES, "a", encoding="utf-8") as handle:
         handle.write(json.dumps(record) + "\n")
     return {
         "id": int(qid),
         "layer": str(paths.CURATED_OVERRIDES.relative_to(paths.REPO)),
         "fields": sorted(fields),
-        "next_step": "Run pipeline_export to rebuild the bank.",
+        **(_starter_note(record) if "starter_code" in fields else {}),
+        "next_step": "Run pipeline_check (it re-exports the bank first).",
     }
 
 

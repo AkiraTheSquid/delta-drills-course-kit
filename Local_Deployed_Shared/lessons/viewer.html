@@ -55,13 +55,26 @@
 // Minimal markdown renderer: enough for the KP authoring format
 // (headers, fenced code, blockquotes, lists, bold/italic/inline code).
 function esc(s) {
-  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+// Same scheme whitelist as practice/lessons.js _url (http(s) or root-relative,
+// e.g. the content MCP's /lessons/<course>/images/<file>).
+function safeUrl(v) {
+  const raw = String(v || '').trim();
+  if (!raw || raw.startsWith('//')) return '';
+  const scheme = raw.match(/^([a-zA-Z][a-zA-Z0-9+.-]*):/);
+  if (scheme && !/^https?$/i.test(scheme[1])) return '';
+  return raw.replace(/"/g, '%22');
 }
 function inline(s) {
   return esc(s)
     .replace(/`([^`]+)`/g, '<code>$1</code>')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    .replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, (whole, alt, src) => {
+      const href = safeUrl(src);
+      return href ? `<img src="${href}" alt="${alt}" loading="lazy" style="max-width:100%">` : whole;
+    });
 }
 // Pipe tables, as practice/lessons.js renders them (added 2026-09-17 for the ARENA
 // notebooks; no authored lesson uses one yet). Indent allowed: a table may sit inside a list item.

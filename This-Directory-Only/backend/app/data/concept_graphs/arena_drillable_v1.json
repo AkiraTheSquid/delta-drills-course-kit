@@ -4363,6 +4363,118 @@
       "tags": [
         "drill-atom"
       ]
+    },
+    {
+      "id": "rd-unit-direction",
+      "title": "Rescale a direction to length one",
+      "topic": "PyTorch",
+      "subtopic": "PyTorch: rd-1",
+      "node_type": "concept",
+      "kind": "skill",
+      "tier": "core",
+      "description": "Refusal-direction course: unit vector, per-row, with the zero-vector case.",
+      "tags": [
+        "drill-atom",
+        "refusal-direction"
+      ]
+    },
+    {
+      "id": "rd-diff-in-means",
+      "title": "Difference in means between two classes",
+      "topic": "PyTorch",
+      "subtopic": "PyTorch: rd-1",
+      "node_type": "concept",
+      "kind": "skill",
+      "tier": "core",
+      "description": "Refusal-direction course: harmful average minus harmless average.",
+      "tags": [
+        "drill-atom",
+        "refusal-direction"
+      ]
+    },
+    {
+      "id": "rd-class-mean",
+      "title": "Average a class of activations over the prompt axis",
+      "topic": "PyTorch",
+      "subtopic": "PyTorch: rd-1",
+      "node_type": "concept",
+      "kind": "skill",
+      "tier": "core",
+      "description": "Refusal-direction course: mean over the prompt axis of an (n, d) activation table.",
+      "tags": [
+        "drill-atom",
+        "refusal-direction"
+      ]
+    },
+    {
+      "id": "la-orthogonal-projection",
+      "title": "Component along a direction, and removing it",
+      "topic": "Mathematics",
+      "subtopic": "Linear algebra",
+      "node_type": "concept",
+      "kind": "skill",
+      "tier": "core",
+      "description": "Standalone mathematical prerequisite for the refusal-direction course; assessed without coding via math.orthogonal-projection.",
+      "tags": [
+        "drill-atom",
+        "refusal-direction"
+      ]
+    },
+    {
+      "id": "rd-select-layer",
+      "title": "Pick the layer by filters then lowest bypass score",
+      "topic": "PyTorch",
+      "subtopic": "PyTorch: rd-1",
+      "node_type": "concept",
+      "kind": "skill",
+      "tier": "core",
+      "description": "Refusal-direction course: apply the layer < 0.8L, KL < 0.1, induce > 0 filters and take the lowest ablated refusal.",
+      "tags": [
+        "drill-atom",
+        "refusal-direction"
+      ]
+    },
+    {
+      "id": "rd-add-direction",
+      "title": "Add a scaled direction at one layer",
+      "topic": "PyTorch",
+      "subtopic": "PyTorch: rd-1",
+      "node_type": "concept",
+      "kind": "skill",
+      "tier": "core",
+      "description": "Refusal-direction course: x + c r at one layer, every position, by forward hook.",
+      "tags": [
+        "drill-atom",
+        "refusal-direction"
+      ]
+    },
+    {
+      "id": "rd-read-intervention",
+      "title": "Read a saved intervention table",
+      "topic": "PyTorch",
+      "subtopic": "PyTorch: rd-1",
+      "node_type": "concept",
+      "kind": "skill",
+      "tier": "core",
+      "description": "Refusal-direction course: judge effects, collateral damage and off-grid cells from a saved sweep.",
+      "tags": [
+        "drill-atom",
+        "refusal-direction"
+      ]
+    },
+    {
+      "id": "rd-ablate-direction",
+      "title": "Remove the component along a direction",
+      "topic": "PyTorch",
+      "subtopic": "PyTorch: rd-1",
+      "node_type": "concept",
+      "kind": "skill",
+      "tier": "core",
+      "description": "Refusal-direction course: x - (x . r_hat) r_hat, on batches and with a forward hook at every layer.",
+      "tags": [
+        "drill-atom",
+        "refusal-direction"
+      ]
     }
   ],
   "prerequisite_edges": [
@@ -9255,6 +9367,176 @@
       "is_encompassing": false,
       "propagation_weight": 0.0,
       "rationale": "[twin] einops.reduce pooling is the same split-then-reduce, written as a pattern (Seth 2026-10-05: vanilla = prereq of einops)"
+    },
+    {
+      "prerequisite_id": "la-dot-products-norms",
+      "dependent_id": "la-orthogonal-projection",
+      "weight": 1.0,
+      "confidence": 0.8,
+      "is_hard_gate": true,
+      "is_encompassing": false,
+      "propagation_weight": 0.0,
+      "rationale": "[builds-on] the component along a direction is a dot product with a unit vector"
+    },
+    {
+      "prerequisite_id": "einops-reduce",
+      "dependent_id": "rd-class-mean",
+      "weight": 1.0,
+      "confidence": 0.8,
+      "is_hard_gate": false,
+      "is_encompassing": false,
+      "propagation_weight": 0.0,
+      "rationale": "[uses] the class average is a mean reduction over the prompt axis"
+    },
+    {
+      "prerequisite_id": "rd-class-mean",
+      "dependent_id": "rd-diff-in-means",
+      "weight": 1.0,
+      "confidence": 0.8,
+      "is_hard_gate": true,
+      "is_encompassing": false,
+      "propagation_weight": 0.0,
+      "rationale": "[builds-on] the direction is a difference of two class means"
+    },
+    {
+      "prerequisite_id": "rd-diff-in-means",
+      "dependent_id": "rd-unit-direction",
+      "weight": 1.0,
+      "confidence": 0.8,
+      "is_hard_gate": true,
+      "is_encompassing": false,
+      "propagation_weight": 0.0,
+      "rationale": "[builds-on] the unit direction is the difference in means rescaled"
+    },
+    {
+      "prerequisite_id": "vector-normalize-keepdim",
+      "dependent_id": "rd-unit-direction",
+      "weight": 1.0,
+      "confidence": 0.8,
+      "is_hard_gate": false,
+      "is_encompassing": false,
+      "propagation_weight": 0.0,
+      "rationale": "[uses] rescaling rows to length one is row normalisation"
+    },
+    {
+      "prerequisite_id": "rd-unit-direction",
+      "dependent_id": "rd-select-layer",
+      "weight": 1.0,
+      "confidence": 0.8,
+      "is_hard_gate": true,
+      "is_encompassing": false,
+      "propagation_weight": 0.0,
+      "rationale": "[builds-on] candidate directions are compared per layer"
+    },
+    {
+      "prerequisite_id": "boolean-mask-combine",
+      "dependent_id": "rd-select-layer",
+      "weight": 1.0,
+      "confidence": 0.8,
+      "is_hard_gate": false,
+      "is_encompassing": false,
+      "propagation_weight": 0.0,
+      "rationale": "[uses] the three filters are combined boolean masks"
+    },
+    {
+      "prerequisite_id": "rd-unit-direction",
+      "dependent_id": "rd-ablate-direction",
+      "weight": 1.0,
+      "confidence": 0.8,
+      "is_hard_gate": true,
+      "is_encompassing": false,
+      "propagation_weight": 0.0,
+      "rationale": "[builds-on] ablation needs a unit direction"
+    },
+    {
+      "prerequisite_id": "la-orthogonal-projection",
+      "dependent_id": "rd-ablate-direction",
+      "weight": 1.0,
+      "confidence": 0.8,
+      "is_hard_gate": true,
+      "is_encompassing": false,
+      "propagation_weight": 0.0,
+      "rationale": "[builds-on] ablation is removing the component along a direction"
+    },
+    {
+      "prerequisite_id": "forward-hook-register",
+      "dependent_id": "rd-ablate-direction",
+      "weight": 1.0,
+      "confidence": 0.8,
+      "is_hard_gate": false,
+      "is_encompassing": false,
+      "propagation_weight": 0.0,
+      "rationale": "[uses] the intervention is installed with forward hooks"
+    },
+    {
+      "prerequisite_id": "broadcasting-rules",
+      "dependent_id": "rd-ablate-direction",
+      "weight": 1.0,
+      "confidence": 0.8,
+      "is_hard_gate": false,
+      "is_encompassing": false,
+      "propagation_weight": 0.0,
+      "rationale": "[uses] a (b, s) score column broadcasts over (b, s, d)"
+    },
+    {
+      "prerequisite_id": "rd-unit-direction",
+      "dependent_id": "rd-add-direction",
+      "weight": 1.0,
+      "confidence": 0.8,
+      "is_hard_gate": true,
+      "is_encompassing": false,
+      "propagation_weight": 0.0,
+      "rationale": "[builds-on] addition uses the difference-in-means vector"
+    },
+    {
+      "prerequisite_id": "forward-hook-register",
+      "dependent_id": "rd-add-direction",
+      "weight": 1.0,
+      "confidence": 0.8,
+      "is_hard_gate": false,
+      "is_encompassing": false,
+      "propagation_weight": 0.0,
+      "rationale": "[uses] the addition is a forward hook at one layer"
+    },
+    {
+      "prerequisite_id": "rd-ablate-direction",
+      "dependent_id": "rd-add-direction",
+      "weight": 1.0,
+      "confidence": 0.8,
+      "is_hard_gate": false,
+      "is_encompassing": false,
+      "propagation_weight": 0.0,
+      "rationale": "[contrasts] ablation removes, addition sets; both change one component"
+    },
+    {
+      "prerequisite_id": "rd-select-layer",
+      "dependent_id": "rd-read-intervention",
+      "weight": 1.0,
+      "confidence": 0.8,
+      "is_hard_gate": true,
+      "is_encompassing": false,
+      "propagation_weight": 0.0,
+      "rationale": "[builds-on] the table is read after the layer is selected"
+    },
+    {
+      "prerequisite_id": "rd-ablate-direction",
+      "dependent_id": "rd-read-intervention",
+      "weight": 1.0,
+      "confidence": 0.8,
+      "is_hard_gate": true,
+      "is_encompassing": false,
+      "propagation_weight": 0.0,
+      "rationale": "[builds-on] the table reports the ablation result"
+    },
+    {
+      "prerequisite_id": "rd-add-direction",
+      "dependent_id": "rd-read-intervention",
+      "weight": 1.0,
+      "confidence": 0.8,
+      "is_hard_gate": true,
+      "is_encompassing": false,
+      "propagation_weight": 0.0,
+      "rationale": "[builds-on] the table reports the addition result"
     }
   ],
   "lessons": [],
@@ -14330,6 +14612,854 @@
       "role": "primary",
       "weight": 1.0,
       "notes": "Vanilla SGD over custom Parameters: zero_grad sets grad=None; step does p -= p.grad*lr under NoGrad."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50119",
+      "concept_id": "la-orthogonal-projection",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50120",
+      "concept_id": "la-orthogonal-projection",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50121",
+      "concept_id": "la-orthogonal-projection",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50122",
+      "concept_id": "la-orthogonal-projection",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50123",
+      "concept_id": "la-orthogonal-projection",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50124",
+      "concept_id": "la-orthogonal-projection",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50125",
+      "concept_id": "la-orthogonal-projection",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50126",
+      "concept_id": "la-orthogonal-projection",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50127",
+      "concept_id": "la-orthogonal-projection",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50128",
+      "concept_id": "la-orthogonal-projection",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50129",
+      "concept_id": "la-orthogonal-projection",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50130",
+      "concept_id": "la-orthogonal-projection",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1744",
+      "concept_id": "rd-class-mean",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1745",
+      "concept_id": "rd-class-mean",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1746",
+      "concept_id": "rd-diff-in-means",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1747",
+      "concept_id": "rd-diff-in-means",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1748",
+      "concept_id": "rd-unit-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1749",
+      "concept_id": "rd-unit-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1750",
+      "concept_id": "rd-class-mean",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1751",
+      "concept_id": "rd-diff-in-means",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1752",
+      "concept_id": "rd-diff-in-means",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1753",
+      "concept_id": "rd-unit-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1754",
+      "concept_id": "rd-diff-in-means",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1755",
+      "concept_id": "rd-diff-in-means",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1756",
+      "concept_id": "rd-diff-in-means",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1757",
+      "concept_id": "rd-diff-in-means",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1758",
+      "concept_id": "rd-diff-in-means",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1759",
+      "concept_id": "rd-select-layer",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1760",
+      "concept_id": "rd-select-layer",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1761",
+      "concept_id": "rd-select-layer",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1762",
+      "concept_id": "rd-select-layer",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1763",
+      "concept_id": "rd-select-layer",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1764",
+      "concept_id": "rd-select-layer",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1765",
+      "concept_id": "rd-select-layer",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1766",
+      "concept_id": "rd-select-layer",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1767",
+      "concept_id": "rd-select-layer",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1768",
+      "concept_id": "rd-select-layer",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1769",
+      "concept_id": "rd-select-layer",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1770",
+      "concept_id": "rd-select-layer",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1771",
+      "concept_id": "rd-select-layer",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1772",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1773",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1774",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1775",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1776",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1777",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1778",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1779",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1780",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1781",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1782",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1783",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1784",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1785",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1786",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1787",
+      "concept_id": "rd-add-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1788",
+      "concept_id": "rd-add-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1789",
+      "concept_id": "rd-add-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1790",
+      "concept_id": "rd-add-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1791",
+      "concept_id": "rd-add-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1792",
+      "concept_id": "rd-add-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1793",
+      "concept_id": "rd-add-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1794",
+      "concept_id": "rd-add-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1795",
+      "concept_id": "rd-add-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1796",
+      "concept_id": "rd-add-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1797",
+      "concept_id": "rd-add-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1798",
+      "concept_id": "rd-add-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1799",
+      "concept_id": "rd-add-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1800",
+      "concept_id": "rd-read-intervention",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1801",
+      "concept_id": "rd-read-intervention",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1802",
+      "concept_id": "rd-read-intervention",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1803",
+      "concept_id": "rd-read-intervention",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1804",
+      "concept_id": "rd-read-intervention",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1805",
+      "concept_id": "rd-read-intervention",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1806",
+      "concept_id": "rd-read-intervention",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1807",
+      "concept_id": "rd-read-intervention",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1808",
+      "concept_id": "rd-read-intervention",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1809",
+      "concept_id": "rd-read-intervention",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1810",
+      "concept_id": "rd-read-intervention",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1811",
+      "concept_id": "rd-read-intervention",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "1812",
+      "concept_id": "rd-read-intervention",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50131",
+      "concept_id": "rd-diff-in-means",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50132",
+      "concept_id": "rd-diff-in-means",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50133",
+      "concept_id": "rd-diff-in-means",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50134",
+      "concept_id": "rd-diff-in-means",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50135",
+      "concept_id": "rd-diff-in-means",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50136",
+      "concept_id": "rd-select-layer",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50137",
+      "concept_id": "rd-select-layer",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50138",
+      "concept_id": "rd-select-layer",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50139",
+      "concept_id": "rd-select-layer",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50140",
+      "concept_id": "rd-select-layer",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50141",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50142",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50143",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50144",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50145",
+      "concept_id": "rd-ablate-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50146",
+      "concept_id": "rd-add-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50147",
+      "concept_id": "rd-add-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50148",
+      "concept_id": "rd-add-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50149",
+      "concept_id": "rd-add-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50150",
+      "concept_id": "rd-add-direction",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50151",
+      "concept_id": "rd-read-intervention",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50152",
+      "concept_id": "rd-read-intervention",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50153",
+      "concept_id": "rd-read-intervention",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50154",
+      "concept_id": "rd-read-intervention",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
+    },
+    {
+      "source_bank": "delta_drills",
+      "problem_ref": "50155",
+      "concept_id": "rd-read-intervention",
+      "role": "primary",
+      "weight": 1,
+      "notes": "Refusal-direction course drill."
     }
   ],
   "mastery_gate": {

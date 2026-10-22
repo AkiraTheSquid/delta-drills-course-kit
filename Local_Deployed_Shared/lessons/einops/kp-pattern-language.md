@@ -43,6 +43,14 @@ appears exactly once per side, the operation is a pure permutation — data
 moves, nothing merges, splits, or disappears. Merging and splitting add
 parentheses to this grammar — next two KPs.
 
+Step through it yourself. Every number flies to its new address; the loop
+under the figure is the pattern written out by hand:
+
+```figure einops-console pattern-language
+Interactive figure: pick a pattern ('h w -> w h', 'b h w c -> b c h w', …),
+then step through the result one element at a time.
+```
+
 ## Worked example
 
 Task: channels-last batch → channels-first, and batch-first sequence →

@@ -16,7 +16,7 @@ That is the public course kit. Seth's private app repo works the same way.
 
 The repo ships a `.mcp.json`, so Claude Code offers to enable the
 `delta-drills-content` MCP server on first launch. Say yes. Check it took with
-`/mcp` — you should see 28 tools.
+`/mcp` — the `delta-drills-content` tools should be listed.
 
 If you would rather register it by hand, or you use a different MCP client:
 
@@ -67,15 +67,64 @@ against the real files:
 Claude Code will use the tools below. You can also drive them yourself with
 `./content-mcp/bin/dd-content <tool> --help`.
 
-## The three layers of content
+## The layers of content
+
+There are two kinds of course. A **code course** (Practice) is pages and drills
+the learner runs. A **Study course** is ideas, with free-answer, multiple-choice,
+flashcard and image-occlusion questions (see "Study courses" below).
 
 | Layer | What it is | Tools |
 |---|---|---|
+| **Courses** | A folder under `lessons/` and its units (rows in the registry) | `course_list`, `course_create`, `course_add_unit` |
+| **Images** | Pictures in a course: PNG/JPEG/GIF/WebP, alt text required, no SVG | `image_add` (returns the markdown to paste), `image_list`, `image_remove` |
 | **Pages** | One markdown file per concept, four rungs: Lesson → Faded → Solo → Integrated | `lesson_list`, `lesson_read`, `lesson_outline`, `lesson_edit`, `lesson_write`, `lesson_create` |
 | **Graph** | `kc_registry.json` — the concepts, their prerequisites, and the teaching order | `graph_list`, `graph_read`, `graph_add_kc`, `graph_update_kc` |
-| **Drills** | The question bank the app actually serves | `drill_search`, `drill_read`, `drill_add`, `drill_update`, `drill_retire` |
+| **Drills** | The question bank the app actually serves | `drill_search`, `drill_read`, `drill_add`, `drill_update`, `drill_tag`, `drill_retire` |
+| **Atoms** | The mastery graph a correct answer moves. Every drill needs one (`atom_tag_missing` otherwise) | `atom_list`, `atom_add`, `drill_tag` (or `atoms=` on `drill_add`) |
+| **Multiple choice** | A math page's problems, `kp-<slug>.problems.json`, every answer proven in SymPy | `problems_read`, `problems_add`, `problems_update` |
+| **Study** | Study courses, in `study-courses/<course>/` | `study_*` (below) |
 
 Plus `pipeline_*` to check your work and `backup_*` to undo it.
+
+## Building a new code course, in order
+
+1. `course_create`: the folder and its first unit (`kind: math` for a prose + multiple-choice course).
+2. `graph_add_kc` for each concept, prerequisites first. It also writes the glossary entry and the answer clock.
+3. `atom_add` for the course's mastery atom(s) (`root=true` for the first one).
+4. `image_add` for any picture. Paste the markdown it returns.
+5. `drill_add` with `atoms=[...]` for each drill. Starters are an empty `def` with
+   `pass`, never `return None`.
+6. `lesson_create` for each page, listing those drill ids. For a math page, use `problems_add` too.
+7. `pipeline_check`, then `pipeline_watchers`.
+
+## Study courses: free answer, multiple choice, image occlusion
+
+Needs only `pydantic` and `Pillow` in the content python (`.venv`), no torch.
+
+1. `study_course_create`: the id, the title and the sections (the colour-coded parts).
+2. `study_source_add`: the text the course quotes. Use your own notes or openly
+   licensed text, and state the license. The course kit is public.
+3. `study_concept_add`, one per idea. Give it a `definition` and two or more
+   `constraints` (things a right answer must say). Its `passages` are
+   `{source, text}` with the text copied **exactly** from that source.
+4. `study_question_add`. `free` questions are graded by a model against the
+   `reference`. `mc` has three or more options, one of them correct. `card` is a
+   typed flashcard with other accepted spellings in `answers`. Each concept needs
+   a `content` question, and a conceptual one also needs an `evaluative`
+   question (judge or explain a claim).
+5. `study_diagram_add` for image occlusion: the picture, `labels`, and one pixel
+   box `[x0, y0, x1, y1]` per label. It writes one card per box. Then run
+   `study_diagram_preview` and **look at the PNG it returns**. It shows a
+   coordinate grid and the numbered boxes. Fix any box that misses its label
+   with `study_diagram_update`.
+6. `study_check` until it says `ok`. It merges the course into a copy of the
+   app's Study pack and runs the app's own rules on it.
+7. In the course kit, open a pull request with `study-courses/<course>/`. In the
+   private repo, `study_apply` writes it into the live pack, and then you deploy.
+
+Every id is namespaced by the course (`<course>.<id>`), so a Study course can
+only ever replace its own content in the shared pack. An alias that another
+course already uses ("Nucleus") is dropped when the course is merged.
 
 ## 4. Check your work — this is not optional
 
@@ -146,12 +195,15 @@ a mess across several files and want out of it in one command.
 - **Never hand-edit `questions.json`, `questions_structured.json`, or
   `lessons_structured.json`.** They are generated on every export and your edit
   will vanish. Change the source and re-run the pipeline.
-- **Adding a KC takes more than the registry.** A new concept also needs a
-  glossary entry, or the lessons watcher fails with `kcLesson is missing`. Run
-  `pipeline_watchers` and it will tell you.
+- **Adding a KC takes more than the registry.** `graph_add_kc` writes the
+  glossary entry and the answer clock with it. Its drills still need an atom
+  (`atom_add` + `drill_tag`), and `pipeline_check` builds the unit's notebooks.
 - **Only whitelisted fields work in a drill override.** `drill_update` refuses
   anything else and names the allowed set, because the exporter would ignore it
   silently and your edit would look like it worked.
+- **`drill_update` merges.** Within one override file the exporter keeps only
+  the last record per drill, so `drill_update` writes the drill's whole record
+  with your fields changed, and nothing else is lost.
 
 ## Changing the password
 
