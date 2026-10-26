@@ -6,7 +6,9 @@ work, and neither front end can drift from the other, because neither one
 knows anything the table does not say.
 
 Every op declares:
-  auth   — True if it changes a file. Write ops take a daily snapshot first.
+  writes — True if it changes a file. Write ops take a daily snapshot first.
+           No password: anyone with this checkout can edit it (removed 2026-10-26).
+           Going LIVE is gated server-side by the publish key (study_publish).
   params — JSON Schema properties; the CLI derives its flags from the same dict.
 """
 
@@ -18,7 +20,7 @@ from typing import Any, Callable
 
 from . import problems as mc
 from . import atoms as atoms_mod
-from . import auth, backup, courses, drills, graph, images, lessons, paths, pipeline
+from . import backup, courses, drills, graph, images, lessons, paths, pipeline
 
 
 @dataclass
@@ -28,7 +30,7 @@ class Op:
     handler: Callable[..., Any]
     params: dict = field(default_factory=dict)
     required: list = field(default_factory=list)
-    auth: bool = False
+    writes: bool = False
     # Whether `ops.call` takes the daily snapshot before running this op.
     # 🔴 False for the backup ops themselves. `backup_restore` must NEVER
     # snapshot first: when the existing snapshot is stale, rotating it captures
@@ -37,22 +39,16 @@ class Op:
     snapshot: bool = True
 
     def schema(self) -> dict:
-        props = dict(self.params)
-        if self.auth:
-            props.setdefault("token", {
-                "type": "string",
-                "description": "Session token from content_login. Optional if already logged in.",
-            })
-        return {"type": "object", "properties": props, "required": list(self.required)}
+        return {"type": "object", "properties": dict(self.params), "required": list(self.required)}
 
 
 REGISTRY: dict[str, Op] = {}
 
 
-def op(name, summary, params=None, required=None, needs_auth=False, snapshot=True):
+def op(name, summary, params=None, required=None, writes=False, snapshot=True):
     def wrap(fn):
         REGISTRY[name] = Op(name, summary, fn, params or {}, required or [],
-                            needs_auth, snapshot)
+                            writes, snapshot)
         return fn
     return wrap
 
@@ -63,11 +59,9 @@ def call(name: str, arguments: dict | None = None) -> Any:
         raise KeyError(f"Unknown tool '{name}'. Known: {', '.join(sorted(REGISTRY))}")
     spec = REGISTRY[name]
     args = dict(arguments or {})
-    token = args.pop("token", None)
+    args.pop("token", None)  # callers from the password era still send one
     result: dict[str, Any] = {}
-    if spec.auth:
-        auth.require(token)
-    if spec.auth and spec.snapshot:
+    if spec.writes and spec.snapshot:
         # Fails closed: if the safety copy cannot be written, the write does not
         # happen. A mutation with no snapshot behind it is the one state this
         # whole design exists to prevent.
@@ -94,25 +88,12 @@ STRS = {"type": "array", "items": {"type": "string"}}
 INTS = {"type": "array", "items": {"type": "integer"}}
 
 
-# ── session ────────────────────────────────────────────────────────────────
-@op("content_login", "Unlock content editing with the shared password. Reads never need this.",
-    {"password": {**STR, "description": "The shared content-editing password."}},
-    ["password"])
-def _login(password: str):
-    return auth.login(password)
-
-
-@op("content_logout", "Drop the current editing session.")
-def _logout():
-    return {"logged_out": auth.logout()}
-
-
-@op("content_status", "Where everything stands: auth, backup age, content counts, pipeline interpreter.")
+# ── status ─────────────────────────────────────────────────────────────────
+@op("content_status", "Where everything stands: backup age, content counts, pipeline interpreter.")
 def _status():
     registry = graph.load()
     return {
         "repo": str(paths.REPO),
-        "auth": auth.status(),
         "backup": backup.status(),
         "python": pipeline.python_in_use(),
         "content": {
@@ -144,7 +125,7 @@ def _course_list():
      "description": STR,
      "kind": {**STR, "description": "'code' (default) or 'math'."},
      "subtopic_key": STR},
-    ["course", "unit", "title", "topic"], needs_auth=True)
+    ["course", "unit", "title", "topic"], writes=True)
 def _course_create(course, unit, title, topic, unit_title=None, description="", kind="code",
                    subtopic_key=None):
     return courses.create_course(course, unit, title, topic, unit_title, description, kind, subtopic_key)
@@ -152,7 +133,7 @@ def _course_create(course, unit, title, topic, unit_title=None, description="", 
 
 @op("course_add_unit", "Add another unit (registry lesson) to an existing course folder.",
     {"course": STR, "unit": STR, "title": STR, "topic": STR, "subtopic_key": STR},
-    ["course", "unit", "title", "topic"], needs_auth=True)
+    ["course", "unit", "title", "topic"], writes=True)
 def _course_add_unit(course, unit, title, topic, subtopic_key=None):
     return courses.add_unit(course, unit, title, topic, subtopic_key)
 
@@ -167,7 +148,7 @@ def _course_add_unit(course, unit, title, topic, subtopic_key=None):
      "data_base64": {**STR, "description": "The image bytes, base64, instead of source_path."},
      "name": {**STR, "description": "File name to store it under (default: from the source)."},
      "replace": {**BOOL, "description": "Overwrite an existing file of that name."}},
-    ["course", "alt"], needs_auth=True)
+    ["course", "alt"], writes=True)
 def _image_add(course, alt, source_path=None, data_base64=None, name=None, replace=False):
     return images.add(course, alt, source_path, data_base64, name, replace)
 
@@ -179,7 +160,7 @@ def _image_list(course=None):
 
 
 @op("image_remove", "Delete a picture nothing shows any more.",
-    {"course": STR, "name": STR}, ["course", "name"], needs_auth=True)
+    {"course": STR, "name": STR}, ["course", "name"], writes=True)
 def _image_remove(course, name):
     return images.remove(course, name)
 
@@ -214,19 +195,19 @@ def _guide():
     {"kc": STR, "old": {**STR, "description": "Exact text to replace."},
      "new": STR,
      "expect_count": {**INT, "description": "Refuse unless `old` appears exactly this many times (default 1)."}},
-    ["kc", "old", "new"], needs_auth=True)
+    ["kc", "old", "new"], writes=True)
 def _lesson_edit(kc: str, old: str, new: str, expect_count: int = 1):
     return lessons.edit_kp(kc, old, new, expect_count)
 
 
 @op("lesson_write", "Replace a whole KP page. Frontmatter must still name the same KC.",
-    {"kc": STR, "markdown": STR}, ["kc", "markdown"], needs_auth=True)
+    {"kc": STR, "markdown": STR}, ["kc", "markdown"], writes=True)
 def _lesson_write(kc: str, markdown: str):
     return lessons.write_kp(kc, markdown)
 
 
 @op("lesson_create", "Create a new KP page for a KC that already exists in the registry.",
-    {"course": STR, "kc": STR, "markdown": STR}, ["course", "kc", "markdown"], needs_auth=True)
+    {"course": STR, "kc": STR, "markdown": STR}, ["course", "kc", "markdown"], writes=True)
 def _lesson_create(course: str, kc: str, markdown: str):
     return lessons.create_kp(course, kc, markdown)
 
@@ -243,13 +224,13 @@ def _problems_read(kc):
     "Schema: {kind: compute|derivation-step|statement, prompt, choices:[{key:A,text,value?}], answer, solution, "
     "difficulty 10-100, verify:{sympy:{truth}} for compute/derivation-step}.",
     {"kc": STR, "problems": {"type": "array", "items": {"type": "object"}}},
-    ["kc", "problems"], needs_auth=True)
+    ["kc", "problems"], writes=True)
 def _problems_add(kc, problems: list):
     return mc.add(kc, problems)
 
 
 @op("problems_update", "Change fields of one multiple-choice problem in place (its id stays).",
-    {"kc": STR, "id": INT, "fields": {"type": "object"}}, ["kc", "id", "fields"], needs_auth=True)
+    {"kc": STR, "id": INT, "fields": {"type": "object"}}, ["kc", "id", "fields"], writes=True)
 def _problems_update(kc, id: int, fields: dict):
     return mc.update(kc, id, fields)
 
@@ -273,7 +254,7 @@ def _graph_read(kc: str):
      "after": {**STR, "description": "Insert directly after this KC instead of after the last prereq."},
      "answer_secs": {**INT, "description": "Answer clock per drill, 1-1200 s (default 600). Short "
                      "one-call answers 180-300; ARENA-sized exercises up to 1200."}},
-    ["kc", "lesson", "title"], needs_auth=True)
+    ["kc", "lesson", "title"], writes=True)
 def _graph_add(kc: str, lesson: str, title: str, prereqs=None, syntax: bool = True, after=None,
                answer_secs=None):
     return graph.add_kc(kc, lesson, title, prereqs, syntax, after, answer_secs)
@@ -282,7 +263,7 @@ def _graph_add(kc: str, lesson: str, title: str, prereqs=None, syntax: bool = Tr
 @op("graph_update_kc", "Change a concept's title, prereqs, lesson, or its position in the sequence.",
     {"kc": STR, "title": STR, "prereqs": STRS, "lesson": STR, "after": STR,
      "answer_secs": {**INT, "description": "Answer clock per drill, 1-1200 s."}},
-    ["kc"], needs_auth=True)
+    ["kc"], writes=True)
 def _graph_update(kc: str, title=None, prereqs=None, lesson=None, after=None, answer_secs=None):
     return graph.update_kc(kc, title, prereqs, lesson, after, answer_secs)
 
@@ -317,7 +298,7 @@ def _drill_next_id():
                "Mastery atoms this drill trains (ids from atom_list / atom_add, or "
                "{atom_id, confidence}). Without them a correct answer moves no mastery "
                "and the bank gate fails the drill (atom_tag_missing)."}},
-    ["topic", "subtopic", "question_text", "answer_code"], needs_auth=True)
+    ["topic", "subtopic", "question_text", "answer_code"], writes=True)
 def _drill_add(topic, subtopic, question_text, answer_code, difficulty: int = 50,
                expected_output: str = "", override=None, atoms=None):
     if atoms:
@@ -333,7 +314,7 @@ def _drill_add(topic, subtopic, question_text, answer_code, difficulty: int = 50
 
 @op("drill_update", "Change an existing drill by appending an override record (last layer wins).",
     {"id": INT, "fields": {"type": "object", "description": "Whitelisted override fields only."}},
-    ["id", "fields"], needs_auth=True)
+    ["id", "fields"], writes=True)
 def _drill_update(id: int, fields: dict):
     return drills.update(id, fields)
 
@@ -342,7 +323,7 @@ def _drill_update(id: int, fields: dict):
     "Set the mastery atoms a drill trains (appends its tag row; the last row per drill wins).",
     {"id": INT, "atoms": {"type": "array", "items": {},
                           "description": "Atom ids, or {atom_id, confidence} objects."}},
-    ["id", "atoms"], needs_auth=True)
+    ["id", "atoms"], writes=True)
 def _drill_tag(id: int, atoms: list):
     return atoms_mod.tag(id, atoms)
 
@@ -354,18 +335,18 @@ def _atom_list(query: str = "", limit: int = 40):
 
 
 @op("atom_add",
-    "Add a mastery atom to the BKT graph: prereqs (existing atoms) OR root=true. A new "
+    "Add a mastery atom to the atom graph: prereqs (existing atoms) OR root=true. A new "
     "course's drills need an atom of their own to tag.",
     {"atom": STR, "title": STR, "description": STR, "topic": STR,
      "subtopic": {**STR, "description": "Usually the unit's subtopic_key, e.g. 'Probability: Probability basics'."},
      "prereqs": {"type": "array", "items": STR}, "root": {"type": "boolean"}},
-    ["atom", "title", "description", "topic", "subtopic"], needs_auth=True)
+    ["atom", "title", "description", "topic", "subtopic"], writes=True)
 def _atom_add(atom, title, description, topic, subtopic, prereqs=None, root: bool = False):
     return atoms_mod.add(atom, title, description, topic, subtopic, prereqs, root)
 
 
 @op("drill_retire", "Stop serving a drill without renumbering anything behind it.",
-    {"id": INT, "reason": STR}, ["id"], needs_auth=True)
+    {"id": INT, "reason": STR}, ["id"], writes=True)
 def _drill_retire(id: int, reason: str = ""):
     return drills.retire(id, reason)
 
@@ -373,13 +354,13 @@ def _drill_retire(id: int, reason: str = ""):
 # ── pipeline ───────────────────────────────────────────────────────────────
 @op("pipeline_check", "Run the whole content gate in order, stopping at the first failure.",
     {"fast": {**BOOL, "description": "Skip fence execution and the bank export. Never enough to ship."}},
-    needs_auth=True)
+    writes=True)
 def _check(fast: bool = False):
     return pipeline.check_all(fast)
 
 
 @op("pipeline_step", "Run one pipeline step: validate, compile, qmatrix, export, audit_bank, notebooks.",
-    {"step": STR}, ["step"], needs_auth=True)
+    {"step": STR}, ["step"], writes=True)
 def _step(step: str):
     return pipeline.step(step)
 
@@ -405,7 +386,7 @@ def _backup_status():
 
 
 @op("backup_now", "Refresh the snapshot. Without force, a snapshot younger than 24h is kept.",
-    {"force": BOOL}, needs_auth=True, snapshot=False)
+    {"force": BOOL}, writes=True, snapshot=False)
 def _backup_now(force: bool = False):
     return backup.snapshot(force)
 
@@ -420,7 +401,7 @@ def _backup_list():
     "Put the snapshot back. The current tree is parked beside it first, so a restore is undoable.",
     {"confirm": {**BOOL, "description": "Must be true. Restoring overwrites current content."},
      "paths": {**STRS, "description": "Repo-relative paths to restore. Omit for everything."}},
-    ["confirm"], needs_auth=True, snapshot=False)
+    ["confirm"], writes=True, snapshot=False)
 def _backup_restore(confirm: bool, paths: list | None = None):
     if not confirm:
         raise ValueError("Refusing to restore without confirm=true.")
@@ -429,7 +410,7 @@ def _backup_restore(confirm: bool, paths: list | None = None):
 
 def catalogue() -> list[dict]:
     return [
-        {"name": spec.name, "summary": spec.summary, "auth": spec.auth,
+        {"name": spec.name, "summary": spec.summary, "writes": spec.writes,
          "params": sorted(spec.params), "required": spec.required}
         for spec in sorted(REGISTRY.values(), key=lambda s: s.name)
     ]

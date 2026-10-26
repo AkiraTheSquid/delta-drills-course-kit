@@ -8,7 +8,7 @@
 - The op registry and its dispatch (`ops.py`).
 - The three content layers — KP pages (`lessons.py`), the concept graph
   (`graph.py`), the drill bank (`drills.py`).
-- The write gate (`auth.py`) and the rolling snapshot (`backup.py`).
+- The rolling pre-write snapshot (`backup.py`). No password gate (removed 2026-10-26).
 - The two front ends (`server.py`, `cli.py`) and the repo layout (`paths.py`).
 
 ## Does NOT own
@@ -16,10 +16,10 @@
   folder's README for the full boundary.
 
 ## Key Files
-- `ops.py`: the registry. `@op(name, summary, params, required, needs_auth)`
+- `ops.py`: the registry. `@op(name, summary, params, required, writes)`
   around a handler is the whole contract; both front ends generate themselves
-  from it. `ops.call` is the ONE place auth is demanded and the snapshot taken,
-  so no handler can forget either.
+  from it. `ops.call` is the ONE place the snapshot is taken,
+  so no handler can forget it.
 - `paths.py`: every path in the repo this package touches, plus
   `python_for_content()` — the backend venv, because bare `python3` has no torch.
 - `lessons.py`: KP pages, addressed by KC id and never by path. Parsing is
@@ -41,7 +41,7 @@
 
 ## How It Works (Flow)
 1. A front end parses a request into `(name, arguments)`.
-2. `ops.call(name, arguments)` pops `token`, demands auth if the op writes,
+2. `ops.call(name, arguments)` drops any legacy `token`, and if the op writes
    calls `backup.ensure()`, checks required args, and invokes the handler.
 3. The handler validates structurally and writes the real source file.
 4. `pipeline.*` runs the repo's gates when the caller asks.
@@ -49,8 +49,8 @@
 ## Invariants & Constraints
 - 🔴 `server.py` must never write to stdout except JSON-RPC frames.
 - 🔴 Ids are positional; never insert or delete a CSV row (see the parent README).
-- Auth and the snapshot live in `ops.call`, not in handlers. A handler that
-  writes without going through `ops.call` bypasses both.
+- The snapshot lives in `ops.call`, not in handlers. A handler that writes
+  without going through `ops.call` bypasses it.
 - Only fields in `drills.OVERRIDE_FIELDS` may be written to an override record.
   The exporter silently IGNORES anything else, so an unlisted field would look
   like a successful edit that changed nothing — `drills.update` raises instead.
@@ -72,4 +72,5 @@
   - Status: `RESOLVED`.
 
 ## Recent Changes
+- 2026-10-26: `auth.py` deleted; `needs_auth` → `writes` (snapshot flag only). No password.
 - 2026-09-02: Package created.

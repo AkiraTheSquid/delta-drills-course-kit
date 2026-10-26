@@ -152,7 +152,28 @@ def check(course: str) -> dict:
     base = paths.study_pack()
     if base is None:
         raise RuntimeError("No Study pack to check against (study-packs/ in the kit, the live pack here).")
-    return _helper("check", str(study.folder(course)), str(base))
+    result = _helper("check", str(study.folder(course)), str(base))
+    clash = _id_clash(course, base)
+    if clash:
+        result["ok"] = False
+        result.setdefault("errors", []).append(
+            f"course id '{course}' overlaps course '{clash}' (one id is a prefix of the other, at a "
+            "'.' or '-'): study_publish would refuse it. Pick an id neither starts the other.")
+    return result
+
+
+def _owned(course: str, item: str) -> bool:
+    # Same rule as the backend's contrib_merge.owned, which the publish refusal uses.
+    return item == course or item.startswith(course + ".") or item.startswith(course + "-")
+
+
+def _id_clash(course: str, base: Path) -> str | None:
+    """A course id that owns, or is owned by, another course's id. The base pack has
+    the baked courses; contributor courses only live as sibling study-courses/ folders."""
+    pack = json.loads((Path(base) / "pack.json").read_text(encoding="utf-8"))
+    others = {k["id"] for k in pack.get("courses", [])}
+    others |= {f.parent.name for f in paths.STUDY_COURSES.glob("*/course.json")}
+    return next((o for o in sorted(others) if o != course and (_owned(o, course) or _owned(course, o))), None)
 
 
 def apply(course: str) -> dict:

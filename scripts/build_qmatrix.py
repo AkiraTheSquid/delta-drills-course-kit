@@ -28,7 +28,7 @@ LEFTOVER_TARGETS = {
     # longer teaches, or a drill retired with it. See
     # Local_Deployed_Shared/pipeline/retired_question_ids.json.
     # 103 was kept back from the 2026-08-30 retirement because it is the only
-    # trainer of a gating BKT atom (softmax-from-logits, which gates
+    # trainer of a gating atom (softmax-from-logits, which gates
     # cross-entropy-loss) and sat here under torch.axis-reductions until
     # 2026-09-17, when its solution was rewritten in torch and kp-stable-
     # probabilities claimed it as a Solo drill. 198 sat beside it until

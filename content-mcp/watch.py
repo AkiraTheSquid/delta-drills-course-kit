@@ -1,7 +1,8 @@
 """watch.py — health checks for content-mcp
 
 The contract this folder has to keep: one registry, two front ends that cannot
-drift from it, and a password on every op that writes.
+drift from it, and a snapshot before every op that writes. (No password since
+2026-10-26: writes are local; going live needs the server-side publish key.)
 
 Runs via `mod watch` — exit 0 = PASS, non-zero = FAIL.
 """
@@ -16,7 +17,7 @@ REPO = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 
 # Every op that changes a file on disk. Kept here rather than derived, so
-# adding a write op without a password gate FAILS instead of passing quietly.
+# adding a write op without the `writes` flag (no snapshot) FAILS instead of passing quietly.
 WRITE_OPS = frozenset({
     "backup_now", "backup_restore",
     "course_add_unit", "course_create",
@@ -34,7 +35,7 @@ WRITE_OPS = frozenset({
 
 
 def check_imports():
-    from content_mcp import auth, backup, cli, drills, graph, lessons, ops, pipeline, server  # noqa: F401
+    from content_mcp import backup, cli, drills, graph, lessons, ops, pipeline, server  # noqa: F401
     assert ops.REGISTRY, "op registry is empty"
 
 
@@ -49,14 +50,14 @@ def check_every_op_is_well_formed():
         assert not unknown, f"{name} requires undeclared param(s): {sorted(unknown)}"
 
 
-def check_writes_are_password_gated():
+def check_writes_are_flagged():
     from content_mcp import ops
-    gated = {name for name, spec in ops.REGISTRY.items() if spec.auth}
-    missing = WRITE_OPS - gated
-    assert not missing, f"write op(s) with NO password gate: {sorted(missing)}"
-    extra = gated - WRITE_OPS
+    flagged = {name for name, spec in ops.REGISTRY.items() if spec.writes}
+    missing = WRITE_OPS - flagged
+    assert not missing, f"write op(s) not flagged writes=True (no snapshot): {sorted(missing)}"
+    extra = flagged - WRITE_OPS
     assert not extra, (
-        f"op(s) gated but not listed as writes: {sorted(extra)}. "
+        f"op(s) flagged writes but not listed in WRITE_OPS: {sorted(extra)}. "
         "Add them to WRITE_OPS here if they really write."
     )
 
@@ -97,16 +98,6 @@ def check_initialize_negotiates_a_supported_version():
         })
         got = reply["result"]["protocolVersion"]
         assert got == expected, f"asked {requested}, server agreed to {got}"
-
-
-def check_password_is_stored_as_a_digest():
-    from content_mcp import auth
-    record = auth._stored()
-    assert record, "no password configured — writes would be unusable"
-    assert record.get("digest") and record.get("salt"), "auth.json is missing salt/digest"
-    blob = json.dumps(record).lower()
-    assert "password" not in record, "auth.json must never hold a plaintext password"
-    assert "arenautodidacts" not in blob, "the password itself leaked into auth.json"
 
 
 def check_backup_covers_the_content():
@@ -172,16 +163,12 @@ def check_restore_never_rotates_the_snapshot_first():
     )
 
     # Behavioural: a stale snapshot must survive a restore untouched.
-    token = _probe_token()
-    if token is None:
-        return  # not logged in; the declarative assertions above still hold
-
     rotated, restored = [], []
     real_ensure, real_restore = backup.ensure, backup.restore
     backup.ensure = lambda: rotated.append(True) or {}
     backup.restore = lambda *a, **k: restored.append(True) or {"restored_count": 0}
     try:
-        ops.call("backup_restore", {"confirm": True, "token": token})
+        ops.call("backup_restore", {"confirm": True})
     finally:
         backup.ensure, backup.restore = real_ensure, real_restore
     # Without this the check goes green when the call never ran at all.
@@ -236,25 +223,6 @@ def check_unknown_drill_ids_are_refused():
         raise AssertionError(f"drill_{label} accepted an id that is not in the bank")
 
 
-def check_password_change_needs_the_current_password():
-    from content_mcp import auth
-    try:
-        auth.write_password("something-else")
-    except auth.AuthError:
-        return
-    raise AssertionError("the editing password can be replaced without knowing it")
-
-
-def _probe_token():
-    """A token the auth gate accepts, for behavioural checks — never persisted."""
-    from content_mcp import auth
-    record = auth._live_session()
-    if record:
-        return record["token"]
-    import os
-    return os.environ.get("DELTA_DRILLS_CONTENT_PASSWORD") or None
-
-
 def check_entry_points_are_executable():
     for name in ("dd-content", "dd-content-mcp"):
         path = os.path.join(HERE, "bin", name)
@@ -266,11 +234,10 @@ if __name__ == "__main__":
     checks = [
         check_imports,
         check_every_op_is_well_formed,
-        check_writes_are_password_gated,
+        check_writes_are_flagged,
         check_cli_covers_every_op,
         check_server_lists_every_op,
         check_initialize_negotiates_a_supported_version,
-        check_password_is_stored_as_a_digest,
         check_backup_covers_the_content,
         check_a_graph_write_does_not_reformat_the_file,
         check_local_state_is_gitignored,
@@ -278,7 +245,6 @@ if __name__ == "__main__":
         check_a_failed_snapshot_blocks_the_write,
         check_a_rejected_drill_leaves_no_row_behind,
         check_unknown_drill_ids_are_refused,
-        check_password_change_needs_the_current_password,
         check_entry_points_are_executable,
     ]
     for fn in checks:

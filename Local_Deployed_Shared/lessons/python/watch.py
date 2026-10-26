@@ -14,7 +14,7 @@ Every way this floor breaks is quiet, which is what the checks below are for:
   - the floor drifting out from under np-1 (torch.tensor-model losing its
     python prereqs) puts the root back where it was, silently;
   - 🔴 wiring a python ATOM as a prerequisite of tensor-wraps-ndarray locks
-    every existing account out of the whole numpy course. bkt_mastery's
+    every existing account out of the whole numpy course. atom_engine's
     item_is_unlocked needs EVERY gating prerequisite atom ready, `is_hard_gate`
     is not read at runtime, and no learner has python evidence yet. This was
     tried, measured, and reverted the same hour; the check is the memory of it.
@@ -129,7 +129,7 @@ def check_no_python_atom_gates_the_numpy_floor():
         "%d atom edge(s) gate non-python atoms behind the python floor (%s). "
         "That locks the numpy course for every account with no python evidence "
         "— which is all of them. Keep the floor's ordering in kc_registry "
-        "prereqs, not in the BKT lattice"
+        "prereqs, not in the atom lattice"
         % (len(bad), ", ".join("%s -> %s" % (e["prerequisite_id"], e["dependent_id"])
                                for e in bad[:3])))
     ids = {c["id"] for c in graph.get("concepts", [])}

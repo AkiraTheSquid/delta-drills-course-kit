@@ -5,7 +5,7 @@ The rule, stated the way it is enforced
 ---------------------------------------
 A KP page's `new_syntax:` frontmatter is the graph saying "mastery of this
 concept includes mastery of this symbol". The mastery models take that claim
-literally: BKT and the logistic engine both estimate one number per concept
+literally: the logistic engine estimates one number per concept (and per atom)
 and gate the lattice on it. So a symbol that is declared but never drilled on
 its own node is a claim the app can never have evidence for — the learner is
 marked as having learned it on the strength of drills about something else.

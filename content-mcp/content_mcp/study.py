@@ -106,7 +106,10 @@ def list_courses() -> dict:
     return {"courses": out, "live_pack": str(paths.study_pack()) if paths.study_pack() else None}
 
 
-def create(course: str, title: str, sections: list, eyebrow: str = "", public: bool = False) -> dict:
+def create(course: str, title: str, sections: list, eyebrow: str = "", public: bool = False,
+           language: str = "en") -> dict:
+    if language not in ("en", "zh"):
+        raise ValueError("language: 'en' (English) or 'zh' (Simplified Chinese).")
     if not COURSE_RE.fullmatch(course or "") or len(course) > 40:
         raise ValueError("course id: lowercase letters/digits and dashes, e.g. 'ap-bio-genetics'.")
     if (folder(course) / "course.json").exists():
@@ -119,7 +122,8 @@ def create(course: str, title: str, sections: list, eyebrow: str = "", public: b
         sid = s.get("id") or re.sub(r"[^a-z0-9]+", "-", s["title"].lower()).strip("-")
         secs.append({"id": pid(course, sid), "title": s["title"].strip(),
                      "color": s.get("color") or PALETTE[i % len(PALETTE)]})
-    spec = {"course": {"id": course, "title": title.strip(), "eyebrow": eyebrow, "public": bool(public)},
+    spec = {"course": {"id": course, "title": title.strip(), "eyebrow": eyebrow, "public": bool(public),
+                       **({"language": language} if language != "en" else {})},
             "sections": secs, "sources": [], "concepts": [], "passages": [], "questions": [],
             "diagrams": [], "edges": []}
     for sub in ("sources", "images"):

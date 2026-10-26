@@ -30,8 +30,8 @@ SUPPORTED_PROTOCOLS = {"2024-11-05", "2025-03-26", "2025-06-18", "2025-11-25"}
 
 INSTRUCTIONS = """Programmatic editing of the Delta Drills course content.
 
-Reading is open. Everything that writes a file needs the shared editing
-password: call content_login once per session.
+Reading and writing are both open — there is no password. Writes change
+files in this checkout only; going live (study_publish) needs the publish key.
 
 The three layers of content:
   * KP pages    — lesson_list / lesson_read / lesson_edit / lesson_write
@@ -50,7 +50,7 @@ def _tools() -> list[dict]:
     return [
         {
             "name": spec.name,
-            "description": spec.summary + (" [requires content_login]" if spec.auth else ""),
+            "description": spec.summary,
             "inputSchema": spec.schema(),
         }
         for spec in sorted(ops.REGISTRY.values(), key=lambda s: s.name)

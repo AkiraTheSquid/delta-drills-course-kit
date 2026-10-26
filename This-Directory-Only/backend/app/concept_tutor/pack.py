@@ -131,6 +131,11 @@ class Course(_M):
     # Model-selected lesson support is added by bank_support.py (2026-10-12).
     mode: Literal["tutor", "qbank"] = "tutor"
     area_weights: dict[str, float] = {}
+    # EXAM WEIGHTS of a graph course (Seth 2026-10-23, Step 3 all systems: source
+    # order taught cardiology and neurology for twelve days and never reached GI or
+    # renal): section id -> its share of the exam. planner._new then teaches the
+    # ready concept worth the most exam points not yet known first. Empty = source order.
+    exam_weights: dict[str, float] = {}
     # CASES of another course this one asks too (Seth 2026-10-11: the cardiology
     # CCS cases are part of the Step 3 course, and still the CCS course's on
     # /step3): their targets join course_concepts, so its Study plans them and
@@ -145,6 +150,10 @@ class Course(_M):
     # 2026-10-21, Paula's QI rotation): a dictation mic in the answer box,
     # a verbatim transcript, amber marks for wordy / tangent / vague / repeat.
     oral: bool = False
+    # The language the course is WRITTEN in (Seth 2026-10-24: a course in
+    # Mandarin): "zh" = Simplified Chinese prompts, feedback and Ask replies;
+    # quoted passages stay in their source's own language (verbatim).
+    language: Literal["en", "zh"] = "en"
 
 
 class Misconception(_M):
@@ -465,6 +474,14 @@ class Pack(_M):
         """`cid` belongs to a course with no lessons (Course.lessons False)."""
         return any(not k.lessons and cid in self._course_sets(k.id)[0] for k in self.courses)
 
+    def language(self, cids) -> str:
+        """The language of the course that owns the first of `cids` ("en" when none does)."""
+        for cid in cids:
+            k = next((k for k in self.courses if cid in self._course_sets(k.id)[0]), None)
+            if k:
+                return k.language
+        return "en"
+
 
 
 def lesson_text(c: Concept) -> str:
@@ -584,6 +601,10 @@ def problems(p: Pack) -> list[str]:
         out += [f"course {k.id}: section {s} in two units" for s in sorted({s for s in owned if owned.count(s) > 1})]
         if k.units:   # a section in no unit could never be switched off
             out += [f"course {k.id}: section {s} in no unit" for s in k.sections if s not in owned]
+    for k in (k for k in p.courses if k.exam_weights):
+        out += [f"course {k.id}: exam weight on section {s}, not the course's" for s in k.exam_weights if s not in k.sections]
+        out += [f"course {k.id}: exam weight {s}={w} is not a finite number >= 0" for s, w in k.exam_weights.items()
+                if not (math.isfinite(w) and w >= 0)]
     for k in (k for k in p.courses if k.mode == "qbank"):
         areas = p.course_concepts(k.id)
         out += [f"course {k.id}: area weight on unknown area {a}" for a in k.area_weights if a not in areas]

@@ -324,7 +324,7 @@ below is the part of that rubric that predates it.
 - Worked example comments explain WHY each step, not what the syntax is.
 - Starter code blanks use `_____` and must be syntactically obvious to fill.
 - Faded/solo/integrated ids should come from the same subtopic as the KC's
-  lesson where possible (keeps BKT mapping clean).
+  lesson where possible (keeps the atom mapping clean).
 - Every KP carries all three drill rungs. When the subtopic's pool is exhausted —
   every question already spoken for by some KP — author a NEW bank question
   rather than serving one twice; the recipe (curated CSV → overrides →

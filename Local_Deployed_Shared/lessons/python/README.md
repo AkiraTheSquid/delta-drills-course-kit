@@ -70,7 +70,7 @@
   ever appears there, the floor has stopped being the floor.
 - 🔴 **No python ATOM may gate the numpy course.** The concept-graph atoms in
   `arena_drillable_v1.json` are a separate mechanism from these registry
-  prereqs, and `bkt_mastery.item_is_unlocked` requires *every* gating
+  prereqs, and `atom_engine.item_is_unlocked` requires *every* gating
   prerequisite atom to be ready. Wiring a python atom under
   `tensor-wraps-ndarray` would lock every existing account out of numpy until
   it cleared 42 brand-new drills. `is_hard_gate` is **not read at runtime**;

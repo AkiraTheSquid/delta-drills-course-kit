@@ -20,7 +20,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from app.concept_tutor import verbatim
+from app.concept_tutor import question_shape, verbatim
 
 PACK_FILES = ("concepts", "edges", "passages", "questions")
 META_LISTS = ("courses", "sections", "sources", "diagrams")
@@ -61,8 +61,10 @@ def merge(files: dict, spec: dict) -> dict:
     meta["courses"].append({kk: v for kk, v in {
         "id": cid, "title": k["title"], "eyebrow": k.get("eyebrow", ""),
         "sections": [s["id"] for s in sections], "public": bool(k.get("public", False)),
-        "default_on": bool(k.get("default_on", False)),
-    }.items() if v not in ("",)})
+        "default_on": bool(k.get("default_on", False)), "language": k.get("language", ""),
+        # private_to = ONLY these emails see it (access.sees), invites or not
+        "private_to": [str(e) for e in k.get("private_to") or []],
+    }.items() if v not in ("", [])})
     meta["sources"] += spec.get("sources", [])
     meta["diagrams"] += [{kk: v for kk, v in d.items() if kk != "image"} for d in spec.get("diagrams", [])]
     top = max([c.get("order", 0) for c in out["concepts"]] or [0])
@@ -156,6 +158,7 @@ def check(spec: dict, course_dir: Path, base: dict, prior: set) -> dict:
         for t in q.get("targets", []):
             if not owned(cid, t):
                 errors.append(f"question {q['id']}: targets {t!r}, which is not in course {cid!r}")
+    errors += question_shape.problems(spec)
 
     ids = {x["id"] for x in spec.get("passages", [])}
     texts: dict[str, str] = {}
@@ -195,8 +198,15 @@ def check(spec: dict, course_dir: Path, base: dict, prior: set) -> dict:
     by_format: dict[str, int] = {}
     for q in spec.get("questions", []):
         by_format[q.get("format", "free")] = by_format.get(q.get("format", "free"), 0) + 1
-    return {"ok": not errors, "course": cid, "errors": errors, "concepts": len(spec.get("concepts", [])),
-            "questions": len(spec.get("questions", [])), "by_format": by_format}
+    # Not an error (a private course may hold the alias), but say so: a dropped
+    # alias stops matching answers in this course.
+    kept = {c["id"]: {a.casefold() for a in c["aliases"]} for c in merged["concepts"] if owned(cid, c["id"])}
+    warnings = [f"concept {c['id']}: alias {a!r} is taken elsewhere in the pack and is dropped"
+                for c in spec.get("concepts", []) for a in c.get("aliases", [])
+                if a.casefold() not in kept.get(c["id"], set())]
+    return {"ok": not errors, "course": cid, "errors": errors, "warnings": warnings,
+            "concepts": len(spec.get("concepts", [])), "questions": len(spec.get("questions", [])),
+            "by_format": by_format}
 
 
 def image_file(course_dir: Path, diagram: dict) -> Path | None:

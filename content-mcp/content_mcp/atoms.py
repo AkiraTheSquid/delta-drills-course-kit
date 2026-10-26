@@ -1,6 +1,6 @@
-"""Mastery atoms: the BKT graph a drill's correct answer actually moves.
+"""Mastery atoms: the atom graph a drill's correct answer actually moves.
 
-A KC's mastery is the weighted mean of BKT posteriors over its ATOMS, and a
+A KC's mastery is the weighted mean of per-atom mastery readings over its ATOMS, and a
 drill reaches an atom only through a row in `question_atom_tags.jsonl`. A drill
 with no row is graded, recorded, and moves nothing — `audit_question_bank.py
 --gate` blocks it as `atom_tag_missing`. `drill_add` used to append to the CSV

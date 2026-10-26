@@ -21,21 +21,13 @@ python3 -m venv .venv
 .venv/bin/pip install --index-url https://download.pytorch.org/whl/cpu torch
 .venv/bin/pip install -r requirements.txt
 
-# Writes are password-gated so an AI can't edit content until you unlock it.
-# This is your own clone, so pick any password:
-read -rs -p "New editing password: " PW && printf '%s' "$PW" | ./content-mcp/bin/dd-content set-password --password - ; unset PW
-
 claude
 ```
 
 Claude Code finds `.mcp.json` and offers to enable the `delta-drills-content`
-server. Say yes, then check with `/mcp` that its tools are listed. Unlock
-writes for 12 hours from your own terminal, so the password never goes through
-the chat:
-
-```bash
-read -rs -p "Editing password: " PW && printf '%s' "$PW" | ./content-mcp/bin/dd-content login --password - ; unset PW
-```
+server. Say yes, then check with `/mcp` that its tools are listed. There is
+no password: reads and writes are open, and every write takes a snapshot
+first (`backup_restore` rolls a bad session back).
 
 The full guide (tools, the order to build a course in, and what to do when a
 check fails) is in [`content-mcp/CONTRIBUTING-CONTENT.md`](content-mcp/CONTRIBUTING-CONTENT.md).
@@ -75,14 +67,9 @@ the live copy. `study_unpublish` takes it down. `public=true` shows it to
 every signed-in learner (otherwise Seth and the learners he has invited to
 Study).
 
-Publishing needs a **publish key** from Seth, once. Store it yourself in a
-terminal, never by pasting it to the AI:
-
-```bash
-read -rs K && printf '%s' "$K" | ./content-mcp/bin/dd-content set-publish-key --key -
-```
-
-Only the person who first published a course can replace or remove it.
+Publishing needs no key or password. The first publish makes a random owner
+id in `.content-mcp/publish-key`; only that clone can replace or remove the
+course afterwards, so keep that file.
 
 🔴 Use your own notes or text you may share (OpenStax is CC BY), never a
 teacher's slides or a copyrighted textbook. A published course's sources sit

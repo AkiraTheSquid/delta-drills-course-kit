@@ -8,13 +8,13 @@ image-occlusion pictures, and serves it from the next request on
 `study_unpublish` takes it down. Only the contributor who first published a
 course may replace or remove it.
 
-The server knows a contributor by a PUBLISH KEY Seth issues once. It never
-goes through the AI: the contributor stores it in their own terminal,
-
-    read -rs K && printf '%s' "$K" | ./content-mcp/bin/dd-content set-publish-key --key -
-
-and it lives in `.content-mcp/publish-key` (mode 600; never committed — the
-whole `.content-mcp/` is machine-local state).
+No auth since 2026-10-26 (Seth): anyone may publish. The key sent in
+X-Contrib-Key is only an OWNER ID, so nobody else can replace or remove your
+course. The first publish makes a random one, unasked, in
+`.content-mcp/publish-key` (mode 600; never committed — the whole
+`.content-mcp/` is machine-local state). Lose it and you can no longer update
+courses it published. A named key from Seth (`dd-content set-publish-key`)
+still works and shows his name for you instead of `anon-<hash>`.
 """
 
 from __future__ import annotations
@@ -22,14 +22,17 @@ from __future__ import annotations
 import base64
 import json
 import os
+import secrets
 import urllib.error
 import urllib.request
 from pathlib import Path
 
 from . import paths, study
 
-SERVERS = {"stable": "https://delta-drills-backend.fly.dev",
-           "beta": "https://delta-drills-backend-beta.fly.dev"}
+# The backends moved Fly → Oracle VM on 2026-10-25; the Fly apps are stopped,
+# so a publish sent there would land on a volume nothing serves.
+SERVERS = {"stable": "https://dd-api.163-192-116-252.sslip.io",
+           "beta": "https://dd-api-beta.163-192-116-252.sslip.io"}
 ROUTE = "/api/conceptual/tutor/contrib"
 APP = {"stable": "https://deltadrills.com", "beta": "https://delta-drills-beta.vercel.app"}
 TIMEOUT = 240   # the server rebuilds the whole Study pack before it answers
@@ -42,7 +45,7 @@ def _key_file() -> Path:
 def write_key(key: str) -> Path:
     key = key.strip()
     if len(key) < 20:
-        raise ValueError("That does not look like a publish key (ask Seth for yours).")
+        raise ValueError("That does not look like a publish key (20+ characters).")
     f = _key_file()
     f.write_text(key + "\n")
     f.chmod(0o600)
@@ -54,10 +57,8 @@ def _key() -> str:
     if not key and _key_file().exists():
         key = _key_file().read_text().strip()
     if not key:
-        raise PermissionError(
-            "No publish key on this machine. Ask Seth for one, then store it YOURSELF in a terminal "
-            "(never paste it to the AI): read -rs K && printf '%s' \"$K\" | "
-            "./content-mcp/bin/dd-content set-publish-key --key -")
+        key = secrets.token_urlsafe(32)   # this clone's owner id, made once
+        write_key(key)
     return key
 
 
@@ -83,9 +84,9 @@ def _call(method: str, url: str, body: dict | None = None) -> dict:
         except Exception:
             detail = err.reason
         if err.code == 401:
-            raise PermissionError(f"The server refused the publish key: {detail}") from None
+            raise PermissionError(f"The server refused the owner id: {detail}") from None
         if err.code == 404:
-            raise RuntimeError("Live publishing is not switched on for that server yet (ask Seth).") from None
+            raise RuntimeError("That server does not have live publishing yet (it predates 2026-10-26).") from None
         raise ValueError(f"Server said {err.code}: {detail}") from None
     except urllib.error.URLError as err:
         raise RuntimeError(f"Could not reach {url}: {err.reason}") from None

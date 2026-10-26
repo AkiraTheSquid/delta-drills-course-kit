@@ -26,10 +26,12 @@ def _study_read(course: str):
     "Start a Study course: free-answer (Jev-graded), multiple choice, typed cards and image "
     "occlusion. sections = [{id, title}] or titles; ids are namespaced by the course.",
     {"course": {**STR, "description": "lowercase-dashed id, e.g. 'ap-bio-genetics'"}, "title": STR,
-     "sections": ARR, "eyebrow": STR, "public": {**BOOL, "description": "true = every signed-in learner sees it"}},
-    ["course", "title", "sections"], needs_auth=True)
-def _study_course_create(course, title, sections, eyebrow: str = "", public: bool = False):
-    return study.create(course, title, sections, eyebrow, public)
+     "sections": ARR, "eyebrow": STR, "public": {**BOOL, "description": "true = every signed-in learner sees it"},
+     "language": {**STR, "enum": ["en", "zh"], "description": "the language the course is written in; 'zh' = "
+                  "Simplified Chinese feedback and Ask replies (passages stay verbatim in their source's language)"}},
+    ["course", "title", "sections"], writes=True)
+def _study_course_create(course, title, sections, eyebrow: str = "", public: bool = False, language: str = "en"):
+    return study.create(course, title, sections, eyebrow, public, language)
 
 
 @op("study_source_add",
@@ -37,7 +39,7 @@ def _study_course_create(course, title, sections, eyebrow: str = "", public: boo
     "file. license is required — the course kit is public.",
     {"course": STR, "source": STR, "title": STR, "license": STR, "text": STR, "source_path": STR,
      "authors": STR, "year": INT, "url": STR, "replace": BOOL},
-    ["course", "source", "title", "license"], needs_auth=True)
+    ["course", "source", "title", "license"], writes=True)
 def _study_source_add(course, source, title, license, text=None, source_path=None, authors="", year=0,
                       url=None, replace=False):
     return study.source_add(course, source, title, license, text, source_path, authors, year, url,
@@ -49,7 +51,7 @@ def _study_source_add(course, source, title, license, text=None, source_path=Non
     "kind: conceptual|math, prereqs: [ids], constraints: [2+ things a right answer must say], "
     "misconceptions: [{label, description}], passages: [{source, text (EXACT copy), locator?}], "
     "diagrams?: [ids]}.",
-    {"course": STR, "concept": OBJ, "replace": BOOL}, ["course", "concept"], needs_auth=True)
+    {"course": STR, "concept": OBJ, "replace": BOOL}, ["course", "concept"], writes=True)
 def _study_concept_add(course, concept, replace: bool = False):
     return study.concept_add(course, concept, replace)
 
@@ -57,9 +59,11 @@ def _study_concept_add(course, concept, replace: bool = False):
 @op("study_question_add",
     "Add questions. Each = {format: free|mc|card, kind: content|evaluative|relation|check, targets: "
     "[concept ids], prompt, reference (the model answer), options (mc: [{text, correct, why}]), "
-    "answers (card: other accepted spellings), demand?, id?}. Image-occlusion cards come from "
-    "study_diagram_add.",
-    {"course": STR, "questions": ARR, "replace": BOOL}, ["course", "questions"], needs_auth=True)
+    "answers (card: other accepted spellings), demand?, id?}. A FREE prompt is asked cold before any "
+    "lesson, so it must open with a lead-in sentence (which paper or setting, what the parts are) and "
+    "then ask: 2+ sentences and 20+ words (2 Chinese characters = 1 word), or study_check refuses it. "
+    "Image-occlusion cards come from study_diagram_add.",
+    {"course": STR, "questions": ARR, "replace": BOOL}, ["course", "questions"], writes=True)
 def _study_question_add(course, questions, replace: bool = False):
     return study.question_add(course, questions, replace)
 
@@ -74,7 +78,7 @@ def _study_question_add(course, questions, replace: bool = False):
      "boxes_on": {**STR, "enum": ["prepared", "original"], "description": "'prepared' (default: pixels of the stored <=1600 px picture) "
                   "or 'original' (pixels of the file passed)"},
      "replace": BOOL},
-    ["course", "diagram", "title", "source_path", "labels", "boxes", "concept"], needs_auth=True)
+    ["course", "diagram", "title", "source_path", "labels", "boxes", "concept"], writes=True)
 def _study_diagram_add(course, diagram, title, source_path, labels, boxes, concept, box_concepts=None,
                        answers=None, boxes_on: str = "prepared", replace: bool = False):
     return study_images.diagram_add(course, diagram, title, source_path, labels, boxes, concept,
@@ -83,7 +87,7 @@ def _study_diagram_add(course, diagram, title, source_path, labels, boxes, conce
 
 @op("study_diagram_update", "Move a diagram's boxes or rename its labels; its cards are rewritten.",
     {"course": STR, "diagram": STR, "boxes": ARR, "labels": STRS, "title": STR},
-    ["course", "diagram"], needs_auth=True)
+    ["course", "diagram"], writes=True)
 def _study_diagram_update(course, diagram, boxes=None, labels=None, title=None):
     return study_images.diagram_update(course, diagram, boxes, labels, title)
 
@@ -96,7 +100,7 @@ def _study_diagram_preview(course, diagram):
 
 
 @op("study_remove", "Remove a concept, question, source, diagram (and its cards) or section.",
-    {"course": STR, "kind": STR, "id": STR}, ["course", "kind", "id"], needs_auth=True)
+    {"course": STR, "kind": STR, "id": STR}, ["course", "kind", "id"], writes=True)
 def _study_remove(course, kind, id):
     return study.remove(course, kind, id)
 
@@ -112,7 +116,7 @@ def _study_check(course):
 @op("study_apply",
     "Private repo only: merge a checked Study course into the live pack the app serves (re-runnable). "
     "In the course kit, send study-courses/<course>/ as a pull request instead.",
-    {"course": STR}, ["course"], needs_auth=True)
+    {"course": STR}, ["course"], writes=True)
 def _study_apply(course):
     return study_images.apply(course)
 
@@ -123,16 +127,16 @@ CHANNEL = {**STR, "enum": ["stable", "beta"], "description": "'stable' (default:
 
 @op("study_publish",
     "Publish a Study course LIVE: the server checks it against the real pack, paints its pictures and "
-    "serves it on the next request — no pull request, no deploy. Republish after every change. Needs "
-    "the contributor's publish key (stored with `dd-content set-publish-key`, never by the AI). "
+    "serves it on the next request — no pull request, no deploy. Republish after every change. No key or "
+    "password: the first publish makes this clone's owner id, so only it can replace the course. "
     "public=true shows it to every signed-in learner.",
-    {"course": STR, "channel": CHANNEL, "public": BOOL}, ["course"], needs_auth=True)
+    {"course": STR, "channel": CHANNEL, "public": BOOL}, ["course"], writes=True)
 def _study_publish(course, channel: str = "stable", public=None):
     return study_publish.publish(course, channel, public)
 
 
 @op("study_unpublish", "Take a live-published Study course down (only its publisher may).",
-    {"course": STR, "channel": CHANNEL}, ["course"], needs_auth=True)
+    {"course": STR, "channel": CHANNEL}, ["course"], writes=True)
 def _study_unpublish(course, channel: str = "stable"):
     return study_publish.unpublish(course, channel)
 

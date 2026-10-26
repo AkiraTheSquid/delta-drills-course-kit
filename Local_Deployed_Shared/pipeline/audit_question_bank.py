@@ -531,14 +531,13 @@ def check_wrong_examples(question: dict, code_runner=None) -> list[dict]:
     return findings
 
 
-def _load_bkt_module():
-    bkt_path = THIS_DIR_ONLY / "backend" / "app" / "bkt_mastery.py"
-    spec = importlib.util.spec_from_file_location("delta_bkt_mastery", bkt_path)
-    bkt = importlib.util.module_from_spec(spec)
-    assert spec.loader is not None
-    sys.modules[spec.name] = bkt  # @dataclass needs the module registered
-    spec.loader.exec_module(bkt)
-    return bkt
+def _load_atom_engine():
+    """Backend gate module; it and logistic_engine are stdlib-only, no venv needed."""
+    backend = str(THIS_DIR_ONLY / "backend")
+    if backend not in sys.path:
+        sys.path.insert(0, backend)
+    from app import atom_engine
+    return atom_engine
 
 
 def check_atom_graph(questions: list[dict], graph: dict | None = None,
@@ -560,15 +559,15 @@ def check_atom_graph(questions: list[dict], graph: dict | None = None,
                              can never unlock
 
     `graph`/`tag_rows` are injectable for the self-test; by default the real
-    graph (bkt_mastery.GRAPH_PATH) and question_atom_tags.jsonl are read.
+    graph (atom_engine.GRAPH_PATH) and question_atom_tags.jsonl are read.
     """
     from graphlib import TopologicalSorter, CycleError
 
-    bkt = _load_bkt_module()
-    non_gating = bkt.NON_GATING_ATOMS
+    engine = _load_atom_engine()
+    non_gating = engine.NON_GATING_ATOMS
 
     if graph is None:
-        graph = json.loads(Path(bkt.GRAPH_PATH).read_text(encoding="utf-8"))
+        graph = json.loads(Path(engine.GRAPH_PATH).read_text(encoding="utf-8"))
     if tag_rows is None:
         tags_path = THIS_DIR_ONLY / "backend" / "app" / "data" / "question_atom_tags.jsonl"
         tag_rows = [json.loads(line)
@@ -632,7 +631,7 @@ def _flag_untagged_kc_questions(
     """A question the q-matrix places into a KC, but that carries no atom tag.
 
     Answering such a question moves NOTHING. Mastery is the weighted mean of
-    BKT posteriors over a KC's atoms, and the atoms come from these tags, so an
+    per-atom readouts over a KC's atoms, and the atoms come from these tags, so an
     untagged drill is graded, recorded, and then contributes nothing toward
     unlocking its own concept — the learner works and the bar does not move.
 

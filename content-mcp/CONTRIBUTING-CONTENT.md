@@ -1,7 +1,6 @@
 # Editing Delta Drills content with Claude Code
 
-You do not need to know this repo. You need the editing password, a terminal,
-and Claude Code. Everything below works on a fresh clone with nothing installed
+You do not need to know this repo. You need a terminal and Claude Code. Everything below works on a fresh clone with nothing installed
 but Python 3.9+.
 
 ## 1. Point Claude Code at the repo
@@ -26,27 +25,13 @@ If you would rather register it by hand, or you use a different MCP client:
 } }
 ```
 
-## 2. Unlock editing
+## 2. No password
 
-Reading is open to anyone. Writing needs a password, once per session.
-
-- **Public course kit:** it ships no password. Your clone is yours, so set one
-  first. `--password -` reads it from stdin, which keeps it out of shell history:
-  `read -rs PW && printf '%s' "$PW" | ./content-mcp/bin/dd-content set-password --password - ; unset PW`.
-- **Seth's private repo:** ask Seth for the shared password. It is shared out of
-  band and never written into the repo. Only its salted digest lives in
-  `content-mcp/auth.json`.
-
-> Log in to the content server with the content password
-
-or, in a terminal:
-
-```bash
-./content-mcp/bin/dd-content login --password '<the shared password>'
-```
-
-The session lasts 12 hours. For scripts and CI, set
-`DELTA_DRILLS_CONTENT_PASSWORD` in the environment instead.
+Reading and writing are both open. Writes change files in your own clone only,
+and every write takes a snapshot first (`backup_restore` undoes a bad session).
+Putting a Study course LIVE (`study_publish`) needs nothing either: the first
+publish makes a random owner id in `.content-mcp/publish-key`, so only your
+clone can replace or remove that course. Keep that file.
 
 ## 3. Ask for what you want
 
@@ -122,9 +107,8 @@ Needs only `pydantic` and `Pillow` in the content python (`.venv`), no torch.
 7. `study_publish`: it is live on deltadrills.com within seconds (the server
    re-checks it against every course, private ones included). Republish after
    any change; `study_unpublish` takes it down; `study_publish_status` says
-   what is live. It needs your publish key from Seth, stored once by YOU in a
-   terminal (`read -rs K && printf '%s' "$K" | ./content-mcp/bin/dd-content
-   set-publish-key --key -`), never pasted to the AI. In the private repo,
+   what is live. No key needed: your clone's owner id is made on the first
+   publish (`.content-mcp/publish-key`). In the private repo,
    `study_apply` + a deploy still works for a course that should ship in the
    image.
 
@@ -210,13 +194,3 @@ a mess across several files and want out of it in one command.
 - **`drill_update` merges.** Within one override file the exporter keeps only
   the last record per drill, so `drill_update` writes the drill's whole record
   with your fields changed, and nothing else is lost.
-
-## Changing the password
-
-```bash
-./content-mcp/bin/dd-content set-password --password '<new one>' --current '<the old one>'
-```
-
-Rewrites the salted digest in `content-mcp/auth.json`. Changing it requires the
-current password, so holding the CLI is not enough to seize the gate. Existing
-sessions keep working until they expire; share the new password out of band.

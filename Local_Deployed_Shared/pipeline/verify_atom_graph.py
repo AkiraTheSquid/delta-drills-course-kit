@@ -8,7 +8,7 @@ import sys
 from graphlib import TopologicalSorter, CycleError
 
 sys.path.insert(0, ".")
-from app import bkt_mastery
+from app import atom_engine
 from app.questions import get_all_questions
 from app.prioritization import question_is_unlocked
 from app.adaptive import UserPracticeState
@@ -41,7 +41,7 @@ unwired = sorted(a for a in tagged if a not in incoming and a not in roots)
 check("all tagged atoms gated-or-intentional-root", not unwired, str(unwired))
 
 # 3. every gating prereq of a tagged atom is trainable
-bad = {a: sorted(p for p in bkt_mastery.prerequisites(a) if p not in tagged)
+bad = {a: sorted(p for p in atom_engine.prerequisites(a) if p not in tagged)
        for a in tagged}
 bad = {a: v for a, v in bad.items() if v}
 check("no untrainable gating prereqs on tagged atoms", not bad, str(bad))
@@ -73,35 +73,24 @@ adv = [q.id for q in unlocked
 check("flagship advanced atoms locked for beginner", not adv, f"unlocked advanced qids: {adv}")
 
 # 6. no deadlock: mastering atoms in topo order unlocks every tagged question
-from datetime import datetime, timezone
-NOW_TS = datetime.now(timezone.utc).isoformat()  # fresh ts — else decay eats the sweep
-mastery, ts_map = {}, {}
-for a in order:
-    if bkt_mastery.atom_is_ready(a, mastery, ts_map):
-        mastery[a] = 1.0
-        ts_map[a] = NOW_TS
-# atoms not in edge graph at all (pure roots) are trivially masterable
-for a in tagged:
-    if a not in mastery and bkt_mastery.atom_is_ready(a, mastery, ts_map):
-        mastery[a] = 1.0
-        ts_map[a] = NOW_TS
-still_locked = [a for a in tagged if any(
-    bkt_mastery.current_mastery(mastery, ts_map, p) < bkt_mastery.UNLOCK_THRESHOLD
-    for p in bkt_mastery.prerequisites(a))]
+MASTERED = atom_engine.belief_reading(0.95)
+sweep = UserPracticeState(user_id="__verify_sweep__")
+for a in order + sorted(tagged):  # pure roots (no edges) are trivially masterable
+    if a not in sweep.atom_posteriors and atom_engine.atom_is_ready(sweep, a):
+        sweep.atom_posteriors[a] = dict(MASTERED)
+still_locked = [a for a in tagged if not atom_engine.atom_is_ready(sweep, a)]
 check("no permanently-locked tagged atom (full-mastery sweep)", not still_locked, str(still_locked))
 
 # 7a. unlocked entry set spans several topics (queue has somewhere to start)
 entry_topics = sorted({q.topic for q in unlocked})
 check("entry set spans >=3 topics", len(entry_topics) >= 3, str(entry_topics))
 
-# 7b. diagnostic seeding path: a strong placement (seed 0.92, the cap) unlocks
-# advanced questions — locked topics are placement-reachable, not walled off
+# 7b. every tagged atom mastered → every question unlocks (no gate keys on
+# anything but atom mastery, so locked topics are reachable, not walled off)
 strong = UserPracticeState(user_id="__verify_strong__")
-for a in tagged:
-    strong.atom_mastery[a] = 0.92
-    strong.atom_last_ts[a] = NOW_TS
+strong.atom_posteriors = {a: dict(MASTERED) for a in tagged}
 unlocked_strong = [q for q in questions if question_is_unlocked(strong, q)]
-check("0.92 diagnostic seed unlocks everything", len(unlocked_strong) == len(questions),
+check("all tagged atoms mastered unlocks everything", len(unlocked_strong) == len(questions),
       f"{len(unlocked_strong)}/{len(questions)}")
 
 print()

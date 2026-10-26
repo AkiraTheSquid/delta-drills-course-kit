@@ -1,7 +1,7 @@
 """watch.py — health checks for content_mcp
 
 Module-level invariants. The cross-cutting ones (registry vs CLI vs server,
-the password gate, snapshot coverage) live in `../watch.py`.
+write flags, snapshot coverage) live in `../watch.py`.
 
 Runs via `mod watch` — exit 0 = PASS, non-zero = FAIL.
 """
@@ -12,7 +12,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-MODULES = ["paths", "auth", "backup", "lessons", "graph", "glossary", "courses", "images",
+MODULES = ["paths", "backup", "lessons", "graph", "glossary", "courses", "images",
            "problems", "drills", "atoms", "clocks", "study", "study_images", "study_publish", "ops_study", "pipeline", "ops", "server", "cli"]
 
 

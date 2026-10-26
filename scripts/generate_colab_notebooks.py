@@ -4,7 +4,7 @@
 WHY THIS EXISTS
 ---------------
 The tutor is moving its student-facing surface from the web app to Google Colab.
-The engine does not move: prerequisite gating, BKT + FIRe, decay-driven
+The engine does not move: prerequisite gating, atom mastery + FIRe, FSRS
 resurfacing and the expertise-reversal ladder all stay in the backend, and the
 Chrome side panel becomes a second client of the same endpoints. What has to
 move is the *content* — the 63 authored knowledge points and the 424 problems

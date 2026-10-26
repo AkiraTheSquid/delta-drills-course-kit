@@ -4,8 +4,8 @@
 Four families of finding, one ratchet baseline (`graph_structure_baseline.json`):
 
 registry / atoms — sanity of the KC lattice (`lessons/kc_registry.json`) and of
-    the atom graph the BKT engine loads (`arena_drillable_v1.json`, NOT the v4
-    file — bkt_mastery.GRAPH_PATH is the authority): unknown ids, self-loops,
+    the atom graph the mastery engine loads (`arena_drillable_v1.json`, NOT the v4
+    file — atom_engine.GRAPH_PATH is the authority): unknown ids, self-loops,
     cycles, duplicate edges, encompassing weights the runtime would silently
     drop (propagation_weight <= 0) or amplify (> 1).
 

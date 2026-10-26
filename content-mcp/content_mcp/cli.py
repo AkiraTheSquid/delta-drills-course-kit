@@ -5,7 +5,6 @@ offer a tool the MCP lacks or take an argument the MCP does not. Claude Code
 can drive either one; a human or a shell script wants this one.
 
     dd-content status
-    dd-content login --password ...
     dd-content lesson_read --kc torch.random-seeding
     dd-content drill_search --kc einops.merge-axes --limit 5
     dd-content pipeline_check
@@ -24,8 +23,6 @@ import sys
 from . import ops
 
 ALIASES = {
-    "login": "content_login",
-    "logout": "content_logout",
     "status": "content_status",
     "check": "pipeline_check",
     "backup": "backup_status",
@@ -84,11 +81,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     subparsers.add_parser("tools", help="List every available tool and what it needs.")
     subparsers.add_parser("serve", help="Run the MCP server on stdio (what Claude Code launches).")
-    setpw = subparsers.add_parser("set-password", help="Set or change the shared editing password.")
-    setpw.add_argument("--password", required=True, help="The NEW password.")
-    setpw.add_argument("--current", help="The current password. Required once one is set.")
-
-    setkey = subparsers.add_parser("set-publish-key", help="Store the Study publish key Seth gave you (study_publish).")
+    setkey = subparsers.add_parser("set-publish-key", help="Optional: store a named publish key from Seth. Without one, study_publish makes an anonymous owner id.")
     setkey.add_argument("--key", required=True, help="'-' reads it from stdin (keeps it out of the process list).")
 
     for spec in sorted(ops.REGISTRY.values(), key=lambda s: s.name):
@@ -121,19 +114,6 @@ def main(argv: list[str] | None = None) -> int:
 
     if command == "tools":
         print(ops.as_json(ops.catalogue()))
-        return 0
-
-    if command == "set-password":
-        from . import auth
-
-        # "-" reads it from stdin, like login, so it stays out of the process list.
-        password = sys.stdin.read() if namespace.password == "-" else namespace.password
-        try:
-            target = auth.write_password(password, namespace.current)
-        except auth.AuthError as err:
-            print(f"AuthError: {err}", file=sys.stderr)
-            return 1
-        print(f"Password digest written to {target}")
         return 0
 
     if command == "set-publish-key":
