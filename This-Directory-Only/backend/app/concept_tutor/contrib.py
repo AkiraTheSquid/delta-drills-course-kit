@@ -261,7 +261,7 @@ def publish(pack_id: str, contributor: str, spec: dict, files: dict[str, bytes],
                 (stage / rel).parent.mkdir(exist_ok=True)
                 (stage / rel).write_bytes(data)
             _check_images(stage)
-            result = cm.check(spec, stage, base, set(applied.get(cid, [])))
+            result = cm.check(spec, stage, base, set(applied.get(cid, [])), strict=True)
             del base, baked
             if not result["ok"]:
                 return {**result, "live": False}

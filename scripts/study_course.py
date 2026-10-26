@@ -14,6 +14,7 @@ runs this file under the content python and reads one JSON object back.
                                      (only faults this course adds), verbatim passages,
                                      pictures present and the size the boxes were drawn on
     apply COURSE_DIR PACK_DIR        the same merge, WRITTEN into the live pack, diagrams painted
+    quality COURSE_DIR               only the question rules (question_rules.json, Jev-judged)
 
 `apply` replaces everything the course owned before (ids under `<course>.`,
 diagrams under `<course>-`), so it is re-runnable: a pack builder rebuild
@@ -140,6 +141,9 @@ def main(argv: list[str]) -> int:
             _out(preview(Path(args[0]), args[1], args[2]))
         elif cmd == "check":
             _out(check(Path(args[0]), Path(args[1])))
+        elif cmd == "quality":
+            from app.concept_tutor import question_quality
+            _out(question_quality.judge(_course(Path(args[0]))))
         elif cmd == "apply":
             _out(apply(Path(args[0]), Path(args[1])))
         else:

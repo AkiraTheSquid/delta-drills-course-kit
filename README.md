@@ -75,7 +75,7 @@ course afterwards, so keep that file.
 
 - **Your own course:** edit it with the same tools and publish again, any
   time, from the clone that published it.
-- **Fork any course:** `study_fork source=ai-cells-cancer new=my-cells` copies
+- **Fork any course:** `study_fork source=<course> new=my-copy` copies
   a course to a new id that is yours (`live=true` fetches a public course
   published on deltadrills.com). It is a separate course: publishing it never
   touches the original. Sources marked No-Derivatives must stay word for word;

@@ -1,0 +1,168 @@
+{
+ "about": "Every question-quality rule a contributed Study course is held to (question_quality.py). study_check (MCP + CLI), the server's publish and the course watch.py all load THIS file, so a rule added here is enforced everywhere. `enforces` is what the rule guarantees in plain words: the complaint hook (~/.claude/hooks/question_complaints.py) asks Jev whether it covers each of Seth's complaints about questions. `from` = the complaints it answers. kind code = checked in question_quality._CODE; kind jev = one Jev noul per question, the question FAILS when p(true) >= threshold (fail_if true) or p(true) < threshold (fail_if false).",
+ "rules": [
+  {
+   "id": "no-flashcard-format",
+   "kind": "code",
+   "check": "format",
+   "refused": [
+    "card",
+    "label"
+   ],
+   "enforces": "No flashcard-style questions: typed flashcards (card) and image-occlusion label cards are refused; every question must be a free-response or multiple-choice question that asks for reasoning.",
+   "message": "flashcard formats are refused (Seth 2026-10-26: \"it shouldn't be flashcard questions\"). Write a free or mc question that asks for reasoning.",
+   "from": [
+    "C2026-10-26-flashcards"
+   ]
+  },
+  {
+   "id": "no-recall-demand",
+   "kind": "code",
+   "check": "demand",
+   "refused": [
+    "recall"
+   ],
+   "enforces": "No pure recall questions: a question's demand must be a higher-order operation (explain a mechanism, predict a consequence, contrast, apply to a new case, diagnose a flawed explanation, evaluate, relate), never plain recall.",
+   "message": "demand 'recall' is refused: pick the operation the question asks for (explain, predict, contrast, apply, diagnose, evaluate, relate).",
+   "from": [
+    "C2026-10-26-flashcards",
+    "C2026-10-26-deep"
+   ]
+  },
+  {
+   "id": "expectations-3-6",
+   "kind": "code",
+   "check": "expectations",
+   "formats": [
+    "free"
+   ],
+   "min": 3,
+   "max": 6,
+   "enforces": "Every free-response question carries its own hidden answer key of 3 to 6 expectation propositions (AutoTutor), so the response is free but the target is fully specified; one expectation would make it a flashcard and none would make it too vague.",
+   "message": "a free question needs 3-6 `expectations` (short propositions a complete answer contains). One = a flashcard; none = too vague to grade.",
+   "from": [
+    "C2026-10-26-flashcards",
+    "C2026-10-26-deep"
+   ]
+  },
+  {
+   "id": "lead-in",
+   "kind": "code",
+   "check": "bare",
+   "formats": [
+    "free"
+   ],
+   "enforces": "A free question sets the scene before it asks: at least one lead-in sentence naming the paper or setting and what the parts are, and at least 20 words, so a learner meeting it cold knows what is being asked.",
+   "message": "prompt too bare to ask cold. Open with a sentence naming the paper or setting and what the parts are, then ask.",
+   "from": [
+    "C2026-10-25-bare"
+   ]
+  },
+  {
+   "id": "flashcard",
+   "kind": "jev",
+   "formats": [
+    "free",
+    "mc"
+   ],
+   "fail_if": "true",
+   "threshold": 0.5,
+   "ask": "This is one question from a study course (fields: prompt, reference answer, expectations). Judge only this question. Could a learner answer it completely by stating a single fact, term, name, number or definition, with no reasoning that links two or more ideas?",
+   "true": "Yes: one remembered fact, term or definition is a complete answer; it is a flashcard.",
+   "false": "No: a complete answer has to connect several ideas into a line of reasoning (a cause, a consequence, a comparison or an application).",
+   "enforces": "No flashcard questions in substance: Jev refuses any question a learner could answer completely with one remembered fact, term or definition.",
+   "message": "answerable with one fact or definition (a flashcard). Ask for a relation: why, what follows, what makes it possible, how it compares, what happens in a new case.",
+   "from": [
+    "C2026-10-26-flashcards"
+   ]
+  },
+  {
+   "id": "deep",
+   "kind": "jev",
+   "formats": [
+    "free",
+    "mc"
+   ],
+   "fail_if": "false",
+   "threshold": 0.5,
+   "ask": "This is one question from a study course (fields: prompt, reference answer, expectations). Judge only this question. Is it a deep-reasoning question: does answering it REQUIRE a higher-order operation on the idea (explain the mechanism of why something happens, predict a consequence in a stated situation, apply the idea to a new case, compare or contrast two things on a named dimension, diagnose what is wrong in a given explanation, or evaluate a claim with reasons), rather than remembering or restating something?",
+   "true": "Yes: a complete answer must explain, predict, apply, compare, diagnose or evaluate; remembering alone is not enough.",
+   "false": "No: remembering or restating a fact, definition, list or the text's own statement is enough to answer it.",
+   "enforces": "Questions are deep-reasoning questions at the higher levels of Bloom's taxonomy: Jev refuses any question that does not REQUIRE explaining a mechanism, predicting a consequence, applying to a new case, comparing, diagnosing a flawed explanation or evaluating a claim (Graesser & Person deep questions; Agarwal 2019 higher-order retrieval).",
+   "message": "not a deep-reasoning question (remembering is enough). Make the learner explain why, predict what follows in a stated case, apply it to a new case, compare on a named dimension, diagnose a flawed explanation, or evaluate a claim.",
+   "from": [
+    "C2026-10-26-deep"
+   ]
+  },
+  {
+   "id": "textbase",
+   "kind": "jev",
+   "formats": [
+    "free",
+    "mc"
+   ],
+   "fail_if": "true",
+   "threshold": 0.5,
+   "passages": true,
+   "ask": "This is one question from a study course, with the source passages its concept is taught from. Judge only this question. Is the question just asking the learner to restate what one or two sentences of these passages say (the passages already describe the very situation the question asks about), so that paraphrasing those sentences is a complete answer? A question that sets up a NEW situation, case or claim not described in the passages (a scenario, a prediction, a flawed explanation to correct, a comparison the passages do not make) and needs the passages' idea applied to it is not this, even when the idea itself is in the passages.",
+   "true": "Yes: it asks about the same situation the passages describe, and paraphrasing one or two of their sentences answers it.",
+   "false": "No: the learner has to carry the passages' idea into a new situation or connect ideas the passages do not state together.",
+   "enforces": "Questions climb above the text's wording: Jev refuses any question whose answer could be produced by paraphrasing one or two sentences of the source passages (Kintsch textbase); every question must require inference, prediction, application or connecting ideas.",
+   "message": "answerable by paraphrasing one or two sentences of the passages (textbase). Ask the learner to predict, apply to a new case, compare, or diagnose a flawed explanation.",
+   "from": [
+    "C2026-10-26-deep"
+   ]
+  },
+  {
+   "id": "too-open",
+   "kind": "jev",
+   "formats": [
+    "free"
+   ],
+   "fail_if": "true",
+   "threshold": 0.5,
+   "ask": "This is one question from a study course. Judge only this question's prompt. Is it so open that it invites a general summary or a dump of facts (like 'explain X' or 'what is this paper about'), instead of naming one specific situation and the kind of thinking wanted (explain why, predict, compare, apply, diagnose) with a target that 2 to 5 sentences can reach?",
+   "true": "Yes: it is too open; a learner would not know what shape a complete answer takes.",
+   "false": "No: it names a specific situation and the kind of thinking wanted, and 2 to 5 sentences can answer it.",
+   "enforces": "No 'what is this text about' or 'explain X' questions: Jev refuses prompts so open they invite a summary or fact dump instead of a specific, tractable line of reasoning.",
+   "message": "too open (invites a summary or fact dump). Name one situation and the thinking wanted (why, predict, compare, apply, diagnose).",
+   "from": [
+    "C2026-10-26-deep"
+   ]
+  },
+  {
+   "id": "cue-leak",
+   "kind": "jev",
+   "formats": [
+    "free"
+   ],
+   "fail_if": "true",
+   "threshold": 0.5,
+   "ask": "This is one question from a study course (fields: prompt, expectations). Judge only this question. Compare the prompt with the expectations (the claims a complete answer must make). Does the prompt itself already state most of those claims (the causes, steps or effects), so the learner only has to repeat back what the question told them?",
+   "true": "Yes: most of the expected claims are already written in the prompt.",
+   "false": "No: the prompt names the situation, but the expected claims are not written in it; the learner has to supply them.",
+   "enforces": "Moderate cues only (Carpenter 2009): Jev refuses a prompt whose wording already states the answer's claims.",
+   "message": "the prompt gives the answer away. Name the scenario and the thinking wanted, not the answer's claims.",
+   "from": [
+    "C2026-10-26-deep"
+   ]
+  },
+  {
+   "id": "one-ask",
+   "kind": "jev",
+   "formats": [
+    "free"
+   ],
+   "fail_if": "true",
+   "threshold": 0.5,
+   "ask": "This is one question from a study course. Judge only this question's prompt. Does it bundle two or more independent questions that could each be asked and answered on their own (not one question whose answer has several parts)?",
+   "true": "Yes: it asks several independent questions at once.",
+   "false": "No: it is one question (its answer may still have several connected parts).",
+   "enforces": "One ask per question: Jev refuses a prompt that bundles several independent questions into one.",
+   "message": "bundles several independent questions. Split it, or list them as `parts` (asked one per turn).",
+   "from": [
+    "C2026-10-18-multi-ask"
+   ]
+  }
+ ]
+}

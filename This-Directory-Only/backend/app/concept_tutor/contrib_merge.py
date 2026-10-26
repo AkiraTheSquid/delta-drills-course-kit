@@ -20,7 +20,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from app.concept_tutor import question_shape, verbatim
+from app.concept_tutor import question_quality, verbatim
 
 PACK_FILES = ("concepts", "edges", "passages", "questions")
 META_LISTS = ("courses", "sections", "sources", "diagrams")
@@ -116,11 +116,12 @@ def _foreign_ids(spec: dict, cid: str) -> list[str]:
     return bad
 
 
-def check(spec: dict, course_dir: Path, base: dict, prior: set) -> dict:
+def check(spec: dict, course_dir: Path, base: dict, prior: set, strict: bool = False) -> dict:
     """The course merged into `base` against the pack's own rules. `prior` =
     ids under the course's prefix that `base` holds AS this course's (its last
     apply); any other id there belongs to someone else, and merging would
-    delete it — so that is refused."""
+    delete it — so that is refused. `strict` (the server's publish): the Jev
+    question rules must run, so a missing TypeSafe key refuses the course."""
     from pydantic import ValidationError
     from app.concept_tutor.pack import problems
 
@@ -158,7 +159,10 @@ def check(spec: dict, course_dir: Path, base: dict, prior: set) -> dict:
         for t in q.get("targets", []):
             if not owned(cid, t):
                 errors.append(f"question {q['id']}: targets {t!r}, which is not in course {cid!r}")
-    errors += question_shape.problems(spec)
+    # Every question rule (lead-in, no flashcards, expectations, the Jev
+    # judgements) lives in question_rules.json; one judge for MCP, CLI and publish.
+    quality = question_quality.judge(spec, strict=strict)
+    errors += quality["errors"]
 
     ids = {x["id"] for x in spec.get("passages", [])}
     texts: dict[str, str] = {}
@@ -203,10 +207,10 @@ def check(spec: dict, course_dir: Path, base: dict, prior: set) -> dict:
     kept = {c["id"]: {a.casefold() for a in c["aliases"]} for c in merged["concepts"] if owned(cid, c["id"])}
     warnings = [f"concept {c['id']}: alias {a!r} is taken elsewhere in the pack and is dropped"
                 for c in spec.get("concepts", []) for a in c.get("aliases", [])
-                if a.casefold() not in kept.get(c["id"], set())]
+                if a.casefold() not in kept.get(c["id"], set())] + quality["warnings"]
     return {"ok": not errors, "course": cid, "errors": errors, "warnings": warnings,
             "concepts": len(spec.get("concepts", [])), "questions": len(spec.get("questions", [])),
-            "by_format": by_format}
+            "by_format": by_format, "quality": quality["scores"]}
 
 
 def image_file(course_dir: Path, diagram: dict) -> Path | None:

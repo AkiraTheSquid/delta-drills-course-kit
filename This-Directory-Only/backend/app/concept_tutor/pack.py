@@ -53,7 +53,9 @@ MAX_COMBINED = 6
 # different concepts"). explore.ranked samples its outcomes past MAX_COMBINED.
 MAX_CASE = 40
 
-Demand = Literal["recall", "explain", "contrast", "apply", "evaluate", "relate"]
+# predict + diagnose (2026-10-26): Graesser & Person's causal-consequence questions
+# and "diagnose a flawed explanation" (question_quality.py, question_rules.json).
+Demand = Literal["recall", "explain", "contrast", "apply", "evaluate", "relate", "predict", "diagnose"]
 
 
 class _M(BaseModel):
@@ -288,6 +290,11 @@ class Question(_M):
     required: list[str] = []
     prompt: str
     reference: str
+    # The question's OWN hidden answer key (AutoTutor, 2026-10-26): 3-6 short
+    # propositions a complete answer contains, and the wrong ideas it expects.
+    # Contributed free questions must carry them (question_rules.json).
+    expectations: list[str] = []
+    misconceptions: list[str] = []
     rephrasings: list[str] = []
     options: list[Option] = []
     # Combined only. listed = separable sub-questions bundled together (a testlet);

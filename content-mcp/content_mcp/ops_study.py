@@ -59,13 +59,25 @@ def _study_concept_add(course, concept, replace: bool = False):
 @op("study_question_add",
     "Add questions. Each = {format: free|mc|card, kind: content|evaluative|relation|check, targets: "
     "[concept ids], prompt, reference (the model answer), options (mc: [{text, correct, why}]), "
-    "answers (card: other accepted spellings), demand?, id?}. A FREE prompt is asked cold before any "
-    "lesson, so it must open with a lead-in sentence (which paper or setting, what the parts are) and "
-    "then ask: 2+ sentences and 20+ words (2 Chinese characters = 1 word), or study_check refuses it. "
-    "Image-occlusion cards come from study_diagram_add.",
+    "answers (card: other accepted spellings), demand: explain|predict|contrast|apply|diagnose|evaluate|"
+    "relate, expectations: [3-6 short propositions a complete answer contains], misconceptions: "
+    "[wrong ideas it expects], id?}. study_check holds every question to study_rules (Jev-judged): no "
+    "flashcards (card/label formats, demand recall, or one-fact answers), no question answerable by "
+    "paraphrasing a passage (set up a NEW case: predict, apply, compare, diagnose a flawed explanation), "
+    "not too open, no answer in the prompt, one ask. A FREE prompt is asked cold before any lesson, so "
+    "it opens with a lead-in sentence (which paper or setting, what the parts are), then asks: 2+ "
+    "sentences and 20+ words (2 Chinese characters = 1 word). Read study_rules before writing.",
     {"course": STR, "questions": ARR, "replace": BOOL}, ["course", "questions"], writes=True)
 def _study_question_add(course, questions, replace: bool = False):
     return study.question_add(course, questions, replace)
+
+
+@op("study_rules",
+    "Every question-quality rule study_check and publish enforce (question_rules.json): id, what it "
+    "enforces, and the fix. Read this BEFORE writing questions.",
+    {}, [])
+def _study_rules():
+    return study.rules()
 
 
 @op("study_diagram_add",

@@ -49,6 +49,17 @@ def folder(course: str) -> Path:
     return paths.STUDY_COURSES / course
 
 
+RULES = paths.THIS_ONLY / "backend" / "app" / "concept_tutor" / "question_rules.json"
+
+
+def rules() -> dict:
+    """The question-quality rules study_check enforces (backend question_quality.py)."""
+    data = json.loads(RULES.read_text(encoding="utf-8"))
+    return {"rules": [{"id": r["id"], "judged_by": "Jev" if r["kind"] == "jev" else "code",
+                       "formats": r.get("formats", "all"), "enforces": r["enforces"], "fix": r["message"]}
+                      for r in data["rules"]]}
+
+
 def load(course: str) -> dict:
     f = folder(course) / "course.json"
     if not f.exists():
@@ -249,7 +260,7 @@ def question_add(course: str, questions: list, replace: bool = False) -> dict:
         qid = pid(course, q["id"]) if q.get("id") else f"{course}.q{n}"
         taken.add(qid)
         out = {"id": qid, "kind": q.get("kind", "content"), "format": fmt,
-               "demand": q.get("demand") or ("explain" if fmt == "free" else "recall"),
+               "demand": q.get("demand") or "explain",
                "targets": [_ref(course, t) for t in q["targets"]], "prompt": q["prompt"],
                "reference": q.get("reference", "")}
         if out["kind"] not in KINDS:
@@ -264,7 +275,7 @@ def question_add(course: str, questions: list, replace: bool = False) -> dict:
         for key in ("expected", "required"):
             if q.get(key):
                 out[key] = [_ref(course, t) for t in q[key]]
-        for key in ("rephrasings", "answers", "group"):
+        for key in ("rephrasings", "answers", "group", "expectations", "misconceptions"):
             if q.get(key):
                 out[key] = q[key]
         if fmt == "card" and q.get("diagram"):
