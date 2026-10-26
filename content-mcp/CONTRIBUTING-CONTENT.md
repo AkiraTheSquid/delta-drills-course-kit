@@ -111,6 +111,14 @@ Needs only `pydantic` and `Pillow` in the content python (`.venv`), no torch.
    publish (`.content-mcp/publish-key`). In the private repo,
    `study_apply` + a deploy still works for a course that should ship in the
    image.
+8. Later changes: edit and `study_publish` again from the same clone. To build
+   on someone else's course, `study_fork source=<id> new=<your id>` copies it
+   to a new id (`live=true` for a public course published on deltadrills.com);
+   the original is untouched. A source whose license is No-Derivatives must
+   stay verbatim (the fork lists them). `study_whoami` shows your contributor
+   id; an id Seth makes an admin may replace or unpublish ANY contributed
+   course. Built-in courses (shipped in the app image) cannot be forked or
+   admin-edited this way.
 
 Every id is namespaced by the course (`<course>.<id>`), so a Study course can
 only ever replace its own content in the shared pack. An alias that another

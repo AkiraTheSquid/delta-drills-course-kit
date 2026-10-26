@@ -72,5 +72,6 @@
   - Status: `RESOLVED`.
 
 ## Recent Changes
+- 2026-10-26: `study_fork.py` (copy a Study course under a new id; `study_fork` op).
 - 2026-10-26: `auth.py` deleted; `needs_auth` → `writes` (snapshot flag only). No password.
 - 2026-09-02: Package created.

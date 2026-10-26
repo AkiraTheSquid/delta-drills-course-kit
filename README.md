@@ -71,6 +71,19 @@ Publishing needs no key or password. The first publish makes a random owner
 id in `.content-mcp/publish-key`; only that clone can replace or remove the
 course afterwards, so keep that file.
 
+### Changing it later, forking someone else's, admins
+
+- **Your own course:** edit it with the same tools and publish again, any
+  time, from the clone that published it.
+- **Fork any course:** `study_fork source=ai-cells-cancer new=my-cells` copies
+  a course to a new id that is yours (`live=true` fetches a public course
+  published on deltadrills.com). It is a separate course: publishing it never
+  touches the original. Sources marked No-Derivatives must stay word for word;
+  the fork tells you which.
+- **Admins:** `study_whoami` shows your contributor id. Send it to Seth; once
+  he makes it an admin you may edit, republish or unpublish any contributed
+  course (the original owner stays on record).
+
 🔴 Use your own notes or text you may share (OpenStax is CC BY), never a
 teacher's slides or a copyrighted textbook. A published course's sources sit
 on the server; if you also send a pull request, they become public here.

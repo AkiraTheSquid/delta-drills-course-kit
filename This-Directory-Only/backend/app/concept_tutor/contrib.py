@@ -22,6 +22,7 @@ the Study pack down.
 
 from __future__ import annotations
 
+import base64
 import json
 import logging
 import os
@@ -59,6 +60,19 @@ def root() -> Path | None:
     except Exception:   # the course kit ships pack.py without the app's settings
         return None
     return Path(settings.storage_dir) / "study-contrib"
+
+
+def admins() -> set[str]:
+    """Contributor names / anon ids Seth trusts to edit ANY contributed course
+    (2026-10-26). A JSON list in <root>/admins.json on the volume, read per
+    request, so granting admin needs no restart (ops/contrib-admins/). Missing
+    or unreadable = nobody."""
+    r = root()
+    try:
+        data = json.loads((r / "admins.json").read_text()) if r is not None else []
+    except (OSError, json.JSONDecodeError):
+        return set()
+    return {str(x) for x in data} if isinstance(data, list) else set()
 
 
 def _pack_dir(pack_id: str) -> Path | None:
@@ -205,7 +219,7 @@ def _prefix_clash(cid: str, others: set[str]) -> str | None:
 
 
 def publish(pack_id: str, contributor: str, spec: dict, files: dict[str, bytes],
-            packs_dir: Path, applied: dict, loader: Callable[[str], object]) -> dict:
+            packs_dir: Path, applied: dict, loader: Callable[[str], object], admin: bool = False) -> dict:
     """Check, store and go live. `applied` = the baked pack's .contrib record
     ({course: ids its private-repo apply wrote}), so a course first shipped by
     pull request can move to live publishing. Returns check's result plus
@@ -223,9 +237,10 @@ def publish(pack_id: str, contributor: str, spec: dict, files: dict[str, bytes],
     with _locked(home):
         final = home / cid
         owner = _owner(final).get("contributor") if final.exists() else contributor
-        if owner != contributor:   # a stored course with no readable owner fails CLOSED
-            raise Refused(f"course {cid!r} was published by another contributor."
-                          + ("" if owner else " (its ownership record is unreadable; ask Seth)"))
+        if not owner:   # no readable owner fails CLOSED, admins included
+            raise Refused(f"course {cid!r}: its ownership record is unreadable; ask Seth.")
+        if owner != contributor and not admin:
+            raise Refused(f"course {cid!r} was published by another contributor.")
         baked = cm.read_pack(packs_dir / pack_id)
         others = [(o, d, s) for o, d, s in stored(pack_id) if o != cid]
         # A baked course with THIS id (one first shipped by pull request) is
@@ -251,8 +266,10 @@ def publish(pack_id: str, contributor: str, spec: dict, files: dict[str, bytes],
             if not result["ok"]:
                 return {**result, "live": False}
             cm.paint(spec, stage, stage / "diagrams")
-            (stage / "owner.json").write_text(json.dumps({
-                "contributor": contributor, "published_at": datetime.now(timezone.utc).isoformat()}))
+            record = {"contributor": owner, "published_at": datetime.now(timezone.utc).isoformat()}
+            if owner != contributor:
+                record["edited_by"] = contributor
+            (stage / "owner.json").write_text(json.dumps(record))
             if not _swap_in(pack_id, final, stage, loader):
                 return {**result, "ok": False, "live": False,
                         "errors": ["the course passed the check but did not load; the live copy is unchanged (see the server log)"]}
@@ -294,7 +311,8 @@ def _swap_in(pack_id: str, final: Path, new: Path | None, loader: Callable[[str]
     return True
 
 
-def unpublish(pack_id: str, contributor: str, cid: str, loader: Callable[[str], object]) -> dict:
+def unpublish(pack_id: str, contributor: str, cid: str, loader: Callable[[str], object],
+              admin: bool = False) -> dict:
     if not COURSE_RE.fullmatch(cid or ""):
         raise Refused(f"course id {cid!r}: lowercase letters/digits and dashes.")
     home = _pack_dir(pack_id)
@@ -304,7 +322,7 @@ def unpublish(pack_id: str, contributor: str, cid: str, loader: Callable[[str], 
         final = home / cid
         if not final.is_dir():
             raise Refused(f"course {cid!r} is not published.")
-        if _owner(final).get("contributor") != contributor:
+        if _owner(final).get("contributor") != contributor and not admin:
             raise Refused(f"course {cid!r} was published by another contributor.")
         if not _swap_in(pack_id, final, None, loader):
             raise RuntimeError(f"could not take {cid!r} down; it is still live")
@@ -313,6 +331,38 @@ def unpublish(pack_id: str, contributor: str, cid: str, loader: Callable[[str], 
         live = any(c.id == cid for c in loader(pack_id).courses)
         return {"ok": True, "course": cid, "live": live,
                 **({"note": "a copy of this course is built into the app; ask Seth to remove it"} if live else {})}
+
+
+def export(pack_id: str, cid: str, contributor: str, admin: bool = False) -> dict:
+    """A stored course as {spec, files} — the same shape `publish` takes — so
+    `study_fork` can copy it. Public courses for anyone; a non-public one only
+    for its owner or an admin. Only sources/ and images/ travel (diagrams/ is
+    painted on publish; owner.json is the server's)."""
+    if not COURSE_RE.fullmatch(cid or ""):
+        raise Refused(f"course id {cid!r}: lowercase letters/digits and dashes.")
+    home = _pack_dir(pack_id)
+    missing = Refused(f"course {cid!r} is not a published contributor course "
+                      "(built-in courses cannot be exported).")
+    if home is None:
+        raise missing
+    # Under the publish lock: the visibility check and the files read must be
+    # one version, or a republish to private mid-read could leak its files.
+    with _locked(home):
+        final = home / cid
+        try:
+            spec = json.loads((final / "course.json").read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            raise missing from None
+        if not spec.get("course", {}).get("public") and not admin \
+                and _owner(final).get("contributor") != contributor:
+            raise Refused(f"course {cid!r} is not public.")
+        files = {}
+        for top in ("sources", "images"):
+            d = final / top
+            for f in sorted(d.iterdir()) if d.is_dir() else []:
+                if f.is_file() and not f.is_symlink() and not f.name.startswith("."):
+                    files[f"{top}/{f.name}"] = base64.b64encode(f.read_bytes()).decode()
+    return {"spec": spec, "files": files}
 
 
 def status(pack_id: str, cid: str, pack) -> dict:

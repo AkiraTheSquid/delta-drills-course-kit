@@ -13,7 +13,8 @@ X-Contrib-Key is only an OWNER ID, so nobody else can replace or remove your
 course. The first publish makes a random one, unasked, in
 `.content-mcp/publish-key` (mode 600; never committed — the whole
 `.content-mcp/` is machine-local state). Lose it and you can no longer update
-courses it published. A named key from Seth (`dd-content set-publish-key`)
+courses it published. Admins (ids Seth lists in the server's
+admins.json; see `study_whoami`) may update or remove ANY contributed course. A named key from Seth (`dd-content set-publish-key`)
 still works and shows his name for you instead of `anon-<hash>`.
 """
 
@@ -129,6 +130,24 @@ def publish(course: str, channel: str = "stable", public: bool | None = None) ->
     else:
         result["next_step"] = "Not published (the live course, if any, is unchanged). Fix the errors and publish again."
     return result
+
+
+def export(course: str, channel: str = "stable") -> dict:
+    """{spec, files} of a course published live: public ones for anyone, a
+    private one for its owner or an admin. study_fork's live source."""
+    study.folder(course)
+    return _call("GET", _server(channel) + ROUTE + "/" + course + "/export")
+
+
+def whoami(channel: str = "stable") -> dict:
+    """The name the server knows this clone by (`anon-<hash>` unless Seth gave
+    you a named key) and whether it is an admin. Safe to share: it is a hash,
+    not the key. Send it to Seth to be made an admin."""
+    me = _call("GET", _server(channel) + ROUTE + "/whoami/me")
+    if not me.get("admin"):
+        me["how_to_become_admin"] = ("Send this contributor id to Seth. Admins can edit or take "
+                                     "down ANY contributed course, not only their own.")
+    return me
 
 
 def unpublish(course: str, channel: str = "stable") -> dict:

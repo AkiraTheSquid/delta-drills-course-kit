@@ -3,7 +3,7 @@ into ops.REGISTRY. A module of their own so ops.py stays one screen per family."
 
 from __future__ import annotations
 
-from . import study, study_images, study_publish
+from . import study, study_fork, study_images, study_publish
 from .ops import INT, STR, op
 
 STRS = {"type": "array", "items": STR}
@@ -135,7 +135,7 @@ def _study_publish(course, channel: str = "stable", public=None):
     return study_publish.publish(course, channel, public)
 
 
-@op("study_unpublish", "Take a live-published Study course down (only its publisher may).",
+@op("study_unpublish", "Take a live-published Study course down (only its publisher, or an admin, may).",
     {"course": STR, "channel": CHANNEL}, ["course"], writes=True)
 def _study_unpublish(course, channel: str = "stable"):
     return study_publish.unpublish(course, channel)
@@ -145,3 +145,21 @@ def _study_unpublish(course, channel: str = "stable"):
     {"course": STR, "channel": CHANNEL}, ["course"])
 def _study_publish_status(course, channel: str = "stable"):
     return study_publish.status(course, channel)
+
+
+@op("study_fork",
+    "Copy a Study course under a NEW course id that is yours to change: every id and path is renamed, "
+    "sources and pictures come along, the original is untouched. Source = a study-courses/ folder in "
+    "this checkout, or with live=true any PUBLIC course published live on Delta Drills. The new id must "
+    "not start with the source id + '-' (use e.g. 'my-<source>').",
+    {"source": STR, "new": STR, "title": STR, "live": {"type": "boolean"}, "channel": CHANNEL},
+    ["source", "new"], writes=True)
+def _study_fork(source, new, title=None, live=False, channel: str = "stable"):
+    return study_fork.fork(source, new, title, bool(live), channel)
+
+
+@op("study_whoami", "The contributor id the server knows this clone by, and whether it is an admin "
+    "(admins may edit or take down ANY contributed course). Safe to share with Seth: it is a hash.",
+    {"channel": CHANNEL})
+def _study_whoami(channel: str = "stable"):
+    return study_publish.whoami(channel)
